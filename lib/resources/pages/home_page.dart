@@ -1,3 +1,4 @@
+import 'package:flutter_app/resources/pages/wtf_guide_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:nylo_framework/theme/helper/ny_theme.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,6 @@ class HomePage extends NyStatefulWidget<HomeController> {
 }
 
 class _HomePageState extends NyState<HomePage> {
-
   /// The boot method is called before the [view] is rendered.
   /// You can override this method to perform any async operations.
   /// Try uncommenting the code below.
@@ -57,15 +57,11 @@ class _HomePageState extends NyState<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Logo(),
               Text(
                 getEnv("APP_NAME"),
               ).displayMedium(context),
-              Text("Micro-framework for Flutter", textAlign: TextAlign.center)
-                  .titleMedium(context)
-                  .setColor(context, (color) => color.primaryAccent),
               Text(
-                "Build something amazing 💡",
+                "Something amazing is happening 🔥",
               ).bodyMedium(context).alignCenter(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,13 +89,13 @@ class _HomePageState extends NyState<HomePage> {
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         children:
-                        ListTile.divideTiles(context: context, tiles: [
+                            ListTile.divideTiles(context: context, tiles: [
                           MaterialButton(
                             child: Text(
-                              "documentation".tr().capitalize(),
+                              "wtf-guide".tr().capitalize(),
                             ).bodyLarge(context).setColor(
                                 context, (color) => color.surfaceContent),
-                            onPressed: widget.controller.onTapDocumentation,
+                            onPressed: () => {routeTo(WtfGuidePage.path)},
                           ),
                           MaterialButton(
                             child: Text(
@@ -153,5 +149,5 @@ class _HomePageState extends NyState<HomePage> {
 
   bool get isThemeDark =>
       ThemeProvider.controllerOf(context).currentThemeId ==
-          getEnv('DARK_THEME_ID');
+      getEnv('DARK_THEME_ID');
 }
