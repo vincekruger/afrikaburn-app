@@ -1,0 +1,2 @@
+#include? "Pods/Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn.release.xcconfig"
+#include "Generated.xcconfig"
