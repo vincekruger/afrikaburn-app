@@ -1,3 +1,4 @@
+import '/app/controllers/my_contact_controller.dart';
 import '/app/controllers/wtf_guide_controller.dart';
 import '/app/controllers/home_controller.dart';
 import '/app/models/user.dart';
@@ -47,5 +48,7 @@ final Map<Type, dynamic> controllers = {
 
 
   WtfGuideController: () => WtfGuideController(),
+
+  MyContactController: () => MyContactController(),
 };
 

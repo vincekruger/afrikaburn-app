@@ -1,3 +1,4 @@
+import '/resources/pages/my_contact_page.dart';
 import '/resources/pages/wtf_guide_page.dart';
 import '/resources/pages/home_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -13,4 +14,5 @@ import 'package:nylo_framework/nylo_framework.dart';
 appRouter() => nyRoutes((router) {
       router.route(HomePage.path, (context) => HomePage(), initialRoute: true);
       router.route(WtfGuidePage.path, (context) => WtfGuidePage());
-    });
+     router.route(MyContactPage.path, (context) => MyContactPage());
+});

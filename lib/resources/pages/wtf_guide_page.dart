@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import '/app/controllers/wtf_guide_controller.dart';
 
@@ -28,19 +29,37 @@ class _WtfGuidePageState extends NyState<WtfGuidePage> {
   @override
   Widget view(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("WTF Guide")),
-      body: SafeArea(
-        child: PDF(
-          enableSwipe: true,
-          swipeHorizontal: true,
-          autoSpacing: false,
-          pageFling: true,
-          pageSnap: true,
-        ).fromUrl(
-          guideUrl,
-          errorWidget: (dynamic error) => Center(child: Text(error.toString())),
-        ),
-      ),
+      body: PDFView(),
+    );
+  }
+
+  Widget PDFView() {
+    return PDF(
+      // onViewCreated,
+      // onRender,
+      // onPageChanged,
+      // onError,
+      // onPageError,
+      // onLinkHandler,
+      // gestureRecognizers,
+      // enableSwipe = true,
+      // swipeHorizontal = false,
+      // password,
+      // nightMode = false,
+      // autoSpacing = true,
+      // pageFling = true,
+      // pageSnap = true,
+      // fitEachPage = true,
+      // defaultPage = 0,
+      // fitPolicy = FitPolicy.WIDTH,
+      // preventLinkNavigation = false,
+
+      swipeHorizontal: true,
+      fitPolicy: FitPolicy.HEIGHT,
+      preventLinkNavigation: true,
+    ).fromUrl(
+      guideUrl,
+      errorWidget: (dynamic error) => Center(child: Text(error.toString())),
     );
   }
 }

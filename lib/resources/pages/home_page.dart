@@ -1,9 +1,9 @@
+import 'package:flutter_app/resources/pages/my_contact_page.dart';
 import 'package:flutter_app/resources/pages/wtf_guide_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:nylo_framework/theme/helper/ny_theme.dart';
 import 'package:flutter/material.dart';
 import '/bootstrap/extensions.dart';
-import '/resources/widgets/logo_widget.dart';
 import '/resources/widgets/safearea_widget.dart';
 import '/bootstrap/helpers.dart';
 import '/app/controllers/home_controller.dart';
@@ -92,17 +92,18 @@ class _HomePageState extends NyState<HomePage> {
                             ListTile.divideTiles(context: context, tiles: [
                           MaterialButton(
                             child: Text(
-                              "wtf-guide".tr().capitalize(),
+                              "wtf-guide",
                             ).bodyLarge(context).setColor(
                                 context, (color) => color.surfaceContent),
-                            onPressed: () => {routeTo(WtfGuidePage.path)},
+                            onPressed: () => widget.controller
+                                .openBottomSheet(context, WtfGuidePage.path),
                           ),
                           MaterialButton(
                             child: Text(
-                              "GitHub",
+                              "my-contact",
                             ).bodyLarge(context).setColor(
                                 context, (color) => color.surfaceContent),
-                            onPressed: widget.controller.onTapGithub,
+                            onPressed: () => {routeTo(MyContactPage.path)},
                           ),
                           MaterialButton(
                             child: Text(

@@ -37,24 +37,22 @@ git clone https://github.com/nylo-core/nylo.git
 ## Documentation
 View our [docs](https://nylo.dev/docs) and visit [nylo.dev](https://nylo.dev)
 
-## Changelog
-Please see [CHANGELOG](https://github.com/nylo-core/framework/blob/5.x/CHANGELOG.md) for more information what has changed recently.
+## Plugin Modifications :(
 
-## Social
-* [Twitter](https://twitter.com/nylo_dev)
+All difrect flutter plugin modifications need to be documented here incase there is an update
+and the change is lost. Ideally a contribution to the original plugin should be be submitted with a pull request.
 
-## Security
-If you discover any security related issues, please email support@nylo.dev instead of using the issue tracker.
+### flutter_pdfview
 
-## Contributors
-* [Anthony Gordon](https://github.com/agordn52)
-* [lpdevit](https://github.com/lpdevit)
-* [Abdulrasheed1729](https://github.com/Abdulrasheed1729)
-* [Rashid-Khabeer](https://github.com/Rashid-Khabeer)
-* [youssefKadaouiAbbassi](https://github.com/youssefKadaouiAbbassi)
-* [jeremyhalin](https://github.com/jeremyhalin)
-* [abdulawalarif](https://github.com/abdulawalarif)
+- https://github.com/endigo/flutter_pdfview
+- https://developer.apple.com/documentation/pdfkit/pdfview/configurations/graphics_properties
 
-## Licence
+The ability to set the PDFView.backgroundColor is not possible for iOS.  This change was made directly in the module file.
+`FlutterPDFView.m` on `line 147`.
 
-The MIT License (MIT). Please view the [License](https://github.com/nylo-core/nylo/blob/master/licence) File for more information.
+```objective-c
+// Set PDF View to Asset UI Color
+if([UIColor colorNamed:@"FlutterPDFView_BackgroundColor"]) {
+    _pdfView.backgroundColor = [UIColor colorNamed:@"FlutterPDFView_BackgroundColor"];
+}
+```
