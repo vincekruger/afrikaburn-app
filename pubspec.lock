@@ -227,6 +227,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_native_contact_picker:
+    dependency: "direct main"
+    description:
+      name: flutter_native_contact_picker
+      sha256: b34aac5c3640904b513628c7bcb326c25f213ba36482a30b3013a4e69285f006
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
   flutter_pdfview:
     dependency: transitive
     description:
@@ -858,6 +866,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
+  vcf_dart:
+    dependency: "direct main"
+    description:
+      name: vcf_dart
+      sha256: a0e670edfaf0013c648db5ca5bbec19570744fa2800978a1703ffc1d00c3c821
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   vector_math:
     dependency: transitive
     description:

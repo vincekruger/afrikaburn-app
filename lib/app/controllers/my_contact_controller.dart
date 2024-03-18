@@ -1,5 +1,7 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:vcf_dart/vcf_dart.dart';
 import '/app/controllers/controller.dart';
 
 class MyContactController extends Controller {
@@ -7,32 +9,56 @@ class MyContactController extends Controller {
     super.construct(context);
   }
 
-  selectContact() {
-    print("Select Contact");
+  checkContactPermission(BuildContext context) async {}
+
+  selectContact() async {
+    final FlutterContactPicker _contactPicker = new FlutterContactPicker();
+    Contact? contact = await _contactPicker.selectContact();
+    print(contact);
+  }
+
+  String createVCard() {
+    final stack = VCardStack();
+    final builder = VCardItemBuilder()
+      ..addProperty(
+        const VCardProperty(
+          name: VConstants.name,
+          values: ['User', 'Test'],
+        ),
+      )
+      ..addPropertyFromEntry(
+        VConstants.formattedName,
+        'Test User',
+      )
+      ..addProperty(VCardProperty(
+        name: VConstants.phone,
+        nameParameters: [
+          VCardNameParameter(VConstants.nameParamType, VConstants.phoneTypeCell)
+        ],
+        values: ['+1234567890'],
+      ))
+      ..addProperty(VCardProperty(
+        name: VConstants.email,
+        nameParameters: [
+          VCardNameParameter(VConstants.nameParamType, VConstants.phoneTypeHome)
+        ],
+        values: ['test@mail.com'],
+      ));
+    stack.items.add(builder.build());
+
+    return stack.vcardStack;
   }
 
   createQRCode() {
-    String vcfData = """BEGIN:VCARD
-VERSION:3.0
-N:Lastname;Firstname
-FN:Firstname Lastname
-ORG:CompanyName
-TITLE:JobTitle
-ADR:;;123 Sesame St;SomeCity;CA;12345;USA
-TEL;WORK;VOICE:1234567890
-TEL;CELL:Mobile
-TEL;FAX:
-EMAIL;WORK;INTERNET:foo@email.com
-URL:http://website.com
-END:VCARD""";
     const double size = 280.0;
 
+    String vcfData = createVCard();
     print(vcfData);
 
     return CustomPaint(
       size: const Size.square(size),
       painter: QrPainter(
-        data: vcfData,
+        data: createVCard(),
         version: QrVersions.auto,
         eyeStyle: const QrEyeStyle(
           eyeShape: QrEyeShape.square,

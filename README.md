@@ -37,6 +37,10 @@ git clone https://github.com/nylo-core/nylo.git
 ## Documentation
 View our [docs](https://nylo.dev/docs) and visit [nylo.dev](https://nylo.dev)
 
+## Notes
+
+Nylo Firebase implmentation: https://github.com/nylo-core/nylo/discussions/61
+
 ## Plugin Modifications :(
 
 All difrect flutter plugin modifications need to be documented here incase there is an update

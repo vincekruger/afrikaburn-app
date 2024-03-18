@@ -21,16 +21,17 @@ class _MyContactPageState extends NyState<MyContactPage> {
           children: [
             Text("My Contact"),
             ElevatedButton(
-              onPressed: () {
-                controller.selectContact();
-              },
-              child: Text("Select Contact"),
+              child: const Text('Check permission'),
+              onPressed: () =>
+                  {widget.controller.checkContactPermission(context)},
             ),
+            ElevatedButton(
+              child: Text("Select Contact"),
+              onPressed: () => {widget.controller.selectContact()},
+            ),
+            widget.controller.createQRCode(),
           ],
         ),
-        // child: Container(
-        //   child: widget.controller.createQRCode(),
-        // ),
       ),
     );
   }

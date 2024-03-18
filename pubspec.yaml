@@ -32,6 +32,8 @@ dependencies:
   flutter_cached_pdfview: ^0.4.2
   modal_bottom_sheet: ^3.0.0
   qr_flutter: ^4.1.0
+  vcf_dart: ^1.0.1
+  flutter_native_contact_picker: ^0.0.6
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.1
