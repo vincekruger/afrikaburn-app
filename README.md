@@ -41,6 +41,94 @@ View our [docs](https://nylo.dev/docs) and visit [nylo.dev](https://nylo.dev)
 
 Nylo Firebase implmentation: https://github.com/nylo-core/nylo/discussions/61
 
+## iOS Firebase Configuration
+
+To enable different firebase configurations for debug, relase & testing, a new build phase script needs to be created to copy the correct configuration file to the application on build.
+
+Create two folders `FirebaseConfigs/{Debug,Release}` in the source root and add this folder to the project, add firebase configs in the respective folders.
+
+Create the Build Phase `Copy Firebase Bundle Resources` in the Afrikaburn target.<br />
+**Add all config files to Input Files.**
+
+**NB!** Place this run script before any other firebase build phases.  It's important to have the config file available before anything else runs.
+
+Here is a base template for the run script.
+
+```bash
+INFO_PLIST=GoogleService-Info.plist
+DEVELOPMENT_INFO_PLIST=${PROJECT_DIR}/Runner/FirebaseConfigs/Debug/${INFO_PLIST}
+RELEASE_INFO_PLIST=${PROJECT_DIR}/Runner/FirebaseConfigs/Release/${INFO_PLIST}
+
+echo “Checking ${INFO_PLIST} in ${DEVELOPMENT_INFO_PLIST}”
+if [ ! -f $DEVELOPMENT_INFO_PLIST ] ; then
+    echo “Development GoogleService-Info.plist not found”
+    exit 1
+fi
+
+echo “Checking ${INFO_PLIST} in ${RELEASE_INFO_PLIST}”
+if [ ! -f $RELEASE_INFO_PLIST ] ; then
+    echo “Release GoogleService-Info.plist not found”
+    exit 1
+fi
+
+PLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app
+echo “Attempting to copy ${INFO_PLIST} to final destination: ${PLIST_DESTINATION}”
+
+if [ “${CONFIGURATION}” == “Release” ] ; then
+    cp “${RELEASE_INFO_PLIST}” “${PLIST_DESTINATION}”
+    echo “Copied ${RELEASE_INFO_PLIST}”
+else
+    cp “${DEVELOPMENT_INFO_PLIST}” “${PLIST_DESTINATION}”
+    echo “Copied ${DEVELOPMENT_INFO_PLIST}”
+fi
+```
+
+## iOS Firebase Crashlytics Configuration
+
+To run this only on releases
+
+```bas
+if [ "${CONFIGURATION}" = "Release" ]; then
+    // Script
+fi
+```
+
+```bash
+if [ "${CONFIGURATION}" = "Release" ]; then
+fi
+
+
+# And here you can see why that folder structure is important.
+GOOGLESERVICE_INFO_PLIST=GoogleService-Info.plist
+GOOGLESERVICE_INFO_PATH=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app
+GOOGLESERVICE_INFO_FILE=${GOOGLESERVICE_INFO_PLIST}/${GOOGLESERVICE_INFO_PLIST}
+echo "Looking for GoogleService-Info.plist in ${GOOGLESERVICE_INFO_PATH}"
+
+if [ -f "$GOOGLESERVICE_INFO_FILE" ]; then
+    echo "Using GoogleService-Info.plist from ${GOOGLESERVICE_INFO_FILE}"
+
+    # Get GOOGLE_APP_ID from GoogleService-Info.plist file
+    APP_ID="$(grep -A1 GOOGLE_APP_ID ${GOOGLESERVICE_INFO_FILE} | tail -n1 | sed -e 's/.*\<string\>\(.*\)\<\/string\>/\1/')"
+
+    # Run scripts to upload dSYMs to Firebase crashlytics
+    "${PODS_ROOT}/FirebaseCrashlytics/run" -ai "${APP_ID}"
+    "${PODS_ROOT}/FirebaseCrashlytics/upload-symbols" --build-phase --validate -ai "${APP_ID}"
+    "${PODS_ROOT}/FirebaseCrashlytics/upload-symbols" --build-phase -ai "${APP_ID}"
+    "${PODS_ROOT}/FirebaseCrashlytics/upload-symbols" -gsp "${GOOGLESERVICE_INFO_FILE}" -p ios "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}"  -ai "${APP_ID}"
+    
+    echo "Successfully uploaded dSYMs to Firebase Crashlytics!"
+else
+    echo "GoogleService-Info.plist not found in ${GOOGLESERVICE_INFO_FILE}"
+fi
+```
+
+Input Files
+
+```
+${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
+$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)
+```
+
 ## Plugin Modifications :(
 
 All difrect flutter plugin modifications need to be documented here incase there is an update

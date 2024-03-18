@@ -92,7 +92,7 @@ class _HomePageState extends NyState<HomePage> {
                             ListTile.divideTiles(context: context, tiles: [
                           MaterialButton(
                             child: Text(
-                              "wtf-guide",
+                              "wtf-guide".tr(),
                             ).bodyLarge(context).setColor(
                                 context, (color) => color.surfaceContent),
                             onPressed: () => widget.controller
@@ -100,24 +100,19 @@ class _HomePageState extends NyState<HomePage> {
                           ),
                           MaterialButton(
                             child: Text(
-                              "my-contact",
+                              "my-contact".tr(),
                             ).bodyLarge(context).setColor(
                                 context, (color) => color.surfaceContent),
                             onPressed: () => {routeTo(MyContactPage.path)},
                           ),
                           MaterialButton(
                             child: Text(
-                              "changelog".tr().capitalize(),
+                              "Force Crash".tr(),
                             ).bodyLarge(context).setColor(
                                 context, (color) => color.surfaceContent),
-                            onPressed: widget.controller.onTapChangeLog,
-                          ),
-                          MaterialButton(
-                            child: Text(
-                              "YouTube Channel".tr().capitalize(),
-                            ).bodyLarge(context).setColor(
-                                context, (color) => color.surfaceContent),
-                            onPressed: widget.controller.onTapYouTube,
+                            onPressed: () {
+                              throw Exception("This is a test crash");
+                            },
                           ),
                         ]).toList(),
                       ),

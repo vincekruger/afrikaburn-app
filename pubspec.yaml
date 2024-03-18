@@ -34,23 +34,18 @@ dependencies:
   qr_flutter: ^4.1.0
   vcf_dart: ^1.0.1
   flutter_native_contact_picker: ^0.0.6
+  firebase_core: ^2.27.1
+  firebase_analytics: ^10.8.10
+  firebase_crashlytics: ^3.4.19
+  firebase_performance: ^0.9.3+18
+  firebase_remote_config: ^4.3.18
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.13.1
-#  lints: ^3.0.0
+  lints: ^3.0.0
   flutter_test:
     sdk: flutter
 
-# APP ICON - public/assets/app_icon/icon.png
-# Build icons: "dart run flutter_launcher_icons"
-flutter_launcher_icons:
-  android: true
-  ios: true
-  image_path: "public/assets/app_icon/icon.png"
-  remove_alpha_ios: true
-
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

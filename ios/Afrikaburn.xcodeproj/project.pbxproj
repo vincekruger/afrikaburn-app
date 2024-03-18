@@ -51,6 +51,7 @@
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		3FC7400FB1BB027AA5DF53D4 /* Pods-Afrikaburn.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afrikaburn.profile.xcconfig"; path = "Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn.profile.xcconfig"; sourceTree = "<group>"; };
 		5335A17A2BA7324A00371F90 /* Afrikaburn.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Afrikaburn.entitlements; sourceTree = "<group>"; };
+		5375C86E2BA886E9006D4525 /* FirebaseConfigs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FirebaseConfigs; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
@@ -153,6 +154,7 @@
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
+				5375C86E2BA886E9006D4525 /* FirebaseConfigs */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -200,6 +202,8 @@
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				9B6169CDCB6ADB5B20FCB3F0 /* [CP] Embed Pods Frameworks */,
+				531070F72BA872C0005BC0EE /* [Firebase] Copy Config Bundle Resource */,
+				5326D20D2BA8811100668DB5 /* [Firebase ] Crashlytics upload dSYM files */,
 			);
 			buildRules = (
 			);
@@ -329,7 +333,47 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin\n";
+		};
+		531070F72BA872C0005BC0EE /* [Firebase] Copy Config Bundle Resource */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(PROJECT_DIR)/Runner/FirebaseConfigs/Debug/GoogleService-Info.plist",
+				"$(PROJECT_DIR)/Runner/FirebaseConfigs/Release/GoogleService-Info.plist",
+			);
+			name = "[Firebase] Copy Config Bundle Resource";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "INFO_PLIST=GoogleService-Info.plist\nDEVELOPMENT_INFO_PLIST=${PROJECT_DIR}/Runner/FirebaseConfigs/Debug/${INFO_PLIST}\nRELEASE_INFO_PLIST=${PROJECT_DIR}/Runner/FirebaseConfigs/Release/${INFO_PLIST}\n\necho “Checking ${INFO_PLIST} in ${DEVELOPMENT_INFO_PLIST}”\nif [ ! -f $DEVELOPMENT_INFO_PLIST ] ; then\n    echo “Development GoogleService-Info.plist not found”\n    exit 1\nfi\n\necho “Checking ${INFO_PLIST} in ${RELEASE_INFO_PLIST}”\nif [ ! -f $RELEASE_INFO_PLIST ] ; then\n    echo “Release GoogleService-Info.plist not found”\n    exit 1\nfi\n\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho “Attempting to copy ${INFO_PLIST} to final destination: ${PLIST_DESTINATION}”\n\nif [ “${CONFIGURATION}” == “Release” ] ; then\n    cp “${RELEASE_INFO_PLIST}” “${PLIST_DESTINATION}”\n    echo “Copied ${RELEASE_INFO_PLIST}”\nelse\n    cp “${DEVELOPMENT_INFO_PLIST}” “${PLIST_DESTINATION}”\n    echo “Copied ${DEVELOPMENT_INFO_PLIST}”\nfi\n";
+		};
+		5326D20D2BA8811100668DB5 /* [Firebase ] Crashlytics upload dSYM files */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "[Firebase ] Crashlytics upload dSYM files";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# And here you can see why that folder structure is important.\nGOOGLESERVICE_INFO_PLIST=GoogleService-Info.plist\nGOOGLESERVICE_INFO_PATH=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\nGOOGLESERVICE_INFO_FILE=${GOOGLESERVICE_INFO_PLIST}/${GOOGLESERVICE_INFO_PLIST}\necho \"Looking for GoogleService-Info.plist in ${GOOGLESERVICE_INFO_PATH}\"\n\nif [ -f \"$GOOGLESERVICE_INFO_FILE\" ]; then\n    echo \"Using GoogleService-Info.plist from ${GOOGLESERVICE_INFO_FILE}\"\n\n    # Get GOOGLE_APP_ID from GoogleService-Info.plist file\n    APP_ID=\"$(grep -A1 GOOGLE_APP_ID ${GOOGLESERVICE_INFO_FILE} | tail -n1 | sed -e 's/.*\\<string\\>\\(.*\\)\\<\\/string\\>/\\1/')\"\n\n    # Run scripts to upload dSYMs to Firebase crashlytics\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\" -ai \"${APP_ID}\"\n    \"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" --build-phase --validate -ai \"${APP_ID}\"\n    \"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" --build-phase -ai \"${APP_ID}\"\n    \"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" -gsp \"${GOOGLESERVICE_INFO_FILE}\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"  -ai \"${APP_ID}\"\n    \n    echo \"Successfully uploaded dSYMs to Firebase Crashlytics!\"\nelse\n    echo \"GoogleService-Info.plist not found in ${GOOGLESERVICE_INFO_FILE}\"\nfi\n";
 		};
 		9740EEB61CF901F6004384FC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -344,7 +388,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
 		9B6169CDCB6ADB5B20FCB3F0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

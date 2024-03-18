@@ -1,3 +1,4 @@
+import '/app/providers/firebase_provider.dart';
 import '/app/providers/auth_provider.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import '/app/providers/app_provider.dart';
@@ -17,4 +18,6 @@ final Map<Type, NyProvider> providers = {
   RouteProvider: RouteProvider(),
   EventProvider: EventProvider(),
   AuthProvider: AuthProvider(),
+
+  FirebaseProvider: FirebaseProvider(),
 };
