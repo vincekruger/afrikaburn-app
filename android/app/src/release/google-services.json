@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "1070999950214",
+    "firebase_url": "https://afrikaburn-35158.firebaseio.com",
+    "project_id": "afrikaburn-35158",
+    "storage_bucket": "afrikaburn-35158.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070999950214:android:c5a0bf87eb561a4d369207",
+        "android_client_info": {
+          "package_name": "io.wheresmyshit.afrikaburn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070999950214-61bi86f360dcio0okuio83lg9g1m0hr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXUUuT4UNKIqXmFwpYFrWE7BFZCy0nS0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070999950214-61bi86f360dcio0okuio83lg9g1m0hr7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1070999950214-2tsbt6p5v48tovq6u8jilan12jp02pmd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "za.co.wheresmyshit.ios.afrikaburn",
+                "app_store_id": "1456273048"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070999950214:android:e54fe42182684eca",
+        "android_client_info": {
+          "package_name": "za.co.wheresmyshit.android.afrikaburn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070999950214-61bi86f360dcio0okuio83lg9g1m0hr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXUUuT4UNKIqXmFwpYFrWE7BFZCy0nS0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070999950214-61bi86f360dcio0okuio83lg9g1m0hr7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1070999950214-2tsbt6p5v48tovq6u8jilan12jp02pmd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "za.co.wheresmyshit.ios.afrikaburn",
+                "app_store_id": "1456273048"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

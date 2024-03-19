@@ -16,29 +16,9 @@ class DefaultFirebaseOptions {
 
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        if (kReleaseMode)
-          throw UnsupportedError(
-              'DefaultFirebaseOptions for Relase have not been configured for android');
-
-        return androidDebug;
+        return kReleaseMode ? androidRelease : androidDebug;
       case TargetPlatform.iOS:
-        if (kReleaseMode) return iosRelease;
-        return iosDebug;
-      case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
-      case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
-      case TargetPlatform.linux:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return kReleaseMode ? iosRelease : iosDebug;
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
@@ -48,11 +28,22 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions androidDebug = FirebaseOptions(
     apiKey: 'AIzaSyDPiW4KupYTBf8NTiDeGO3QcpxVBLRS7q0',
-    appId: '1:700936341717:android:120f2b253c5fadcbdc7a5c',
+    appId: '1:700936341717:android:21b26910263a4daedc7a5c',
     messagingSenderId: '700936341717',
     projectId: 'afrikaburn-dev',
     databaseURL: 'https://afrikaburn-dev.firebaseio.com',
-    storageBucket: 'io.wheresmyshit.afrikaburn.debug',
+    storageBucket: 'afrikaburn-dev.appspot.com',
+    iosBundleId: 'io.wheresmyshit.afrikaburn.debug',
+  );
+
+  static const FirebaseOptions androidRelease = FirebaseOptions(
+    apiKey: 'AIzaSyCXUUuT4UNKIqXmFwpYFrWE7BFZCy0nS0M',
+    appId: '1:1070999950214:android:c5a0bf87eb561a4d369207',
+    messagingSenderId: '1070999950214',
+    projectId: 'afrikaburn-35158',
+    databaseURL: 'https://afrikaburn-35158.firebaseio.com',
+    storageBucket: 'afrikaburn-35158.appspot.com',
+    iosBundleId: 'io.wheresmyshit.afrikaburn',
   );
 
   static const FirebaseOptions iosDebug = FirebaseOptions(
