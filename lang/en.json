@@ -9,6 +9,12 @@
   "testing": {
     "force-crash": "Force Crash"
   },
+  "ticket-type": {
+    "entry": "Entry Ticket",
+    "wap": "WAP",
+    "etoll": "E-Toll",
+    "identification": "Identification"
+  },
   "ticket-action": {
       "take-photo": "Take Photo",
       "choose-photo": "Choose Photo",

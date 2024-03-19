@@ -129,6 +129,15 @@ ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TAR
 $(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)
 ```
 
+## Firebase Analytics Debug View
+
+Android
+
+```bash
+adb shell setprop debug.firebase.analytics.app io.wheresmyshit.afrikaburn.debug
+adb shell setprop debug.firebase.analytics.app .none.
+```
+
 ## Plugin Modifications :(
 
 All difrect flutter plugin modifications need to be documented here incase there is an update

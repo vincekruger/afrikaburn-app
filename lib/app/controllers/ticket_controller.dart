@@ -14,10 +14,15 @@ class TicketController extends Controller {
     super.construct(context);
   }
 
+  /// Allow as a singleton
+  bool get singleton => true;
+
+  /// Permission status for Photos
   Future<PermissionStatus> get getPhotosPermission async {
     return await Permission.photos.status;
   }
 
+  /// Permission status for Camera
   Future<PermissionStatus> get getCameraPermission async {
     return await Permission.camera.status;
   }
@@ -59,8 +64,6 @@ class TicketController extends Controller {
   /// Open the camera to take a photo
   /// and save it to the documents directory
   Future<bool> takePhoto(TicketType type) async {
-    // TODO NEED TO ASK FOR PERMISSION
-
     final XFile? image = await picker.pickImage(
         source: ImageSource.camera, requestFullMetadata: false);
     return saveFile(image, type);
@@ -77,5 +80,9 @@ class TicketController extends Controller {
     return File(assetPath).exists();
   }
 
-  deleteTicket() async {}
+  /// Delete the ticket item file from the documents directory
+  deleteTicketData() async {}
+
+  /// Delete all ticket item files from the documents directory
+  clearAllTicketData() async {}
 }

@@ -1,10 +1,11 @@
-import 'dart:math';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart'
     show TargetPlatform, defaultTargetPlatform;
 import 'package:flutter_app/app/models/ticket.dart';
+import 'package:flutter_app/resources/widgets/ticket_item_widget.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:photo_view/photo_view.dart';
@@ -21,25 +22,21 @@ class _TicketPageState extends NyState<TicketPage> {
   TicketController get controller => widget.controller;
 
   @override
-  init() async {}
-
-  /// Use boot if you need to load data before the view is rendered.
-  // @override
-  // boot() async {
-  //
-  // }
-
-  @override
   Widget view(BuildContext context) {
+    print(widget.state);
+
     return Scaffold(
-      appBar: AppBar(title: Text("Ticket")),
+      appBar: AppBar(
+        title: Text("My Ticket".tr()),
+      ),
       body: SafeArea(
         child: ListView(
           children: [
             Container(
               padding: EdgeInsets.all(16),
               child: Text(
-                "Everything is stored local, so you don't have to worry about an internet connection.",
+                "Everything is stored local, so you don't have to worry about an internet connection."
+                    .tr(),
               ).bodyMedium(context),
             ),
             Divider(color: Colors.grey.shade300),
@@ -64,56 +61,21 @@ class _TicketPageState extends NyState<TicketPage> {
               ),
             ),
             Divider(color: Colors.grey.shade300),
-            ticketItem(TicketType.entry),
-            ticketItem(TicketType.wap),
-            ticketItem(TicketType.etoll),
-            ticketItem(TicketType.identification),
+            TicketItem(type: TicketType.entry, onTap: ticketItemTap),
+            TicketItem(type: TicketType.wap, onTap: ticketItemTap),
+            TicketItem(type: TicketType.etoll, onTap: ticketItemTap),
+            TicketItem(type: TicketType.identification, onTap: ticketItemTap),
           ],
         ),
       ),
     );
   }
 
-  String ticketTypeTitle(TicketType type) {
-    switch (type) {
-      case TicketType.entry:
-        return "Entry Ticket".tr();
-      case TicketType.wap:
-        return "WAP".tr();
-      case TicketType.etoll:
-        return "E-TOLL".tr();
-      case TicketType.identification:
-        return "Identification".tr();
-    }
-  }
-
-  Widget ticketItem(TicketType type) {
-    return NyFutureBuilder(
-      future: widget.controller.exists(type),
-      child: (context, snapshot) {
-        bool exists = snapshot ?? false;
-
-        return ListTile(
-          title: Text(ticketTypeTitle(type)).bodyMedium(context),
-          leading: Icon(
-            exists ? Icons.check : Icons.close,
-            color: exists ? Colors.greenAccent : Colors.red,
-            size: 16,
-          ),
-          trailing: Icon(
-            exists ? Icons.remove_red_eye : Icons.add,
-            color: Colors.blue,
-          ),
-          // onTap: widget.controller.chooseImage,
-          onTap: () {
-            if (exists)
-              viewTicketItem(type);
-            else
-              addTicketItem(type);
-          },
-        );
-      },
-    );
+  void ticketItemTap(bool viewItem, TicketType type) {
+    if (viewItem)
+      viewTicketItem(type);
+    else
+      addTicketItem(type);
   }
 
   /// View Ticket Item
@@ -121,7 +83,9 @@ class _TicketPageState extends NyState<TicketPage> {
   ///
   /// @param type [TicketType]
   void viewTicketItem(TicketType type) async {
+    final bool exists = await widget.controller.exists(type);
     final String assetPath = await widget.controller.getAssetPath(type);
+    if (!exists) throw ErrorDescription("Ticket item file does not exist");
 
     // TODO: Show the ticket item in a modal
     // TODO: Make modal height the same as the image, make it fit.
@@ -130,7 +94,9 @@ class _TicketPageState extends NyState<TicketPage> {
 
     Widget photoView = PhotoView(
       minScale: PhotoViewComputedScale.contained * 1,
-      imageProvider: AssetImage(assetPath),
+      imageProvider: (Platform.isIOS)
+          ? AssetImage(assetPath)
+          : Image.file(File(assetPath)).image,
     );
 
     showBarModalBottomSheet(
@@ -157,13 +123,64 @@ class _TicketPageState extends NyState<TicketPage> {
   void addTicketItem(TicketType type) {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError('Unsupported platform');
+        _showMaterialActionSheet(type);
+        break;
       case TargetPlatform.iOS:
         _showIOSActionSheet(type);
         break;
       default:
         throw UnsupportedError('Unsupported platform');
     }
+  }
+
+  /// Shows a material action sheet to ask what action is needed.
+  /// https://jamesblasco.github.io/modal_bottom_sheet/#/
+  void _showMaterialActionSheet(TicketType type) {
+    showMaterialModalBottomSheet(
+      expand: false,
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) => Material(
+        child: SafeArea(
+          top: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              ListTile(
+                title: Text("ticket-action.take-photo".tr()),
+                leading: Icon(Icons.photo),
+                onTap: () async {
+                  /// Open the camera to take a photo
+                  await widget.controller.takePhoto(type).catchError((e) {
+                    // TODO Error Handling
+                    print(e);
+                    return false;
+                  });
+
+                  // Close the action sheet
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text("ticket-action.choose-photo".tr()),
+                leading: Icon(Icons.photo_camera),
+                onTap: () async {
+                  /// Open the gallery to choose a photo
+                  await widget.controller.choosePhoto(type).catchError((e) {
+                    // TODO Error Handling
+                    print(e);
+                    return false;
+                  });
+
+                  // Close the action sheet
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   /// Shows an iOS action sheet to ask what action is needed.
