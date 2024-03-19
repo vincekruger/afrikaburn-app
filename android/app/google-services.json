@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "700936341717",
+    "firebase_url": "https://afrikaburn-dev.firebaseio.com",
+    "project_id": "afrikaburn-dev",
+    "storage_bucket": "afrikaburn-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700936341717:android:21b26910263a4daedc7a5c",
+        "android_client_info": {
+          "package_name": "io.wheresmyshit.afrikaburn.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700936341717-khr7lf95qh56rfhcdd3tmja14772sc2o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPiW4KupYTBf8NTiDeGO3QcpxVBLRS7q0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700936341717-khr7lf95qh56rfhcdd3tmja14772sc2o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "700936341717-5jb394r3bql3jq0tbsa1i244gurhfpgt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "za.co.wheresmyshit.ios.afrikaburn.dev"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700936341717:android:71cd86d92432a844dc7a5c",
+        "android_client_info": {
+          "package_name": "za.co.wheresmyshit.android.afrikaburn.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700936341717-khr7lf95qh56rfhcdd3tmja14772sc2o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPiW4KupYTBf8NTiDeGO3QcpxVBLRS7q0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700936341717-khr7lf95qh56rfhcdd3tmja14772sc2o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "700936341717-5jb394r3bql3jq0tbsa1i244gurhfpgt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "za.co.wheresmyshit.ios.afrikaburn.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
