@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyDqmzd1DXLHyWzgrw_3ue8EJ-X8qNg8ot4</string>
+	<string>AIzaSyAiCwczgOo37F2irJnuMEyYeZ_xMFcQm28</string>
 	<key>GCM_SENDER_ID</key>
-	<string>700936341717</string>
+	<string>1070999950214</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>io.wheresmyshit.afrikaburn.debug</string>
+	<string>io.wheresmyshit.afrikaburn</string>
 	<key>PROJECT_ID</key>
-	<string>afrikaburn-dev</string>
+	<string>afrikaburn-35158</string>
 	<key>STORAGE_BUCKET</key>
-	<string>afrikaburn-dev.appspot.com</string>
+	<string>afrikaburn-35158.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,8 +25,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:700936341717:ios:279c7d73b35ab765dc7a5c</string>
+	<string>1:1070999950214:ios:fbb43063c274316e369207</string>
 	<key>DATABASE_URL</key>
-	<string>https://afrikaburn-dev.firebaseio.com</string>
+	<string>https://afrikaburn-35158.firebaseio.com</string>
 </dict>
 </plist>

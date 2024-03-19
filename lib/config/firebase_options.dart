@@ -22,10 +22,7 @@ class DefaultFirebaseOptions {
 
         return androidDebug;
       case TargetPlatform.iOS:
-        if (kReleaseMode)
-          throw UnsupportedError(
-              'DefaultFirebaseOptions for Relase have not been configured for ios');
-
+        if (kReleaseMode) return iosRelease;
         return iosDebug;
       case TargetPlatform.macOS:
         throw UnsupportedError(
@@ -66,5 +63,15 @@ class DefaultFirebaseOptions {
     databaseURL: 'https://afrikaburn-dev.firebaseio.com',
     storageBucket: 'afrikaburn-dev.appspot.com',
     iosBundleId: 'io.wheresmyshit.afrikaburn.debug',
+  );
+
+  static const FirebaseOptions iosRelease = FirebaseOptions(
+    apiKey: 'AIzaSyAiCwczgOo37F2irJnuMEyYeZ_xMFcQm28',
+    appId: '1:1070999950214:ios:fbb43063c274316e369207',
+    messagingSenderId: '1070999950214',
+    projectId: 'afrikaburn-35158',
+    databaseURL: 'https://afrikaburn-35158.firebaseio.com',
+    storageBucket: 'afrikaburn-35158.appspot.com',
+    iosBundleId: 'io.wheresmyshit.afrikaburn',
   );
 }
