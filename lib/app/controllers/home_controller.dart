@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/resources/pages/home_page.dart';
+import 'package:flutter_app/resources/pages/map_page.dart';
+import 'package:flutter_app/resources/pages/my_contact_page.dart';
+import 'package:flutter_app/resources/pages/ticket_page.dart';
 import 'package:flutter_app/resources/pages/wtf_guide_page.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '/resources/widgets/logo_widget.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'controller.dart';
 
 class HomeController extends Controller {
@@ -14,24 +16,29 @@ class HomeController extends Controller {
   }
 
   openBottomSheet(BuildContext context, String path) async {
-    showBarModalBottomSheet(
+    showCupertinoModalBottomSheet(
       expand: true,
       context: context,
+      enableDrag: false,
       backgroundColor: Colors.transparent,
       builder: (context) => WtfGuidePage(),
     );
   }
 
-  onTapGithub() async {
-    await launchUrl(Uri.parse("https://github.com/nylo-core/nylo"));
+  void openTicket() {
+    routeTo(TicketPage.path);
   }
 
-  onTapChangeLog() async {
-    await launchUrl(Uri.parse("https://github.com/nylo-core/nylo/releases"));
+  void openWTFGuide() {
+    routeTo(WtfGuidePage.path);
   }
 
-  onTapYouTube() async {
-    await launchUrl(Uri.parse("https://m.youtube.com/@nylo_dev"));
+  void openMyContact() {
+    routeTo(MyContactPage.path);
+  }
+
+  void openMap() {
+    routeTo(MapPage.path);
   }
 
   showAbout() {

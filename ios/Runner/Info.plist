@@ -30,8 +30,20 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>So you want to test your camera skills? Let's see how great your snaps turn out!  Take a nice one, because we're going to check. LOL</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Well, so ja, we kinda need access to your photo library so that you can add your ticket.  Don't worry we won't go looking around, well maybe only for the naughty ones. ;)</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>fetch</string>
+		<string>location</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

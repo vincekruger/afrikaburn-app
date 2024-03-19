@@ -17,19 +17,15 @@ class _WtfGuidePageState extends NyState<WtfGuidePage> {
   @override
   init() async {}
 
-  /// Use boot if you need to load data before the view is rendered.
-  // @override
-  // boot() async {
-  //
-  // }
-
   String guideUrl =
       "https://www.afrikaburn.org/wp-content/uploads/2023/04/WTF2023-FA-web2.pdf";
 
   @override
   Widget view(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("WTF Guide")),
       body: PDFView(),
+      // body: Container(height: 300, color: Colors.blue),
     );
   }
 
@@ -54,7 +50,7 @@ class _WtfGuidePageState extends NyState<WtfGuidePage> {
       // fitPolicy = FitPolicy.WIDTH,
       // preventLinkNavigation = false,
 
-      swipeHorizontal: true,
+      swipeHorizontal: false,
       fitPolicy: FitPolicy.HEIGHT,
       preventLinkNavigation: true,
     ).fromUrl(

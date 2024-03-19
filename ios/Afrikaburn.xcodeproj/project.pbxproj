@@ -204,6 +204,7 @@
 				9B6169CDCB6ADB5B20FCB3F0 /* [CP] Embed Pods Frameworks */,
 				531070F72BA872C0005BC0EE /* [Firebase] Copy Config Bundle Resource */,
 				5326D20D2BA8811100668DB5 /* [Firebase ] Crashlytics upload dSYM files */,
+				F808588ECB0C3FA88EC0AC7E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -405,6 +406,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F808588ECB0C3FA88EC0AC7E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

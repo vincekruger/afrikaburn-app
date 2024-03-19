@@ -39,6 +39,10 @@ dependencies:
   firebase_crashlytics: ^3.4.19
   firebase_performance: ^0.9.3+18
   firebase_remote_config: ^4.3.18
+  path_provider: ^2.1.2
+  image_picker: ^1.0.7
+  permission_handler: ^11.3.0
+  photo_view: ^0.14.0
 
 dev_dependencies:
   lints: ^3.0.0

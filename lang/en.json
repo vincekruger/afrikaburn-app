@@ -1,8 +1,17 @@
 {
   "documentation": "documentation",
   "changelog": "changelog",
-  "micro-framework for Flutter": "micro-framework for Flutter",
   "hello": "hello {{name}}",
   "wtf-guide": "WTF Guide",
-  "my-contact": "My Contact"
+  "my-contact": "My Contact",
+  "map": "Map",
+  "ticket": "Ticket",
+  "testing": {
+    "force-crash": "Force Crash"
+  },
+  "ticket-action": {
+      "take-photo": "Take Photo",
+      "choose-photo": "Choose Photo",
+      "delete-ticket": "Delete Ticket"
+  }
 }

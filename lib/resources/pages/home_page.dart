@@ -69,7 +69,7 @@ class _HomePageState extends NyState<HomePage> {
                 children: <Widget>[
                   Divider(),
                   Container(
-                    height: 250,
+                    height: 300,
                     width: double.infinity,
                     margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -88,33 +88,10 @@ class _HomePageState extends NyState<HomePage> {
                       child: ListView(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
-                        children:
-                            ListTile.divideTiles(context: context, tiles: [
-                          MaterialButton(
-                            child: Text(
-                              "wtf-guide".tr(),
-                            ).bodyLarge(context).setColor(
-                                context, (color) => color.surfaceContent),
-                            onPressed: () => widget.controller
-                                .openBottomSheet(context, WtfGuidePage.path),
-                          ),
-                          MaterialButton(
-                            child: Text(
-                              "my-contact".tr(),
-                            ).bodyLarge(context).setColor(
-                                context, (color) => color.surfaceContent),
-                            onPressed: () => {routeTo(MyContactPage.path)},
-                          ),
-                          MaterialButton(
-                            child: Text(
-                              "Force Crash".tr(),
-                            ).bodyLarge(context).setColor(
-                                context, (color) => color.surfaceContent),
-                            onPressed: () {
-                              throw Exception("This is a test crash");
-                            },
-                          ),
-                        ]).toList(),
+                        children: ListTile.divideTiles(
+                          context: context,
+                          tiles: _buttons,
+                        ).toList(),
                       ),
                     ),
                   ),
@@ -140,6 +117,37 @@ class _HomePageState extends NyState<HomePage> {
           ),
         ),
       ),
+    );
+  }
+
+  List<Widget> get _buttons => [
+        button(
+          "map".tr(),
+          widget.controller.openMap,
+        ),
+        button("ticket".tr(), widget.controller.openTicket),
+        button(
+          "wtf-guide".tr(),
+          widget.controller.openWTFGuide,
+        ),
+        button(
+          "my-contact".tr(),
+          widget.controller.openMyContact,
+        ),
+        button(
+          "testing.force-crash".tr(),
+          () {
+            throw Exception("This is a test crash");
+          },
+        ),
+      ];
+
+  Widget button(String text, Function() onPressed) {
+    return MaterialButton(
+      child: Text(
+        text,
+      ).bodyLarge(context).setColor(context, (color) => color.surfaceContent),
+      onPressed: onPressed,
     );
   }
 
