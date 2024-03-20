@@ -29,7 +29,6 @@ class FirebaseProvider implements NyProvider {
     // // Setup Remote Config Listener
     // remoteConfig.onConfigUpdated.listen((event) async {
     //   await remoteConfig.activate();
-    //   print("Remote Config Updated");
     // });
 
     // // Fetch remote config
