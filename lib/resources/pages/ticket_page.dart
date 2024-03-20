@@ -23,8 +23,6 @@ class _TicketPageState extends NyState<TicketPage> {
 
   @override
   Widget view(BuildContext context) {
-    print(widget.state);
-
     return Scaffold(
       appBar: AppBar(
         title: Text("My Ticket".tr()),
@@ -46,7 +44,8 @@ class _TicketPageState extends NyState<TicketPage> {
                 future: widget.controller.getPhotosPermission,
                 loading: Text("checking...").bodySmall(context),
                 child: (context, snapshot) {
-                  return Text(snapshot.toString()).bodySmall(context);
+                  return Text(snapshot.toString().substring(17))
+                      .bodySmall(context);
                 },
               ),
             ),
@@ -56,7 +55,8 @@ class _TicketPageState extends NyState<TicketPage> {
                 future: widget.controller.getCameraPermission,
                 loading: Text("checking...").bodySmall(context),
                 child: (context, snapshot) {
-                  return Text(snapshot.toString()).bodySmall(context);
+                  return Text(snapshot.toString().substring(17))
+                      .bodySmall(context);
                 },
               ),
             ),

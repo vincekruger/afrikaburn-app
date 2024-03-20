@@ -43,6 +43,7 @@ dependencies:
   image_picker: ^1.0.7
   permission_handler: ^11.3.0
   photo_view: ^0.14.0
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   lints: ^3.0.0

@@ -1,3 +1,4 @@
+import '/app/controllers/create_contact_controller.dart';
 import '/app/controllers/ticket_controller.dart';
 import '/app/controllers/map_controller.dart';
 import '/app/controllers/my_contact_controller.dart';
@@ -56,5 +57,7 @@ final Map<Type, dynamic> controllers = {
   MapController: () => MapController(),
 
   TicketController: () => TicketController(),
+
+  CreateContactController: () => CreateContactController(),
 };
 

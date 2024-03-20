@@ -1,3 +1,4 @@
+import '/resources/pages/create_contact_page.dart';
 import '/resources/pages/ticket_page.dart';
 import '/resources/pages/map_page.dart';
 import '/resources/pages/my_contact_page.dart';
@@ -19,4 +20,5 @@ appRouter() => nyRoutes((router) {
      router.route(MyContactPage.path, (context) => MyContactPage());
  router.route(MapPage.path, (context) => MapPage());
  router.route(TicketPage.path, (context) => TicketPage());
+ router.route(CreateContactPage.path, (context) => CreateContactPage());
 });
