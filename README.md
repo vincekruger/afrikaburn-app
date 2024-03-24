@@ -41,6 +41,12 @@ View our [docs](https://nylo.dev/docs) and visit [nylo.dev](https://nylo.dev)
 
 Nylo Firebase implmentation: https://github.com/nylo-core/nylo/discussions/61
 
+###  Afrikaburn GPS Coordinates
+
+#### Center
+32°30'59.42"S, 19°57'23.46"E
+-32.5165, 19.9565
+
 ## iOS Firebase Configuration
 
 To enable different firebase configurations for debug, relase & testing, a new build phase script needs to be created to copy the correct configuration file to the application on build.

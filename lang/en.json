@@ -9,6 +9,9 @@
   "testing": {
     "force-crash": "Force Crash"
   },
+  "screen-title": {
+    "map": "Map"
+  },
   "ticket-type": {
     "entry": "Entry Ticket",
     "wap": "WAP",

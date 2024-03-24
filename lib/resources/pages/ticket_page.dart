@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart'
     show TargetPlatform, defaultTargetPlatform;
 import 'package:flutter_app/app/models/ticket.dart';
+import 'package:flutter_app/bootstrap/extensions.dart';
 import 'package:flutter_app/resources/widgets/ticket_item_widget.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -94,26 +95,54 @@ class _TicketPageState extends NyState<TicketPage> {
 
     Widget photoView = PhotoView(
       minScale: PhotoViewComputedScale.contained * 1,
+      backgroundDecoration: BoxDecoration(color: Colors.white),
       imageProvider: (Platform.isIOS)
           ? AssetImage(assetPath)
           : Image.file(File(assetPath)).image,
     );
 
+    Widget modalContent = Material(
+      child: SafeArea(
+        top: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                  child: Text('Close'),
+                  onPressed: () {},
+                ),
+                Text("ticket-type.${type.name}".tr())
+                    .setColor(context, (color) => Colors.black),
+                TextButton(
+                  child: Text('Delete'),
+                  onPressed: () {},
+                )
+              ],
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(
+                vertical: 20.0,
+                horizontal: 20.0,
+              ),
+              height: 200.0,
+              child: ClipRect(
+                child: photoView,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+
     showBarModalBottomSheet(
-      expand: true,
+      expand: false,
       context: this.context,
       backgroundColor: Colors.transparent,
       builder: (context) => photoView,
     );
-
-    // showCupertinoModalBottomSheet(
-    //   expand: false,
-    //   context: this.context,
-    //   backgroundColor: Colors.transparent,
-    //   builder: (context) => Container(
-    //     child: photoView,
-    //   ),
-    // );
   }
 
   /// Add Ticket Item
