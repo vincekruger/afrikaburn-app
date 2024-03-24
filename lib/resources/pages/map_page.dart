@@ -25,7 +25,7 @@ class _MapPageState extends NyState<MapPage> {
   /// Use boot if you need to load data before the view is rendered.
   @override
   boot() async {
-    MapboxOptions.setAccessToken(getEnv("MAPBOX_ACCESS_TOKEN"));
+    MapboxOptions.setAccessToken(await widget.controller.mapboxAccessToken);
     systemBrightness = MediaQuery.of(context).platformBrightness;
   }
 

@@ -20,18 +20,21 @@ class FirebaseProvider implements NyProvider {
 
   afterBoot(Nylo nylo) async {
     // Setup Remote Config
-    // final remoteConfig = FirebaseRemoteConfig.instance;
-    // await remoteConfig.setConfigSettings(RemoteConfigSettings(
-    //   fetchTimeout: const Duration(minutes: 1),
-    //   minimumFetchInterval: const Duration(minutes: 5),
-    // ));
+    final remoteConfig = FirebaseRemoteConfig.instance;
+    await remoteConfig.setConfigSettings(RemoteConfigSettings(
+      fetchTimeout: const Duration(minutes: 1),
+      minimumFetchInterval: const Duration(minutes: 5),
+    ));
 
-    // // Setup Remote Config Listener
-    // remoteConfig.onConfigUpdated.listen((event) async {
-    //   await remoteConfig.activate();
-    // });
+    // Setup Remote Config Listener
+    remoteConfig.onConfigUpdated.listen((event) async {
+      print("Remote config updated: $event");
+      await remoteConfig.activate();
+    });
 
-    // // Fetch remote config
-    // await remoteConfig.fetchAndActivate();
+    // Fetch remote config
+    await remoteConfig.fetchAndActivate().catchError((error) {
+      print("Error fetching remote config: $error");
+    });
   }
 }
