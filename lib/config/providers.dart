@@ -19,8 +19,6 @@ final Map<Type, NyProvider> providers = {
   RouteProvider: RouteProvider(),
   EventProvider: EventProvider(),
   AuthProvider: AuthProvider(),
-
   FirebaseProvider: FirebaseProvider(),
-
   SystemProvider: SystemProvider(),
 };
