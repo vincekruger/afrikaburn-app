@@ -98,7 +98,7 @@ class _MyContactPageState extends NyState<MyContactPage> {
                       backgroundColor: Colors.red[400],
                     ),
                     onPressed: widget.controller.remove,
-                  )
+                  ),
                 ],
               )
             ],

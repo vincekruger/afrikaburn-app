@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter_app/resources/widgets/ticket_item_widget.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 import 'package:path/path.dart' as p;
 import 'package:flutter_app/app/models/ticket.dart';
 import 'package:image_picker/image_picker.dart';
@@ -16,6 +18,9 @@ class TicketController extends Controller {
 
   /// Allow as a singleton
   bool get singleton => true;
+
+  /// Ticket item folder name
+  final String ticketPath = 'tickets';
 
   /// Permission status for Photos
   Future<PermissionStatus> get getPhotosPermission async {
@@ -41,8 +46,6 @@ class TicketController extends Controller {
     // Return the path to the ticket item
     return p.join(assetFolder, type.name + '.png');
   }
-
-  final String ticketPath = 'tickets';
 
   /// Check if a ticket item file exists in the documents directory
   Future<bool> exists(TicketType type) async {
@@ -77,12 +80,36 @@ class TicketController extends Controller {
     // Save image to documents directory
     final String assetPath = await getAssetPath(type);
     await image.saveTo(assetPath).catchError((error) => print(error));
-    return File(assetPath).exists();
+
+    // Check again if the file exists
+    final bool exists = await File(assetPath).exists();
+
+    // Update the satet of the ticket item and return the result
+    updateState(stateKey(type), data: exists);
+    return exists;
   }
 
   /// Delete the ticket item file from the documents directory
   deleteTicketData() async {}
 
   /// Delete all ticket item files from the documents directory
-  clearAllTicketData() async {}
+  clearAllTicketData() async {
+    /// Get the tickets directory in the documents directory
+    final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
+    final String assetFolder = p.join(appDocumentsDir.path, ticketPath);
+
+    /// Check if the ticket items folder exists
+    if (!Directory(assetFolder).existsSync()) {
+      print('Ticket items folder does not exist');
+      return;
+    }
+
+    /// Delete the ticket item files
+    Directory(assetFolder).deleteSync(recursive: true);
+
+    /// Update all the ticket item states
+    TicketType.values.forEach((type) {
+      updateState(stateKey(type), data: false);
+    });
+  }
 }

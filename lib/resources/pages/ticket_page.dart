@@ -66,12 +66,37 @@ class _TicketPageState extends NyState<TicketPage> {
             TicketItem(type: TicketType.wap, onTap: ticketItemTap),
             TicketItem(type: TicketType.etoll, onTap: ticketItemTap),
             TicketItem(type: TicketType.identification, onTap: ticketItemTap),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Divider(color: Colors.grey.shade300),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton.icon(
+                  icon: Icon(Icons.delete, size: 18, color: Colors.white),
+                  label: Text('Remove Ticket Data'.tr())
+                      .bodySmall(context)
+                      .fontWeightBold()
+                      .setColor(context, (color) => Colors.white),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red[400],
+                  ),
+                  onPressed: () {
+                    widget.controller.clearAllTicketData();
+                    setState(() {});
+                  },
+                ),
+              ],
+            )
           ],
         ),
       ),
     );
   }
 
+  /// Ticket Item Tap Handler
+  /// Will either view or add a ticket item.
   void ticketItemTap(bool viewItem, TicketType type) {
     if (viewItem)
       viewTicketItem(type);

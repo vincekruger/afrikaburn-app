@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/models/ticket.dart';
 import 'package:flutter_app/bootstrap/extensions.dart';
@@ -40,10 +42,9 @@ class _TicketItemState extends NyState<TicketItem> {
 
   @override
   stateUpdated(dynamic data) async {
-    // e.g. to update this state from another class
-    // updateState(TicketItem.state, data: "example payload");
-
-    print("${widget.type.name} State updated");
+    setState(() {
+      localFileExists = data;
+    });
   }
 
   @override
