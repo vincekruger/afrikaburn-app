@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '/bootstrap/app.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'bootstrap/boot.dart';
@@ -11,7 +13,7 @@ void main() async {
     AppBuild(
       navigatorKey: NyNavigator.instance.router.navigatorKey,
       onGenerateRoute: nylo.router!.generator(),
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: kDebugMode || appFlavor == 'Production',
       initialRoute: nylo.getInitialRoute(),
       navigatorObservers: nylo.getNavigatorObservers(),
     ),

@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show TargetPlatform, defaultTargetPlatform, kIsWeb, kReleaseMode;
+import 'package:flutter/services.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 class DefaultFirebaseOptions {
@@ -18,7 +19,12 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return kReleaseMode ? androidRelease : androidDebug;
       case TargetPlatform.iOS:
-        return kReleaseMode ? iosRelease : iosDebug;
+        switch (appFlavor) {
+          case 'Production':
+            return iosProdution;
+          default:
+            return iosDebug;
+        }
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
@@ -56,7 +62,7 @@ class DefaultFirebaseOptions {
     iosBundleId: 'io.wheresmyshit.afrikaburn.debug',
   );
 
-  static const FirebaseOptions iosRelease = FirebaseOptions(
+  static const FirebaseOptions iosProdution = FirebaseOptions(
     apiKey: 'AIzaSyAiCwczgOo37F2irJnuMEyYeZ_xMFcQm28',
     appId: '1:1070999950214:ios:fbb43063c274316e369207',
     messagingSenderId: '1070999950214',

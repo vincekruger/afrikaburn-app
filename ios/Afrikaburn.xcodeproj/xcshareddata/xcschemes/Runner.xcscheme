@@ -99,7 +99,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
-      customArchiveName = "Afrikaburn"
+      customArchiveName = "Afrikaburn Debug"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
