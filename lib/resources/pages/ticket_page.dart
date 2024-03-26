@@ -8,7 +8,7 @@ import 'package:flutter_app/app/models/ticket.dart';
 import 'package:flutter_app/bootstrap/extensions.dart';
 import 'package:flutter_app/config/design.dart';
 import 'package:flutter_app/resources/widgets/ab_divider_widget.dart';
-import 'package:flutter_app/resources/widgets/app_bars/tickets.dart';
+import 'package:flutter_app/resources/widgets/app_bars/tickets_app_bar.dart';
 import 'package:flutter_app/resources/widgets/ticket_item_widget.dart';
 import 'package:flutter_app/resources/widgets/ticket_slot_widget.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -29,7 +29,7 @@ class _TicketPageState extends NyState<TicketPage> {
   @override
   Widget view(BuildContext context) {
     return Scaffold(
-      appBar: TicketsAppBar(),
+      appBar: TicketsAppBar(scale(144, context)),
       body: ListView(
         padding: EdgeInsets.only(top: 16, bottom: 30),
         children: [
@@ -214,41 +214,41 @@ class _TicketPageState extends NyState<TicketPage> {
           : Image.file(File(assetPath)).image,
     );
 
-    Widget modalContent = Material(
-      child: SafeArea(
-        top: false,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                  child: Text('Close'),
-                  onPressed: () {},
-                ),
-                Text("ticket-type.${type.name}".tr())
-                    .setColor(context, (color) => Colors.black),
-                TextButton(
-                  child: Text('Delete'),
-                  onPressed: () {},
-                )
-              ],
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(
-                vertical: 20.0,
-                horizontal: 20.0,
-              ),
-              height: 200.0,
-              child: ClipRect(
-                child: photoView,
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+    // Widget modalContent = Material(
+    //   child: SafeArea(
+    //     top: false,
+    //     child: Column(
+    //       mainAxisSize: MainAxisSize.min,
+    //       children: [
+    //         Row(
+    //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //           children: [
+    //             TextButton(
+    //               child: Text('Close'),
+    //               onPressed: () {},
+    //             ),
+    //             Text("ticket-type.${type.name}".tr())
+    //                 .setColor(context, (color) => Colors.black),
+    //             TextButton(
+    //               child: Text('Delete'),
+    //               onPressed: () {},
+    //             )
+    //           ],
+    //         ),
+    //         Container(
+    //           margin: const EdgeInsets.symmetric(
+    //             vertical: 20.0,
+    //             horizontal: 20.0,
+    //           ),
+    //           height: 200.0,
+    //           child: ClipRect(
+    //             child: photoView,
+    //           ),
+    //         )
+    //       ],
+    //     ),
+    //   ),
+    // );
 
     showBarModalBottomSheet(
       expand: false,

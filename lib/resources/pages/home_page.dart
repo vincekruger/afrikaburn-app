@@ -1,5 +1,3 @@
-import 'package:flutter_app/resources/pages/my_contact_page.dart';
-import 'package:flutter_app/resources/pages/wtf_guide_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:nylo_framework/theme/helper/ny_theme.dart';
 import 'package:flutter/material.dart';
@@ -50,16 +48,17 @@ class _HomePageState extends NyState<HomePage> {
                     margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                     decoration: BoxDecoration(
-                        color: ThemeColor.get(context).surfaceBackground,
-                        borderRadius: BorderRadius.circular(8),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            spreadRadius: 1,
-                            blurRadius: 9,
-                            offset: Offset(0, 3),
-                          ),
-                        ]),
+                      color: ThemeColor.get(context).surfaceBackground,
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.1),
+                          spreadRadius: 1,
+                          blurRadius: 9,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
+                    ),
                     child: Center(
                       child: ListView(
                         padding: EdgeInsets.zero,

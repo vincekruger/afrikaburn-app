@@ -3,19 +3,22 @@ import 'package:flutter_app/config/design.dart';
 import 'package:flutter_app/resources/widgets/ab_divider_widget.dart';
 
 class TicketsAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const TicketsAppBar({Key? key}) : super(key: key);
+  const TicketsAppBar(this.height, {Key? key}) : super(key: key);
 
-  final double height = 144;
+  final double height;
 
   @override
   Size get preferredSize => Size.fromHeight(height);
 
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).viewPadding.top);
+
     return Container(
-      height: preferredSize.height,
+      height:
+          preferredSize.height + (MediaQuery.of(context).viewPadding.top / 2),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(

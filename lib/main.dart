@@ -13,7 +13,7 @@ void main() async {
     AppBuild(
       navigatorKey: NyNavigator.instance.router.navigatorKey,
       onGenerateRoute: nylo.router!.generator(),
-      debugShowCheckedModeBanner: kDebugMode || appFlavor == 'Production',
+      debugShowCheckedModeBanner: kDebugMode || appFlavor != 'Production',
       initialRoute: nylo.getInitialRoute(),
       navigatorObservers: nylo.getNavigatorObservers(),
     ),
