@@ -17,8 +17,8 @@ import 'package:nylo_framework/nylo_framework.dart';
 appRouter() => nyRoutes((router) {
       router.route(HomePage.path, (context) => HomePage(), initialRoute: true);
       router.route(WtfGuidePage.path, (context) => WtfGuidePage());
-     router.route(MyContactPage.path, (context) => MyContactPage());
- router.route(MapPage.path, (context) => MapPage());
- router.route(TicketPage.path, (context) => TicketPage());
- router.route(CreateContactPage.path, (context) => CreateContactPage());
-});
+      router.route(MyContactPage.path, (context) => MyContactPage());
+      router.route(MapPage.path, (context) => MapPage());
+      router.route(TicketPage.path, (context) => TicketPage());
+      router.route(CreateContactPage.path, (context) => CreateContactPage());
+    });
