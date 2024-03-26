@@ -23,7 +23,8 @@ class TicketSlot extends StatefulWidget {
     required double this.width,
     required double this.height,
     required Color this.borderColor,
-    double this.iconSpacing = 10,
+    double this.iconSpacing = 8,
+    int this.quarterTurns = 0,
     double this.labelWidth = 0,
     double this.labelHeight = 0,
   }) : super(key: key);
@@ -33,6 +34,7 @@ class TicketSlot extends StatefulWidget {
   final double height;
   final Color borderColor;
   final double iconSpacing;
+  final int quarterTurns;
   final double? labelWidth;
   final double? labelHeight;
 
@@ -70,40 +72,53 @@ class _TicketSlotState extends NyState<TicketSlot> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Stack(
-        children: [
-          Container(
-            width: scale(widget.width, context),
-            height: scale(widget.height, context),
-            decoration: slotDecoration(),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                TextLabelContainer(),
-                SizedBox(height: widget.iconSpacing),
-                Icon(
-                  localExists ? Icons.remove_red_eye : AB2024.ticket_add_entry,
-                  size: 30,
-                  color: Color(0xFF000681),
-                ),
-              ],
-            ),
-          ),
-          if (localExists)
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: IconButton(
-                icon: Icon(
-                  Icons.delete,
-                  size: 24,
-                  color: Color(0xFF000681),
-                ),
-                onPressed: confirmDelete,
+      child: RotatedBox(
+        quarterTurns: widget.quarterTurns,
+        child: Stack(
+          children: [
+            Container(
+              width: scale(widget.width, context),
+              height: scale(widget.height, context),
+              decoration: slotDecoration(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextLabelContainer(),
+                  SizedBox(height: widget.iconSpacing),
+                  if (localExists)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 14.0),
+                      child: Icon(
+                        AB2024.ticket_view_entry,
+                        size: 30,
+                        color: Color(0xFF000681),
+                      ),
+                    ),
+                  if (!localExists)
+                    Icon(
+                      AB2024.ticket_add_entry_2,
+                      size: 30,
+                      color: Color(0xFF000681),
+                    ),
+                ],
               ),
             ),
-        ],
+            if (localExists)
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: IconButton(
+                  icon: Icon(
+                    AB2024.ticket_remove_entry,
+                    size: 20,
+                    color: Color(0xFF000681),
+                  ),
+                  onPressed: confirmDelete,
+                ),
+              ),
+          ],
+        ),
       ),
       onTap: onTap,
     );
