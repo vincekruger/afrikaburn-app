@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:flutter_app/resources/widgets/ticket_item_widget.dart';
+import 'package:afrikaburn/resources/widgets/ticket_item_widget.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:path/path.dart' as p;
-import 'package:flutter_app/app/models/ticket.dart';
+import 'package:afrikaburn/app/models/ticket.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';

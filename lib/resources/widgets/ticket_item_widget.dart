@@ -1,10 +1,10 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/app/models/ticket.dart';
-import 'package:flutter_app/bootstrap/extensions.dart';
+import 'package:afrikaburn/app/models/ticket.dart';
+import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import 'package:flutter_app/app/controllers/ticket_controller.dart';
+import 'package:afrikaburn/app/controllers/ticket_controller.dart';
 
 /// Generate a state key
 String stateKey(TicketType type) => "ticket_item:" + type.name;

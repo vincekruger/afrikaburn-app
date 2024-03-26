@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/config/design.dart';
-import 'package:flutter_app/resources/widgets/ab_divider_widget.dart';
+import 'package:afrikaburn/config/design.dart';
+import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
 
 class TicketsAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TicketsAppBar(this.height, {Key? key}) : super(key: key);

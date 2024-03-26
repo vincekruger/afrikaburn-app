@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/bootstrap/extensions.dart';
+import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import '/app/controllers/my_contact_controller.dart';
 

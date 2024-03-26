@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/app/models/ticket.dart';
-import 'package:flutter_app/bootstrap/extensions.dart';
-import 'package:flutter_app/config/design.dart';
-import 'package:flutter_app/resources/icons/a_b2024_icons.dart';
+import 'package:afrikaburn/app/models/ticket.dart';
+import 'package:afrikaburn/bootstrap/extensions.dart';
+import 'package:afrikaburn/config/design.dart';
+import 'package:afrikaburn/resources/icons/a_b2024_icons.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 class TicketSlot extends StatefulWidget {

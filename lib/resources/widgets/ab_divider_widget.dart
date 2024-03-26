@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/config/design.dart';
+import 'package:afrikaburn/config/design.dart';
 
 class AbDivider extends StatelessWidget {
   const AbDivider({

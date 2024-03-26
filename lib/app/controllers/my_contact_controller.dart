@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:flutter_app/resources/pages/my_contact_page.dart';
+import 'package:afrikaburn/resources/pages/my_contact_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';

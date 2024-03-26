@@ -4,7 +4,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:flutter_app/config/firebase_options.dart';
+import 'package:afrikaburn/config/firebase_options.dart';
 
 class FirebaseProvider implements NyProvider {
   boot(Nylo nylo) async {
