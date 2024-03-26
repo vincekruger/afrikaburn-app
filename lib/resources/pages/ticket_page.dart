@@ -70,16 +70,14 @@ class _TicketPageState extends NyState<TicketPage> {
                       .bodyMedium(context)
                       .setColor(context, (color) => Color(0xFF333333)),
                 ),
-                RotatedBox(
+                TicketSlot(
+                  type: TicketType.identification,
+                  width: 148,
+                  height: 215,
+                  borderColor: Color(0xFF9B1EE9),
+                  labelWidth: 123,
+                  labelHeight: 76,
                   quarterTurns: 1,
-                  child: TicketSlot(
-                    type: TicketType.identification,
-                    width: 148,
-                    height: 215,
-                    borderColor: Color(0xFF9B1EE9),
-                    labelWidth: 123,
-                    labelHeight: 76,
-                  ),
                 ),
               ],
             ),
@@ -102,6 +100,7 @@ class _TicketPageState extends NyState<TicketPage> {
                 height: 126,
                 borderColor: Color(0xFFD1D346),
                 iconSpacing: 2,
+                quarterTurns: 2,
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 49.0),

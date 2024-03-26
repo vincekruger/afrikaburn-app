@@ -56,7 +56,7 @@ flutter:
         - asset: public/assets/fonts/Staatliches-Regular.ttf
     - family:  AB2024
       fonts:
-        - asset: public/assets/flutter-icons-3c3b77b5/fonts/AB2024.ttf
+        - asset: public/assets/flutter-icons/fonts/AB2024.ttf
 
   assets:
     - public/assets/fonts/

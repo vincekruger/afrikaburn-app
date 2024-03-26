@@ -22,4 +22,7 @@ class AB2024 {
   static const String? _kFontPkg = null;
 
   static const IconData ticket_add_entry = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData ticket_add_entry_2 = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData ticket_remove_entry = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData ticket_view_entry = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
