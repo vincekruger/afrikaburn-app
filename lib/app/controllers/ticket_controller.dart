@@ -1,15 +1,14 @@
 import 'dart:io';
 
-import 'package:afrikaburn/resources/widgets/ticket_item_widget.dart';
-import 'package:nylo_framework/nylo_framework.dart';
+import 'package:afrikaburn/app/controllers/controller.dart';
+import 'package:afrikaburn/resources/widgets/ticket_slot_widget.dart';
 import 'package:path/path.dart' as p;
-import 'package:afrikaburn/app/models/ticket.dart';
+import 'package:flutter/widgets.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-
-import '/app/controllers/controller.dart';
-import 'package:flutter/widgets.dart';
+import 'package:afrikaburn/app/models/ticket.dart';
 
 class TicketController extends Controller {
   construct(BuildContext context) {
@@ -90,7 +89,14 @@ class TicketController extends Controller {
   }
 
   /// Delete the ticket item file from the documents directory
-  deleteTicketData() async {}
+  deleteTicket(TicketType type) async {
+    /// Rmove the asset
+    final String assetPath = await getAssetPath(type);
+    File(assetPath).deleteSync();
+
+    /// Update the ticket item state
+    updateState(stateKey(type), data: false);
+  }
 
   /// Delete all ticket item files from the documents directory
   clearAllTicketData() async {
