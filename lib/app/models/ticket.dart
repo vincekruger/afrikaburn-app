@@ -1,9 +1,9 @@
 import 'package:nylo_framework/nylo_framework.dart';
 
-/// Ticket Model.
-
+/// Ticket Type Enum
 enum TicketType { entry, wap, etoll, identification }
 
+/// Ticket Model
 class Ticket extends Model {
   Ticket();
 
