@@ -12,11 +12,9 @@ class TicketsAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).viewPadding.top);
-
     return Container(
       height:
-          preferredSize.height + (MediaQuery.of(context).viewPadding.top / 2),
+          preferredSize.height + (MediaQuery.of(context).viewPadding.top / 1.5),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
