@@ -16,7 +16,7 @@ environment:
 
 dependencies:
   url_launcher: ^6.2.5
-  google_fonts: ^6.2.0
+  google_fonts: ^6.2.1
   analyzer: ^6.2.0
   intl: ^0.18.1
   nylo_framework: ^5.21.10
@@ -57,10 +57,20 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  fonts:
+    - family: Staatliches
+      fonts:
+        - asset: public/assets/fonts/Staatliches-Regular.ttf
+    - family:  AB2024
+      fonts:
+        - asset: public/assets/flutter-icons-3c3b77b5/fonts/AB2024.ttf
+
+
   # To add assets to your application, add an assets section, like this:
   assets:
     - public/assets/fonts/
     - public/assets/images/
+    - public/assets/images/tickets/
     - public/assets/app_icon/
     - lang/
     - .env

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/resources/widgets/custom_app_bar_widget.dart';
+import 'package:flutter_app/resources/widgets/app_bars/tickets.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import '/app/controllers/map_controller.dart';

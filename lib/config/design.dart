@@ -13,6 +13,9 @@ import 'package:google_fonts/google_fonts.dart';
 | Learn more: https://nylo.dev/docs/5.20.0/themes-and-styling#design
 |-------------------------------------------------------------------------- */
 
+double scale(double size, BuildContext context) => size * designScale(context);
+double designScale(BuildContext context) =>
+    MediaQuery.of(context).size.width / 393;
 
 /* Font
 |--------------------------------------------------------------------------
@@ -23,7 +26,6 @@ import 'package:google_fonts/google_fonts.dart';
 final TextStyle appFont = GoogleFonts.montserrat();
 // e.g. final TextStyle appThemeFont = GoogleFonts.lato();
 
-
 /* App Logo
 |--------------------------------------------------------------------------
 | This is the logo for your application.
@@ -32,7 +34,6 @@ final TextStyle appFont = GoogleFonts.montserrat();
 
 Widget logo = Logo();
 // File: resources/widgets/logo_widget.dart
-
 
 /* Loader
 |--------------------------------------------------------------------------
@@ -43,19 +44,21 @@ Widget logo = Logo();
 Widget loader = Loader();
 // File: resources/widgets/loader_widget.dart
 
-
 /* Toast Notification
 |--------------------------------------------------------------------------
 | This is the toast notification widget for your application.
 | Here you can handle the toast notification style.
 | -------------------------------------------------------------------------- */
 
-Widget getToastNotificationWidget({
-  required ToastNotificationStyleType style,
-  Function(ToastNotificationStyleMetaHelper helper)? toastNotificationStyleMeta, Function? onDismiss}) {
+Widget getToastNotificationWidget(
+    {required ToastNotificationStyleType style,
+    Function(ToastNotificationStyleMetaHelper helper)?
+        toastNotificationStyleMeta,
+    Function? onDismiss}) {
   if (toastNotificationStyleMeta == null) return SizedBox.shrink();
 
-  ToastMeta toastMeta = toastNotificationStyleMeta(NyToastNotificationStyleMetaHelper(style));
+  ToastMeta toastMeta =
+      toastNotificationStyleMeta(NyToastNotificationStyleMetaHelper(style));
 
   return ToastNotification(toastMeta, onDismiss: onDismiss);
 }

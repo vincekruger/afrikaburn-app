@@ -16,7 +16,7 @@
     "entry": "Entry Ticket",
     "wap": "WAP",
     "etoll": "E-Toll",
-    "identification": "Identification"
+    "identification": "ID Document"
   },
   "ticket-action": {
       "take-photo": "Take Photo",
