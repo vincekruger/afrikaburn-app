@@ -36,12 +36,30 @@ ThemeData lightTheme(ColorStyles color) {
       colorScheme: ColorScheme.light(primary: color.buttonBackground),
     ),
     textButtonTheme: TextButtonThemeData(
-      style: TextButton.styleFrom(foregroundColor: color.primaryContent),
+      style: TextButton.styleFrom(
+        foregroundColor: color.primaryContent,
+        padding: EdgeInsets.symmetric(horizontal: 32, vertical: 0),
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: TextButton.styleFrom(
-          foregroundColor: color.buttonPrimaryContent,
-          backgroundColor: color.buttonBackground),
+        foregroundColor: color.primaryContent,
+        backgroundColor: color.surfaceBackground,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+        minimumSize: Size(0, 0),
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: color.outlinedButtonPrimaryContent,
+        backgroundColor: color.outlinedButtonBackground,
+        side: BorderSide(color: color.outlinedButtonPrimaryContent, width: 2),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+        padding: EdgeInsets.symmetric(horizontal: 32, vertical: 10),
+        minimumSize: Size(0, 0),
+      ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: color.bottomTabBarBackground,

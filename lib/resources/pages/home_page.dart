@@ -97,6 +97,10 @@ class _HomePageState extends NyState<HomePage> {
 
   List<Widget> get _buttons => [
         button(
+          "menu-item.news".tr(),
+          widget.controller.openNews,
+        ),
+        button(
           "map".tr(),
           widget.controller.openMap,
         ),

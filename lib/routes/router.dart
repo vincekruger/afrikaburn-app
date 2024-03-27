@@ -1,3 +1,5 @@
+import '/resources/pages/news_detail_page.dart';
+import '/resources/pages/news_page.dart';
 import '/resources/pages/create_contact_page.dart';
 import '/resources/pages/ticket_page.dart';
 import '/resources/pages/map_page.dart';
@@ -21,4 +23,6 @@ appRouter() => nyRoutes((router) {
       router.route(MapPage.path, (context) => MapPage());
       router.route(TicketPage.path, (context) => TicketPage());
       router.route(CreateContactPage.path, (context) => CreateContactPage());
-    });
+     router.route(NewsPage.path, (context) => NewsPage());
+ router.route(NewsDetailPage.path, (context) => NewsDetailPage());
+});

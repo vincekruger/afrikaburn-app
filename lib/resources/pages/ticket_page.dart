@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/config/design.dart';
-import 'package:afrikaburn/resources/widgets/app_bars/tickets_app_bar.dart';
+import 'package:afrikaburn/resources/appbars/tickets_app_bar.dart';
 import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
 import 'package:afrikaburn/app/models/ticket.dart';
 import 'package:afrikaburn/app/controllers/ticket_controller.dart';
