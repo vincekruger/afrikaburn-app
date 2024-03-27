@@ -9,6 +9,9 @@
   "testing": {
     "force-crash": "Force Crash"
   },
+  "menu-item": {
+    "news": "News"
+  },
   "screen-title": {
     "map": "Map"
   },
@@ -22,5 +25,10 @@
       "take-photo": "Take Photo",
       "choose-photo": "Choose Photo",
       "delete-ticket": "Delete Ticket"
+  },
+  "news": {
+    "cta": {
+      "read-now": "Read Now"
+    }
   }
 }

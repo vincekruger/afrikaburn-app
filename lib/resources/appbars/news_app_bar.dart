@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:afrikaburn/config/design.dart';
-import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
 
-class TicketsAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const TicketsAppBar(this.height, {Key? key}) : super(key: key);
+class NewsAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const NewsAppBar(this.height, {Key? key}) : super(key: key);
 
   final double height;
 
@@ -13,16 +12,18 @@ class TicketsAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height:
-          preferredSize.height + (MediaQuery.of(context).viewPadding.top / 1.5),
+      height: preferredSize.height +
+          (viewPadding(context).top / 1.5), // TODO Check this height.
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Container(
-                width: scale(57, context),
+                width: scale(51, context),
                 child: IconButton(
                   iconSize: 30,
                   icon: Icon(Icons.arrow_back),
@@ -32,16 +33,18 @@ class TicketsAppBar extends StatelessWidget implements PreferredSizeWidget {
                   },
                 ),
               ),
-              Container(
-                width: scale(336, context),
-                child: Image.asset(
-                  'public/assets/images/tickets/app-bar-24p-2.png',
-                  fit: BoxFit.fill,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0, right: 26.0),
+                child: Container(
+                  width: scale(314, context),
+                  child: Image.asset(
+                    'public/assets/images/news/latest-news-app-bar.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ],
           ),
-          AbDivider(width: 198, alignment: Alignment.centerRight),
         ],
       ),
     );

@@ -22,6 +22,8 @@ abstract class ColorStyles extends BaseColorStyles {
   // buttons
   Color get buttonBackground;
   Color get buttonPrimaryContent;
+  Color get outlinedButtonBackground;
+  Color get outlinedButtonPrimaryContent;
 
   // bottom tab bar
   Color get bottomTabBarBackground;

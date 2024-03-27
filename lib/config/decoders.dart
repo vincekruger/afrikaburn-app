@@ -1,3 +1,7 @@
+import '/app/models/news_tag.dart';
+import '/app/models/news_category.dart';
+import '/app/controllers/news_detail_controller.dart';
+import '/app/controllers/news_controller.dart';
 import '/app/controllers/create_contact_controller.dart';
 import '/app/controllers/ticket_controller.dart';
 import '/app/controllers/map_controller.dart';
@@ -21,6 +25,14 @@ final Map<Type, dynamic> modelDecoders = {
   User: (data) => User.fromJson(data),
 
   // User: (data) => User.fromJson(data),
+
+  List<NewsCategory>: (data) => List.from(data).map((json) => NewsCategory.fromJson(json)).toList(),
+
+  NewsCategory: (data) => NewsCategory.fromJson(data),
+
+  List<NewsTag>: (data) => List.from(data).map((json) => NewsTag.fromJson(json)).toList(),
+
+  NewsTag: (data) => NewsTag.fromJson(data),
 };
 
 /* API Decoders
@@ -59,5 +71,9 @@ final Map<Type, dynamic> controllers = {
   TicketController: () => TicketController(),
 
   CreateContactController: () => CreateContactController(),
+
+  NewsController: () => NewsController(),
+
+  NewsDetailController: () => NewsDetailController(),
 };
 

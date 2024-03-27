@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 const TextTheme defaultTextTheme = TextTheme(
   titleLarge: TextStyle(
     fontSize: 30.0,
+    fontFamily: 'Staatliches',
+    height: 1,
   ),
   headlineSmall: TextStyle(
     fontSize: 22.0,
@@ -45,6 +47,7 @@ const TextTheme defaultTextTheme = TextTheme(
   bodyMedium: TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w500,
+    fontFamily: 'Montserrat',
   ),
   bodySmall: TextStyle(
     fontSize: 13.0,

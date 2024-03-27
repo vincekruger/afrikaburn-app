@@ -1,5 +1,5 @@
+import 'package:afrikaburn/resources/pages/news_page.dart';
 import 'package:flutter/material.dart';
-import 'package:afrikaburn/resources/pages/home_page.dart';
 import 'package:afrikaburn/resources/pages/map_page.dart';
 import 'package:afrikaburn/resources/pages/my_contact_page.dart';
 import 'package:afrikaburn/resources/pages/ticket_page.dart';
@@ -35,6 +35,10 @@ class HomeController extends Controller {
 
   void openMyContact() {
     routeTo(MyContactPage.path);
+  }
+
+  void openNews() {
+    routeTo(NewsPage.path);
   }
 
   void openMap() {

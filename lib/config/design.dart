@@ -14,6 +14,8 @@ import 'package:google_fonts/google_fonts.dart';
 |-------------------------------------------------------------------------- */
 
 double scale(double size, BuildContext context) => size * designScale(context);
+EdgeInsets viewPadding(BuildContext context) =>
+    MediaQuery.of(context).viewPadding;
 double designScale(BuildContext context) =>
     MediaQuery.of(context).size.width / 393;
 

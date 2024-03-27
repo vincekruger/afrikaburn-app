@@ -21,6 +21,8 @@ class DarkThemeColors implements ColorStyles {
   // buttons
   Color get buttonBackground => Colors.white60;
   Color get buttonPrimaryContent => const Color(0xFF232c33);
+  Color get outlinedButtonBackground => Colors.white60;
+  Color get outlinedButtonPrimaryContent => const Color(0xFF232c33);
 
   // bottom tab bar
   Color get bottomTabBarBackground => const Color(0xFF232c33);
