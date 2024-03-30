@@ -7,28 +7,22 @@ import Flutter
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        
-        let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
-        let afrikaburnChannel = FlutterMethodChannel(
+        GeneratedPluginRegistrant.register(with: self)
+        return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func configureFlutterEngine(_ engine: FlutterEngine) {
+        let channel = FlutterMethodChannel(
             name: "io.wheresmyshit.afrikaburn/platform",
-            binaryMessenger: controller.binaryMessenger
+            binaryMessenger: engine.binaryMessenger
         )
-        afrikaburnChannel.setMethodCallHandler({
-            (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
+        channel.setMethodCallHandler({ [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
+            guard let strongSelf = self else { return }
             switch call.method {
-                case "showStatusBar":
-                    result(1)
-                    break;
-                case "hideStatusBar":
-                    result(1)
-                    break;
                 default:
                     result(FlutterMethodNotImplemented)
             }
         })
-        
-        GeneratedPluginRegistrant.register(with: self)
-        return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 }
 
