@@ -31,7 +31,7 @@ appRouter() => nyRoutes((router) {
       router.route(
         NewsDetailPage.path,
         (context) => NewsDetailPage(),
-        // transition: PageTransitionType.size,
+        transition: PageTransitionType.bottomToTop,
         pageTransitionSettings: PageTransitionSettings(
           alignment: Alignment.bottomCenter,
           fullscreenDialog: true,
