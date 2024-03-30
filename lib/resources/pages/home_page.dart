@@ -1,4 +1,3 @@
-import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:nylo_framework/theme/helper/ny_theme.dart';
 import 'package:flutter/material.dart';
@@ -9,17 +8,10 @@ import 'package:afrikaburn/app/controllers/home_controller.dart';
 
 class HomePage extends NyStatefulWidget<HomeController> {
   static const path = '/home';
-
   HomePage() : super(path, child: _HomePageState());
 }
 
 class _HomePageState extends NyState<HomePage> {
-  /// Use boot if you need to load data before the view is rendered.
-  @override
-  boot() async {
-    // FirebaseProvider().logScreenView(HomePage.path);
-  }
-
   /// The [view] method should display your page.
   @override
   Widget view(BuildContext context) {
@@ -104,10 +96,6 @@ class _HomePageState extends NyState<HomePage> {
   }
 
   List<Widget> get _buttons => [
-        button(
-          "menu-item.news".tr(),
-          widget.controller.openNews,
-        ),
         button(
           "map".tr(),
           widget.controller.openMap,
