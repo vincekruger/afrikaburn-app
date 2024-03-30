@@ -24,10 +24,6 @@ class HomeController extends Controller {
     );
   }
 
-  void openTicket() {
-    routeTo(TicketPage.path);
-  }
-
   void openWTFGuide() {
     routeTo(WtfGuidePage.path);
   }

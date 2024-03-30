@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:afrikaburn/bootstrap/helpers.dart';
+import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:flutter/foundation.dart'
     show TargetPlatform, defaultTargetPlatform;
 import 'package:flutter/material.dart';
@@ -50,9 +52,13 @@ class _TicketSlotState extends NyState<TicketSlot> {
     stateName = stateKey(type);
   }
 
+  /// Local state variables
+  /// localExists: Check if the ticket item exists
+  /// assetPath: The path to the ticket item
   bool localExists = false;
   String assetPath = '';
 
+  /// Initialize the state
   @override
   init() async {
     localExists = await widget.controller
@@ -61,6 +67,7 @@ class _TicketSlotState extends NyState<TicketSlot> {
     assetPath = await widget.controller.getAssetPath(widget.type);
   }
 
+  /// State Updated
   @override
   stateUpdated(dynamic data) async {
     print('state updated');
@@ -92,14 +99,14 @@ class _TicketSlotState extends NyState<TicketSlot> {
                       child: Icon(
                         AB2024.ticket_view_entry,
                         size: 30,
-                        color: Color(0xFF000681),
+                        color: ThemeColor.get(context).ticketSlotIcon,
                       ),
                     ),
                   if (!localExists)
                     Icon(
                       AB2024.ticket_add_entry_2,
                       size: 30,
-                      color: Color(0xFF000681),
+                      color: ThemeColor.get(context).ticketSlotIcon,
                     ),
                 ],
               ),
@@ -112,7 +119,7 @@ class _TicketSlotState extends NyState<TicketSlot> {
                   icon: Icon(
                     AB2024.ticket_remove_entry,
                     size: 20,
-                    color: Color(0xFF000681),
+                    color: ThemeColor.get(context).ticketSlotIcon,
                   ),
                   onPressed: confirmDelete,
                 ),
@@ -129,17 +136,14 @@ class _TicketSlotState extends NyState<TicketSlot> {
   /// There is a gradient background if the ticket item exists
   BoxDecoration slotDecoration() {
     BoxDecoration slotBoxDecoration = BoxDecoration(
+      color: ThemeColor.get(context).ticketSlotBackground,
       border: Border.all(color: widget.borderColor, width: 1),
     );
 
     // Ticket item exists
     if (localExists) {
       slotBoxDecoration = slotBoxDecoration.copyWith(
-        gradient: LinearGradient(
-          begin: Alignment(0.87, -0.50),
-          end: Alignment(-0.87, 0.5),
-          colors: [Color(0xFF20EDC4), Color(0xFFD1D346), Color(0xFF9B1EE9)],
-        ),
+        gradient: GradientStyles().ticketSlotGradient,
         image: DecorationImage(
           image: Image.asset(assetPath).image,
           fit: BoxFit.cover,
@@ -151,6 +155,7 @@ class _TicketSlotState extends NyState<TicketSlot> {
     return slotBoxDecoration;
   }
 
+  /// Translated Ticket Label
   String get ticketLabel => "ticket-type.${widget.type.name}".tr();
 
   /// The Text Label
@@ -186,6 +191,7 @@ class _TicketSlotState extends NyState<TicketSlot> {
       addTicket();
   }
 
+  /// View Ticket Item
   viewTicket() {
     print("View ${widget.type.name} Ticket");
 

@@ -11,7 +11,7 @@ class GradientStyles {
           BaseThemeColors().gradient1End,
         ],
       );
-  LinearGradient get ticketItemGradient => LinearGradient(
+  LinearGradient get ticketSlotGradient => LinearGradient(
         begin: const Alignment(0.87, -0.50),
         end: const Alignment(-0.87, 0.5),
         colors: [

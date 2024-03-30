@@ -22,12 +22,6 @@ class _NewsPageState extends NyState<NewsPage> {
   List<News> newsList = [];
 
   @override
-  init() async {
-    /// Log Screen View
-    FirebaseProvider().logScreenView(NewsPage.path);
-  }
-
-  @override
   boot() async {
     /// Fetch News Posts
     newsList = await widget.controller.getNewsPosts();

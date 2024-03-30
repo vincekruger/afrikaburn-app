@@ -62,4 +62,9 @@ class BaseThemeColors implements ColorStyles {
   // bottom tab bar - label
   Color get bottomTabBarLabelUnselected => Colors.black45;
   Color get bottomTabBarLabelSelected => Colors.black;
+
+  // tickets
+  Color get ticketSlotBackground => Colors.white;
+  Color get ticketSlotLabel => this.blue;
+  Color get ticketSlotIcon => this.blue;
 }

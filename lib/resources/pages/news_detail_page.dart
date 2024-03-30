@@ -152,8 +152,8 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
               height: scale(372, context),
               child: Image.asset(
                 context.isDarkMode
-                    ? "public/assets/images/dark-mode/fish-1-20op.png"
-                    : "public/assets/images/fish-1-20op.png",
+                    ? "public/assets/images/fish-1-20op-dark.png"
+                    : "public/assets/images/fish-1-20op-light.png",
                 fit: BoxFit.cover,
               ),
             ),

@@ -63,9 +63,10 @@ abstract class ColorStyles extends BaseColorStyles {
   Color get bottomTabBarLabelUnselected;
   Color get bottomTabBarLabelSelected;
 
-  // e.g. add a new style
-  // Uncomment the below:
-  // Color get iconBackground;
+  // tickets
+  Color get ticketSlotBackground;
+  Color get ticketSlotLabel;
+  Color get ticketSlotIcon;
 
   // Then implement in color in:
   // /resources/  themes/styles/light_theme_colors

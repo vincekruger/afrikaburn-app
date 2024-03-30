@@ -20,12 +20,6 @@ class _TicketPageState extends NyState<TicketPage> {
   /// [TicketController] controller
   TicketController get controller => widget.controller;
 
-  /// Use boot if you need to load data before the view is rendered.
-  @override
-  boot() async {
-    FirebaseProvider().logScreenView(TicketPage.path);
-  }
-
   @override
   Widget view(BuildContext context) {
     return Scaffold(
@@ -58,7 +52,9 @@ class _TicketPageState extends NyState<TicketPage> {
               Container(
                 width: scale(171, context),
                 child: Image.asset(
-                  'public/assets/images/tickets/tiger_1.png',
+                  context.isDarkMode
+                      ? 'public/assets/images/tickets/tiger-dark.png'
+                      : 'public/assets/images/tickets/tiger-light.png',
                   fit: BoxFit.fitHeight,
                 ),
               ),

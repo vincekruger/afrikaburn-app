@@ -1,3 +1,4 @@
+import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:afrikaburn/config/design.dart';
 
@@ -20,10 +21,8 @@ class AbDivider extends StatelessWidget {
       child: Container(
         width: scale(this.width, context),
         height: 2,
-        child: Image.asset(
-          'public/assets/images/gradient-line.png',
-          fit: BoxFit.fitHeight,
-          alignment: this.alignment,
+        decoration: BoxDecoration(
+          gradient: GradientStyles().canvasLine,
         ),
       ),
     );

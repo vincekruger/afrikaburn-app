@@ -1,11 +1,12 @@
+import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:afrikaburn/config/design.dart';
 import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 
 class TicketsAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const TicketsAppBar(this.height, {Key? key}) : super(key: key);
-
   final double height;
+  const TicketsAppBar(this.height, {super.key});
 
   @override
   Size get preferredSize => Size.fromHeight(height);
@@ -20,21 +21,24 @@ class TicketsAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Row(
             children: [
-              Container(
-                width: scale(57, context),
-                child: IconButton(
-                  iconSize: 30,
-                  icon: Icon(Icons.arrow_back),
-                  color: const Color(0xFF20EDC4),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-              ),
+              Navigator.canPop(context)
+                  ? IconButton(
+                      iconSize: 30,
+                      icon: Icon(Icons.arrow_back),
+                      color: ThemeColor.get(context).primaryAlternate,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    )
+                  : SizedBox(
+                      width: scale(57, context),
+                    ),
               Container(
                 width: scale(336, context),
                 child: Image.asset(
-                  'public/assets/images/tickets/app-bar-24p-2.png',
+                  context.isDarkMode
+                      ? 'public/assets/images/tickets/ticket-appbar-dark.png'
+                      : 'public/assets/images/tickets/ticket-appbar-light.png',
                   fit: BoxFit.fill,
                 ),
               ),
