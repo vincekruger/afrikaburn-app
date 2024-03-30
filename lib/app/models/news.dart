@@ -7,6 +7,7 @@ import 'package:path/path.dart' as p;
 
 class News extends Model {
   final String id;
+  final Uri url;
   final String title;
   final String content;
   final DateTime timestamp;
@@ -19,6 +20,7 @@ class News extends Model {
 
   News({
     required this.id,
+    required this.url,
     required this.title,
     required this.content,
     required this.timestamp,
@@ -39,6 +41,7 @@ class News extends Model {
 
     return News(
       id: snapshot.id,
+      url: Uri.parse(snapshot.get('link')),
       title: snapshot.get('title'),
       content: snapshot.get('content'),
       timestamp: snapshot.get('date').toDate(),

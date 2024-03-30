@@ -22,64 +22,60 @@ class _NewsPageState extends NyState<NewsPage> {
   List<News> newsList = [];
 
   @override
-  init() async {}
+  init() async {
+    /// Log Screen View
+    FirebaseProvider().logScreenView(NewsPage.path);
+  }
 
   @override
   boot() async {
-    FirebaseProvider().logScreenView(NewsPage.path);
+    /// Fetch News Posts
     newsList = await widget.controller.getNewsPosts();
   }
 
   @override
   Widget view(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            height: MediaQuery.of(context).padding.top,
-            color: Colors.red.withOpacity(0),
-          ),
-          Expanded(
-            child: Stack(
-              children: [
-                Positioned(
-                  top: scale(501, context),
-                  left: 0,
-                  child: Image.asset(
-                    'public/assets/images/canvas-bg-afrikaburn-24-v1-1.png',
-                    width: scale(154, context),
-                  ),
-                ),
-                Positioned(
-                  top: scale(135, context),
-                  left: scale(93, context),
-                  child: Container(
-                    height: scale(310, context),
-                    width: scale(154, context),
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: Image.asset(
-                                'public/assets/images/canvas-bg-afrikaburn-24-v1-1.png')
-                            .image,
-                        fit: BoxFit.cover,
-                        alignment: Alignment.bottomCenter,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: scale(148, context),
-                  right: scale(20, context),
-                  child: Image.asset(
-                    'public/assets/images/canvas-bg-afrikaburn-24-v1-1.png',
-                    width: scale(154, context),
-                  ),
-                ),
-                NewList(context),
-              ],
+      body: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: Stack(
+          children: [
+            Positioned(
+              top: scale(501, context),
+              left: 0,
+              child: Image.asset(
+                'public/assets/images/canvas-bg-afrikaburn-24-v1-1.png',
+                width: scale(154, context),
+              ),
             ),
-          ),
-        ],
+            Positioned(
+              top: scale(135, context),
+              left: scale(93, context),
+              child: Container(
+                height: scale(310, context),
+                width: scale(154, context),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: Image.asset(
+                            'public/assets/images/canvas-bg-afrikaburn-24-v1-1.png')
+                        .image,
+                    fit: BoxFit.cover,
+                    alignment: Alignment.bottomCenter,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: scale(148, context),
+              right: scale(20, context),
+              child: Image.asset(
+                'public/assets/images/canvas-bg-afrikaburn-24-v1-1.png',
+                width: scale(154, context),
+              ),
+            ),
+            NewList(context),
+          ],
+        ),
       ),
     );
   }

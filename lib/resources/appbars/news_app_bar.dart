@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:afrikaburn/config/design.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 
 class NewsAppBar extends StatelessWidget implements PreferredSizeWidget {
   const NewsAppBar(this.height, {Key? key}) : super(key: key);
@@ -38,7 +39,9 @@ class NewsAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: Container(
                   width: scale(314, context),
                   child: Image.asset(
-                    'public/assets/images/news/latest-news-app-bar.png',
+                    context.isDarkMode
+                        ? 'public/assets/images/news/latest-news-app-bar-dark.png'
+                        : 'public/assets/images/news/latest-news-app-bar-light.png',
                     fit: BoxFit.fill,
                   ),
                 ),

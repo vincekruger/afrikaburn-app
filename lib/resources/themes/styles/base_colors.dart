@@ -5,6 +5,9 @@ import '/resources/themes/styles/color_styles.dart';
 |-------------------------------------------------------------------------- */
 
 class BaseThemeColors implements ColorStyles {
+  // colors
+  Color get black => const Color(0xFF333333);
+
   // general
   Color get background => const Color(0xFFFFFFFF);
 
@@ -26,11 +29,17 @@ class BaseThemeColors implements ColorStyles {
   Color get gradient1Middle => const Color(0xFFD2D347);
   Color get gradient1End => const Color(0xFF22EDC3);
 
-  // gradient colors
+  // gradient button
   Color get gradientButtonBackgroundStart => this.gradient1Start;
   Color get gradientButtonBackgroundMiddle => this.gradient1Middle;
   Color get gradientButtonBackgroundEnd => this.gradient1End;
   Color get gradientButtonLabel => Colors.white;
+
+  // icon gradient button
+  Color get iconButtonGradientBorderStart => const Color(0xFF9B1EE9);
+  Color get iconButtonGradientBorderEnd => this.primaryAccent;
+  Color get iconButtonBackground => this.surfaceBackground;
+  Color get iconButtonLabel => Colors.white;
 
   // outlined button
   Color get outlinedButtonGradientBorderStart => this.gradient1Start;

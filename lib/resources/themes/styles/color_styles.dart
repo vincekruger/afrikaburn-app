@@ -7,6 +7,9 @@ import 'package:nylo_framework/nylo_framework.dart';
 abstract class ColorStyles extends BaseColorStyles {
   /// * Available styles *
 
+  // simple colors
+  Color get black;
+
   // general
   Color get background;
   Color get primaryContent;
@@ -38,6 +41,12 @@ abstract class ColorStyles extends BaseColorStyles {
   Color get outlinedButtonGradientBorderEnd;
   Color get outlinedButtonBackground;
   Color get outlinedButtonLabel;
+
+  // icon button
+  Color get iconButtonGradientBorderStart;
+  Color get iconButtonGradientBorderEnd;
+  Color get iconButtonBackground;
+  Color get iconButtonLabel;
 
   // buttons
   Color get buttonBackground;

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
@@ -29,6 +30,12 @@ class FirebaseProvider implements NyProvider {
   afterBoot(Nylo nylo) async {
     await _configureRemoteConfig();
     await _configureAnalyticsCollection();
+
+    /// Configure Firestore offline persistence
+    FirebaseFirestore.instance.settings = const Settings(
+      persistenceEnabled: true,
+      cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
+    );
 
     /// Set Crashlytics Collection Enabled state
     FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(
