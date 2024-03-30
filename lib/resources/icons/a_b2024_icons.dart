@@ -25,4 +25,6 @@ class AB2024 {
   static const IconData ticket_add_entry_2 = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData ticket_remove_entry = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData ticket_view_entry = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData close = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData close_thick = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

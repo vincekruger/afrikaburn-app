@@ -1,3 +1,5 @@
+import 'package:afrikaburn/app/providers/firebase_provider.dart';
+import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
@@ -17,6 +19,12 @@ class TicketPage extends NyStatefulWidget<TicketController> {
 class _TicketPageState extends NyState<TicketPage> {
   /// [TicketController] controller
   TicketController get controller => widget.controller;
+
+  /// Use boot if you need to load data before the view is rendered.
+  @override
+  boot() async {
+    FirebaseProvider().logScreenView(TicketPage.path);
+  }
 
   @override
   Widget view(BuildContext context) {
@@ -64,11 +72,10 @@ class _TicketPageState extends NyState<TicketPage> {
                 Container(
                   width: scale(138, context),
                   padding: EdgeInsets.only(right: 14),
-                  child: Text("Everything is stored locally, so you" +
-                          " don’t have to worry about an" +
-                          " internet connection.")
+                  child: Text("ticket-content.available-offline".tr())
                       .bodyMedium(context)
-                      .setColor(context, (color) => Color(0xFF333333)),
+                      .setColor(context,
+                          (color) => ThemeColor.get(context).primaryContent),
                 ),
                 TicketSlot(
                   type: TicketType.identification,

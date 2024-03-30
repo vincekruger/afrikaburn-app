@@ -11,7 +11,11 @@ class NewsController extends Controller {
   final FirebaseFirestore db = FirebaseFirestore.instance;
 
   Future<List<News>> getNewsPosts() async {
-    final snapshot = await db.collection('news').limit(10).get();
+    final snapshot = await db
+        .collection('news')
+        .where('public', isEqualTo: true)
+        .limit(10)
+        .get();
     return snapshot.docs.map((doc) => News.fromSnapshot(doc)).toList();
   }
 }

@@ -14,7 +14,8 @@ const TextTheme defaultTextTheme = TextTheme(
   ),
   headlineMedium: TextStyle(
     fontSize: 24.0,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Staatliches',
   ),
   displaySmall: TextStyle(
     fontSize: 26.0,
@@ -50,6 +51,8 @@ const TextTheme defaultTextTheme = TextTheme(
     fontFamily: 'Montserrat',
   ),
   bodySmall: TextStyle(
-    fontSize: 13.0,
+    fontSize: 11.0,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Montserrat',
   ),
 );

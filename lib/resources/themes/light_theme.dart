@@ -44,18 +44,18 @@ ThemeData lightTheme(ColorStyles color) {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: color.primaryContent,
-        backgroundColor: color.surfaceBackground,
+        backgroundColor: color.background,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
         minimumSize: Size(0, 0),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: color.outlinedButtonPrimaryContent,
+        foregroundColor: color.outlinedButtonLabel,
         backgroundColor: color.outlinedButtonBackground,
-        side: BorderSide(color: color.outlinedButtonPrimaryContent, width: 2),
+        side: BorderSide(color: color.outlinedButtonBackground, width: 2),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
         padding: EdgeInsets.symmetric(horizontal: 32, vertical: 10),
         minimumSize: Size(0, 0),

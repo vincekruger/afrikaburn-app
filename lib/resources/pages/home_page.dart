@@ -1,10 +1,11 @@
+import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:nylo_framework/theme/helper/ny_theme.dart';
 import 'package:flutter/material.dart';
-import '/bootstrap/extensions.dart';
-import '/resources/widgets/safearea_widget.dart';
-import '/bootstrap/helpers.dart';
-import '/app/controllers/home_controller.dart';
+import 'package:afrikaburn/bootstrap/extensions.dart';
+import 'package:afrikaburn/resources/widgets/safearea_widget.dart';
+import 'package:afrikaburn/bootstrap/helpers.dart';
+import 'package:afrikaburn/app/controllers/home_controller.dart';
 
 class HomePage extends NyStatefulWidget<HomeController> {
   static const path = '/home';
@@ -13,6 +14,12 @@ class HomePage extends NyStatefulWidget<HomeController> {
 }
 
 class _HomePageState extends NyState<HomePage> {
+  /// Use boot if you need to load data before the view is rendered.
+  @override
+  boot() async {
+    // FirebaseProvider().logScreenView(HomePage.path);
+  }
+
   /// The [view] method should display your page.
   @override
   Widget view(BuildContext context) {
@@ -66,6 +73,7 @@ class _HomePageState extends NyState<HomePage> {
                         children: ListTile.divideTiles(
                           context: context,
                           tiles: _buttons,
+                          color: ThemeColor.get(context).surfaceContent,
                         ).toList(),
                       ),
                     ),

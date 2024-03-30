@@ -1,3 +1,4 @@
+import '/app/providers/shared_preferences_provider.dart';
 import '/app/providers/system_provider.dart';
 import '/app/providers/firebase_provider.dart';
 import '/app/providers/auth_provider.dart';
@@ -21,4 +22,6 @@ final Map<Type, NyProvider> providers = {
   AuthProvider: AuthProvider(),
   FirebaseProvider: FirebaseProvider(),
   SystemProvider: SystemProvider(),
+
+  SharedPreferencesProvider: SharedPreferencesProvider(),
 };

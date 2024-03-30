@@ -11,6 +11,8 @@ abstract class ColorStyles extends BaseColorStyles {
   Color get background;
   Color get primaryContent;
   Color get primaryAccent;
+  Color get primaryAlternate;
+  Color get blue;
 
   Color get surfaceBackground;
   Color get surfaceContent;
@@ -19,11 +21,27 @@ abstract class ColorStyles extends BaseColorStyles {
   Color get appBarBackground;
   Color get appBarPrimaryContent;
 
+  // gradients
+  Color get gradient1Start;
+  Color get gradient1Middle;
+  Color get gradient1End;
+
+  // gradient button
+  Color get gradientButtonBackgroundStart;
+  Color get gradientButtonBackgroundMiddle;
+  Color get gradientButtonBackgroundEnd;
+  Color get gradientButtonLabel;
+
+  // outlined button
+  Color get outlinedButtonGradientBorderStart;
+  Color get outlinedButtonGradientBorderMiddle;
+  Color get outlinedButtonGradientBorderEnd;
+  Color get outlinedButtonBackground;
+  Color get outlinedButtonLabel;
+
   // buttons
   Color get buttonBackground;
   Color get buttonPrimaryContent;
-  Color get outlinedButtonBackground;
-  Color get outlinedButtonPrimaryContent;
 
   // bottom tab bar
   Color get bottomTabBarBackground;
@@ -41,6 +59,6 @@ abstract class ColorStyles extends BaseColorStyles {
   // Color get iconBackground;
 
   // Then implement in color in:
-  // /resources/themes/styles/light_theme_colors
+  // /resources/  themes/styles/light_theme_colors
   // /resources/themes/styles/dark_theme_colors
 }

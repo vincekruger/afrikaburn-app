@@ -1,20 +1,24 @@
-import 'package:afrikaburn/resources/themes/styles/base_colors.dart';
 import 'package:flutter/material.dart';
 import '/resources/themes/styles/color_styles.dart';
 
-/* Dark Theme Colors
+/* Base Theme Colors
 |-------------------------------------------------------------------------- */
 
-class DarkThemeColors extends BaseThemeColors implements ColorStyles {
+class BaseThemeColors implements ColorStyles {
   // general
-  Color get background => const Color(0xFF333333);
+  Color get background => const Color(0xFFFFFFFF);
 
-  Color get primaryContent => const Color(0xFFEDEDED);
+  Color get primaryContent => const Color(0xFF333333);
   Color get primaryAccent => const Color(0xFF20EDC4);
   Color get primaryAlternate => const Color(0xFF797979);
+  Color get blue => const Color(0xFF000681);
+
+  // surface - this is used for cards, dialogs, etc.
+  Color get surfaceBackground => const Color(0xFFD9D9D9);
+  Color get surfaceContent => const Color(0xFF333333);
 
   // app bar
-  Color get appBarBackground => const Color(0xFF4b5e6d);
+  Color get appBarBackground => Colors.blue;
   Color get appBarPrimaryContent => Colors.white;
 
   // gradients
@@ -36,17 +40,17 @@ class DarkThemeColors extends BaseThemeColors implements ColorStyles {
   Color get outlinedButtonLabel => this.primaryContent;
 
   // buttons
-  Color get buttonBackground => Colors.white60;
-  Color get buttonPrimaryContent => const Color(0xFF232c33);
+  Color get buttonBackground => Colors.blueAccent;
+  Color get buttonPrimaryContent => Colors.white;
 
   // bottom tab bar
-  Color get bottomTabBarBackground => const Color(0xFF232c33);
+  Color get bottomTabBarBackground => Colors.white;
 
   // bottom tab bar - icons
-  Color get bottomTabBarIconSelected => Colors.white70;
-  Color get bottomTabBarIconUnselected => Colors.white60;
+  Color get bottomTabBarIconSelected => Colors.blue;
+  Color get bottomTabBarIconUnselected => Colors.black54;
 
   // bottom tab bar - label
-  Color get bottomTabBarLabelUnselected => Colors.white54;
-  Color get bottomTabBarLabelSelected => Colors.white;
+  Color get bottomTabBarLabelUnselected => Colors.black45;
+  Color get bottomTabBarLabelSelected => Colors.black;
 }

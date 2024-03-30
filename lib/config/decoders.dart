@@ -1,3 +1,5 @@
+import 'package:afrikaburn/app/controllers/platform_controller.dart';
+
 import '/app/models/news_tag.dart';
 import '/app/models/news_category.dart';
 import '/app/controllers/news_detail_controller.dart';
@@ -20,17 +22,20 @@ import '/app/networking/api_service.dart';
 |-------------------------------------------------------------------------- */
 
 final Map<Type, dynamic> modelDecoders = {
-  List<User>: (data) => List.from(data).map((json) => User.fromJson(json)).toList(),
+  List<User>: (data) =>
+      List.from(data).map((json) => User.fromJson(json)).toList(),
   //
   User: (data) => User.fromJson(data),
 
   // User: (data) => User.fromJson(data),
 
-  List<NewsCategory>: (data) => List.from(data).map((json) => NewsCategory.fromJson(json)).toList(),
+  List<NewsCategory>: (data) =>
+      List.from(data).map((json) => NewsCategory.fromJson(json)).toList(),
 
   NewsCategory: (data) => NewsCategory.fromJson(data),
 
-  List<NewsTag>: (data) => List.from(data).map((json) => NewsTag.fromJson(json)).toList(),
+  List<NewsTag>: (data) =>
+      List.from(data).map((json) => NewsTag.fromJson(json)).toList(),
 
   NewsTag: (data) => NewsTag.fromJson(data),
 };
@@ -49,7 +54,6 @@ final Map<Type, dynamic> apiDecoders = {
   // ...
 };
 
-
 /* Controller Decoders
 | -------------------------------------------------------------------------
 | Controller are used in pages.
@@ -60,7 +64,6 @@ final Map<Type, dynamic> controllers = {
   HomeController: () => HomeController(),
 
   // ...
-
 
   WtfGuideController: () => WtfGuideController(),
 
@@ -75,5 +78,6 @@ final Map<Type, dynamic> controllers = {
   NewsController: () => NewsController(),
 
   NewsDetailController: () => NewsDetailController(),
-};
 
+  PlatformController: () => PlatformController(),
+};

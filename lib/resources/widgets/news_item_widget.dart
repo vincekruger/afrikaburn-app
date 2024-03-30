@@ -1,6 +1,8 @@
 import 'package:afrikaburn/app/models/news.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
+import 'package:afrikaburn/resources/pages/news_detail_page.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
@@ -17,60 +19,85 @@ class NewsItem extends StatefulWidget {
 }
 
 class _NewsItemState extends State<NewsItem> {
+  /// Layout Constants
   final double horizontalPadding = 20.0;
   final double verticalPadding = 10.0;
+  final borderRadius = BorderRadius.circular(10);
+  final boxHeight = 220.0;
+
+  /// Hero Tag
+  late String heroTag;
+
+  /// Open the detail page
+  void openDetail() {
+    routeTo(
+      NewsDetailPage.path,
+      data: {
+        "newsItem": widget.item,
+        "heroTag": 'news-photo-detail' + widget.item.id.toString(),
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    final borderRadius = BorderRadius.circular(10);
-    final boxHeight = 200.0;
+    /// Set the hero tag
+    heroTag = 'news-photo-detail' + widget.item.id.toString();
 
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: horizontalPadding,
         vertical: verticalPadding,
       ),
-      child: Container(
-        height: boxHeight,
-        child: Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: ThemeColor.get(context).primaryContent,
-                image: DecorationImage(
-                  image: Image.network(widget.item.featuredImageUrl).image,
-                  fit: BoxFit.cover,
+      child: InkWell(
+        onTap: openDetail,
+        borderRadius: borderRadius,
+        child: Hero(
+          tag: heroTag,
+          child: Container(
+            height: boxHeight,
+            child: Stack(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: ThemeColor.get(context).primaryContent,
+                    image: DecorationImage(
+                      image: CachedNetworkImageProvider(
+                          widget.item.featuredImageUrl),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: borderRadius,
+                  ),
                 ),
-                borderRadius: borderRadius,
-              ),
-            ),
-            Container(
-              height: boxHeight,
-              decoration: BoxDecoration(
-                color: ThemeColor.get(context).primaryContent,
-                borderRadius: borderRadius.copyWith(
-                  topLeft: Radius.circular(0),
-                  topRight: Radius.circular(0),
+                Container(
+                  height: boxHeight,
+                  decoration: BoxDecoration(
+                    color: ThemeColor.get(context).primaryContent,
+                    borderRadius: borderRadius.copyWith(
+                      topLeft: Radius.circular(0),
+                      topRight: Radius.circular(0),
+                    ),
+                    gradient: LinearGradient(
+                      begin: Alignment(0.0, -1.0),
+                      end: Alignment(0.0, 0.6),
+                      colors: [
+                        Colors.transparent,
+                        widget.item.imageOverlayColor ??
+                            ThemeColor.get(context).primaryContent
+                      ],
+                    ),
+                  ),
                 ),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    widget.item.imageOverlayColor ??
-                        ThemeColor.get(context).primaryContent
-                  ],
+                Container(
+                  padding: EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [TitleAction()],
+                  ),
                 ),
-              ),
+              ],
             ),
-            Container(
-              padding: EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [TitleAction()],
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

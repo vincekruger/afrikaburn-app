@@ -1,8 +1,8 @@
+import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
-// import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import '/app/controllers/wtf_guide_controller.dart';
+import 'package:afrikaburn/app/controllers/wtf_guide_controller.dart';
 
 class WtfGuidePage extends NyStatefulWidget<WtfGuideController> {
   static const path = '/wtf-guide';
@@ -16,6 +16,12 @@ class _WtfGuidePageState extends NyState<WtfGuidePage> {
 
   @override
   init() async {}
+
+  /// Use boot if you need to load data before the view is rendered.
+  @override
+  boot() async {
+    // FirebaseProvider().logScreenView(WtfGuidePage.path);
+  }
 
   String guideUrl =
       "https://www.afrikaburn.org/wp-content/uploads/2023/04/WTF2023-FA-web2.pdf";

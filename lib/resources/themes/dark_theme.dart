@@ -36,8 +36,13 @@ ThemeData darkTheme(ColorStyles color) {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: TextButton.styleFrom(
-          foregroundColor: color.buttonPrimaryContent,
-          backgroundColor: color.buttonBackground),
+        foregroundColor: color.primaryContent,
+        backgroundColor: color.background,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
+        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+        minimumSize: Size(0, 0),
+      ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: color.bottomTabBarBackground,
