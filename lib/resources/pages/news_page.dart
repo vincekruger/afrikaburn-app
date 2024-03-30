@@ -1,7 +1,5 @@
 import 'package:afrikaburn/app/models/news.dart';
-import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/resources/widgets/news_item_widget.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/config/design.dart';

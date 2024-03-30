@@ -2,7 +2,7 @@ import 'package:afrikaburn/resources/themes/styles/base_colors.dart';
 import 'package:flutter/material.dart';
 
 class GradientStyles {
-  LinearGradient get canvasLine => LinearGradient(
+  static LinearGradient get canvasLine => LinearGradient(
         begin: Alignment.centerLeft,
         end: Alignment.centerRight,
         colors: [
@@ -11,7 +11,8 @@ class GradientStyles {
           BaseThemeColors().gradient1End,
         ],
       );
-  LinearGradient get ticketSlotGradient => LinearGradient(
+
+  static LinearGradient get ticketSlotGradient => LinearGradient(
         begin: const Alignment(0.87, -0.50),
         end: const Alignment(-0.87, 0.5),
         colors: [

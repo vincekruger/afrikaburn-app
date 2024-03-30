@@ -1,4 +1,3 @@
-import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:nylo_framework/theme/helper/ny_theme.dart';
 import 'package:flutter/material.dart';

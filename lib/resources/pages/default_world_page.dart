@@ -2,7 +2,7 @@ import 'package:afrikaburn/resources/pages/home_page.dart';
 import 'package:afrikaburn/resources/pages/news_page.dart';
 import 'package:afrikaburn/resources/pages/ticket_page.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
-import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
+import 'package:afrikaburn/resources/widgets/default_world_navigation_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
@@ -21,16 +21,6 @@ class _DefaultWorldPageState extends NyState<DefaultWorldPage> {
     });
   }
 
-  /// Navigation items
-  final List<FlashyTabBarItem> _navigationItems = [
-    FlashyTabBarItem(icon: Icon(Icons.home), title: Text('News')),
-    FlashyTabBarItem(icon: Icon(Icons.key), title: Text('Ticket')),
-    FlashyTabBarItem(
-      icon: Icon(Icons.more_horiz_outlined),
-      title: Text('More Stuff'),
-    ),
-  ];
-
   @override
   Widget view(BuildContext context) {
     return Scaffold(
@@ -45,17 +35,9 @@ class _DefaultWorldPageState extends NyState<DefaultWorldPage> {
       bottomNavigationBar: Container(
         padding: EdgeInsets.only(top: 2),
         decoration: BoxDecoration(
-          gradient: GradientStyles().canvasLine,
+          gradient: GradientStyles.canvasLine,
         ),
-        child: FlashyTabBar(
-          backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-          selectedIndex: _currentIndex,
-          showElevation: true,
-          height: 55,
-          onItemSelected: (index) =>
-              updateState(DefaultWorldPage.path, data: index),
-          items: _navigationItems,
-        ),
+        child: DefaultWorldNavigationBar(),
       ),
     );
   }

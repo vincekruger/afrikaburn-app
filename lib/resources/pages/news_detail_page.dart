@@ -234,7 +234,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
                   onTap: openPostUrl,
                   padding: EdgeInsets.all(2),
                   strokeWidth: 2,
-                  gradient: GradientStyles().canvasLine,
+                  gradient: GradientStyles.canvasLine,
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 12),
                     decoration: BoxDecoration(
@@ -293,7 +293,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
               width: scale(403.86, context),
               height: scale(46, context),
               decoration: BoxDecoration(
-                gradient: GradientStyles().canvasLine,
+                gradient: GradientStyles.canvasLine,
               ),
             ),
           ),
@@ -308,7 +308,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
               width: scale(403.86, context),
               height: scale(46, context),
               decoration: BoxDecoration(
-                gradient: GradientStyles().canvasLine,
+                gradient: GradientStyles.canvasLine,
               ),
             ),
           ),

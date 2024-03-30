@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:afrikaburn/app/providers/system_provider.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:flutter/foundation.dart'
@@ -142,7 +143,7 @@ class _TicketSlotState extends NyState<TicketSlot> {
     // Ticket item exists
     if (localExists) {
       slotBoxDecoration = slotBoxDecoration.copyWith(
-        gradient: GradientStyles().ticketSlotGradient,
+        gradient: GradientStyles.ticketSlotGradient,
         image: DecorationImage(
           image: Image.asset(assetPath).image,
           fit: BoxFit.cover,
@@ -192,63 +193,25 @@ class _TicketSlotState extends NyState<TicketSlot> {
 
   /// View Ticket Item
   viewTicket() {
-    print("View ${widget.type.name} Ticket");
+    SystemProvider().setPortraitAndLandscapeOrientation();
 
-    // TODO: Show the ticket item in a modal
-    // TODO: Make modal height the same as the image, make it fit.
-    // TODO: Turn up the screen brightness
-    // TODO: Reset the screen brightness when closed
-
-    Widget photoView = PhotoView(
-      minScale: PhotoViewComputedScale.contained * 1,
-      backgroundDecoration: BoxDecoration(color: Colors.white),
-      imageProvider: (Platform.isIOS)
-          ? AssetImage(assetPath)
-          : Image.file(File(assetPath)).image,
-    );
-
-    // Widget modalContent = Material(
-    //   child: SafeArea(
-    //     top: false,
-    //     child: Column(
-    //       mainAxisSize: MainAxisSize.min,
-    //       children: [
-    //         Row(
-    //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //           children: [
-    //             TextButton(
-    //               child: Text('Close'),
-    //               onPressed: () {},
-    //             ),
-    //             Text("ticket-type.${type.name}".tr())
-    //                 .setColor(context, (color) => Colors.black),
-    //             TextButton(
-    //               child: Text('Delete'),
-    //               onPressed: () {},
-    //             )
-    //           ],
-    //         ),
-    //         Container(
-    //           margin: const EdgeInsets.symmetric(
-    //             vertical: 20.0,
-    //             horizontal: 20.0,
-    //           ),
-    //           height: 200.0,
-    //           child: ClipRect(
-    //             child: photoView,
-    //           ),
-    //         )
-    //       ],
-    //     ),
-    //   ),
-    // );
-
+    /// Show the photo view modal
     showBarModalBottomSheet(
       expand: false,
       context: this.context,
-      backgroundColor: Colors.transparent,
-      builder: (context) => photoView,
-    );
+      builder: (context) => PhotoView(
+        minScale: PhotoViewComputedScale.contained * 0.8,
+        backgroundDecoration: BoxDecoration(
+          color: ThemeColor.get(context).surfaceBackground,
+        ),
+        imageProvider: (Platform.isIOS)
+            ? AssetImage(assetPath)
+            : Image.file(File(assetPath)).image,
+      ),
+    ).then((value) {
+      /// Reset the orientation to portrait
+      SystemProvider().setOnlyPortraitOrientation();
+    });
   }
 
   /// Add Ticket Item

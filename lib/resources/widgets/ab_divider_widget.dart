@@ -22,7 +22,7 @@ class AbDivider extends StatelessWidget {
         width: scale(this.width, context),
         height: 2,
         decoration: BoxDecoration(
-          gradient: GradientStyles().canvasLine,
+          gradient: GradientStyles.canvasLine,
         ),
       ),
     );

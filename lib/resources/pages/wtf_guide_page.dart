@@ -1,4 +1,3 @@
-import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 import 'package:nylo_framework/nylo_framework.dart';

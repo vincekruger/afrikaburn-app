@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:afrikaburn/resources/pages/map_page.dart';
 import 'package:afrikaburn/resources/pages/my_contact_page.dart';
-import 'package:afrikaburn/resources/pages/ticket_page.dart';
 import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '/resources/widgets/logo_widget.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import '/config/storage_keys.dart';
+// import '/config/storage_keys.dart';
 import '/config/decoders.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
@@ -12,36 +12,34 @@ import 'package:nylo_framework/nylo_framework.dart';
 |-------------------------------------------------------------------------- */
 
 class ApiService extends NyApiService {
-
-  ApiService({BuildContext? buildContext}) : super(
-      buildContext,
-      decoders: modelDecoders,
-      // baseOptions: (BaseOptions baseOptions) {
-      //   return baseOptions
-      //             ..connectTimeout = Duration(seconds: 5)
-      //             ..sendTimeout = Duration(seconds: 5)
-      //             ..receiveTimeout = Duration(seconds: 5);
-      // },
-  );
+  ApiService({BuildContext? buildContext})
+      : super(
+          buildContext,
+          decoders: modelDecoders,
+          // baseOptions: (BaseOptions baseOptions) {
+          //   return baseOptions
+          //             ..connectTimeout = Duration(seconds: 5)
+          //             ..sendTimeout = Duration(seconds: 5)
+          //             ..receiveTimeout = Duration(seconds: 5);
+          // },
+        );
 
   @override
   String get baseUrl => getEnv('API_BASE_URL');
 
   @override
   final interceptors = {
-    if (getEnv('APP_DEBUG') == true)
-    PrettyDioLogger: PrettyDioLogger()
+    if (getEnv('APP_DEBUG') == true) PrettyDioLogger: PrettyDioLogger()
   };
 
   Future fetchTestData() async {
     return await network(
-        request: (request) => request.get("/endpoint-path"),
+      request: (request) => request.get("/endpoint-path"),
     );
   }
 
   /* Helpers
   |-------------------------------------------------------------------------- */
-
 
   /* Authentication Headers
   |--------------------------------------------------------------------------
@@ -58,7 +56,6 @@ class ApiService extends NyApiService {
   //   return headers;
   // }
 
-
   /* Should Refresh Token
   |--------------------------------------------------------------------------
   | Check if your Token should be refreshed
@@ -69,7 +66,6 @@ class ApiService extends NyApiService {
   // Future<bool> shouldRefreshToken() async {
   //   return false;
   // }
-
 
   /* Refresh Token
   |--------------------------------------------------------------------------
@@ -84,7 +80,6 @@ class ApiService extends NyApiService {
   //  // Save the new token
   //   await StorageKey.userToken.store(response['token']);
   // }
-
 
   /* Display a error
   |--------------------------------------------------------------------------
