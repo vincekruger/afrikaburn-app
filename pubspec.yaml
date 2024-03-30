@@ -47,6 +47,7 @@ dependencies:
   flutter_html: ^3.0.0-beta.2
   moment_dart: ^2.0.2
   cached_network_image: ^3.3.1
+  flashy_tab_bar2: ^0.0.10
 
 dev_dependencies:
   lints: ^3.0.0
@@ -69,6 +70,9 @@ flutter:
     - public/assets/images/
     - public/assets/images/news/
     - public/assets/images/tickets/
+    - public/assets/images/dark-mode/
+    # - public/assets/images/dark-mode/news/
+    # - public/assets/images/dark-mode/tickets/
     - public/assets/app_icon/
     - lang/
     - .env
