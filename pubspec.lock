@@ -65,6 +65,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  cached_network_image:
+    dependency: "direct main"
+    description:
+      name: cached_network_image
+      sha256: "28ea9690a8207179c319965c13cd8df184d5ee721ae2ce60f398ced1219cea1f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.1"
+  cached_network_image_platform_interface:
+    dependency: transitive
+    description:
+      name: cached_network_image_platform_interface
+      sha256: "9e90e78ae72caa874a323d78fa6301b3fb8fa7ea76a8f96dc5b5bf79f283bf2f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0"
+  cached_network_image_web:
+    dependency: transitive
+    description:
+      name: cached_network_image_web
+      sha256: "42a835caa27c220d1294311ac409a43361088625a4f23c820b006dd9bffb3316"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   characters:
     dependency: transitive
     description:
@@ -145,6 +169,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+  csslib:
+    dependency: transitive
+    description:
+      name: csslib
+      sha256: "831883fb353c8bdc1d71979e5b342c7d88acfbc643113c14ae51e2442ea0f20f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.17.3"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -398,6 +430,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.0"
+  flutter_html:
+    dependency: "direct main"
+    description:
+      name: flutter_html
+      sha256: "02ad69e813ecfc0728a455e4bf892b9379983e050722b1dce00192ee2e41d1ee"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0-beta.2"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -525,6 +565,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.2.1"
+  html:
+    dependency: transitive
+    description:
+      name: html
+      sha256: "3a7812d5bcd2894edf53dfaf8cd640876cf6cef50a8f238745c8b8120ea74d3a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.15.4"
   http:
     dependency: transitive
     description:
@@ -661,6 +709,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+  list_counter:
+    dependency: transitive
+    description:
+      name: list_counter
+      sha256: c447ae3dfcd1c55f0152867090e67e219d42fe6d4f2807db4bbe8b8d69912237
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   mapbox_maps_flutter:
     dependency: "direct main"
     description:
@@ -709,6 +765,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+  moment_dart:
+    dependency: "direct main"
+    description:
+      name: moment_dart
+      sha256: "252e06594ad7d1f1815c18a9112b76451fcee05743667c0566e24b83a078b91d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
   nylo_framework:
     dependency: "direct main"
     description:
@@ -725,6 +789,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.56.1"
+  octo_image:
+    dependency: transitive
+    description:
+      name: octo_image
+      sha256: "45b40f99622f11901238e18d48f5f12ea36426d8eced9f4cbf58479c7aa2430d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   outline_gradient_button:
     dependency: "direct main"
     description:
@@ -742,7 +814,7 @@ packages:
     source: hosted
     version: "2.1.0"
   page_transition:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: page_transition
       sha256: dee976b1f23de9bbef5cd512fe567e9f6278caee11f5eaca9a2115c19dc49ef6
