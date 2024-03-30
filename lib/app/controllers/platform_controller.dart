@@ -15,24 +15,4 @@ class PlatformController extends Controller {
   construct(BuildContext context) {
     super.construct(context);
   }
-
-  Future<void> showIOSStatusBar() async {
-    try {
-      if (!Platform.isIOS) throw new UnimplementedError();
-      await platform.invokeMethod<int>('showStatusBar');
-      print('iOS status bar shown');
-    } on PlatformException catch (e) {
-      print("Failed to show iOS status bar: '${e.message}'.");
-    }
-  }
-
-  Future<void> hideIOSStatusBar() async {
-    try {
-      if (!Platform.isIOS) throw new UnimplementedError();
-      await platform.invokeMethod<int>('hideStatusBar');
-      print('iOS status bar hidden');
-    } on PlatformException catch (e) {
-      print("Failed to hide iOS status bar: '${e.message}'.");
-    }
-  }
 }
