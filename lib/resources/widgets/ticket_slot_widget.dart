@@ -70,7 +70,6 @@ class _TicketSlotState extends NyState<TicketSlot> {
   /// State Updated
   @override
   stateUpdated(dynamic data) async {
-    print('state updated');
     setState(() {
       localExists = data;
     });
