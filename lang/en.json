@@ -15,6 +15,9 @@
   "screen-title": {
     "map": "Map"
   },
+  "ticket-content": {
+    "available-offline": "Your data is stored locally.\n\nNo 5G / WiFi, No problem :)"
+  },
   "ticket-type": {
     "entry": "Entry Ticket",
     "wap": "WAP",
