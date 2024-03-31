@@ -8,16 +8,10 @@ import 'package:flutter/services.dart';
 /// Default [FirebaseOptions] for use with your Firebase apps.
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
-    if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
-    }
-
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        return kReleaseMode ? androidRelease : androidDebug;
+        return androidDebug; // need to setup a flavor
+      // return kReleaseMode ? androidRelease : androidDebug;
       case TargetPlatform.iOS:
         switch (appFlavor) {
           case 'Production':
