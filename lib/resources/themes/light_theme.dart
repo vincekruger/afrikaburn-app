@@ -87,6 +87,17 @@ ThemeData lightTheme(ColorStyles color) {
     textTheme: lightTheme,
     colorScheme: ColorScheme.light(
         background: color.background, primary: color.primaryAccent),
+    dialogTheme: DialogTheme(
+      backgroundColor: color.surfaceBackground,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      titleTextStyle: lightTheme.headlineSmall!.copyWith(
+        color: color.surfaceContent,
+      ),
+      contentTextStyle: lightTheme.bodyMedium!.copyWith(
+        color: color.surfaceContent,
+      ),
+      // actionsPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    ),
   );
 }
 

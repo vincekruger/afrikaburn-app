@@ -52,9 +52,9 @@ class _DefaultWorldNavigationBarState
 
   /// List of navigation items
   List<NavigationItem> _items = [
-    NavigationItem(Icons.newspaper, "News".tr()),
-    NavigationItem(AB2024.ticket, "Ticket".tr()),
-    NavigationItem(Icons.more_horiz_outlined, "More Stuff".tr()),
+    NavigationItem(Icons.newspaper, "menu-item.news".tr()),
+    NavigationItem(AB2024.ticket, "menu-item.tickets".tr()),
+    NavigationItem(Icons.more_horiz_outlined, "menu-item.more-stuff".tr()),
   ];
 
   /// Target updated

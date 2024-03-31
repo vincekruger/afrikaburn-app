@@ -76,7 +76,7 @@ class _TicketPageState extends NyState<TicketPage> {
                   type: TicketType.identification,
                   width: 148,
                   height: 215,
-                  borderColor: Color(0xFF9B1EE9),
+                  borderColor: Color(0xFF9B1EE9), // TODO use theme color
                   labelWidth: 123,
                   labelHeight: 76,
                   quarterTurns: 1,

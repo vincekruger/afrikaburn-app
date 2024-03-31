@@ -10,13 +10,21 @@
     "force-crash": "Force Crash"
   },
   "menu-item": {
-    "news": "News"
+    "news": "News",
+    "tickets": "Tickets",
+    "more-stuff": "More Stuff"
   },
   "screen-title": {
     "map": "Map"
   },
   "ticket-content": {
-    "available-offline": "Your data is stored locally.\n\nNo 5G / WiFi, No problem :)"
+    "available-offline": "NO STRESS, bru!\nAll this lekker stuff's saved on your phone, so when you're off the grid, you sorted 📱💾🔒 No worries!",
+    "delete-confirm": {
+      "title": "😱 Delete {{ticket_type}}?",
+      "message": "Are you sure you wanna do this because it will be gone off your phone foreva.",
+      "cancel": "Oops No!",
+      "confirm": "Ja, Delete it!"
+    }
   },
   "ticket-type": {
     "entry": "Entry Ticket",
@@ -27,6 +35,7 @@
   "ticket-action": {
       "take-photo": "Take Photo",
       "choose-photo": "Choose Photo",
+      "select-file": "Select a PDF",
       "delete-ticket": "Delete Ticket"
   },
   "news": {

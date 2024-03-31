@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:afrikaburn/app/models/ticket_action_sheet_action.dart';
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/app/providers/system_provider.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
@@ -15,6 +16,7 @@ import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/config/design.dart';
 import 'package:afrikaburn/resources/icons/a_b2024_icons.dart';
 import 'package:afrikaburn/app/controllers/ticket_controller.dart';
+import 'package:pdfrx/pdfrx.dart';
 import 'package:photo_view/photo_view.dart';
 
 /// Generate a state key
@@ -58,25 +60,28 @@ class _TicketSlotState extends NyState<TicketSlot> {
   /// localExists: Check if the ticket item exists
   /// assetPath: The path to the ticket item
   bool localExists = false;
+  bool isPdf = false;
   String assetPath = '';
 
   /// Initialize the state
   @override
   init() async {
-    localExists = await widget.controller
-        .exists(widget.type)
-        .catchError((error) => false);
-    assetPath = await widget.controller.getAssetPath(widget.type);
+    widget.controller.ticketType = widget.type;
+    await widget.controller.exists();
   }
 
   /// State Updated
   @override
   stateUpdated(dynamic data) async {
+    print("State Updated: ${data.toString()}");
     setState(() {
-      localExists = data;
+      localExists = data['exists'];
+      isPdf = data['isPdf'];
+      assetPath = data['assetPath'];
     });
   }
 
+  /// Build the widget
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -143,10 +148,20 @@ class _TicketSlotState extends NyState<TicketSlot> {
 
     // Ticket item exists
     if (localExists) {
+      /// The asset path for the ticket item
+      /// If the ticket item is a pdf, the thumbnail image is used
+      String _assetPath = isPdf
+          ? this.assetPath.replaceAll('.pdf', '-thumb.png')
+          : this.assetPath;
+      var _image = (Platform.isIOS)
+          ? Image.asset(_assetPath).image
+          : Image.file(File(_assetPath)).image;
+
+      /// Final background image
       slotBoxDecoration = slotBoxDecoration.copyWith(
         gradient: GradientStyles.ticketSlotGradient,
         image: DecorationImage(
-          image: Image.asset(assetPath).image,
+          image: _image,
           fit: BoxFit.cover,
           opacity: 0.3,
         ),
@@ -192,6 +207,24 @@ class _TicketSlotState extends NyState<TicketSlot> {
       addTicket();
   }
 
+  /// Render a Photo Viewer for Image Tickets
+  Widget _photoViewer() {
+    return PhotoView(
+      minScale: PhotoViewComputedScale.contained * 0.8,
+      backgroundDecoration: BoxDecoration(
+        color: ThemeColor.get(context).surfaceBackground,
+      ),
+      imageProvider: (Platform.isIOS)
+          ? AssetImage(assetPath)
+          : Image.file(File(assetPath)).image,
+    );
+  }
+
+  /// Render a PDF Viewer for PDF Tickets
+  _pdfViewer() {
+    return PdfViewer.file(assetPath);
+  }
+
   /// View Ticket Item
   viewTicket() {
     /// Set the orientation to portrait and landscape
@@ -201,40 +234,28 @@ class _TicketSlotState extends NyState<TicketSlot> {
     showBarModalBottomSheet(
       expand: false,
       context: this.context,
-      builder: (context) => PhotoView(
-        minScale: PhotoViewComputedScale.contained * 0.8,
-        backgroundDecoration: BoxDecoration(
-          color: ThemeColor.get(context).surfaceBackground,
-        ),
-        imageProvider: (Platform.isIOS)
-            ? AssetImage(assetPath)
-            : Image.file(File(assetPath)).image,
-      ),
+      builder: (context) => isPdf ? _pdfViewer() : _photoViewer(),
     ).then((value) {
       /// Reset the orientation to portrait
       SystemProvider().setOnlyPortraitOrientation();
     });
 
     /// Log the event
-    FirebaseProvider().logEvent(
-      'ticket_view',
-      {"ticket_type": widget.type.name},
-    );
+    FirebaseProvider().logEvent('ticket_view', {
+      "ticket_type": widget.type.name,
+      "ticket_format": isPdf ? "pdf" : "image",
+    });
   }
 
   /// Add Ticket Item
   /// iOS and android have different ways of adding a ticket item.
   void addTicket() {
     switch (defaultTargetPlatform) {
-      case TargetPlatform.android:
-        print("Add ${widget.type.name} Ticket for Android");
-        // _showMaterialActionSheet(type);
-        break;
       case TargetPlatform.iOS:
         _showIOSActionSheet();
         break;
       default:
-        throw UnsupportedError('Unsupported platform');
+        _showMaterialActionSheet();
     }
   }
 
@@ -245,23 +266,27 @@ class _TicketSlotState extends NyState<TicketSlot> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("😱 Delete ${ticketLabel}?")
-              .headingSmall(context)
-              .fontWeightBold(),
-          content: Text(
-              "Are you sure you wanna do this because it will be gone off your phone foreva."),
+          title: Text("ticket-content.delete-confirm.title".tr(arguments: {
+            "ticket_type": ticketLabel,
+          })),
+          content: Text("ticket-content.delete-confirm.message".tr()),
+          contentPadding: EdgeInsets.symmetric(horizontal: 24, vertical: 0)
+              .copyWith(top: 16, bottom: 8),
+          actionsAlignment: MainAxisAlignment.spaceAround,
+          actionsPadding: EdgeInsets.zero.copyWith(bottom: 8),
           actions: [
             TextButton(
-              child: Text("Ja, Delete it!")
+              child: Text("ticket-content.delete-confirm.confirm".tr())
                   .setColor(context, (color) => Colors.red.shade600)
                   .fontWeightBold(),
               onPressed: () {
-                widget.controller.deleteTicket(widget.type);
+                widget.controller.deleteTicket(isPdf: isPdf);
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text("Oops No!").fontWeightBold(),
+              child: Text("ticket-content.delete-confirm.cancel".tr())
+                  .fontWeightBold(),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -272,54 +297,122 @@ class _TicketSlotState extends NyState<TicketSlot> {
     );
   }
 
+  /// Get Available Action Sheet Actions
+  List<TicketActionSheetAction> getActionSheetActions() => [
+        TicketActionSheetAction(
+          action: TicketActionSheetActionType.TAKE_PHOTO,
+          title: "ticket-action.take-photo".tr(),
+          icon: Icon(Icons.photo_camera),
+        ),
+        TicketActionSheetAction(
+          action: TicketActionSheetActionType.CHOOSE_PHOTO,
+          title: "ticket-action.choose-photo".tr(),
+          icon: Icon(Icons.photo),
+        ),
+        TicketActionSheetAction(
+          action: TicketActionSheetActionType.SELECT_FILE,
+          title: "ticket-action.select-file".tr(),
+          icon: Icon(Icons.file_copy),
+        ),
+      ];
+
+  void _ticketActionOnTap(TicketActionSheetActionType action) async {
+    switch (action) {
+      /// Open the camera to take a photo
+      case TicketActionSheetActionType.TAKE_PHOTO:
+        widget.controller.takePhoto().then((_) {
+          /// Log the event
+          FirebaseProvider().logEvent(
+            'ticket_photo_taken',
+            {"ticket_type": widget.type.name},
+          );
+
+          // Close the action sheet
+          Navigator.pop(context);
+        }).catchError((e) {
+          // TODO Error Handling
+          print("takePhoto error" + e.toString());
+          return;
+        });
+        break;
+
+      /// Open the gallery to choose a photo
+      case TicketActionSheetActionType.CHOOSE_PHOTO:
+        widget.controller.choosePhoto().then((_) {
+          /// Log the event
+          FirebaseProvider().logEvent(
+            'ticket_photo_selected',
+            {"ticket_type": widget.type.name},
+          );
+
+          // Close the action sheet
+          Navigator.pop(context);
+        }).catchError((e) {
+          // TODO Error Handling
+          print("choosePhoto" + e.toString());
+          return;
+        });
+        break;
+
+      /// Select a file from the phone
+      case TicketActionSheetActionType.SELECT_FILE:
+        widget.controller.selectFile().then((_) {
+          /// Log the event
+          FirebaseProvider().logEvent(
+            'ticket_file_selected',
+            {"ticket_type": widget.type.name},
+          );
+
+          // Close the action sheet
+          Navigator.pop(context);
+        }).catchError((e) {
+          // TODO Error Handling
+          print("choosePhoto" + e.toString());
+          return;
+        });
+        break;
+    }
+  }
+
   /// Shows an iOS action sheet to ask what action is needed.
   /// https://api.flutter.dev/flutter/cupertino/CupertinoActionSheet-class.html
   void _showIOSActionSheet() {
     showCupertinoModalPopup<void>(
       context: this.context,
       builder: (BuildContext context) => CupertinoActionSheet(
-        actions: <CupertinoActionSheetAction>[
-          CupertinoActionSheetAction(
-            child: Text("ticket-action.take-photo".tr()),
-            onPressed: () async {
-              /// Open the camera to take a photo
-              await widget.controller.takePhoto(widget.type).then((_) {
-                /// Log the event
-                FirebaseProvider().logEvent(
-                  'ticket_snapped_photo',
-                  {"ticket_type": widget.type.name},
-                );
-              }).catchError((e) {
-                // TODO Error Handling
-                print("takePhoto error" + e.toString());
-                return false;
-              });
+        actions: getActionSheetActions().map<Widget>((action) {
+          return CupertinoActionSheetAction(
+            child: Text(action.title).setColor(
+                context, (color) => ThemeColor.get(context).surfaceContent),
+            onPressed: () => _ticketActionOnTap(action.action),
+          );
+        }).toList(),
+      ),
+    );
+  }
 
-              // Close the action sheet
-              Navigator.pop(context);
-            },
+  /// Shows a material action sheet to ask what action is needed.
+  /// https://jamesblasco.github.io/modal_bottom_sheet/#/
+  void _showMaterialActionSheet() {
+    showMaterialModalBottomSheet(
+      expand: false,
+      context: context,
+      backgroundColor: ThemeColor.get(context).surfaceBackground,
+      builder: (context) => Material(
+        child: SafeArea(
+          top: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: getActionSheetActions().map<Widget>((action) {
+              return ListTile(
+                title: Text(action.title).setColor(
+                    context, (color) => ThemeColor.get(context).surfaceContent),
+                leading: action.icon,
+                onTap: () => _ticketActionOnTap(action.action),
+              );
+            }).toList(),
           ),
-          CupertinoActionSheetAction(
-            child: Text("ticket-action.choose-photo".tr()),
-            onPressed: () async {
-              /// Open the gallery to choose a photo
-              await widget.controller.choosePhoto(widget.type).then((_) {
-                /// Log the event
-                FirebaseProvider().logEvent(
-                  'ticket_selected_photo',
-                  {"ticket_type": widget.type.name},
-                );
-              }).catchError((e) {
-                // TODO Error Handling
-                print("choosePhoto" + e.toString());
-                return false;
-              });
-
-              // Close the action sheet
-              Navigator.pop(context);
-            },
-          ),
-        ],
+        ),
       ),
     );
   }
