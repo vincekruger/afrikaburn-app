@@ -69,6 +69,17 @@ ThemeData darkTheme(ColorStyles color) {
     ),
     textTheme: darkTheme,
     colorScheme: ColorScheme.dark(background: color.background),
+    dialogTheme: DialogTheme(
+      backgroundColor: color.surfaceBackground,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      titleTextStyle: darkTheme.headlineSmall!.copyWith(
+        color: color.surfaceContent,
+      ),
+      contentTextStyle: darkTheme.bodyMedium!.copyWith(
+        color: color.surfaceContent,
+      ),
+    ),
+    pageTransitionsTheme: BaseThemeStuff.pageTransitionsTheme,
   );
 }
 

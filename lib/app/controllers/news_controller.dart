@@ -8,13 +8,16 @@ class NewsController extends Controller {
     super.construct(context);
   }
 
+  /// Firebase Firestore instance
   final FirebaseFirestore db = FirebaseFirestore.instance;
 
+  /// Get News Posts
   Future<List<News>> getNewsPosts() async {
     final snapshot = await db
         .collection('news')
         .where('public', isEqualTo: true)
-        .limit(10)
+        .limit(2)
+        .orderBy('date', descending: true)
         .get();
     return snapshot.docs.map((doc) => News.fromSnapshot(doc)).toList();
   }

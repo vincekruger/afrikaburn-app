@@ -96,8 +96,8 @@ ThemeData lightTheme(ColorStyles color) {
       contentTextStyle: lightTheme.bodyMedium!.copyWith(
         color: color.surfaceContent,
       ),
-      // actionsPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     ),
+    pageTransitionsTheme: BaseThemeStuff.pageTransitionsTheme,
   );
 }
 

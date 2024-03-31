@@ -21,5 +21,16 @@
         "**/pubspec.lock": true,
         "**/.flutter-plugins": true,
         "**/.flutter-plugins-dependencies": true,
-    }
+    },
+    "githubIssues.queries": [
+        {
+            "label": "Recent Issues",
+            "query": "state:open repo:${owner}/${repository} sort:updated-desc"
+        },
+        {
+            "label": "Feedback Issues",
+            "query": "state:open repo:${owner}/afrikaburn-app-feedback sort:updated-desc"
+        },
+
+    ]
 }
