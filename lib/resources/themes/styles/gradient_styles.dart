@@ -21,4 +21,13 @@ class GradientStyles {
           BaseThemeColors().gradient1End,
         ],
       );
+
+  static LinearGradient get appbarIcon => LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          BaseThemeColors().gradient1End,
+          BaseThemeColors().gradient1Start,
+        ],
+      );
 }

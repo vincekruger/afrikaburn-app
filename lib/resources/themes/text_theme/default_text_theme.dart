@@ -30,8 +30,9 @@ const TextTheme defaultTextTheme = TextTheme(
     fontWeight: FontWeight.w300,
   ),
   titleSmall: TextStyle(
-    fontSize: 14.0,
-    fontWeight: FontWeight.w500,
+    fontSize: 15.0,
+    fontFamily: 'Staatliches',
+    fontWeight: FontWeight.w400,
   ),
   titleMedium: TextStyle(
     fontSize: 16.0,

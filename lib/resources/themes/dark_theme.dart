@@ -1,3 +1,4 @@
+import 'package:afrikaburn/resources/themes/base_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '/config/design.dart';
@@ -22,8 +23,9 @@ ThemeData darkTheme(ColorStyles color) {
     appBarTheme: AppBarTheme(
         surfaceTintColor: Colors.transparent,
         backgroundColor: color.appBarBackground,
-        titleTextStyle:
-            darkTheme.titleLarge!.copyWith(color: color.appBarPrimaryContent),
+        titleTextStyle: darkTheme.titleSmall!.copyWith(
+          color: color.appBarPrimaryContent,
+        ),
         iconTheme: IconThemeData(color: color.appBarPrimaryContent),
         elevation: 1.0,
         systemOverlayStyle: SystemUiOverlayStyle.light),
@@ -44,14 +46,26 @@ ThemeData darkTheme(ColorStyles color) {
         minimumSize: Size(0, 0),
       ),
     ),
+    navigationBarTheme: BaseThemeStuff.navigationBarTheme.copyWith(
+      backgroundColor: color.bottomTabBarBackground,
+      labelTextStyle: MaterialStateTextStyle.resolveWith(
+        (states) => darkTheme.titleSmall!
+            .copyWith(color: color.bottomTabBarLabelSelected),
+      ),
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: color.bottomTabBarBackground,
+      // Selected
+      selectedIconTheme: IconThemeData(color: color.bottomTabBarIconSelected),
+      selectedItemColor: color.bottomTabBarLabelSelected,
+      selectedLabelStyle: darkTheme.titleSmall,
+      // Unselected
+      unselectedItemColor: color.bottomTabBarLabelUnselected,
+      unselectedLabelStyle: darkTheme.titleSmall!.copyWith(
+        fontSize: darkTheme.titleSmall!.fontSize! - 1,
+      ),
       unselectedIconTheme:
           IconThemeData(color: color.bottomTabBarIconUnselected),
-      selectedIconTheme: IconThemeData(color: color.bottomTabBarIconSelected),
-      unselectedLabelStyle: TextStyle(color: color.bottomTabBarLabelUnselected),
-      selectedLabelStyle: TextStyle(color: color.bottomTabBarLabelSelected),
-      selectedItemColor: color.bottomTabBarLabelSelected,
     ),
     textTheme: darkTheme,
     colorScheme: ColorScheme.dark(background: color.background),
