@@ -1,4 +1,4 @@
-import '/resources/pages/default_world_page.dart';
+import '../resources/pages/root.dart';
 import '/resources/pages/news_detail_page.dart';
 import '/resources/pages/news_page.dart';
 import '/resources/pages/create_contact_page.dart';
@@ -19,18 +19,12 @@ import 'package:nylo_framework/nylo_framework.dart';
 
 appRouter() => nyRoutes((router) {
       router.route(
-        DefaultWorldPage.path,
-        (context) => DefaultWorldPage(),
+        RootPage.path,
+        (context) => RootPage(),
         initialRoute: true,
       );
 
-      router.route(HomePage.path, (context) => HomePage());
-      router.route(WtfGuidePage.path, (context) => WtfGuidePage());
-      router.route(MyContactPage.path, (context) => MyContactPage());
-      router.route(MapPage.path, (context) => MapPage());
-      router.route(TicketPage.path, (context) => TicketPage());
-      router.route(CreateContactPage.path, (context) => CreateContactPage());
-
+      /// Default World Pages
       router.route(NewsPage.path, (context) => NewsPage());
       router.route(
         NewsDetailPage.path,
@@ -41,4 +35,17 @@ appRouter() => nyRoutes((router) {
           fullscreenDialog: true,
         ),
       );
+
+      /// Shared Pages
+      router.route(TicketPage.path, (context) => TicketPage());
+      router.route(MyContactPage.path, (context) => MyContactPage());
+      router.route(CreateContactPage.path, (context) => CreateContactPage());
+      router.route(WtfGuidePage.path, (context) => WtfGuidePage());
+
+      /// On-Site Pages
+      router.route(MapPage.path, (context) => MapPage());
+
+      /// Other Pages
+      /// TODO remove eventually
+      router.route(HomePage.path, (context) => HomePage());
     });

@@ -51,12 +51,6 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   boot() async {
     newsItem = widget.data()['newsItem'] as News;
     heroTag = widget.data()['heroTag'] as String;
-
-    /// Log Screen View
-    FirebaseProvider().logScreenView(NewsDetailPage.path, params: {
-      'news_id': newsItem.id,
-      'news_title': newsItem.title,
-    });
   }
 
   /// Image Credit
@@ -279,6 +273,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
     );
   }
 
+  /// Canvas Gradient Lines Cris Cross
   Stack canvasGradientLinesCrisCross(BuildContext context,
       {required double top}) {
     return Stack(

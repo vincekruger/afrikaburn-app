@@ -1,4 +1,5 @@
 import 'package:afrikaburn/app/models/news.dart';
+import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/resources/pages/news_detail_page.dart';
@@ -30,6 +31,7 @@ class _NewsItemState extends State<NewsItem> {
 
   /// Open the detail page
   void openDetail() {
+    /// Route to the news detail page
     routeTo(
       NewsDetailPage.path,
       data: {
@@ -37,6 +39,12 @@ class _NewsItemState extends State<NewsItem> {
         "heroTag": 'news-photo-detail' + widget.item.id.toString(),
       },
     );
+
+    /// Log the screen view
+    FirebaseProvider().logScreenView(NewsDetailPage.path, params: {
+      'news_id': widget.item.id,
+      'news_title': widget.item.title,
+    });
   }
 
   @override
@@ -139,9 +147,9 @@ class _NewsItemState extends State<NewsItem> {
         backgroundColor: ThemeColor.get(context).surfaceBackground,
         gradient: LinearGradient(
           colors: [
-            const Color(0xFF9B1EE9),
-            const Color(0xFFFD1D346),
-            const Color(0xFF20EDC4),
+            const Color(0xFF9B1EE9), // TODO Update color
+            const Color(0xFFFD1D346), // TODO Update color
+            const Color(0xFF20EDC4), // TODO Update color
           ],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,

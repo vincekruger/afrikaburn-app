@@ -1,5 +1,5 @@
 import 'package:afrikaburn/resources/icons/a_b2024_icons.dart';
-import 'package:afrikaburn/resources/pages/default_world_page.dart';
+import 'package:afrikaburn/resources/pages/root.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_icon/gradient_icon.dart';
@@ -60,7 +60,7 @@ class _DefaultWorldNavigationBarState
   /// Target updated
   void destinationSelected(int index) {
     updateState(DefaultWorldNavigationBar.state, data: index);
-    updateState(DefaultWorldPage.path, data: index);
+    updateState(RootPage.path, data: index);
   }
 
   @override

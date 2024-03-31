@@ -72,7 +72,8 @@ class _NewsPageState extends NyState<NewsPage> {
     );
   }
 
-  NewList(BuildContext context) {
+  /// News List View
+  Widget NewList(BuildContext context) {
     return ListView.builder(
       padding: EdgeInsets.only(bottom: 20, top: 0),
       itemCount: newsList.length,
