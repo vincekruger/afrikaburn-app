@@ -139,7 +139,7 @@ class _NewsItemState extends State<NewsItem> {
       quarterTurns: 3,
       child: OutlineGradientButton(
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: openDetail,
           child: Text("news.cta.read-now".tr())
               .bodyMedium(context)
               .fontWeightBold(),
