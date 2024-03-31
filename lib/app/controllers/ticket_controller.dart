@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:afrikaburn/app/controllers/controller.dart';
+import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/resources/widgets/ticket_slot_widget.dart';
 import 'package:path/path.dart' as p;
 import 'package:flutter/widgets.dart';
@@ -96,6 +97,9 @@ class TicketController extends Controller {
 
     /// Update the ticket item state
     updateState(stateKey(type), data: false);
+
+    /// Log the event
+    FirebaseProvider().logEvent('ticket_delete', {"ticket_type": type.name});
   }
 
   /// Delete all ticket item files from the documents directory
@@ -117,5 +121,8 @@ class TicketController extends Controller {
     TicketType.values.forEach((type) {
       updateState(stateKey(type), data: false);
     });
+
+    /// Log the event
+    FirebaseProvider().logEvent('ticket_clear_all', {});
   }
 }

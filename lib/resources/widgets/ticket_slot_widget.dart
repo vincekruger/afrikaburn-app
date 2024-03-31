@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/app/providers/system_provider.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
@@ -193,6 +194,7 @@ class _TicketSlotState extends NyState<TicketSlot> {
 
   /// View Ticket Item
   viewTicket() {
+    /// Set the orientation to portrait and landscape
     SystemProvider().setPortraitAndLandscapeOrientation();
 
     /// Show the photo view modal
@@ -212,6 +214,12 @@ class _TicketSlotState extends NyState<TicketSlot> {
       /// Reset the orientation to portrait
       SystemProvider().setOnlyPortraitOrientation();
     });
+
+    /// Log the event
+    FirebaseProvider().logEvent(
+      'ticket_view',
+      {"ticket_type": widget.type.name},
+    );
   }
 
   /// Add Ticket Item
@@ -275,7 +283,13 @@ class _TicketSlotState extends NyState<TicketSlot> {
             child: Text("ticket-action.take-photo".tr()),
             onPressed: () async {
               /// Open the camera to take a photo
-              await widget.controller.takePhoto(widget.type).catchError((e) {
+              await widget.controller.takePhoto(widget.type).then((_) {
+                /// Log the event
+                FirebaseProvider().logEvent(
+                  'ticket_snapped_photo',
+                  {"ticket_type": widget.type.name},
+                );
+              }).catchError((e) {
                 // TODO Error Handling
                 print("takePhoto error" + e.toString());
                 return false;
@@ -289,7 +303,13 @@ class _TicketSlotState extends NyState<TicketSlot> {
             child: Text("ticket-action.choose-photo".tr()),
             onPressed: () async {
               /// Open the gallery to choose a photo
-              await widget.controller.choosePhoto(widget.type).catchError((e) {
+              await widget.controller.choosePhoto(widget.type).then((_) {
+                /// Log the event
+                FirebaseProvider().logEvent(
+                  'ticket_selected_photo',
+                  {"ticket_type": widget.type.name},
+                );
+              }).catchError((e) {
                 // TODO Error Handling
                 print("choosePhoto" + e.toString());
                 return false;
