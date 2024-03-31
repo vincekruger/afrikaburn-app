@@ -81,62 +81,6 @@ class _TicketSlotState extends NyState<TicketSlot> {
     });
   }
 
-  /// Build the widget
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      child: RotatedBox(
-        quarterTurns: widget.quarterTurns,
-        child: Stack(
-          children: [
-            Container(
-              width: scale(widget.width, context),
-              height: scale(widget.height, context),
-              decoration: slotDecoration(),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  TextLabelContainer(),
-                  SizedBox(height: widget.iconSpacing),
-                  if (localExists)
-                    Padding(
-                      padding: const EdgeInsets.only(right: 14.0),
-                      child: Icon(
-                        AB2024.ticket_view_entry,
-                        size: 30,
-                        color: ThemeColor.get(context).ticketSlotIcon,
-                      ),
-                    ),
-                  if (!localExists)
-                    Icon(
-                      AB2024.ticket_add_entry_2,
-                      size: 30,
-                      color: ThemeColor.get(context).ticketSlotIcon,
-                    ),
-                ],
-              ),
-            ),
-            if (localExists)
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: IconButton(
-                  icon: Icon(
-                    AB2024.ticket_remove_entry,
-                    size: 20,
-                    color: ThemeColor.get(context).ticketSlotIcon,
-                  ),
-                  onPressed: confirmDelete,
-                ),
-              ),
-          ],
-        ),
-      ),
-      onTap: onTap,
-    );
-  }
-
   /// Configure the slot decoration
   /// The slot decoration is a container that wraps the ticket slot
   /// There is a gradient background if the ticket item exists
@@ -199,14 +143,6 @@ class _TicketSlotState extends NyState<TicketSlot> {
     );
   }
 
-  /// On Tap Handler for the slot ink well
-  void onTap() {
-    if (localExists)
-      viewTicket();
-    else
-      addTicket();
-  }
-
   /// Render a Photo Viewer for Image Tickets
   Widget _photoViewer() {
     return PhotoView(
@@ -226,7 +162,7 @@ class _TicketSlotState extends NyState<TicketSlot> {
   }
 
   /// View Ticket Item
-  viewTicket() {
+  void viewTicket() {
     /// Set the orientation to portrait and landscape
     SystemProvider().setPortraitAndLandscapeOrientation();
 
@@ -302,20 +238,21 @@ class _TicketSlotState extends NyState<TicketSlot> {
         TicketActionSheetAction(
           action: TicketActionSheetActionType.TAKE_PHOTO,
           title: "ticket-action.take-photo".tr(),
-          icon: Icon(Icons.photo_camera),
+          icon: Icons.photo_camera,
         ),
         TicketActionSheetAction(
           action: TicketActionSheetActionType.CHOOSE_PHOTO,
           title: "ticket-action.choose-photo".tr(),
-          icon: Icon(Icons.photo),
+          icon: Icons.photo,
         ),
         TicketActionSheetAction(
           action: TicketActionSheetActionType.SELECT_FILE,
           title: "ticket-action.select-file".tr(),
-          icon: Icon(Icons.file_copy),
+          icon: Icons.file_copy,
         ),
       ];
 
+  /// Ticket Action On Tap
   void _ticketActionOnTap(TicketActionSheetActionType action) async {
     switch (action) {
       /// Open the camera to take a photo
@@ -405,15 +342,74 @@ class _TicketSlotState extends NyState<TicketSlot> {
             mainAxisSize: MainAxisSize.min,
             children: getActionSheetActions().map<Widget>((action) {
               return ListTile(
-                title: Text(action.title).setColor(
+                title: Text(action.title).titleSmall(context).setColor(
                     context, (color) => ThemeColor.get(context).surfaceContent),
-                leading: action.icon,
+                leading: Icon(
+                  action.icon,
+                  size: 22,
+                ),
                 onTap: () => _ticketActionOnTap(action.action),
               );
             }).toList(),
           ),
         ),
       ),
+    );
+  }
+
+  /// Build the widget
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      child: RotatedBox(
+        quarterTurns: widget.quarterTurns,
+        child: Stack(
+          children: [
+            Container(
+              width: scale(widget.width, context),
+              height: scale(widget.height, context),
+              decoration: slotDecoration(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextLabelContainer(),
+                  SizedBox(height: widget.iconSpacing),
+                  if (localExists)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 14.0),
+                      child: Icon(
+                        AB2024.ticket_view_entry,
+                        size: 30,
+                        color: ThemeColor.get(context).ticketSlotIcon,
+                      ),
+                    ),
+                  if (!localExists)
+                    Icon(
+                      AB2024.ticket_add_entry_2,
+                      size: 30,
+                      color: ThemeColor.get(context).ticketSlotIcon,
+                    ),
+                ],
+              ),
+            ),
+            if (localExists)
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: IconButton(
+                  icon: Icon(
+                    AB2024.ticket_remove_entry,
+                    size: 20,
+                    color: ThemeColor.get(context).ticketSlotIcon,
+                  ),
+                  onPressed: confirmDelete,
+                ),
+              ),
+          ],
+        ),
+      ),
+      onTap: () => localExists ? viewTicket() : addTicket(),
     );
   }
 }

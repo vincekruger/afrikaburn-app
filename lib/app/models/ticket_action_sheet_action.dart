@@ -11,7 +11,7 @@ enum TicketActionSheetActionType {
 class TicketActionSheetAction {
   final TicketActionSheetActionType action;
   final String title;
-  final Icon icon;
+  final IconData icon;
 
   TicketActionSheetAction({
     required this.action,

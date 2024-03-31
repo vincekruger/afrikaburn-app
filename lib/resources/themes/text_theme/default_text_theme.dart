@@ -9,6 +9,16 @@ const TextTheme defaultTextTheme = TextTheme(
     fontFamily: 'Staatliches',
     height: 1,
   ),
+  titleMedium: TextStyle(
+    fontSize: 18.0,
+    fontFamily: 'Staatliches',
+    fontWeight: FontWeight.w500,
+  ),
+  titleSmall: TextStyle(
+    fontSize: 15.0,
+    fontFamily: 'Staatliches',
+    fontWeight: FontWeight.w400,
+  ),
   headlineSmall: TextStyle(
     fontSize: 22.0,
   ),
@@ -28,15 +38,6 @@ const TextTheme defaultTextTheme = TextTheme(
   displayLarge: TextStyle(
     fontSize: 36.0,
     fontWeight: FontWeight.w300,
-  ),
-  titleSmall: TextStyle(
-    fontSize: 15.0,
-    fontFamily: 'Staatliches',
-    fontWeight: FontWeight.w400,
-  ),
-  titleMedium: TextStyle(
-    fontSize: 16.0,
-    fontWeight: FontWeight.w500,
   ),
   labelSmall: TextStyle(
     fontSize: 10.0,
