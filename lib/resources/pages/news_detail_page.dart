@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
@@ -162,7 +164,8 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
                   width: double.infinity,
                   child: Stack(
                     children: [
-                      canvasGradientLinesCrisCross(context, top: 255),
+                      canvasGradientLinesCrisCross(context,
+                          top: Platform.isAndroid ? 245 : 255),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
