@@ -21,12 +21,6 @@ class _HomePageState extends NyState<HomePage> {
           getEnv("APP_NAME"),
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: widget.controller.showAbout,
-            icon: Icon(Icons.info_outline),
-          ),
-        ],
       ),
       body: SafeAreaWidget(
         child: Center(
