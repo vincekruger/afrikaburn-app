@@ -36,7 +36,8 @@
       "take-photo": "Take Photo",
       "choose-photo": "Choose Photo",
       "select-file": "Select a PDF",
-      "delete-ticket": "Delete Ticket"
+      "delete-ticket": "Delete Ticket",
+      "dont-have-ticket": "I don't have a ticket"
   },
   "news": {
     "cta": {

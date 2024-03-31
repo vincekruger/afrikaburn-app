@@ -51,8 +51,9 @@ class TicketController extends Controller {
 
     // Create a folder for the ticket items
     final String assetFolder = p.join(appDocumentsDir.path, ticketPath);
-    if (!Directory(assetFolder).existsSync())
+    if (!Directory(assetFolder).existsSync()) {
       Directory(assetFolder).createSync();
+    }
 
     // Return the path to the ticket item
     return p.join(
@@ -163,11 +164,10 @@ class TicketController extends Controller {
   }
 
   /// Delete the ticket item file from the documents directory
-  void deleteTicket({bool isPdf = false}) async {
+  void deleteTicket(String _assetPath) async {
     try {
       /// Rmove the asset
-      final String assetPath = await getAssetPath(isPdf: isPdf);
-      File(assetPath).deleteSync();
+      File(_assetPath).deleteSync();
 
       /// Update the ticket item state
       notifiyTicketSlot(false);

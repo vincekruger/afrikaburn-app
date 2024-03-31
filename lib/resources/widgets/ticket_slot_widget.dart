@@ -73,7 +73,6 @@ class _TicketSlotState extends NyState<TicketSlot> {
   /// State Updated
   @override
   stateUpdated(dynamic data) async {
-    print("State Updated: ${data.toString()}");
     setState(() {
       localExists = data['exists'];
       isPdf = data['isPdf'];
@@ -199,37 +198,36 @@ class _TicketSlotState extends NyState<TicketSlot> {
   /// Show an alert dialog to confirm the delete action
   void confirmDelete() {
     showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("ticket-content.delete-confirm.title".tr(arguments: {
-            "ticket_type": ticketLabel,
-          })),
-          content: Text("ticket-content.delete-confirm.message".tr()),
-          contentPadding: EdgeInsets.symmetric(horizontal: 24, vertical: 0)
-              .copyWith(top: 16, bottom: 8),
-          actionsAlignment: MainAxisAlignment.spaceAround,
-          actionsPadding: EdgeInsets.zero.copyWith(bottom: 8),
-          actions: [
-            TextButton(
-              child: Text("ticket-content.delete-confirm.confirm".tr())
-                  .setColor(context, (color) => Colors.red.shade600)
-                  .fontWeightBold(),
-              onPressed: () {
-                widget.controller.deleteTicket(isPdf: isPdf);
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: Text("ticket-content.delete-confirm.cancel".tr())
-                  .fontWeightBold(),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
+      context: this.context,
+      builder: (BuildContext context) => AlertDialog(
+        title: Text("ticket-content.delete-confirm.title".tr(arguments: {
+          "ticket_type": ticketLabel,
+        })),
+        content: Text("ticket-content.delete-confirm.message".tr()),
+        contentPadding: EdgeInsets.symmetric(horizontal: 24, vertical: 0)
+            .copyWith(top: 16, bottom: 8),
+        actionsAlignment: MainAxisAlignment.spaceAround,
+        actionsPadding: EdgeInsets.zero.copyWith(bottom: 8),
+        actions: [
+          TextButton(
+            child: Text("ticket-content.delete-confirm.confirm".tr())
+                .setColor(context, (color) => Colors.red.shade600)
+                .fontWeightBold(),
+            onPressed: () {
+              /// Delete the ticket item and close the dialog
+              widget.controller.deleteTicket(assetPath);
+              Navigator.of(context).pop();
+            },
+          ),
+          TextButton(
+            child: Text("ticket-content.delete-confirm.cancel".tr())
+                .fontWeightBold(),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      ),
     );
   }
 
@@ -319,8 +317,7 @@ class _TicketSlotState extends NyState<TicketSlot> {
       builder: (BuildContext context) => CupertinoActionSheet(
         actions: getActionSheetActions().map<Widget>((action) {
           return CupertinoActionSheetAction(
-            child: Text(action.title).setColor(
-                context, (color) => ThemeColor.get(context).surfaceContent),
+            child: Text(action.title),
             onPressed: () => _ticketActionOnTap(action.action),
           );
         }).toList(),
