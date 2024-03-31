@@ -11,8 +11,6 @@
 			<string>PSGroupSpecifier</string>
 			<key>FooterText</key>
 			<string>Your contribution makes a difference! By sharing diagnostic and usage data you will fuel the development of even cooler features in the future. We don’t share this information with anyone nor will we ever, pinky swear. Also, stay tuned for the infographic showcasing how valuable your input is (anonymously, of course).</string>
-			<key>Title</key>
-			<string>Analytics</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -20,7 +18,7 @@
 			<key>DefaultValue</key>
 			<true/>
 			<key>Title</key>
-			<string>Share Interaction Analytics</string>
+			<string>Share iPhone Analytics</string>
 			<key>Key</key>
 			<string>flutter.analyticsCollectionEnabled</string>
 		</dict>
