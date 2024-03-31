@@ -5,7 +5,7 @@ import '/app/controllers/map_controller.dart';
 
 class MapPage extends NyStatefulWidget<MapController> {
   static const path = '/map';
-
+  static const name = 'Map Page';
   MapPage() : super(path, child: _MapPageState());
 }
 

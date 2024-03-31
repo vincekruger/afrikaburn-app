@@ -9,8 +9,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 class RootPage extends NyStatefulWidget {
   /// Route path & page name
   static const path = '/default-world';
-  static const name = 'DefaultWorldPage';
-
+  static const name = 'Root Page';
   RootPage() : super(path, child: _DefaultWorldPageState());
 }
 

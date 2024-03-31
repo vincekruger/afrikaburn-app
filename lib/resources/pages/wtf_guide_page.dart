@@ -5,7 +5,7 @@ import 'package:afrikaburn/app/controllers/wtf_guide_controller.dart';
 
 class WtfGuidePage extends NyStatefulWidget<WtfGuideController> {
   static const path = '/wtf-guide';
-
+  static const name = 'WTF Buide Page';
   WtfGuidePage() : super(path, child: _WtfGuidePageState());
 }
 

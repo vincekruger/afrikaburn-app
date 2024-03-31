@@ -11,7 +11,7 @@ import 'package:afrikaburn/resources/widgets/ticket_slot_widget.dart';
 
 class TicketPage extends NyStatefulWidget<TicketController> {
   static const path = '/ticket';
-
+  static const name = 'Ticket Page';
   TicketPage() : super(path, child: _TicketPageState());
 }
 

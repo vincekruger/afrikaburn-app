@@ -9,7 +9,7 @@ import 'package:afrikaburn/app/controllers/news_controller.dart';
 
 class NewsPage extends NyStatefulWidget<NewsController> {
   static const path = '/news';
-
+  static const name = 'News Page';
   NewsPage() : super(path, child: _NewsPageState());
 }
 

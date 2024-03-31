@@ -8,6 +8,7 @@ import 'package:afrikaburn/app/controllers/home_controller.dart';
 
 class HomePage extends NyStatefulWidget<HomeController> {
   static const path = '/home';
+  static const name = 'Home Page';
   HomePage() : super(path, child: _HomePageState());
 }
 

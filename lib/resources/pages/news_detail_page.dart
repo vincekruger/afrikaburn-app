@@ -19,6 +19,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class NewsDetailPage extends NyStatefulWidget<NewsController> {
   static const path = '/news-detail';
+  static const name = 'News Detail Page';
   NewsDetailPage() : super(path, child: _NewsDetailPageState());
 }
 
