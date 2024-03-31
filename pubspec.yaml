@@ -49,6 +49,7 @@ dependencies:
   cached_network_image: ^3.3.1
   flashy_tab_bar2: ^0.0.10
   gradient_icon: ^2.0.9
+  flutter_native_splash: ^2.4.0
 
 dev_dependencies:
   lints: ^3.0.0
@@ -74,3 +75,14 @@ flutter:
     - public/assets/app_icon/
     - lang/
     - .env
+
+flutter_native_splash:
+  ios: false
+  web: false
+  android: true
+
+  color: "#000681"
+  fullscreen: true
+  android_gravity: center
+  image: public/assets/luanch_screen/launch-screen@3x.png
+  background_image: public/assets/luanch_screen/launch-screen@3x.png
