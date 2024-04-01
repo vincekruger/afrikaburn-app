@@ -3,6 +3,7 @@ import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/resources/pages/news_detail_page.dart';
+import 'package:afrikaburn/resources/themes/extensions/outlined_button.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -142,14 +143,12 @@ class _NewsItemState extends State<NewsItem> {
     /// Create the read more button
     Widget readMore = RotatedBox(
       quarterTurns: 3,
-      child: OutlineGradientButton(
-        child: ElevatedButton(
-          onPressed: openDetail,
-          child: Text("news.cta.read-now".tr())
-              .bodyMedium(context)
-              .fontWeightBold(),
-        ),
-        backgroundColor: ThemeColor.get(context).surfaceBackground,
+      child: OutlinedButton(
+        onPressed: openDetail,
+        child:
+            Text("news.cta.read-now".tr()).bodyMedium(context).fontWeightBold(),
+      ).withGradient(
+        strokeWidth: 2,
         gradient: LinearGradient(
           colors: [
             const Color(0xFF9B1EE9), // TODO Update color
@@ -159,8 +158,6 @@ class _NewsItemState extends State<NewsItem> {
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),
-        strokeWidth: 2,
-        padding: EdgeInsets.all(2),
         radius: Radius.circular(3),
       ),
     );

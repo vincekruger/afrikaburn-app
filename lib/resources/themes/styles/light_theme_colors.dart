@@ -28,13 +28,6 @@ class LightThemeColors extends BaseThemeColors implements ColorStyles {
   Color get gradientButtonBackgroundEnd => this.gradient1End;
   Color get gradientButtonLabel => Colors.white;
 
-  // outlined button
-  Color get outlinedButtonGradientBorderStart => this.gradient1Start;
-  Color get outlinedButtonGradientBorderMiddle => this.gradient1Middle;
-  Color get outlinedButtonGradientBorderEnd => this.gradient1End;
-  Color get outlinedButtonBackground => this.background;
-  Color get outlinedButtonLabel => this.primaryContent;
-
   // buttons
   Color get buttonBackground => Colors.blueAccent;
   Color get buttonPrimaryContent => Colors.white;
