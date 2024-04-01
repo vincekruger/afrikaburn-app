@@ -1,6 +1,7 @@
 import 'package:afrikaburn/app/models/news.dart';
 import 'package:afrikaburn/resources/widgets/news_item_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/config/design.dart';
 import 'package:afrikaburn/resources/appbars/news_app_bar.dart';
@@ -17,14 +18,54 @@ class _NewsPageState extends NyState<NewsPage> {
   /// [NewsController] controller
   NewsController get controller => widget.controller;
 
-  List<News> newsList = [];
-
+  /// Widget init
   @override
-  boot() async {
-    /// Fetch News Posts
-    newsList = await widget.controller.getNewsPosts();
+  init() {
+    widget.controller.pagingController.addPageRequestListener((pageKey) {
+      widget.controller.fetchNews(pageKey);
+    });
+    return super.init();
   }
 
+  /// Widget dispose
+  @override
+  void dispose() {
+    widget.controller.pagingController.dispose();
+    super.dispose();
+  }
+
+  /// News List View
+  Widget NewList(BuildContext context) {
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverToBoxAdapter(
+          child: Container(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                NewsAppBar(
+                  scale(90 - MediaQuery.of(context).padding.top, context),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  child: AbDivider(width: scale(190, context)),
+                ),
+              ],
+            ),
+          ),
+        ),
+        PagedSliverList<int, News>(
+          pagingController: widget.controller.pagingController,
+          builderDelegate: PagedChildBuilderDelegate<News>(
+            itemBuilder: (context, item, index) => NewsItem(item, index: index),
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Widget view
   @override
   Widget view(BuildContext context) {
     return Scaffold(
@@ -69,36 +110,6 @@ class _NewsPageState extends NyState<NewsPage> {
           ],
         ),
       ),
-    );
-  }
-
-  /// News List View
-  Widget NewList(BuildContext context) {
-    return ListView.builder(
-      padding: EdgeInsets.only(bottom: 20, top: 0),
-      itemCount: newsList.length,
-      itemBuilder: (context, index) {
-        bool inverted = index % 2 == 0;
-
-        if (index == 0)
-          return Container(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                NewsAppBar(
-                  scale(90 - MediaQuery.of(context).padding.top, context),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: AbDivider(width: scale(190, context)),
-                ),
-                NewsItem(newsList[index], inverted: inverted),
-              ],
-            ),
-          );
-        return NewsItem(newsList[index], inverted: inverted);
-      },
     );
   }
 }

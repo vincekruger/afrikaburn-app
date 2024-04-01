@@ -46,6 +46,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   @override
   void dispose() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    widget.controller.pagingController.dispose();
     super.dispose();
   }
 
@@ -57,7 +58,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   }
 
   /// Image Credit
-  Widget _imageCredit() {
+  Widget formatImageCredit() {
     if (newsItem.imageCredit == null) return Container();
 
     return Padding(
@@ -87,7 +88,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   }
 
   /// Categories List
-  List<Widget> catgoriesList() {
+  List<Widget> formatCategoryList() {
     if (newsItem.categories == null) return [];
     if (newsItem.categories!.isEmpty) return [];
 
@@ -136,6 +137,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
     );
   }
 
+  /// The View
   @override
   Widget view(BuildContext context) {
     return Scaffold(
@@ -179,7 +181,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
                               fit: BoxFit.cover,
                             ),
                           ),
-                          _imageCredit(),
+                          formatImageCredit(),
                         ],
                       ),
                       Positioned(

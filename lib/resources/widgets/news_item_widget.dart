@@ -9,11 +9,14 @@ import 'package:nylo_framework/nylo_framework.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
 
 class NewsItem extends StatefulWidget {
-  const NewsItem(this.item, {Key? key, required this.inverted})
-      : super(key: key);
+  NewsItem(
+    this.item, {
+    super.key,
+    required this.index,
+  });
 
+  final int index;
   final News item;
-  final bool inverted;
 
   @override
   State<NewsItem> createState() => _NewsItemState();
@@ -26,8 +29,9 @@ class _NewsItemState extends State<NewsItem> {
   final borderRadius = BorderRadius.circular(10);
   final boxHeight = 220.0;
 
-  /// Hero Tag
-  late String heroTag;
+  /// Hero Tag & Inverted
+  late String _heroTag;
+  late bool _inverted;
 
   /// Open the detail page
   void openDetail() {
@@ -50,7 +54,8 @@ class _NewsItemState extends State<NewsItem> {
   @override
   Widget build(BuildContext context) {
     /// Set the hero tag
-    heroTag = 'news-photo-detail' + widget.item.id.toString();
+    _heroTag = 'news-photo-detail' + widget.item.id.toString();
+    _inverted = widget.index % 2 == 0;
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -61,7 +66,7 @@ class _NewsItemState extends State<NewsItem> {
         onTap: openDetail,
         borderRadius: borderRadius,
         child: Hero(
-          tag: heroTag,
+          tag: _heroTag,
           child: Container(
             height: boxHeight,
             child: Stack(
@@ -118,8 +123,8 @@ class _NewsItemState extends State<NewsItem> {
     Widget title = Expanded(
       child: Container(
         padding: EdgeInsets.only(
-          left: widget.inverted ? horizontalPadding : 0,
-          right: widget.inverted ? 0 : horizontalPadding,
+          left: _inverted ? horizontalPadding : 0,
+          right: _inverted ? 0 : horizontalPadding,
         ),
         child: Text(
           widget.item.title,
@@ -165,8 +170,8 @@ class _NewsItemState extends State<NewsItem> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        if (widget.inverted == false) ...[title, readMore],
-        if (widget.inverted == true) ...[readMore, title],
+        if (_inverted == false) ...[title, readMore],
+        if (_inverted == true) ...[readMore, title],
       ],
     );
   }
