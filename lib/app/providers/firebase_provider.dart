@@ -36,11 +36,6 @@ class FirebaseProvider implements NyProvider {
       persistenceEnabled: true,
       cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
     );
-
-    /// Set Crashlytics Collection Enabled state
-    FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(
-      SharedPreferencesProvider().analyticsCollectionEnabled,
-    );
   }
 
   /// Configure Firebase Remote Config
@@ -66,11 +61,17 @@ class FirebaseProvider implements NyProvider {
 
   /// Configure Firebase Analytics
   _configureAnalyticsCollection() async {
-    FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(
+    bool analyticsCollectionEnabled =
+        (await SharedPreferencesProvider().init()).analyticsCollectionEnabled;
+
+    /// Set Analytics Collection Enabled state
+    FirebaseAnalytics.instance
+        .setAnalyticsCollectionEnabled(analyticsCollectionEnabled);
+
+    /// Set Crashlytics Collection Enabled state
+    FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(
       SharedPreferencesProvider().analyticsCollectionEnabled,
     );
-    print(
-        "Analytics Collection Enabled set to ${SharedPreferencesProvider().analyticsCollectionEnabled}");
   }
 
   /// Log a screen view

@@ -1,5 +1,6 @@
 import 'package:afrikaburn/app/models/news.dart';
 import 'package:afrikaburn/resources/widgets/news_item_widget.dart';
+import 'package:afrikaburn/resources/widgets/news_list_actions_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -34,26 +35,32 @@ class _NewsPageState extends NyState<NewsPage> {
     super.dispose();
   }
 
+  /// ListView Header
+  Widget header(BuildContext context) {
+    return Container(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          NewsAppBar(
+            scale(90 - MediaQuery.of(context).padding.top, context),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            child: AbDivider(width: scale(190, context)),
+          ),
+          NewsListActions(),
+        ],
+      ),
+    );
+  }
+
   /// News List View
   Widget NewList(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
         SliverToBoxAdapter(
-          child: Container(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                NewsAppBar(
-                  scale(90 - MediaQuery.of(context).padding.top, context),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: AbDivider(width: scale(190, context)),
-                ),
-              ],
-            ),
-          ),
+          child: header(context),
         ),
         PagedSliverList<int, News>(
           pagingController: widget.controller.pagingController,
@@ -82,7 +89,7 @@ class _NewsPageState extends NyState<NewsPage> {
               ),
             ),
             Positioned(
-              top: scale(135, context),
+              top: scale(145, context),
               left: scale(93, context),
               child: Container(
                 height: scale(310, context),

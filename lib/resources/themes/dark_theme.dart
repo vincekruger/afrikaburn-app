@@ -31,8 +31,10 @@ ThemeData darkTheme(ColorStyles color) {
         systemOverlayStyle: SystemUiOverlayStyle.light),
     buttonTheme: BaseThemeStuff.makeButtonThemeData(color),
     textButtonTheme: BaseThemeStuff.makeTextButtonThemeData(color),
-    elevatedButtonTheme: BaseThemeStuff.makeElevatedButtonThemeData(color),
-    outlinedButtonTheme: BaseThemeStuff.makeOutlinedButtonThemeData(color),
+    elevatedButtonTheme:
+        BaseThemeStuff.makeElevatedButtonThemeData(color, darkTheme),
+    outlinedButtonTheme:
+        BaseThemeStuff.makeOutlinedButtonThemeData(color, darkTheme),
     navigationBarTheme: BaseThemeStuff.navigationBarTheme.copyWith(
       backgroundColor: color.bottomTabBarBackground,
       labelTextStyle: MaterialStateTextStyle.resolveWith(

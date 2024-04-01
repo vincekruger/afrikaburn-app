@@ -17,7 +17,7 @@ class BaseThemeStuff {
       );
 
   static ElevatedButtonThemeData makeElevatedButtonThemeData(
-          ColorStyles color) =>
+          ColorStyles color, TextTheme textTheme) =>
       ElevatedButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: color.primaryContent,
@@ -30,14 +30,17 @@ class BaseThemeStuff {
       );
 
   static OutlinedButtonThemeData makeOutlinedButtonThemeData(
-          ColorStyles color) =>
+          ColorStyles color, TextTheme textTheme) =>
       OutlinedButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: color.outlinedButtonLabel,
           backgroundColor: color.outlinedButtonBackground,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
-          padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+          padding: EdgeInsets.symmetric(horizontal: 32, vertical: 14),
           minimumSize: Size(0, 0),
+          textStyle: textTheme.labelLarge!.copyWith(
+            fontWeight: FontWeight.w600,
+          ),
         ),
       );
 

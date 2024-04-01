@@ -8,7 +8,6 @@ import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import 'package:outline_gradient_button/outline_gradient_button.dart';
 
 class NewsItem extends StatefulWidget {
   NewsItem(
@@ -146,8 +145,7 @@ class _NewsItemState extends State<NewsItem> {
       quarterTurns: 3,
       child: OutlinedButton(
         onPressed: openDetail,
-        child:
-            Text("news.cta.read-now".tr()).bodyMedium(context).fontWeightBold(),
+        child: Text("news.cta.read-now".tr()),
       ).withGradient(
         strokeWidth: 2,
         gradient: GradientStyles.outlinedButtonBorder,

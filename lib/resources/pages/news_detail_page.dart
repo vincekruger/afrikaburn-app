@@ -46,7 +46,6 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   @override
   void dispose() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-    widget.controller.pagingController.dispose();
     super.dispose();
   }
 

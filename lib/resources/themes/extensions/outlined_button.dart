@@ -7,6 +7,8 @@ extension RoundedOutlinedButton on OutlinedButton {
     required LinearGradient gradient,
     Radius radius = Radius.zero,
   }) {
+    var child = this.child;
+
     return OutlineGradientButton(
       strokeWidth: strokeWidth,
       gradient: gradient,
@@ -28,7 +30,7 @@ extension RoundedOutlinedButton on OutlinedButton {
           side: MaterialStateProperty.all(
               BorderSide(width: 0, color: Colors.transparent)),
         ),
-        child: child,
+        child: child is Text ? Text(child.data!.toUpperCase()) : child,
       ),
     );
   }

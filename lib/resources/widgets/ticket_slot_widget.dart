@@ -236,17 +236,17 @@ class _TicketSlotState extends NyState<TicketSlot> {
         TicketActionSheetAction(
           action: TicketActionSheetActionType.TAKE_PHOTO,
           title: "ticket-action.take-photo".tr(),
-          icon: Icons.photo_camera,
+          icon: AB2024.camera,
         ),
         TicketActionSheetAction(
           action: TicketActionSheetActionType.CHOOSE_PHOTO,
           title: "ticket-action.choose-photo".tr(),
-          icon: Icons.photo,
+          icon: AB2024.photo,
         ),
         TicketActionSheetAction(
           action: TicketActionSheetActionType.SELECT_FILE,
           title: "ticket-action.select-file".tr(),
-          icon: Icons.file_copy,
+          icon: AB2024.file,
         ),
       ];
 

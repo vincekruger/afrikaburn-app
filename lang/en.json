@@ -41,6 +41,7 @@
   },
   "news": {
     "cta": {
+      "submit-an-article": "Submit an Article",
       "read-now": "Read Now"
     }
   }

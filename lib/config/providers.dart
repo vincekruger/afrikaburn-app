@@ -22,6 +22,5 @@ final Map<Type, NyProvider> providers = {
   AuthProvider: AuthProvider(),
   FirebaseProvider: FirebaseProvider(),
   SystemProvider: SystemProvider(),
-
   SharedPreferencesProvider: SharedPreferencesProvider(),
 };

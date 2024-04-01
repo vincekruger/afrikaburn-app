@@ -35,8 +35,10 @@ ThemeData lightTheme(ColorStyles color) {
     ),
     buttonTheme: BaseThemeStuff.makeButtonThemeData(color),
     textButtonTheme: BaseThemeStuff.makeTextButtonThemeData(color),
-    elevatedButtonTheme: BaseThemeStuff.makeElevatedButtonThemeData(color),
-    outlinedButtonTheme: BaseThemeStuff.makeOutlinedButtonThemeData(color),
+    elevatedButtonTheme:
+        BaseThemeStuff.makeElevatedButtonThemeData(color, lightTheme),
+    outlinedButtonTheme:
+        BaseThemeStuff.makeOutlinedButtonThemeData(color, lightTheme),
     navigationBarTheme: BaseThemeStuff.navigationBarTheme.copyWith(
       backgroundColor: color.bottomTabBarBackground,
       labelTextStyle: MaterialStateTextStyle.resolveWith(

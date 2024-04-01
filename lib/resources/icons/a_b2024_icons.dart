@@ -30,6 +30,7 @@ class AB2024 {
   static const IconData art = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData event = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData map = IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData file = IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData mutant_vehicle = IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData rft = IconData(0xe80b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData settings = IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -39,4 +40,10 @@ class AB2024 {
   static const IconData more = IconData(0xe810, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData wtf_guide = IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData ticket = IconData(0xe812, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData camera = IconData(0xe813, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData photo = IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData contribute = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData hamburger = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData notification = IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData off_slash = IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
