@@ -1,4 +1,3 @@
-import '/resources/pages/scroll_test_page.dart';
 import '../resources/pages/root.dart';
 import '/resources/pages/news_detail_page.dart';
 import '/resources/pages/news_page.dart';
@@ -49,5 +48,4 @@ appRouter() => nyRoutes((router) {
       /// Other Pages
       /// TODO remove eventually
       router.route(HomePage.path, (context) => HomePage());
-     router.route(ScrollTestPage.path, (context) => ScrollTestPage());
-});
+    });
