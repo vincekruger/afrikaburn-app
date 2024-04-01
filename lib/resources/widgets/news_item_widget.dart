@@ -4,6 +4,7 @@ import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/resources/pages/news_detail_page.dart';
 import 'package:afrikaburn/resources/themes/extensions/outlined_button.dart';
+import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -149,15 +150,7 @@ class _NewsItemState extends State<NewsItem> {
             Text("news.cta.read-now".tr()).bodyMedium(context).fontWeightBold(),
       ).withGradient(
         strokeWidth: 2,
-        gradient: LinearGradient(
-          colors: [
-            const Color(0xFF9B1EE9), // TODO Update color
-            const Color(0xFFFD1D346), // TODO Update color
-            const Color(0xFF20EDC4), // TODO Update color
-          ],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
+        gradient: GradientStyles.outlinedButtonBorder,
         radius: Radius.circular(3),
       ),
     );

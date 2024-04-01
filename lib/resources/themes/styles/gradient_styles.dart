@@ -22,6 +22,16 @@ class GradientStyles {
         ],
       );
 
+  static LinearGradient get outlinedButtonBorder => LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        colors: [
+          BaseThemeColors().gradient1Start,
+          BaseThemeColors().gradient1Middle,
+          BaseThemeColors().gradient1End,
+        ],
+      );
+
   static LinearGradient get appbarIcon => LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
