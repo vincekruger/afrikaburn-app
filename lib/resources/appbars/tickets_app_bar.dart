@@ -1,4 +1,3 @@
-import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:afrikaburn/config/design.dart';
 import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
@@ -20,19 +19,8 @@ class TicketsAppBar extends StatelessWidget implements PreferredSizeWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Navigator.canPop(context)
-                  ? IconButton(
-                      iconSize: 30,
-                      icon: Icon(Icons.arrow_back),
-                      color: ThemeColor.get(context).primaryAlternate,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    )
-                  : SizedBox(
-                      width: scale(57, context),
-                    ),
               Container(
                 width: scale(336, context),
                 child: Image.asset(
