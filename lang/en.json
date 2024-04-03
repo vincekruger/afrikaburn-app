@@ -11,11 +11,26 @@
   },
   "menu-item": {
     "news": "News",
+    "radio-free-tankwa": "RTF",
     "tickets": "Tickets",
-    "more-stuff": "More Stuff"
+    "more-stuff": "More Stuff",
+    "wtf-guide-pdf": "WTF Guide",
+    "map-pdf": "PDF Map",
+    "my-contant": "My Contact",
+    "map": "Map",
+    "artwork": "Artwork",
+    "theme-camps": "Theme Camps",
+    "mutant-vehicles": "Mutant Vehicles",
+    "favorites": "Favorites",
+    "share-app": "Share App",
+    "support-app": "Support the App",
+    "settings": "Settings",
+    "my-contact": "My Contact"
   },
-  "screen-title": {
-    "map": "Map"
+  "screen-name": {
+    "map": "Map",
+    "wtf-guide":"WTF Guide",
+    "map-pdf": "Map"
   },
   "ticket-content": {
     "available-offline": "NO STRESS, bru!\nAll this lekker stuff's saved on your phone, so when you're off the grid, you sorted 📱💾🔒 No worries!",
