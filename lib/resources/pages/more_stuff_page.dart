@@ -1,5 +1,6 @@
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
+import 'package:afrikaburn/resources/appbars/custom_app_bar.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:afrikaburn/resources/pages/map_pdf_page.dart';
 import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
@@ -55,10 +56,10 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
   /// Pointing Hand Widget
   Widget _pointingHand(BuildContext context) => Container(
         alignment: Alignment.topLeft,
-        padding: EdgeInsets.only(left: 12),
+        padding: EdgeInsets.only(left: 12, top: 20),
         child: Image.asset(
           context.isDarkMode
-              ? "public/assets/images/pointing-hand-light.png"
+              ? "public/assets/images/pointing-hand-dark.png"
               : "public/assets/images/pointing-hand-light.png",
           width: 58,
         ),
@@ -67,7 +68,10 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
   @override
   Widget view(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("More Stuff")),
+      appBar: CustomAppBar(
+        title: "menu-item.more-stuff".tr(),
+        height: 60,
+      ),
       body: SafeArea(
         child: ListView.separated(
           padding: EdgeInsets.only(bottom: 40),
@@ -104,7 +108,7 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
             AB24Icons.chevron_right,
             size: 20,
           ).withGradeint(GradientStyles.appbarIcon)
-        : Text("coming soon").bodySmall(context).setFontSize(10);
+        : Text("coming soon").bodySmall(context).setFontSize(08);
 
     return ListTile(
       contentPadding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
