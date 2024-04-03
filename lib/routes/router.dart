@@ -1,3 +1,6 @@
+import '/resources/pages/map_pdf_page.dart';
+import '/resources/pages/more_stuff_page.dart';
+import '/resources/pages/radio_free_tankwa_page.dart';
 import '../resources/pages/root.dart';
 import '/resources/pages/news_detail_page.dart';
 import '/resources/pages/news_page.dart';
@@ -40,12 +43,33 @@ appRouter() => nyRoutes((router) {
       router.route(TicketPage.path, (context) => TicketPage());
       router.route(MyContactPage.path, (context) => MyContactPage());
       router.route(CreateContactPage.path, (context) => CreateContactPage());
-      router.route(WtfGuidePage.path, (context) => WtfGuidePage());
+      router.route(
+          RadioFreeTankwaPage.path, (context) => RadioFreeTankwaPage());
+      router.route(MoreStuffPage.path, (context) => MoreStuffPage());
+
+      // PDF Viewers
+      router.route(
+        WtfGuidePage.path,
+        (context) => WtfGuidePage(),
+        transition: PageTransitionType.bottomToTop,
+        pageTransitionSettings: PageTransitionSettings(
+          alignment: Alignment.bottomCenter,
+          fullscreenDialog: true,
+        ),
+      );
+      router.route(
+        MapPdfPage.path,
+        (context) => MapPdfPage(),
+        transition: PageTransitionType.bottomToTop,
+        pageTransitionSettings: PageTransitionSettings(
+          alignment: Alignment.bottomCenter,
+          fullscreenDialog: true,
+        ),
+      );
 
       /// On-Site Pages
       router.route(MapPage.path, (context) => MapPage());
 
-      /// Other Pages
-      /// TODO remove eventually
+      /// Other stuff
       router.route(HomePage.path, (context) => HomePage());
     });

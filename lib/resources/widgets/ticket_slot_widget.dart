@@ -14,7 +14,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/app/models/ticket.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/config/design.dart';
-import 'package:afrikaburn/resources/icons/a_b2024_icons.dart';
+import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:afrikaburn/app/controllers/ticket_controller.dart';
 import 'package:pdfrx/pdfrx.dart';
 import 'package:photo_view/photo_view.dart';
@@ -200,9 +200,12 @@ class _TicketSlotState extends NyState<TicketSlot> {
     showDialog(
       context: this.context,
       builder: (BuildContext context) => AlertDialog(
-        title: Text("ticket-content.delete-confirm.title".tr(arguments: {
-          "ticket_type": ticketLabel,
-        })),
+        title: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text("ticket-content.delete-confirm.title".tr(arguments: {
+            "ticket_type": ticketLabel,
+          })),
+        ),
         content: Text("ticket-content.delete-confirm.message".tr()),
         contentPadding: EdgeInsets.symmetric(horizontal: 24, vertical: 0)
             .copyWith(top: 16, bottom: 8),
@@ -236,17 +239,17 @@ class _TicketSlotState extends NyState<TicketSlot> {
         TicketActionSheetAction(
           action: TicketActionSheetActionType.TAKE_PHOTO,
           title: "ticket-action.take-photo".tr(),
-          icon: AB2024.camera,
+          icon: AB24Icons.camera,
         ),
         TicketActionSheetAction(
           action: TicketActionSheetActionType.CHOOSE_PHOTO,
           title: "ticket-action.choose-photo".tr(),
-          icon: AB2024.photo,
+          icon: AB24Icons.photo,
         ),
         TicketActionSheetAction(
           action: TicketActionSheetActionType.SELECT_FILE,
           title: "ticket-action.select-file".tr(),
-          icon: AB2024.file,
+          icon: AB24Icons.file,
         ),
       ];
 
@@ -376,14 +379,14 @@ class _TicketSlotState extends NyState<TicketSlot> {
                     Padding(
                       padding: const EdgeInsets.only(right: 14.0),
                       child: Icon(
-                        AB2024.ticket_view_entry,
+                        AB24Icons.plus_think,
                         size: 30,
                         color: ThemeColor.get(context).ticketSlotIcon,
                       ),
                     ),
                   if (!localExists)
                     Icon(
-                      AB2024.ticket_add_entry_2,
+                      AB24Icons.plus_think,
                       size: 30,
                       color: ThemeColor.get(context).ticketSlotIcon,
                     ),
@@ -396,7 +399,7 @@ class _TicketSlotState extends NyState<TicketSlot> {
                 right: 0,
                 child: IconButton(
                   icon: Icon(
-                    AB2024.ticket_remove_entry,
+                    AB24Icons.ticket_remove_entry,
                     size: 20,
                     color: ThemeColor.get(context).ticketSlotIcon,
                   ),

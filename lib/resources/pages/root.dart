@@ -1,5 +1,5 @@
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
-import 'package:afrikaburn/resources/pages/home_page.dart';
+import 'package:afrikaburn/resources/pages/more_stuff_page.dart';
 import 'package:afrikaburn/resources/pages/news_page.dart';
 import 'package:afrikaburn/resources/pages/ticket_page.dart';
 import 'package:afrikaburn/resources/widgets/default_world_navigation_bar_widget.dart';
@@ -19,12 +19,13 @@ class _DefaultWorldPageState extends NyState<RootPage> {
   List<String> _paths = [
     NewsPage.path,
     TicketPage.path,
-    HomePage.path,
+    MoreStuffPage.path,
   ];
+
   List<Widget> _pages = [
     NewsPage(),
     TicketPage(),
-    HomePage(),
+    MoreStuffPage(),
   ];
 
   @override

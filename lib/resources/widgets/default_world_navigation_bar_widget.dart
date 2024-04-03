@@ -1,15 +1,23 @@
-import 'package:afrikaburn/resources/icons/a_b2024_icons.dart';
-import 'package:afrikaburn/resources/pages/root.dart';
-import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_icon/gradient_icon.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
+import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
+import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
+import 'package:afrikaburn/resources/pages/root.dart';
 
 /// Navigation Item Wrapper Class
 class NavigationItem {
   final IconData icon;
   final String label;
-  NavigationItem(this.icon, this.label);
+  final String? labelDetail;
+  final String? routeName;
+
+  NavigationItem(
+    this.icon,
+    this.label, {
+    this.labelDetail,
+    this.routeName,
+  });
 }
 
 /// Default World Navigation Bar
@@ -40,21 +48,11 @@ class _DefaultWorldNavigationBarState
     });
   }
 
-  /// Creates a gradient icon
-  GradientIcon gradientIcon(IconData icon, double iconSize) {
-    return GradientIcon(
-      icon: icon,
-      size: iconSize,
-      offset: Offset.zero,
-      gradient: GradientStyles.appbarIcon,
-    );
-  }
-
   /// List of navigation items
   List<NavigationItem> _items = [
-    NavigationItem(Icons.newspaper, "menu-item.news".tr()),
-    NavigationItem(AB2024.ticket, "menu-item.tickets".tr()),
-    NavigationItem(AB2024.more, "menu-item.more-stuff".tr()),
+    NavigationItem(AB24Icons.news, "menu-item.news".tr()),
+    NavigationItem(AB24Icons.ticket, "menu-item.tickets".tr()),
+    NavigationItem(AB24Icons.more, "menu-item.more-stuff".tr()),
   ];
 
   /// Target updated
@@ -80,14 +78,11 @@ class _DefaultWorldNavigationBarState
   /// Material 2 Navigation Bar
   /// This is working as expected
   BottomNavigationBar material2Bar() {
-    final double iconSize = 20;
-
     return BottomNavigationBar(
-      elevation: 0,
       currentIndex: _currentIndex,
       items: _items
           .map((e) => BottomNavigationBarItem(
-                icon: gradientIcon(e.icon, iconSize),
+                icon: Icon(e.icon).withGradeint(GradientStyles.appbarIcon),
                 label: e.label,
               ))
           .toList(),
@@ -105,7 +100,8 @@ class _DefaultWorldNavigationBarState
       selectedIndex: _currentIndex,
       destinations: _items
           .map((e) => NavigationDestination(
-                icon: gradientIcon(e.icon, iconSize),
+                icon: Icon(e.icon, size: iconSize)
+                    .withGradeint(GradientStyles.appbarIcon),
                 label: e.label,
                 tooltip: '',
               ))

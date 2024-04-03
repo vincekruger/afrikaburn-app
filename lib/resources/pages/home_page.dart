@@ -1,9 +1,9 @@
-import 'package:nylo_framework/nylo_framework.dart';
-import 'package:nylo_framework/theme/helper/ny_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
-import 'package:afrikaburn/resources/widgets/safearea_widget.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
+import 'package:nylo_framework/theme/helper/ny_theme.dart';
+import 'package:afrikaburn/resources/widgets/safearea_widget.dart';
 import 'package:afrikaburn/app/controllers/home_controller.dart';
 
 class HomePage extends NyStatefulWidget<HomeController> {

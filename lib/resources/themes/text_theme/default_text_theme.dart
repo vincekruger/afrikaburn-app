@@ -10,7 +10,7 @@ const TextTheme defaultTextTheme = TextTheme(
     height: 1,
   ),
   titleMedium: TextStyle(
-    fontSize: 18.0,
+    fontSize: 24.0,
     fontFamily: 'Staatliches',
     fontWeight: FontWeight.w500,
   ),

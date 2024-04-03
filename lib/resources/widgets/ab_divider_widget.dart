@@ -7,10 +7,12 @@ class AbDivider extends StatelessWidget {
     Key? key,
     required this.width,
     this.alignment = Alignment.centerLeft,
+    this.height = 2,
     this.padding,
   }) : super(key: key);
 
   final double width;
+  final double height;
   final Alignment alignment;
   final EdgeInsets? padding;
 
@@ -20,7 +22,7 @@ class AbDivider extends StatelessWidget {
       padding: this.padding ?? EdgeInsets.zero,
       child: Container(
         width: scale(this.width, context),
-        height: 2,
+        height: height,
         decoration: BoxDecoration(
           gradient: GradientStyles.canvasLine,
         ),

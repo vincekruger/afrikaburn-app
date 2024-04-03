@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
 
 extension RoundedOutlinedButton on OutlinedButton {
-  Widget withGradient({
+  OutlineGradientButton withGradient({
     required double strokeWidth,
     required LinearGradient gradient,
-    Radius radius = Radius.zero,
+    Radius radius = const Radius.circular(3),
   }) {
     var child = this.child;
 
