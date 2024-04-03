@@ -1,4 +1,4 @@
-import 'package:afrikaburn/resources/icons/a_b2024_icons.dart';
+import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:afrikaburn/config/design.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -69,7 +69,7 @@ class NewsAppBar extends StatelessWidget implements PreferredSizeWidget {
           (BuildContext context, MenuController controller, Widget? child) {
         return IconButton(
           iconSize: 20,
-          icon: Icon(AB2024.settings),
+          icon: Icon(AB24Icons.settings),
           color: const Color(0xFF20EDC4),
           onPressed: () {
             if (controller.isOpen) {
@@ -84,7 +84,7 @@ class NewsAppBar extends StatelessWidget implements PreferredSizeWidget {
         MenuItemButton(
           onPressed: () {},
           leadingIcon: Icon(
-            AB2024.close,
+            AB24Icons.close_thick,
             size: 14,
           ),
           child: Text('Enable Notifications'),

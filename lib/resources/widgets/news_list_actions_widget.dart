@@ -1,12 +1,11 @@
 import 'package:afrikaburn/app/controllers/news_controller.dart';
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
-import 'package:afrikaburn/resources/icons/a_b2024_icons.dart';
+import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
+import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/extensions/outlined_button.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_icon/gradient_icon.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -62,7 +61,7 @@ class _NewsListActionsState extends NyState<NewsListActions> {
     IconButton iconButton = IconButton(
       padding: EdgeInsets.zero,
       icon: Icon(
-        AB2024.notification,
+        AB24Icons.notification,
         size: 18.5,
         color: ThemeColor.get(this.context).background,
       ),
@@ -88,7 +87,7 @@ class _NewsListActionsState extends NyState<NewsListActions> {
               top: 5,
               left: 5,
               child: Icon(
-                AB2024.off_slash,
+                AB24Icons.off_slash,
                 size: 40,
                 color: ThemeColor.get(context).background,
               ),
@@ -121,11 +120,8 @@ class _NewsListActionsState extends NyState<NewsListActions> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  GradientIcon(
-                    icon: AB2024.contribute,
-                    size: 16,
-                    offset: Offset.zero,
-                    gradient: GradientStyles.appbarIcon,
+                  Icon(AB24Icons.contribute, size: 16).withGradeint(
+                    GradientStyles.appbarIcon,
                   ),
                   SizedBox(width: 10),
                   Text("news.cta.submit-an-article".tr()),
@@ -134,7 +130,6 @@ class _NewsListActionsState extends NyState<NewsListActions> {
             ).withGradient(
               strokeWidth: 2,
               gradient: GradientStyles.outlinedButtonBorder,
-              radius: Radius.circular(3),
             ),
           ),
           SizedBox(width: 18),

@@ -3,8 +3,6 @@ import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/resources/pages/news_detail_page.dart';
-import 'package:afrikaburn/resources/themes/extensions/outlined_button.dart';
-import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -32,7 +30,7 @@ class _NewsItemState extends State<NewsItem> {
 
   /// Hero Tag & Inverted
   late String _heroTag;
-  late bool _inverted;
+  // late bool _inverted;
 
   /// Open the detail page
   void openDetail() {
@@ -56,7 +54,7 @@ class _NewsItemState extends State<NewsItem> {
   Widget build(BuildContext context) {
     /// Set the hero tag
     _heroTag = 'news-photo-detail' + widget.item.id.toString();
-    _inverted = widget.index % 2 == 0;
+    // _inverted = widget.index % 2 == 0;
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -119,48 +117,43 @@ class _NewsItemState extends State<NewsItem> {
 
   /// Title and Action Row
   ///
-  Row TitleAction() {
+  Widget TitleAction() {
     /// Create the title
     Widget title = Expanded(
-      child: Container(
-        padding: EdgeInsets.only(
-          left: _inverted ? horizontalPadding : 0,
-          right: _inverted ? 0 : horizontalPadding,
-        ),
-        child: Text(
-          widget.item.title,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          softWrap: true,
-        ).titleLarge(context).setColor(
-            context,
-            (color) =>
-                widget.item.imageOverlayTextColor ??
-                ThemeColor.get(context).primaryContent),
-      ),
+      child: Text(
+        widget.item.title,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+        softWrap: true,
+      ).titleLarge(context).setColor(
+          context,
+          (color) =>
+              widget.item.imageOverlayTextColor ??
+              ThemeColor.get(context).primaryContent),
     );
 
     /// Create the read more button
-    Widget readMore = RotatedBox(
-      quarterTurns: 3,
-      child: OutlinedButton(
-        onPressed: openDetail,
-        child: Text("news.cta.read-now".tr()),
-      ).withGradient(
-        strokeWidth: 2,
-        gradient: GradientStyles.outlinedButtonBorder,
-        radius: Radius.circular(3),
-      ),
-    );
+    // Widget readMore = RotatedBox(
+    //   quarterTurns: 3,
+    //   child: OutlinedButton(
+    //     onPressed: openDetail,
+    //     child: Text("news.cta.read-now".tr()),
+    //   ).withGradient(
+    //     strokeWidth: 2,
+    //     gradient: GradientStyles.outlinedButtonBorder,
+    //     radius: Radius.circular(3),
+    //   ),
+    // );
 
     /// Return the row
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        if (_inverted == false) ...[title, readMore],
-        if (_inverted == true) ...[readMore, title],
-      ],
+        title
+        // if (_inverted == false) ...[title, readMore],
+        // if (_inverted == true) ...[readMore, title],
+      ].expand((x) => [const SizedBox(width: 12), x]).skip(1).toList(),
     );
   }
 }

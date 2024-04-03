@@ -4,7 +4,8 @@ import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/config/design.dart';
-import 'package:afrikaburn/resources/icons/a_b2024_icons.dart';
+import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
+import 'package:afrikaburn/resources/themes/extensions/outlined_button.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:afrikaburn/resources/widgets/news_item_content_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -156,124 +157,151 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
               ),
             ),
           ),
-          ListView(
-            padding: EdgeInsets.zero,
+          articleConent(context),
+        ],
+      ),
+    );
+  }
+
+  /// Article Content
+  Widget articleConent(BuildContext context) {
+    return ListView(
+      padding: EdgeInsets.zero,
+      children: [
+        articleArtwork(context),
+        Padding(
+          padding: padding,
+          child: Text(newsItem.title).titleLarge(context),
+        ),
+        Padding(
+          padding: padding,
+          child: Row(
             children: [
-              Hero(
-                tag: heroTag,
-                child: Container(
-                  height: 330,
-                  width: double.infinity,
-                  child: Stack(
-                    children: [
-                      canvasGradientLinesCrisCross(context,
-                          top: Platform.isAndroid ? 245 : 255),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: 300,
-                            child: CachedNetworkImage(
-                              imageUrl: newsItem.featuredImageUrl,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          formatImageCredit(),
-                        ],
-                      ),
-                      Positioned(
-                        top: 300 - 60,
-                        right: 20,
-                        child: InkWell(
-                          onTap: () => {Navigator.pop(context)},
-                          child: Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: ThemeColor.get(context)
-                                  .black
-                                  .withOpacity(0.85),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: Icon(
-                              AB2024.close_thick,
-                              size: 12,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: padding,
-                child: Text(newsItem.title).titleLarge(context),
-              ),
-              Padding(
-                padding: padding,
-                child: Row(
-                  children: [
-                    formatedDate(),
-                    // ...catgoriesList(),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: padding,
-                child: NewsContent(newsItem.id, newsItem.content),
-              ),
-              Padding(
-                padding:
-                    padding.copyWith(top: 20, bottom: 60, left: 0, right: 0),
-                child: OutlineGradientButton(
-                  onTap: openPostUrl,
-                  padding: EdgeInsets.all(2),
-                  strokeWidth: 2,
-                  gradient: GradientStyles.canvasLine,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 12),
-                    decoration: BoxDecoration(
-                      color: ThemeColor.get(context).surfaceBackground,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
-                          child: Transform(
-                            transform: Matrix4.identity()
-                              ..translate(0.0, 0.0)
-                              ..rotateZ(-0.05),
-                            child: Container(
-                              width: scale(215, context),
-                              child: Text(
-                                "Join the discussion on the burn site".tr(),
-                                softWrap: true,
-                              ).titleLarge(context).setColor(context,
-                                  (color) => ThemeColor.get(context).blue),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
-                          child: Image.asset(
-                            "public/assets/images/pointing-hand.png",
-                            width: scale(87, context),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              formatedDate(),
+              // ...catgoriesList(),
             ],
           ),
-        ],
+        ),
+        Padding(
+          padding: padding,
+          child: NewsContent(newsItem.id, newsItem.content),
+        ),
+        Padding(
+          padding: padding.copyWith(top: 20, left: 0, right: 0),
+          child: OutlineGradientButton(
+            onTap: openPostUrl,
+            padding: EdgeInsets.all(2),
+            strokeWidth: 2,
+            gradient: GradientStyles.canvasLine,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 12),
+              decoration: BoxDecoration(
+                color: ThemeColor.get(context).surfaceBackground,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Transform(
+                      transform: Matrix4.identity()
+                        ..translate(0.0, 0.0)
+                        ..rotateZ(-0.05),
+                      child: Container(
+                        width: scale(215, context),
+                        child: Text(
+                          "Join the discussion on the burn site".tr(),
+                          softWrap: true,
+                        ).titleLarge(context).setColor(
+                            context, (color) => ThemeColor.get(context).blue),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Image.asset(
+                      "public/assets/images/pointing-hand.png",
+                      width: scale(87, context),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: padding.copyWith(top: 40, bottom: 60, left: 0, right: 0),
+          child: Center(
+            child: OutlinedButton(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(AB24Icons.share, size: 16),
+                  SizedBox(width: 10),
+                  Text("Share Story".toUpperCase()),
+                ],
+              ),
+              onPressed: () {},
+            ).withGradient(
+              strokeWidth: 2,
+              gradient: GradientStyles.outlinedButtonBorder,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Article Artwork
+  Widget articleArtwork(BuildContext context) {
+    return Hero(
+      tag: heroTag,
+      child: Container(
+        height: 330,
+        width: double.infinity,
+        child: Stack(
+          children: [
+            canvasGradientLinesCrisCross(context,
+                top: Platform.isAndroid ? 245 : 255),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 300,
+                  child: CachedNetworkImage(
+                    imageUrl: newsItem.featuredImageUrl,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                formatImageCredit(),
+              ],
+            ),
+            Positioned(
+              top: 300 - 60,
+              right: 20,
+              child: InkWell(
+                onTap: () => {Navigator.pop(context)},
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: ThemeColor.get(context).black.withOpacity(0.85),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Icon(
+                    AB24Icons.close_thick,
+                    size: 12,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
