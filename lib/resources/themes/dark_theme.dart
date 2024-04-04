@@ -1,4 +1,5 @@
 import 'package:afrikaburn/resources/themes/base_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '/config/design.dart';
@@ -58,16 +59,16 @@ ThemeData darkTheme(ColorStyles color) {
     ),
     textTheme: darkTheme,
     colorScheme: ColorScheme.dark(background: color.background),
-    dialogTheme: DialogTheme(
-      backgroundColor: color.surfaceBackground,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      titleTextStyle: darkTheme.headlineSmall!.copyWith(
-        color: color.surfaceContent,
-      ),
-      contentTextStyle: darkTheme.bodyMedium!.copyWith(
-        color: color.surfaceContent,
-      ),
-    ),
+    // dialogTheme: DialogTheme(
+    //   backgroundColor: color.surfaceBackground,
+    //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+    //   titleTextStyle: darkTheme.headlineSmall!.copyWith(
+    //     color: color.surfaceContent,
+    //   ),
+    //   contentTextStyle: darkTheme.bodyMedium!.copyWith(
+    //     color: color.surfaceContent,
+    //   ),
+    // ),
     pageTransitionsTheme: BaseThemeStuff.pageTransitionsTheme,
   );
 }

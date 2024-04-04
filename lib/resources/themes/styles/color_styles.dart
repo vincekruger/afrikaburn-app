@@ -78,6 +78,7 @@ abstract class ColorStyles extends BaseColorStyles {
   Color get ticketSlotIcon;
 
   // ios dialog
+  Color get dialogDescructiveActionColor;
   Color get cupertinoDialogActionColor;
 
   // Then implement in color in:

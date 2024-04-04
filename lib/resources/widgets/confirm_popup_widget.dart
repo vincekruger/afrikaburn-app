@@ -1,3 +1,4 @@
+import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
@@ -17,11 +18,16 @@ class ConfirmPopup extends StatelessWidget {
   }) : assert(action != null || actions != null);
 
   Widget actionBuilder(BuildContext context, AlertAction action) {
+    final Text label = Text(action.label).fontWeightBold();
+    if (action.isDestructive == true)
+      label.setColor(
+          context, (color) => context.color.dialogDescructiveActionColor);
+
     return TextButton(
+      child: label,
       onPressed: (action.onPressed != null)
           ? action.onPressed
           : () => Navigator.of(context).pop(),
-      child: Text(action.label).fontWeightBold(),
     );
   }
 
@@ -48,9 +54,11 @@ class ConfirmPopup extends StatelessWidget {
 class AlertAction {
   final String label;
   void Function()? onPressed;
+  bool? isDestructive = false;
 
   AlertAction({
     required this.label,
     this.onPressed,
+    this.isDestructive,
   });
 }

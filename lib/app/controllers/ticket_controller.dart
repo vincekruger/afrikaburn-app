@@ -1,12 +1,15 @@
 import 'dart:io';
 import 'dart:ui' as ui;
 
+import 'package:flutter/material.dart';
+import 'package:path/path.dart' as p;
+import 'package:image/image.dart' as img;
 import 'package:afrikaburn/app/controllers/controller.dart';
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
+import 'package:afrikaburn/resources/widgets/buy_ticket_widget.dart';
 import 'package:afrikaburn/resources/widgets/ticket_slot_widget.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
-import 'package:path/path.dart' as p;
 import 'package:flutter/widgets.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:image_picker/image_picker.dart';
@@ -21,17 +24,30 @@ class TicketController extends Controller {
   }
 
   /// Allow as a singleton
-  bool get singleton => true;
+  // bool get singleton => true;
 
-  /// The Ticket Type
-  late final TicketType _ticketType;
+  final TicketType _ticketType;
+  TicketController(this._ticketType);
 
   /// Ticket item folder name
-  final String ticketPath = 'tickets';
+  static final String ticketPath = 'Tickets';
+  static final String ticketThumbPath = 'tickets-thumbs';
 
-  /// Set the ticket type
-  void set ticketType(TicketType type) {
-    this._ticketType = type;
+  /// A pretty filename for the ticket item
+  /// This can be seen in the system documents directory
+  String get prettyFilename {
+    switch (this._ticketType.name) {
+      case "entry":
+        return "Entry";
+      case "wap":
+        return "WAP";
+      case "etoll":
+        return "E-Toll";
+      case "identification":
+        return "Identification";
+      default:
+        throw Exception("Invalid Ticket Type");
+    }
   }
 
   /// Permission status for Photos
@@ -46,11 +62,24 @@ class TicketController extends Controller {
 
   /// Get the path to the ticket item in the documents directory
   Future<String> getAssetPath({bool isPdf = false}) async {
-    // Get the documents directory
+    // Get the documents paths
     final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
+    final String assetFolder = p.join(appDocumentsDir.path, ticketPath);
+
+    /// Put in a check for the old ticket path
+    final String oldTicketPath = p.join(appDocumentsDir.path, 'tickets');
+    if (Directory(oldTicketPath).existsSync()) {
+      /// Android no peudo rename with existing files. :(
+      if (Platform.isAndroid) {
+        Directory(oldTicketPath).deleteSync(recursive: true);
+        Directory(assetFolder).createSync();
+      } else {
+        Directory(oldTicketPath).renameSync(oldTicketPath + ".tmp");
+        Directory(oldTicketPath + '.tmp').renameSync(assetFolder);
+      }
+    }
 
     // Create a folder for the ticket items
-    final String assetFolder = p.join(appDocumentsDir.path, ticketPath);
     if (!Directory(assetFolder).existsSync()) {
       Directory(assetFolder).createSync();
     }
@@ -58,16 +87,40 @@ class TicketController extends Controller {
     // Return the path to the ticket item
     return p.join(
       assetFolder,
-      this._ticketType.name + (isPdf ? '.pdf' : '.png'),
+      this.prettyFilename + (isPdf ? '.pdf' : '.png'),
     );
+  }
+
+  /// Get the ticket item file from the documents directory
+  Future<File> getAssetFile({bool isPdf = false}) async {
+    return File(await getAssetPath(isPdf: isPdf));
+  }
+
+  /// Get the ticket thubmanil directory
+  Future<Directory> getThumbsDirectory() async {
+    /// Get the paths
+    final Directory appLibraryDir = await ((Platform.isIOS)
+        ? getLibraryDirectory()
+        : getApplicationDocumentsDirectory());
+    final Directory ticketThumbsDir =
+        Directory(p.join(appLibraryDir.path, ticketThumbPath));
+
+    /// Create the folder if it doesn't exist
+    if (!ticketThumbsDir.existsSync()) {
+      ticketThumbsDir.createSync(recursive: true);
+    }
+
+    return ticketThumbsDir;
   }
 
   /// Update the ticket item state
   Future<void> notifiyTicketSlot(bool exists, {bool isPdf = false}) async {
+    updateState(BuyTicketContent.state, data: {"ticketExists": exists});
     updateState(stateKey(this._ticketType), data: {
       "exists": exists,
       "isPdf": isPdf,
-      "assetPath": await getAssetPath(isPdf: isPdf),
+      "assetPath": (await getAssetFile(isPdf: isPdf)).path,
+      "thumbnailPath": (await getThumbnail()).path
     });
   }
 
@@ -96,6 +149,29 @@ class TicketController extends Controller {
   /// and save it to the documents directory
   Future<bool> takePhoto() async => _launchImagePicker(ImageSource.camera);
 
+  /// Save the selected image to the documents directory
+  Future<bool> saveFile(XFile? file, {bool isPdf = false}) async {
+    // Check if an image exists
+    if (file == null) return false;
+
+    /// Read the file
+    final Uint8List bytes = await file.readAsBytes();
+
+    // Save image to the documents directory
+    final File ticketFile = await getAssetFile(isPdf: isPdf);
+    await ticketFile.writeAsBytes(bytes);
+
+    /// Create a thumbnail
+    await saveThumbnail(bytes);
+
+    // Check again if the file exists
+    final bool exists = ticketFile.existsSync();
+
+    // Update the satet of the ticket item and return the result
+    notifiyTicketSlot(exists, isPdf: isPdf);
+    return exists;
+  }
+
   /// Launch the image picker
   Future<bool> _launchImagePicker(ImageSource imageSource) async {
     final XFile? image = await picker.pickImage(
@@ -117,97 +193,93 @@ class TicketController extends Controller {
     /// Nothing was selected or pushed back
     if (result == null) return false;
 
-    try {
-      /// Save the file
-      File pdf = File(result.files.first.path!);
-      String pdfPath = await getAssetPath(isPdf: true);
+    /// Save the file
+    File pdf = File(result.files.first.path!);
+    String pdfPath = await getAssetPath(isPdf: true);
 
-      /// move to correct location & delete cached file
-      pdf.copySync(pdfPath);
-      pdf.deleteSync();
+    /// move to correct location & delete cached file
+    pdf.copySync(pdfPath);
+    pdf.deleteSync();
 
-      /// Generate and image from the pdf
-      final PDF = await PdfDocumentFactory.instance.openFile(pdfPath);
-      final PdfImage? pdfImage = await PDF.pages.first.render();
-      final ui.Image uiImage = await pdfImage!.createImage();
-      final byteData = await uiImage.toByteData(format: ui.ImageByteFormat.png);
-      final Uint8List bytes = Uint8List.view(byteData!.buffer);
-      File(pdfPath.replaceAll('.pdf', '-thumb.png')).writeAsBytesSync(bytes);
+    /// Generate an image from the pdf
+    final PDF = await PdfDocumentFactory.instance.openFile(pdfPath);
+    final PdfImage? pdfImage = await PDF.pages.first.render();
+    final ui.Image uiImage = await pdfImage!.createImage();
+    final byteData = await uiImage.toByteData(format: ui.ImageByteFormat.png);
+    final Uint8List bytes = Uint8List.view(byteData!.buffer);
 
-      /// Update the state
-      notifiyTicketSlot(true, isPdf: true);
-      return true;
-    } catch (e) {
-      // TODO Add some error handling here
-      print(e);
-      print("____FAILED____");
+    /// Save thumbnail
+    await saveThumbnail(bytes);
 
-      return false;
-    }
+    /// Update the state
+    notifiyTicketSlot(true, isPdf: true);
+    return true;
   }
 
-  /// Save the selected image to the documents directory
-  Future<bool> saveFile(XFile? file, {bool isPdf = false}) async {
-    // Check if an image exists
-    if (file == null) return false;
+  /// Get the thumbnail path for the selected file
+  Future<File> getThumbnail() async {
+    final Directory thumbsDir = await getThumbsDirectory();
+    return File(p.join(thumbsDir.path, this._ticketType.name + '-thumb.png'));
+  }
 
-    // Save image to documents directory
-    final String assetPath = await getAssetPath(isPdf: isPdf);
-    await file.saveTo(assetPath).catchError((error) => print(error));
+  /// Save a thumbnail of the selected file
+  Future<void> saveThumbnail(Uint8List bytes) async {
+    final File thumbnail = await getThumbnail();
+    final cmd = img.Command()
+      // Decode the image file
+      ..decodeImage(bytes)
+      // Resize the image to a width of 64 pixels and a height that maintains the aspect ratio of the original.
+      ..copyResize(width: 250)
+      // Write the image to a PNG file (determined by the suffix of the file path).
+      ..writeToFile(thumbnail.path);
+    // On platforms that support Isolates, execute the image commands asynchronously on an isolate thread.
+    // Otherwise, the commands will be executed synchronously.
+    await cmd.executeThread();
+  }
 
-    // Check again if the file exists
-    final bool exists = await File(assetPath).existsSync();
-
-    // Update the satet of the ticket item and return the result
-    notifiyTicketSlot(exists, isPdf: isPdf);
-    return exists;
+  /// Delete the thumbnail of the selected file
+  Future<void> deleteThumbnail() async {
+    /// Catching the error here because if the file doesn't delete or it's
+    /// already gone it's ok. I don't really need to chuck and error here
+    await (await getThumbnail()).delete().catchError(() {});
   }
 
   /// Delete the ticket item file from the documents directory
-  void deleteTicket(String _assetPath) async {
-    try {
-      /// Rmove the asset
-      File(_assetPath).deleteSync();
+  Future<void> deleteTicket(String _assetPath) async {
+    /// Rmove the asset
+    File(_assetPath).deleteSync();
+    await deleteThumbnail();
 
-      /// Update the ticket item state
-      notifiyTicketSlot(false);
+    /// Update the ticket item state
+    notifiyTicketSlot(false);
 
-      /// Log the event
-      FirebaseProvider().logEvent(
-        'ticket_delete',
-        {"ticket_type": this._ticketType.name},
-      );
-    } catch (e) {
-      // TODO Add some error handling here
-      print(e);
-    }
+    /// Log the event
+    FirebaseProvider().logEvent(
+      'ticket_delete',
+      {"ticket_type": this._ticketType.name},
+    );
   }
 
   /// Delete all ticket item files from the documents directory
   void clearAllTicketData() async {
-    try {
-      /// Get the tickets directory in the documents directory
-      final Directory appDocumentsDir =
-          await getApplicationDocumentsDirectory();
-      final String assetFolder = p.join(appDocumentsDir.path, ticketPath);
+    /// Get the tickets directory in the documents directory
+    final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
+    final String assetFolder = p.join(appDocumentsDir.path, ticketPath);
 
-      /// Check if the ticket items folder exists
-      if (!Directory(assetFolder).existsSync()) {
-        print('Ticket items folder does not exist');
-        return;
-      }
-
-      /// Delete the ticket item files
-      Directory(assetFolder).deleteSync(recursive: true);
-
-      /// Update all the ticket item states
-      TicketType.values.forEach((type) => notifiyTicketSlot(false));
-
-      /// Log the event
-      FirebaseProvider().logEvent('ticket_clear_all', {});
-    } catch (e) {
-      // TODO Add some error handling here
-      print(e);
+    /// Check if the ticket items folder exists
+    if (!Directory(assetFolder).existsSync()) {
+      print('Ticket items folder does not exist');
+      return;
     }
+
+    /// Delete the ticket item files
+    Directory(assetFolder).deleteSync(recursive: true);
+    (await getThumbsDirectory()).deleteSync();
+
+    /// Update all the ticket item states
+    TicketType.values.forEach((type) => notifiyTicketSlot(false));
+
+    /// Log the event
+    FirebaseProvider().logEvent('ticket_clear_all', {});
   }
 }

@@ -1,3 +1,4 @@
+import 'package:afrikaburn/config/default_remote_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -52,6 +53,9 @@ class FirebaseProvider implements NyProvider {
       print("Remote config updated: $event");
       await remoteConfig.activate();
     });
+
+    /// Set default remote config values
+    await remoteConfig.setDefaults(DefaultRemoteConfig.defaultConfig);
 
     /// Fetch remote config
     await remoteConfig.fetchAndActivate().catchError((error) {

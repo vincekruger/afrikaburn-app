@@ -55,6 +55,7 @@ dependencies:
   infinite_scroll_pagination: ^4.0.0
   firebase_messaging: ^14.7.21
   app_settings: ^5.1.1
+  image: ^4.1.7
 
 dev_dependencies:
   lints: ^3.0.0

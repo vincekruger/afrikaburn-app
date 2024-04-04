@@ -1,40 +1,47 @@
 import 'dart:io';
 
+import 'package:afrikaburn/resources/popups/confirm.dart';
+import 'package:afrikaburn/resources/popups/error.dart';
+import 'package:flutter/foundation.dart'
+    show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
+import 'package:nylo_framework/nylo_framework.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:pdfrx/pdfrx.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:afrikaburn/app/models/ticket_action_sheet_action.dart';
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/app/providers/system_provider.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
-import 'package:flutter/foundation.dart'
-    show TargetPlatform, defaultTargetPlatform;
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:nylo_framework/nylo_framework.dart';
+
 import 'package:afrikaburn/app/models/ticket.dart';
+import 'package:afrikaburn/app/controllers/ticket_controller.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/config/design.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
-import 'package:afrikaburn/app/controllers/ticket_controller.dart';
-import 'package:pdfrx/pdfrx.dart';
-import 'package:photo_view/photo_view.dart';
 
 /// Generate a state key
 String stateKey(TicketType type) => "ticket-slot:" + type.name;
 
+/// Ticket Slot Widget
 class TicketSlot extends StatefulWidget {
   TicketSlot({
-    Key? key,
-    required TicketType this.type,
-    required double this.width,
-    required double this.height,
-    required Color this.borderColor,
-    double this.iconSpacing = 8,
-    int this.quarterTurns = 0,
-    double this.labelWidth = 0,
-    double this.labelHeight = 0,
-  }) : super(key: key);
+    super.key,
+    required this.controller,
+    required this.type,
+    required this.width,
+    required this.height,
+    required this.borderColor,
+    this.iconSpacing = 8,
+    this.quarterTurns = 0,
+    this.labelWidth = 0,
+    this.labelHeight = 0,
+  });
 
+  final TicketController controller;
   final TicketType type;
   final double width;
   final double height;
@@ -44,14 +51,14 @@ class TicketSlot extends StatefulWidget {
   final double? labelWidth;
   final double? labelHeight;
 
-  final TicketController controller = new TicketController();
+  /// State Key
   static String state(TicketType type) => stateKey(type);
 
   @override
   createState() => _TicketSlotState(type);
 }
 
-class _TicketSlotState extends NyState<TicketSlot> {
+class _TicketSlotState extends NyState<TicketSlot> with WidgetsBindingObserver {
   _TicketSlotState(TicketType type) {
     stateName = stateKey(type);
   }
@@ -62,12 +69,26 @@ class _TicketSlotState extends NyState<TicketSlot> {
   bool localExists = false;
   bool isPdf = false;
   String assetPath = '';
+  String _thumbnailPath = '';
 
   /// Initialize the state
   @override
   init() async {
-    widget.controller.ticketType = widget.type;
     await widget.controller.exists();
+    WidgetsBinding.instance.addObserver(this);
+    return super.init();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
+    /// Check the tickets folder again when the app resumes
+    if (state == AppLifecycleState.resumed) await widget.controller.exists();
   }
 
   /// State Updated
@@ -77,6 +98,7 @@ class _TicketSlotState extends NyState<TicketSlot> {
       localExists = data['exists'];
       isPdf = data['isPdf'];
       assetPath = data['assetPath'];
+      _thumbnailPath = data['thumbnailPath'];
     });
   }
 
@@ -91,20 +113,13 @@ class _TicketSlotState extends NyState<TicketSlot> {
 
     // Ticket item exists
     if (localExists) {
-      /// The asset path for the ticket item
-      /// If the ticket item is a pdf, the thumbnail image is used
-      String _assetPath = isPdf
-          ? this.assetPath.replaceAll('.pdf', '-thumb.png')
-          : this.assetPath;
-      var _image = (Platform.isIOS)
-          ? Image.asset(_assetPath).image
-          : Image.file(File(_assetPath)).image;
-
       /// Final background image
       slotBoxDecoration = slotBoxDecoration.copyWith(
         gradient: GradientStyles.ticketSlotGradient,
         image: DecorationImage(
-          image: _image,
+          image: (Platform.isIOS)
+              ? Image.asset(_thumbnailPath).image
+              : Image.file(File(_thumbnailPath)).image,
           fit: BoxFit.cover,
           opacity: 0.3,
         ),
@@ -196,42 +211,26 @@ class _TicketSlotState extends NyState<TicketSlot> {
 
   /// Confirm Delete Action
   /// Show an alert dialog to confirm the delete action
-  void confirmDelete() {
-    showDialog(
-      context: this.context,
-      builder: (BuildContext context) => AlertDialog(
-        title: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text("ticket-content.delete-confirm.title".tr(arguments: {
-            "ticket_type": ticketLabel,
-          })),
-        ),
-        content: Text("ticket-content.delete-confirm.message".tr()),
-        contentPadding: EdgeInsets.symmetric(horizontal: 24, vertical: 0)
-            .copyWith(top: 16, bottom: 8),
-        actionsAlignment: MainAxisAlignment.spaceAround,
-        actionsPadding: EdgeInsets.zero.copyWith(bottom: 8),
-        actions: [
-          TextButton(
-            child: Text("ticket-content.delete-confirm.confirm".tr())
-                .setColor(context, (color) => Colors.red.shade600)
-                .fontWeightBold(),
-            onPressed: () {
-              /// Delete the ticket item and close the dialog
-              widget.controller.deleteTicket(assetPath);
-              Navigator.of(context).pop();
-            },
-          ),
-          TextButton(
-            child: Text("ticket-content.delete-confirm.cancel".tr())
-                .fontWeightBold(),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      ),
-    );
+  Future<void> confirmDelete() async {
+    try {
+      bool? result = await confirmDialogBuilder(
+        context,
+        "ticket-content.delete-confirm",
+        title: "ticket-content.delete-confirm.title".tr(arguments: {
+          "ticket_type": ticketLabel,
+        }),
+        isDestructive: true,
+      );
+
+      // User Cancelled the dialog
+      if (result == null || !result) return;
+
+      /// Delete the ticket item and close the dialog
+      await widget.controller.deleteTicket(assetPath);
+    } catch (e) {
+      generalErrorDialogBuilder(context, 'ticket-content.delete-error');
+      print('delete ticket error: $e.toString()');
+    }
   }
 
   /// Get Available Action Sheet Actions
@@ -266,7 +265,7 @@ class _TicketSlotState extends NyState<TicketSlot> {
           );
 
           // Close the action sheet
-          Navigator.pop(context);
+          if (Navigator.canPop(context)) Navigator.pop(context);
         }).catchError((e) {
           // TODO Error Handling
           print("takePhoto error" + e.toString());
@@ -284,7 +283,7 @@ class _TicketSlotState extends NyState<TicketSlot> {
           );
 
           // Close the action sheet
-          Navigator.pop(context);
+          if (Navigator.canPop(context)) Navigator.pop(context);
         }).catchError((e) {
           // TODO Error Handling
           print("choosePhoto" + e.toString());
@@ -302,7 +301,7 @@ class _TicketSlotState extends NyState<TicketSlot> {
           );
 
           // Close the action sheet
-          Navigator.pop(context);
+          if (Navigator.canPop(context)) Navigator.pop(context);
         }).catchError((e) {
           // TODO Error Handling
           print("choosePhoto" + e.toString());
@@ -320,10 +319,17 @@ class _TicketSlotState extends NyState<TicketSlot> {
       builder: (BuildContext context) => CupertinoActionSheet(
         actions: getActionSheetActions().map<Widget>((action) {
           return CupertinoActionSheetAction(
-            child: Text(action.title),
+            child: Text(action.title).setColor(
+                context, (color) => context.color.cupertinoDialogActionColor),
             onPressed: () => _ticketActionOnTap(action.action),
           );
         }).toList(),
+        cancelButton: CupertinoActionSheetAction(
+          child: Text('Cancel').setColor(
+              context, (color) => context.color.cupertinoDialogActionColor),
+          onPressed: () =>
+              (Navigator.canPop(context)) ? Navigator.pop(context) : null,
+        ),
       ),
     );
   }
@@ -342,12 +348,8 @@ class _TicketSlotState extends NyState<TicketSlot> {
             mainAxisSize: MainAxisSize.min,
             children: getActionSheetActions().map<Widget>((action) {
               return ListTile(
-                title: Text(action.title).titleSmall(context).setColor(
-                    context, (color) => ThemeColor.get(context).surfaceContent),
-                leading: Icon(
-                  action.icon,
-                  size: 22,
-                ),
+                title: Text(action.title).titleSmall(context),
+                leading: Icon(action.icon, size: 22),
                 onTap: () => _ticketActionOnTap(action.action),
               );
             }).toList(),

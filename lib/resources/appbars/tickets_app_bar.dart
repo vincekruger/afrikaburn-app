@@ -32,7 +32,6 @@ class TicketsAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ],
           ),
-          AbDivider(width: 198, alignment: Alignment.centerRight),
         ],
       ),
     );

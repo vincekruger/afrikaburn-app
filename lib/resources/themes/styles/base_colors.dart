@@ -75,6 +75,7 @@ class BaseThemeColors implements ColorStyles {
   Color get ticketSlotLabel => this.blue;
   Color get ticketSlotIcon => this.blue;
 
-  // ios dialog
+  // dialogs
+  Color get dialogDescructiveActionColor => Colors.red.shade900;
   Color get cupertinoDialogActionColor => this.primaryContent;
 }

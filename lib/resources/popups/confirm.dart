@@ -6,12 +6,13 @@ import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/resources/widgets/confirm_popup_widget.dart';
 
-Future<bool?> confirmDialogBuilder(BuildContext context, String langPath) =>
+Future<bool?> confirmDialogBuilder(BuildContext context, String langPath,
+        {String? title, bool? isDestructive = false}) =>
     !Platform.isIOS
         ? showDialog<bool>(
             context: context,
             builder: (BuildContext context) => ConfirmPopup(
-              title: "$langPath.title".tr(),
+              title: title == null ? "$langPath.title".tr() : title,
               message: "$langPath.message".tr(),
               actions: [
                 AlertAction(
@@ -21,6 +22,7 @@ Future<bool?> confirmDialogBuilder(BuildContext context, String langPath) =>
                 AlertAction(
                   label: "$langPath.confirm".tr(),
                   onPressed: () => Navigator.of(context).pop(true),
+                  isDestructive: isDestructive,
                 )
               ],
             ),
@@ -28,7 +30,9 @@ Future<bool?> confirmDialogBuilder(BuildContext context, String langPath) =>
         : showCupertinoDialog<bool>(
             context: context,
             builder: (context) => CupertinoAlertDialog(
-              title: Text("$langPath.title".tr()),
+              title: Text(
+                title == null ? "$langPath.title".tr() : title,
+              ),
               content: Text("$langPath.message".tr()),
               actions: <Widget>[
                 CupertinoDialogAction(

@@ -72,7 +72,7 @@ final Map<Type, dynamic> controllers = {
 
   MapController: () => MapController(),
 
-  TicketController: () => TicketController(),
+  // TicketController: () => TicketController(),
 
   CreateContactController: () => CreateContactController(),
 
