@@ -1,6 +1,7 @@
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/resources/appbars/custom_app_bar.dart';
+import 'package:afrikaburn/resources/artworks/pointing_hand.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:afrikaburn/resources/pages/map_pdf_page.dart';
 import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
@@ -53,18 +54,6 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
     NavigationItem(AB24Icons.settings, "menu-item.settings".tr()),
   ];
 
-  /// Pointing Hand Widget
-  Widget _pointingHand(BuildContext context) => Container(
-        alignment: Alignment.topLeft,
-        padding: EdgeInsets.only(left: 12, top: 20),
-        child: Image.asset(
-          context.isDarkMode
-              ? "public/assets/images/pointing-hand-dark.png"
-              : "public/assets/images/pointing-hand-light.png",
-          width: 58,
-        ),
-      );
-
   @override
   Widget view(BuildContext context) {
     return Scaffold(
@@ -82,7 +71,7 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
             /// Add the pointing hand to the first item
             if (index == 0)
               return Column(children: [
-                _pointingHand(context),
+                pointingHand(context),
                 _navigationListTile(item),
               ]);
 
