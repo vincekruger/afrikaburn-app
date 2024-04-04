@@ -34,7 +34,7 @@ body:
     attributes:
       label: Steps to Reproduce the Behaviour
       description: The more detail the better
-      value: "1. Go to '...'<br>2. Click on '....'<br>3. Scroll down to '....'<br>4. See error"
+      value: "1. Go to '...'\n2. Click on '....'<br>3. Scroll down to '....'<br>4. See error"
   - type: dropdown
     id: version
     validations:
