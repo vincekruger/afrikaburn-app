@@ -64,13 +64,13 @@ class _NewsItemState extends State<NewsItem> {
       child: InkWell(
         onTap: openDetail,
         borderRadius: borderRadius,
-        child: Hero(
-          tag: _heroTag,
-          child: Container(
-            height: boxHeight,
-            child: Stack(
-              children: [
-                Container(
+        child: Container(
+          height: boxHeight,
+          child: Stack(
+            children: [
+              Hero(
+                tag: _heroTag,
+                child: Container(
                   decoration: BoxDecoration(
                     color: ThemeColor.get(context).primaryContent,
                     image: DecorationImage(
@@ -81,34 +81,34 @@ class _NewsItemState extends State<NewsItem> {
                     borderRadius: borderRadius,
                   ),
                 ),
-                Container(
-                  height: boxHeight,
-                  decoration: BoxDecoration(
-                    color: ThemeColor.get(context).primaryContent,
-                    borderRadius: borderRadius.copyWith(
-                      topLeft: Radius.circular(0),
-                      topRight: Radius.circular(0),
-                    ),
-                    gradient: LinearGradient(
-                      begin: Alignment(0.0, -1.0),
-                      end: Alignment(0.0, 0.6),
-                      colors: [
-                        Colors.transparent,
-                        widget.item.imageOverlayColor ??
-                            ThemeColor.get(context).primaryContent
-                      ],
-                    ),
+              ),
+              Container(
+                height: boxHeight,
+                decoration: BoxDecoration(
+                  color: ThemeColor.get(context).primaryContent,
+                  borderRadius: borderRadius.copyWith(
+                    topLeft: Radius.circular(0),
+                    topRight: Radius.circular(0),
+                  ),
+                  gradient: LinearGradient(
+                    begin: Alignment(0.0, -1.0),
+                    end: Alignment(0.0, 0.6),
+                    colors: [
+                      Colors.transparent,
+                      widget.item.imageOverlayColor ??
+                          ThemeColor.get(context).primaryContent
+                    ],
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [TitleAction()],
-                  ),
+              ),
+              Container(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [TitleAction()],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
