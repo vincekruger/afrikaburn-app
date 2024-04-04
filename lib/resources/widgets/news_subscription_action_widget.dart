@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -124,7 +126,8 @@ class _NewsSubscriptionActionState extends NyState<NewsSubscriptionAction> {
       alignment: Alignment.centerRight,
       padding: EdgeInsets.only(
         right: 20.0,
-        top: 70,
+        top:
+            MediaQuery.of(context).padding.top + (Platform.isIOS ? 15.0 : 65.0),
         bottom: 0,
       ),
       child: Container(
@@ -134,8 +137,8 @@ class _NewsSubscriptionActionState extends NyState<NewsSubscriptionAction> {
           boxShadow: [
             BoxShadow(
               offset: Offset(0, 2),
-              blurRadius: 20,
-              color: context.color.shadowColor,
+              blurRadius: 10,
+              color: context.color.shadowColor.withOpacity(0.5),
             ),
           ],
         ),
