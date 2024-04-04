@@ -32,6 +32,37 @@
     "wtf-guide":"WTF Guide",
     "map-pdf": "Map"
   },
+  "settings":{
+    "notifications-denied":  {
+      "title": "Notifications Disabled",
+      "message": "You have not allowed the app permission to send you notifications notifications. You can enable them in your phone's settings.",
+      "confirm": "Got it!",
+      "open-settings": "Open Settings"
+    }
+  },
+  "news-content": {
+    "subscribe-confirmed": {
+      "title": "You're Subscribed!",
+      "message": "You'll get a notification with the latest news and updates from AfrikaBurn. You can unsubscribe at any time.",
+      "confirm": "Got it!"
+    },
+    "subscribe-error": {
+      "title": "Eish!",
+      "message": "Soz, something broke and we couldn't subscribe you to the news alerts. You can try again if you want, but this problem has been noted!",
+      "confirm": "Oki Doki"
+    },
+    "unsubscribe-confirm": {
+      "title": "Are you sure?",
+      "message": "You are about to turn of your news alerts from Afrikaburn, are you sure you wanna do this?",
+      "confirm": "Do it!",
+      "cancel": "Nah!"
+    },
+    "unsubscribe-confirmed": {
+      "title": "You're Unsubscribed!",
+      "message": "Coolio, you won't get any more news alerts. You can subscribe again at any time.",
+      "confirm": "Got it!"
+    }
+  },
   "ticket-content": {
     "available-offline": "NO STRESS, bru!\nAll this lekker stuff's saved on your phone, so when you're off the grid, you sorted 📱💾🔒 No worries!",
     "delete-confirm": {
