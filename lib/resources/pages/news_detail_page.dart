@@ -29,9 +29,6 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   /// [NewsController] controller
   NewsController get controller => widget.controller;
 
-  /// Scroll Controller
-  final ScrollController _newsContentScrollController = ScrollController();
-
   /// Widget Data
   late News newsItem;
   late String heroTag;
@@ -45,38 +42,13 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   @override
   init() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    _newsContentScrollController.addListener(_scrollListener);
     return super.init();
   }
 
   @override
   void dispose() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-    _newsContentScrollController.removeListener(_scrollListener);
     super.dispose();
-  }
-
-  // bool _pageDismissInProgress = false;
-  bool _canDissmissPage = true;
-
-  void _scrollListener() {
-    if (_newsContentScrollController.offset <= 1.0 &&
-        _canDissmissPage == false) {
-      // setState(() {
-      _canDissmissPage = true;
-      // });
-    }
-
-    if (_newsContentScrollController.offset >= 1.0 &&
-        _canDissmissPage == true) {
-      // setState(() {
-      _canDissmissPage = false;
-      // });
-    }
-    // print(_newsContentScrollController.offset >= 5.0);
-    // setState(() {
-    // _pageDismissDisabled = _newsContentScrollController.offset >= 5.0;
-    // });
   }
 
   /// Use boot if you need to load data before the view is rendered.
@@ -209,7 +181,6 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   /// Article Content
   Widget articleConent(BuildContext context) {
     return ListView(
-      controller: _newsContentScrollController,
       padding: EdgeInsets.zero,
       children: [
         articleArtwork(context),
