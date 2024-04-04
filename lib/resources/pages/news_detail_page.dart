@@ -9,6 +9,7 @@ import 'package:afrikaburn/resources/themes/extensions/outlined_button.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:afrikaburn/resources/widgets/news_item_content_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dismissible_page/dismissible_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:moment_dart/moment_dart.dart';
@@ -28,6 +29,9 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   /// [NewsController] controller
   NewsController get controller => widget.controller;
 
+  /// Scroll Controller
+  final ScrollController _newsContentScrollController = ScrollController();
+
   /// Widget Data
   late News newsItem;
   late String heroTag;
@@ -41,13 +45,38 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   @override
   init() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    _newsContentScrollController.addListener(_scrollListener);
     return super.init();
   }
 
   @override
   void dispose() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    _newsContentScrollController.removeListener(_scrollListener);
     super.dispose();
+  }
+
+  // bool _pageDismissInProgress = false;
+  bool _canDissmissPage = true;
+
+  void _scrollListener() {
+    if (_newsContentScrollController.offset <= 1.0 &&
+        _canDissmissPage == false) {
+      // setState(() {
+      _canDissmissPage = true;
+      // });
+    }
+
+    if (_newsContentScrollController.offset >= 1.0 &&
+        _canDissmissPage == true) {
+      // setState(() {
+      _canDissmissPage = false;
+      // });
+    }
+    // print(_newsContentScrollController.offset >= 5.0);
+    // setState(() {
+    // _pageDismissDisabled = _newsContentScrollController.offset >= 5.0;
+    // });
   }
 
   /// Use boot if you need to load data before the view is rendered.
@@ -145,24 +174,34 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   @override
   Widget view(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Positioned(
-            right: 0,
-            bottom: 0,
-            child: Container(
-              width: scale(82, context),
-              height: scale(372, context),
-              child: Image.asset(
-                context.isDarkMode
-                    ? "public/assets/images/fish-1-20op-dark.png"
-                    : "public/assets/images/fish-1-20op-light.png",
-                fit: BoxFit.cover,
+      backgroundColor: Colors.transparent,
+      body: DismissiblePage(
+        backgroundColor: context.color.background,
+        direction: DismissiblePageDismissDirection.down,
+        isFullScreen: true,
+        onDismissed: () => Navigator.pop(context),
+        child: Stack(
+          children: [
+            Positioned(
+              right: 0,
+              bottom: 0,
+              child: Opacity(
+                opacity: 0.2,
+                child: Container(
+                  width: scale(82, context),
+                  height: scale(372, context),
+                  child: Image.asset(
+                    context.isDarkMode
+                        ? "public/assets/images/fish-1-20op-dark.png"
+                        : "public/assets/images/fish-1-20op-light.png",
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
-          ),
-          articleConent(context),
-        ],
+            articleConent(context),
+          ],
+        ),
       ),
     );
   }
@@ -170,6 +209,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   /// Article Content
   Widget articleConent(BuildContext context) {
     return ListView(
+      controller: _newsContentScrollController,
       padding: EdgeInsets.zero,
       children: [
         articleArtwork(context),
@@ -275,7 +315,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
               children: [
                 Container(
                   width: double.infinity,
-                  height: 300,
+                  height: 290,
                   child: CachedNetworkImage(
                     imageUrl: newsItem.featuredImageUrl,
                     fit: BoxFit.cover,

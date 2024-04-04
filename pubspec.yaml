@@ -56,6 +56,7 @@ dependencies:
   firebase_messaging: ^14.7.21
   app_settings: ^5.1.1
   image: ^4.1.7
+  dismissible_page: ^1.0.2
 
 dev_dependencies:
   lints: ^3.0.0
