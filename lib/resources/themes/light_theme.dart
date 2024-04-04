@@ -26,7 +26,7 @@ ThemeData lightTheme(ColorStyles color) {
     appBarTheme: AppBarTheme(
       surfaceTintColor: Colors.transparent,
       backgroundColor: color.appBarBackground,
-      titleTextStyle: lightTheme.titleSmall!.copyWith(
+      titleTextStyle: lightTheme.titleLarge!.copyWith(
         color: color.appBarPrimaryContent,
       ),
       iconTheme: IconThemeData(color: color.appBarPrimaryContent),
@@ -62,17 +62,19 @@ ThemeData lightTheme(ColorStyles color) {
     ),
     textTheme: lightTheme,
     colorScheme: ColorScheme.light(
-        background: color.background, primary: color.primaryAccent),
-    dialogTheme: DialogTheme(
-      backgroundColor: color.surfaceBackground,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      titleTextStyle: lightTheme.headlineSmall!.copyWith(
-        color: color.surfaceContent,
-      ),
-      contentTextStyle: lightTheme.bodyMedium!.copyWith(
-        color: color.surfaceContent,
-      ),
+      background: color.background,
+      primary: color.primaryAccent,
     ),
+    // dialogTheme: DialogTheme(
+    //   backgroundColor: color.surfaceBackground,
+    //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+    //   titleTextStyle: lightTheme.headlineSmall!.copyWith(
+    //     color: color.surfaceContent,
+    //   ),
+    //   contentTextStyle: lightTheme.bodyMedium!.copyWith(
+    //     color: color.surfaceContent,
+    //   ),
+    // ),
     pageTransitionsTheme: BaseThemeStuff.pageTransitionsTheme,
   );
 }

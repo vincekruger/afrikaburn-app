@@ -13,9 +13,8 @@ class DarkThemeColors extends BaseThemeColors implements ColorStyles {
   Color get primaryAccent => const Color(0xFF20EDC4);
   Color get primaryAlternate => const Color(0xFF797979);
 
-  // app bar
-  Color get appBarBackground => const Color(0xFF4b5e6d);
-  Color get appBarPrimaryContent => Colors.white;
+  // accents
+  Color get fourthAccent => const Color(0xFF000681);
 
   // gradients
   Color get gradient1Start => const Color(0xFF9C1FE9);

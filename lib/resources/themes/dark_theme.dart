@@ -23,7 +23,7 @@ ThemeData darkTheme(ColorStyles color) {
     appBarTheme: AppBarTheme(
         surfaceTintColor: Colors.transparent,
         backgroundColor: color.appBarBackground,
-        titleTextStyle: darkTheme.titleSmall!.copyWith(
+        titleTextStyle: darkTheme.titleLarge!.copyWith(
           color: color.appBarPrimaryContent,
         ),
         iconTheme: IconThemeData(color: color.appBarPrimaryContent),

@@ -14,15 +14,22 @@ class BaseThemeColors implements ColorStyles {
   Color get primaryContent => const Color(0xFF333333);
   Color get primaryAccent => const Color(0xFF20EDC4);
   Color get primaryAlternate => const Color(0xFF797979);
+
   Color get blue => const Color(0xFF000681);
+
+  // accents
+  Color get fourthAccent => const Color(0xFF20EDC4);
+
+  /// Shadows
+  Color get shadowColor => const Color(0xFF000681);
 
   // surface - this is used for cards, dialogs, etc.
   Color get surfaceBackground => const Color(0xFFD9D9D9);
   Color get surfaceContent => const Color(0xFF333333);
 
   // app bar
-  Color get appBarBackground => Colors.blue;
-  Color get appBarPrimaryContent => Colors.white;
+  Color get appBarBackground => Colors.transparent;
+  Color get appBarPrimaryContent => fourthAccent;
 
   // gradients
   Color get gradient1Start => const Color(0xFF9C1FE9);
@@ -67,4 +74,7 @@ class BaseThemeColors implements ColorStyles {
   Color get ticketSlotBackground => Colors.white;
   Color get ticketSlotLabel => this.blue;
   Color get ticketSlotIcon => this.blue;
+
+  // ios dialog
+  Color get cupertinoDialogActionColor => this.primaryContent;
 }

@@ -17,6 +17,15 @@ abstract class ColorStyles extends BaseColorStyles {
   Color get primaryAlternate;
   Color get blue;
 
+  // accents
+  // Color get secondAccent;
+  // Color get thirdAccent;
+  Color get fourthAccent;
+
+  /// Shadows
+  Color get shadowColor;
+
+  // surface
   Color get surfaceBackground;
   Color get surfaceContent;
 
@@ -67,6 +76,9 @@ abstract class ColorStyles extends BaseColorStyles {
   Color get ticketSlotBackground;
   Color get ticketSlotLabel;
   Color get ticketSlotIcon;
+
+  // ios dialog
+  Color get cupertinoDialogActionColor;
 
   // Then implement in color in:
   // /resources/  themes/styles/light_theme_colors

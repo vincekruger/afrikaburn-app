@@ -58,7 +58,7 @@ class BaseThemeStuff {
             MaterialStateColor.resolveWith((states) => Colors.transparent),
         surfaceTintColor: Colors.transparent,
         indicatorColor: Colors.transparent,
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         iconTheme: MaterialStateProperty.all(IconThemeData(
           size: 24,
           color: Colors.white,
