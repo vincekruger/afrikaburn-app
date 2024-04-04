@@ -11,32 +11,34 @@ body:
         Thanks for taking the time to fill out this bug report!
   - type: textarea
     id: what-happened
+    validations:
+      required: true
     attributes:
       label: What happened?
       description: Describe the bug in a bit of detail.
       placeholder: Tell us what you see!
       value: "A bug happened!"
-    validations:
-      required: true
   - type: dropdown
     id: version
+    validations:
+      required: true
     attributes:
       label: Version
       description: What version of our software are you running?
       options:
         - 2024.0.0 (Default)
       default: 0
-    validations:
-      required: true
   - type: input
     id: build-number
+    validations:
+      required: true
     attributes:
       label: Build#
       value: "🤷‍♂️"
-    validations:
-      required: true
   - type: dropdown
     id: device
+    validations:
+      required: true
     attributes:
       label: What software are you using?
       multiple: true
@@ -45,12 +47,10 @@ body:
         - iPadOS
         - Android
         - Something else
-      validations:
-      required: true
   - type: input
     id: os-version
+    validations:
+      required: true
     attributes:
       label: OS Version
       placeholder: "iOS 17.4.1"
-    validations:
-      required: true
