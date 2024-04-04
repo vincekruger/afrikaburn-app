@@ -1,6 +1,6 @@
 import 'package:afrikaburn/app/models/news.dart';
 import 'package:afrikaburn/resources/widgets/news_item_widget.dart';
-import 'package:afrikaburn/resources/widgets/news_list_actions_widget.dart';
+import 'package:afrikaburn/resources/widgets/news_subscription_action_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -38,18 +38,22 @@ class _NewsPageState extends NyState<NewsPage> {
   /// ListView Header
   Widget header(BuildContext context) {
     return Container(
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
         children: [
-          NewsAppBar(
-            scale(90 - MediaQuery.of(context).padding.top, context),
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              NewsAppBar(
+                scale(90 - MediaQuery.of(context).padding.top, context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: AbDivider(width: scale(190, context)),
+              ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0),
-            child: AbDivider(width: scale(190, context)),
-          ),
-          NewsListActions(),
+          NewsSubscriptionAction(),
         ],
       ),
     );
