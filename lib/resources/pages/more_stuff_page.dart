@@ -54,14 +54,19 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
     NavigationItem(AB24Icons.settings, "menu-item.settings".tr()),
   ];
 
+  final double appBarHeight = 60.0;
+  final double appBarHeightPadding = 20.0;
+
   @override
   Widget view(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: CustomAppBar(
         title: "menu-item.more-stuff".tr(),
-        height: 60,
+        height: appBarHeight,
       ),
-      body: SafeArea(
+      body: Padding(
+        padding: EdgeInsets.only(top: this.appBarHeight + appBarHeightPadding),
         child: ListView.separated(
           padding: EdgeInsets.only(bottom: 40),
           itemCount: _items.length,

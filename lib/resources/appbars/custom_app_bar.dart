@@ -24,34 +24,49 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           : 'public/assets/images/appbar-bg-light.png',
       fit: BoxFit.fill,
     );
-    return Stack(
-      children: [
-        Container(
-          height: 50,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: backgroundImage.image,
-              fit: BoxFit.fill,
+
+    return ClipPath(
+      clipper: _AppBarClipper(20.0),
+      child: Stack(
+        children: [
+          Container(
+            height: preferredSize.height + 20,
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              image: DecorationImage(
+                image: backgroundImage.image,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 40.0),
-          child: Transform(
-            alignment: FractionalOffset.bottomCenter,
-            transform: Matrix4.identity()..rotateZ(-0.0372),
-            child: backgroundImage,
+          AppBar(
+            title: Text(title),
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            systemOverlayStyle: context.isDarkMode
+                ? SystemUiOverlayStyle.dark
+                : SystemUiOverlayStyle.light,
           ),
-        ),
-        AppBar(
-          title: Text(title),
-          backgroundColor: Colors.transparent,
-          systemOverlayStyle: context.isDarkMode
-              ? SystemUiOverlayStyle.dark
-              : SystemUiOverlayStyle.light,
-        ),
-        SizedBox(height: bottomPadding),
-      ],
+        ],
+      ),
     );
   }
+}
+
+class _AppBarClipper extends CustomClipper<Path> {
+  final double size;
+  _AppBarClipper(this.size);
+
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width, size.height - this.size);
+    path.lineTo(0, size.height);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(_AppBarClipper oldClipper) => size != oldClipper.size;
 }
