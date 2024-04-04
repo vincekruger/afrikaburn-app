@@ -37,25 +37,27 @@ class _NewsPageState extends NyState<NewsPage> {
 
   /// ListView Header
   Widget header(BuildContext context) {
-    return Container(
-      child: Stack(
-        children: [
-          Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              NewsAppBar(
-                scale(90 - MediaQuery.of(context).padding.top, context),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
-                child: AbDivider(width: scale(190, context)),
-              ),
-            ],
-          ),
-          NewsSubscriptionAction(),
-        ],
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        NewsAppBar(
+          scale(90 - MediaQuery.of(context).padding.top, context),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: AbDivider(width: scale(190, context)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: NewsSubscriptionAction(),
+            ),
+          ],
+        ),
+      ],
     );
   }
 

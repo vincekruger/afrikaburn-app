@@ -123,13 +123,13 @@ class _NewsSubscriptionActionState extends NyState<NewsSubscriptionAction> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.centerRight,
-      padding: EdgeInsets.only(
-        right: 20.0,
-        top:
-            MediaQuery.of(context).padding.top + (Platform.isIOS ? 15.0 : 65.0),
-        bottom: 0,
-      ),
+      // alignment: Alignment.centerRight,
+      // padding: EdgeInsets.only(
+      //   right: 20.0,
+      //   top:
+      //       MediaQuery.of(context).padding.top + (Platform.isIOS ? 15.0 : 65.0),
+      //   bottom: 0,
+      // ),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
