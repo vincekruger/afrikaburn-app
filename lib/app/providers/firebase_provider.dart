@@ -83,10 +83,10 @@ class FirebaseProvider implements NyProvider {
   }
 
   /// Log a custom event
-  logEvent(String eventName, Map<String, dynamic> eventParams) {
+  logEvent(String eventName, Map<String, dynamic>? eventParams) {
     FirebaseAnalytics.instance.logEvent(
       name: eventName,
-      parameters: eventParams,
+      parameters: eventParams ?? {},
     );
   }
 }
