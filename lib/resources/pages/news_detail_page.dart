@@ -121,8 +121,12 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
 
   /// Open Post URL on the Afrikaburn website
   void openPostUrl() async {
+    /// Add the #respond to the URL to scroll to the comments section
+    Uri discussionUri = Uri.parse(newsItem.url.toString() + "#respond");
+
+    /// Launch the URL
     await launchUrl(
-      newsItem.url,
+      discussionUri,
       mode: LaunchMode.externalApplication,
     );
 
