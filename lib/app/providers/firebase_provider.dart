@@ -20,7 +20,10 @@ class FirebaseProvider implements NyProvider {
     );
 
     /// Pass all uncaught "fatal" errors from the framework to Crashlytics
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+    if (!kDebugMode) {
+      FlutterError.onError =
+          FirebaseCrashlytics.instance.recordFlutterFatalError;
+    }
 
     return nylo;
   }
