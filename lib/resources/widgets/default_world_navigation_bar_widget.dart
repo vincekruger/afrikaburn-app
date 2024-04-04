@@ -87,6 +87,8 @@ class _DefaultWorldNavigationBarState
               ))
           .toList(),
       onTap: destinationSelected,
+      // showSelectedLabels: false,
+      showUnselectedLabels: false,
     );
   }
 
