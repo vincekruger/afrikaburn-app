@@ -34,7 +34,19 @@ body:
     attributes:
       label: Steps to Reproduce the Behaviour
       description: The more detail the better
-      value: "1. Go to '...'\n2. Click on '....'<br>3. Scroll down to '....'<br>4. See error"
+      value: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See the error"
+        ...
+  - type: textarea
+    id: screenshots-videos
+    validations:
+      required: true
+    attributes:
+      label: Screenshots/Videos? 🙏🫶
+      description: It really helps to see the issue too
   - type: dropdown
     id: version
     validations:
