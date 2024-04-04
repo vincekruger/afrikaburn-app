@@ -1,0 +1,54 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees:
+  - vincekruger
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug in a bit of detail.
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: What version of our software are you running?
+      options:
+        - 2024.0.0 (Default)
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: build-number
+    attributes:
+      label: Build#
+      value: "🤷‍♂️"
+    validations:
+      required: true
+  - type: dropdown
+    id: device
+    attributes:
+      label: What software are you using?
+      multiple: true
+      options:
+        - iOS
+        - iPadOS
+        - Android
+        - Something else
+  - type: input
+    id: os-version
+    attributes:
+      label: OS Version
+      placeholder: "iOS 17.4.1"
+      validations:
+        required: true
