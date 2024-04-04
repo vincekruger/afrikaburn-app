@@ -2,7 +2,7 @@ import 'package:afrikaburn/app/controllers/controller.dart';
 import 'package:afrikaburn/app/models/news.dart';
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/app/providers/shared_preferences_provider.dart';
-import 'package:afrikaburn/resources/widgets/news_list_actions_widget.dart';
+import 'package:afrikaburn/resources/widgets/news_subscription_action_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
@@ -53,27 +53,29 @@ class NewsController extends Controller {
     await _validateNotificationPermission();
 
     /// Show a dialog if notifications are permanently denied
-    if (notificationStatusPermantelyDenied) {
-      /// Show a dialog
-      print("Why you trying this? you turned off notifications!");
-      return;
-    }
-
-    /// Update the state now so the UI can update
-    updateState(NewsListActions.state, data: {"newsTopicSubscribed": true});
+    if (notificationStatusPermantelyDenied)
+      throw 'notifications_permanently_denied';
 
     /// Granted: subscribe to the topic
     /// Set the shared preferences
     /// Log analytics event
     await FirebaseMessaging.instance.subscribeToTopic(notificationTopic);
     (await SharedPreferencesProvider().init()).newsTopicSubscribed = true;
+
+    /// Update the state now so the UI can update
+    updateState(NewsSubscriptionAction.state, data: {
+      "newsTopicSubscribed": true,
+    });
+
+    /// Log analytics event
     FirebaseProvider().logEvent('news_topic_subscribe', {});
   }
 
   /// Unsubscribe to the news topic
   Future<void> unsubscribeNewsTopic() async {
     /// Update the state now so the UI can update
-    updateState(NewsListActions.state, data: {"newsTopicSubscribed": false});
+    updateState(NewsSubscriptionAction.state,
+        data: {"newsTopicSubscribed": false});
 
     /// Unsubscribe from the topic
     /// Set the shared preferences
