@@ -5,6 +5,7 @@ import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/config/design.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
+import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/extensions/outlined_button.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:afrikaburn/resources/widgets/news_item_content_widget.dart';
@@ -193,7 +194,6 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
           child: Row(
             children: [
               formatedDate(),
-              // ...catgoriesList(),
             ],
           ),
         ),
@@ -297,22 +297,29 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
             ),
             Positioned(
               top: 300 - 60,
-              right: 20,
-              child: InkWell(
-                onTap: () => {Navigator.pop(context)},
-                child: Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: ThemeColor.get(context).black.withOpacity(0.85),
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  child: Icon(
-                    AB24Icons.close_thick,
-                    size: 12,
-                    color: Colors.white,
-                  ),
+              right: 10,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 2),
+                      blurRadius: 10,
+                      color: context.color.shadowColor.withOpacity(0.5),
+                    ),
+                  ],
                 ),
+                child: IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  padding: EdgeInsets.zero,
+                  visualDensity: VisualDensity.compact,
+                  icon: Icon(
+                    AB24Icons.close_thick,
+                    size: 18,
+                    color: context.color.background,
+                  ),
+                ).withGradient(GradientStyles.appbarIcon),
               ),
             ),
           ],
