@@ -83,3 +83,10 @@ body:
     attributes:
       label: OS Version
       placeholder: "iOS 17.4.1"
+  - type: input
+    id: phone
+    validations:
+      required: true
+    attributes:
+      label: What Phone are you using?
+      description: "iPhone 15 Pro, Samsung A35, etc."
