@@ -123,27 +123,18 @@ class _NewsSubscriptionActionState extends NyState<NewsSubscriptionAction> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // alignment: Alignment.centerRight,
-      // padding: EdgeInsets.only(
-      //   right: 20.0,
-      //   top:
-      //       MediaQuery.of(context).padding.top + (Platform.isIOS ? 15.0 : 65.0),
-      //   bottom: 0,
-      // ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(50),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(0, 2),
-              blurRadius: 10,
-              color: context.color.shadowColor.withOpacity(0.5),
-            ),
-          ],
-        ),
-        child: notificationsIconButton(),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(50),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 2),
+            blurRadius: 10,
+            color: context.color.shadowColor.withOpacity(0.5),
+          ),
+        ],
       ),
+      child: notificationsIconButton(),
     );
   }
 }
