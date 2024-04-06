@@ -6,6 +6,7 @@ import 'package:afrikaburn/resources/appbars/custom_app_bar.dart';
 import 'package:afrikaburn/resources/artworks/pointing_hand.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:afrikaburn/resources/pages/map_pdf_page.dart';
+import 'package:afrikaburn/resources/pages/radio_free_tankwa_page.dart';
 import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
@@ -43,7 +44,6 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
     ),
 
     /// Other stuff
-    NavigationItem(AB24Icons.rft, "menu-item.radio-free-tankwa".tr()),
     NavigationItem(Icons.phonelink, "menu-item.my-contact".tr()),
     NavigationItem(AB24Icons.map, "menu-item.map".tr()),
     NavigationItem(AB24Icons.art, "menu-item.artwork".tr()),

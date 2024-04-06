@@ -59,6 +59,7 @@ dependencies:
   dismissible_page: ^1.0.2
   share_plus: ^8.0.2
   just_audio: ^0.9.37
+  just_audio_background: ^0.0.1-beta.11
 
 dev_dependencies:
   lints: ^3.0.0
@@ -79,8 +80,11 @@ flutter:
   assets:
     - public/assets/fonts/
     - public/assets/images/
+    - public/assets/images/app_bars/
     - public/assets/images/news/
     - public/assets/images/tickets/
+    - public/assets/images/rft/
+    - public/assets/images/rft/album_art/
     - public/assets/app_icon/
     - lang/
     - .env
