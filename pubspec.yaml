@@ -8,7 +8,7 @@
 name: afrikaburn
 description: The community app for AfrikaBurn
 publish_to: 'none'
-version: 2024.0.0+7
+version: 2024.0.8
 
 environment:
   sdk: '>=3.1.3 <4.0.0'
@@ -58,6 +58,7 @@ dependencies:
   image: ^4.1.7
   dismissible_page: ^1.0.2
   share_plus: ^8.0.2
+  just_audio: ^0.9.37
 
 dev_dependencies:
   lints: ^3.0.0
