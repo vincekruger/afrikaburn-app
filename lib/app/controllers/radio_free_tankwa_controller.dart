@@ -1,13 +1,14 @@
 import 'dart:math';
 
+import 'package:flutter/widgets.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:audio_session/audio_session.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
-import 'package:nylo_framework/nylo_framework.dart';
 
+import '/config/storage_keys.dart';
 import '/app/controllers/controller.dart';
-import 'package:flutter/widgets.dart';
 
 class RadioFreeTankwaController extends Controller {
   construct(BuildContext context) {
@@ -29,12 +30,26 @@ class RadioFreeTankwaController extends Controller {
     return Uri.parse(artworks[artworkIndex]);
   }
 
+  /// Store the state of the player in storage for the whole app to use
+  Future<void> updatePlayerStorageState() async {
+    await StorageKey.radioFreeTankwasPlaying.store(_player.playing);
+  }
+
   /// Setup Play Listerners
   void setupListeners() {
     // Listen for errors during playback.
-    _player.playbackEventStream.listen(null,
-        onError: (Object e, StackTrace stackTrace) {
-      print('A stream error occurred: $e');
+    // _player.playbackEventStream.listen((event) {
+    //   /// not sure if I need to do something here
+    // }, onError: (Object e, StackTrace stackTrace) {
+    //   print('A stream error occurred: $e');
+    // });
+
+    /// Save the player state to local storage
+    _player.playerStateStream.listen((state) {
+      if (state.processingState == ProcessingState.idle ||
+          state.processingState == ProcessingState.ready) {
+        updatePlayerStorageState();
+      }
     });
   }
 
