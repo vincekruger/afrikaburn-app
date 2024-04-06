@@ -4,7 +4,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 class RadioFreeTankwaProvider implements NyProvider {
   boot(Nylo nylo) async {
     await JustAudioBackground.init(
-      androidNotificationChannelId: 'com.wheresmyshit.afrikaburn.channel.audio',
+      androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
       androidNotificationChannelName: 'Radio Free Tankwa',
       androidNotificationOngoing: true,
     );

@@ -80,7 +80,7 @@ class _RadioFreeTankwaPageState extends NyState<RadioFreeTankwaPage> {
               child: Container(
                 width: scale(150, context),
                 child: Text(
-                  "Afrikaburn’s community radio station",
+                  "rft-content.page-blurb".tr(),
                   softWrap: true,
                 )
                     .titleLarge(context)
@@ -164,13 +164,13 @@ class _RadioFreeTankwaPageState extends NyState<RadioFreeTankwaPage> {
               widget.controller.player.stop();
 
               /// Log firebase event
-              FirebaseProvider().logEvent('rft-player-stop', {});
+              FirebaseProvider().logEvent('rft_player_stop', {});
             } else {
               /// Start the player
               widget.controller.player.play();
 
               /// Log firebase event
-              FirebaseProvider().logEvent('rft-player-play', {});
+              FirebaseProvider().logEvent('rft_player_play', {});
             }
           },
         );

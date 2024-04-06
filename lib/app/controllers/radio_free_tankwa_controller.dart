@@ -69,7 +69,7 @@ class RadioFreeTankwaController extends Controller {
       streamUrl,
       tag: MediaItem(
         id: 'rft-stream',
-        title: "Radio Free Tankwa",
+        title: "rft-content.stream-title".tr(),
         artUri: albumArt,
       ),
     );

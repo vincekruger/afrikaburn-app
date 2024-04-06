@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:afrikaburn/config/default_remote_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
