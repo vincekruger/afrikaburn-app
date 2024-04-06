@@ -19,7 +19,7 @@ abstract class ColorStyles extends BaseColorStyles {
 
   // accents
   // Color get secondAccent;
-  // Color get thirdAccent;
+  Color get thirdAccent;
   Color get fourthAccent;
 
   /// Shadows

@@ -37,6 +37,7 @@ class _DefaultWorldNavigationBarState
   /// List of navigation items
   List<NavigationItem> _items = [
     NavigationItem(AB24Icons.news, "menu-item.news".tr()),
+    NavigationItem(AB24Icons.rft, "menu-item.radio-free-tankwa".tr()),
     NavigationItem(AB24Icons.ticket, "menu-item.tickets".tr()),
     NavigationItem(AB24Icons.more, "menu-item.more-stuff".tr()),
   ];

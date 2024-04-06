@@ -1,5 +1,4 @@
 import 'package:afrikaburn/resources/themes/base_theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '/config/design.dart';

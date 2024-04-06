@@ -27,4 +27,10 @@ class SharingController extends Controller {
         await FirebaseRemoteConfig.instance.getString('app_share_url');
     Share.share('$getShareAppText $shareUrl');
   }
+
+  void shareRadioFreeTankwa() async {
+    String shareUrl =
+        await FirebaseRemoteConfig.instance.getString('rft_share_url');
+    Share.share('Check out Radio Free Tankwa $shareUrl');
+  }
 }

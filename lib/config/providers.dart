@@ -1,3 +1,4 @@
+import '/app/providers/radio_free_tankwa_provider.dart';
 import '/app/providers/shared_preferences_provider.dart';
 import '/app/providers/system_provider.dart';
 import '/app/providers/firebase_provider.dart';
@@ -23,4 +24,6 @@ final Map<Type, NyProvider> providers = {
   FirebaseProvider: FirebaseProvider(),
   SystemProvider: SystemProvider(),
   SharedPreferencesProvider: SharedPreferencesProvider(),
+
+  RadioFreeTankwaProvider: RadioFreeTankwaProvider(),
 };

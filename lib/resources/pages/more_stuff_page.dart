@@ -43,7 +43,6 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
     ),
 
     /// Other stuff
-    NavigationItem(AB24Icons.rft, "menu-item.radio-free-tankwa".tr()),
     NavigationItem(Icons.phonelink, "menu-item.my-contact".tr()),
     NavigationItem(AB24Icons.map, "menu-item.map".tr()),
     NavigationItem(AB24Icons.art, "menu-item.artwork".tr()),

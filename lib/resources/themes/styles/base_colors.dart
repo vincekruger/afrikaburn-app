@@ -18,6 +18,7 @@ class BaseThemeColors implements ColorStyles {
   Color get blue => const Color(0xFF000681);
 
   // accents
+  Color get thirdAccent => const Color(0xFF000681);
   Color get fourthAccent => const Color(0xFF20EDC4);
 
   /// Shadows

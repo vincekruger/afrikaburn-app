@@ -3,9 +3,9 @@ import 'package:afrikaburn/resources/pages/map_page.dart';
 import 'package:afrikaburn/resources/pages/my_contact_page.dart';
 import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import '/resources/widgets/logo_widget.dart';
+import 'package:afrikaburn/resources/widgets/logo_widget.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import 'controller.dart';
+import 'package:afrikaburn/app/controllers/controller.dart';
 
 class HomeController extends Controller {
   @override
