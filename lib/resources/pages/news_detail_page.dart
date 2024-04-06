@@ -147,6 +147,18 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   @override
   Widget view(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(top: 5, right: 15.0),
+            child: closeIconButton(context),
+          ),
+        ],
+      ),
       backgroundColor: Colors.transparent,
       body: DismissiblePage(
         backgroundColor: context.color.background,
@@ -295,36 +307,40 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
                 formatImageCredit(),
               ],
             ),
-            Positioned(
-              top: 300 - 60,
-              right: 10,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0, 2),
-                      blurRadius: 10,
-                      color: context.color.shadowColor.withOpacity(0.5),
-                    ),
-                  ],
-                ),
-                child: IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  padding: EdgeInsets.zero,
-                  visualDensity: VisualDensity.compact,
-                  icon: Icon(
-                    AB24Icons.close_thick,
-                    size: 18,
-                    color: context.color.background,
-                  ),
-                ).withGradient(GradientStyles.appbarIcon),
-              ),
-            ),
           ],
         ),
       ),
+    );
+  }
+
+  /// The Fancy close button
+  Container closeIconButton(BuildContext context) {
+    final double buttonSize = 30;
+
+    return Container(
+      width: buttonSize,
+      height: buttonSize,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(50),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 0),
+            blurRadius: 8,
+            color: context.color.shadowColor.withOpacity(0.5),
+          ),
+        ],
+      ),
+      child: IconButton(
+        onPressed: () => Navigator.pop(context),
+        padding: EdgeInsets.zero,
+        visualDensity: VisualDensity.compact,
+        icon: Icon(
+          AB24Icons.close_thick,
+          size: 18,
+          color: context.color.background,
+        ),
+      ).withGradient(GradientStyles.appbarIcon),
     );
   }
 
