@@ -1,24 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import 'package:afrikaburn/app/models/navigation_item.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:afrikaburn/resources/pages/root.dart';
-
-/// Navigation Item Wrapper Class
-class NavigationItem {
-  final IconData icon;
-  final String label;
-  final String? labelDetail;
-  final String? routeName;
-
-  NavigationItem(
-    this.icon,
-    this.label, {
-    this.labelDetail,
-    this.routeName,
-  });
-}
 
 /// Default World Navigation Bar
 class DefaultWorldNavigationBar extends StatefulWidget {

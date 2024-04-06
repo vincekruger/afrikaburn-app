@@ -63,6 +63,7 @@ class FirebaseProvider implements NyProvider {
     /// Fetch remote config
     await remoteConfig.fetchAndActivate().catchError((error) {
       print("Error fetching remote config: $error");
+      return false;
     });
   }
 

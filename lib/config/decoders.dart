@@ -7,7 +7,6 @@ import '/app/models/news_category.dart';
 import '/app/controllers/news_detail_controller.dart';
 import '/app/controllers/news_controller.dart';
 import '/app/controllers/create_contact_controller.dart';
-import '/app/controllers/ticket_controller.dart';
 import '/app/controllers/map_controller.dart';
 import '/app/controllers/my_contact_controller.dart';
 import '/app/controllers/wtf_guide_controller.dart';

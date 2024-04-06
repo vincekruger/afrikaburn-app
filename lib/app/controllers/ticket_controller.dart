@@ -241,7 +241,7 @@ class TicketController extends Controller {
   Future<void> deleteThumbnail() async {
     /// Catching the error here because if the file doesn't delete or it's
     /// already gone it's ok. I don't really need to chuck and error here
-    await (await getThumbnail()).delete().catchError(() {});
+    await (await getThumbnail()).delete();
   }
 
   /// Delete the ticket item file from the documents directory

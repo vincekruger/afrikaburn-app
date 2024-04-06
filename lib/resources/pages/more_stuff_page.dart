@@ -1,4 +1,5 @@
 import 'package:afrikaburn/app/controllers/sharing_controller.dart';
+import 'package:afrikaburn/app/models/navigation_item.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/resources/appbars/custom_app_bar.dart';
@@ -9,7 +10,6 @@ import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
-import 'package:afrikaburn/resources/widgets/default_world_navigation_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:afrikaburn/config/design.dart';
-import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 class TicketsAppBar extends StatelessWidget implements PreferredSizeWidget {
