@@ -129,10 +129,14 @@ class TicketController extends Controller {
     /// Check if image exists
     final String imageAssetPath = await getAssetPath();
     final bool imageExists = File(imageAssetPath).existsSync();
+    print('Image Asset Path: $imageAssetPath');
+    print('Image Exists: $imageExists');
 
     /// check if pdf exists
     final String pdfAssetPath = await getAssetPath(isPdf: true);
     final bool pdfExists = File(pdfAssetPath).existsSync();
+    print('PDF Asset Path: $pdfAssetPath');
+    print('PDF Exists: $pdfExists');
 
     /// Update the ticket item state
     notifiyTicketSlot(imageExists || pdfExists, isPdf: pdfExists);

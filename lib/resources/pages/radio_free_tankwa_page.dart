@@ -66,7 +66,7 @@ class _RadioFreeTankwaPageState extends NyState<RadioFreeTankwaPage> {
             child: Container(
               width: scale(359, context),
               child: Image.asset(context.isDarkMode
-                  ? "public/assets/images/rft/tower-light.png"
+                  ? "public/assets/images/rft/tower-dark.png"
                   : "public/assets/images/rft/tower-light.png"),
             ),
           ),

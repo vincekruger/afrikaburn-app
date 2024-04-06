@@ -99,22 +99,28 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
     );
   }
 
+  Widget? trailingNavigationItem(NavigationItem item) {
+    /// There is a route, show the chevron right icon
+    if (item.routeName != null)
+      return Icon(AB24Icons.chevron_right, size: 20)
+          .withGradeint(GradientStyles.appbarIcon);
+
+    /// there is an onTap method, don't show anything
+    if (item.onTap != null) return null;
+
+    /// Return a coming soon text
+    return Text("coming soon").bodySmall(context).setFontSize(08);
+  }
+
   /// Rendered Navigation ListTile
   ListTile _navigationListTile(NavigationItem item) {
-    var trailing = (item.routeName != null)
-        ? Icon(
-            AB24Icons.chevron_right,
-            size: 20,
-          ).withGradeint(GradientStyles.appbarIcon)
-        : Text("coming soon").bodySmall(context).setFontSize(08);
-
     return ListTile(
       contentPadding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
       horizontalTitleGap: 28,
       visualDensity: VisualDensity.compact,
       leading:
           Icon(item.icon, size: 30).withGradeint(GradientStyles.appbarIcon),
-      trailing: trailing,
+      trailing: trailingNavigationItem(item),
       title: Text(item.label.toUpperCase()).titleMedium(context),
       subtitle: item.labelDetail != null
           ? Text(item.labelDetail!.toUpperCase()).bodyMedium(context).setColor(

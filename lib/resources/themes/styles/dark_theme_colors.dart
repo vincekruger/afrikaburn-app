@@ -14,6 +14,7 @@ class DarkThemeColors extends BaseThemeColors implements ColorStyles {
   Color get primaryAlternate => const Color(0xFF797979);
 
   // accents
+  Color get thirdAccent => const Color(0xFF20EDC4);
   Color get fourthAccent => const Color(0xFF000681);
 
   // gradients

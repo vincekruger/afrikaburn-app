@@ -1,3 +1,4 @@
+import '/resources/pages/settings_page.dart';
 import 'package:afrikaburn/resources/pages/map_pdf_page.dart';
 import 'package:afrikaburn/resources/pages/more_stuff_page.dart';
 import 'package:afrikaburn/resources/pages/radio_free_tankwa_page.dart';
@@ -72,4 +73,5 @@ appRouter() => nyRoutes((router) {
 
       /// Other stuff
       router.route(HomePage.path, (context) => HomePage());
-    });
+      router.route(SettingsPage.path, (context) => SettingsPage());
+});

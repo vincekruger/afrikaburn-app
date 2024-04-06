@@ -17,8 +17,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class BuyTicketContent extends StatefulWidget {
   BuyTicketContent({Key? key}) : super(key: key);
-
-  static String state = "testing";
+  static String state = "buy_ticket";
 
   @override
   createState() => _BuyTicketContentState();
