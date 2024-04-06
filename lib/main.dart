@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '/bootstrap/app.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import '/bootstrap/app.dart';
 import 'bootstrap/boot.dart';
 
 void main() async {
