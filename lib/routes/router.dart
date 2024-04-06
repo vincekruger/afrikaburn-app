@@ -1,15 +1,15 @@
-import '/resources/pages/map_pdf_page.dart';
-import '/resources/pages/more_stuff_page.dart';
-import '/resources/pages/radio_free_tankwa_page.dart';
-import '../resources/pages/root.dart';
-import '/resources/pages/news_detail_page.dart';
-import '/resources/pages/news_page.dart';
-import '/resources/pages/create_contact_page.dart';
-import '/resources/pages/ticket_page.dart';
-import '/resources/pages/map_page.dart';
-import '/resources/pages/my_contact_page.dart';
-import '/resources/pages/wtf_guide_page.dart';
-import '/resources/pages/home_page.dart';
+import 'package:afrikaburn/resources/pages/map_pdf_page.dart';
+import 'package:afrikaburn/resources/pages/more_stuff_page.dart';
+import 'package:afrikaburn/resources/pages/radio_free_tankwa_page.dart';
+import 'package:afrikaburn/resources/pages/root.dart';
+import 'package:afrikaburn/resources/pages/news_detail_page.dart';
+import 'package:afrikaburn/resources/pages/news_page.dart';
+import 'package:afrikaburn/resources/pages/create_contact_page.dart';
+import 'package:afrikaburn/resources/pages/ticket_page.dart';
+import 'package:afrikaburn/resources/pages/map_page.dart';
+import 'package:afrikaburn/resources/pages/my_contact_page.dart';
+import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
+import 'package:afrikaburn/resources/pages/home_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 /* App Router
