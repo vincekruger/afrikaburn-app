@@ -1,3 +1,4 @@
+import 'package:afrikaburn/app/controllers/sharing_controller.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/resources/appbars/custom_app_bar.dart';
@@ -49,7 +50,11 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
     NavigationItem(AB24Icons.theme_camp, "menu-item.theme-camps".tr()),
     NavigationItem(AB24Icons.mutant_vehicle, "menu-item.mutant-vehicles".tr()),
     NavigationItem(AB24Icons.heart, "menu-item.favorites".tr()),
-    NavigationItem(AB24Icons.share, "menu-item.share-app".tr()),
+    NavigationItem(
+      AB24Icons.share,
+      "menu-item.share-app".tr(),
+      onTap: () => SharingController().shareApp(),
+    ),
     NavigationItem(AB24Icons.support, "menu-item.support-app".tr()),
     NavigationItem(AB24Icons.settings, "menu-item.settings".tr()),
   ];
@@ -116,11 +121,13 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
           ? Text(item.labelDetail!.toUpperCase()).bodyMedium(context).setColor(
               context, (color) => ThemeColor.get(context).primaryAlternate)
           : null,
-      onTap: item.routeName == null
-          ? null
-          : () {
-              routeTo(item.routeName!);
-            },
+      onTap: () {
+        /// Route to Page
+        if (item.routeName != null) return routeTo(item.routeName!);
+
+        /// Run onTap Method
+        if (item.onTap != null) item.onTap!();
+      },
     );
   }
 }

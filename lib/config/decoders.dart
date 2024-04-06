@@ -1,3 +1,4 @@
+import '/app/controllers/sharing_controller.dart';
 import '/app/controllers/radio_free_tankwa_controller.dart';
 import 'package:afrikaburn/app/controllers/platform_controller.dart';
 
@@ -83,4 +84,6 @@ final Map<Type, dynamic> controllers = {
   PlatformController: () => PlatformController(),
 
   RadioFreeTankwaController: () => RadioFreeTankwaController(),
+
+  SharingController: () => SharingController(),
 };
