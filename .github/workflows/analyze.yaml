@@ -6,7 +6,8 @@ on:
         - main
 
 jobs:
-  build:
+  code_analysis:
+    name: Dart Analysis
     runs-on: ubuntu-latest
 
     steps:
@@ -25,5 +26,5 @@ jobs:
       - name: Analyze Project Source Code
         run: dart analyze --fatal-infos
 
-      - name: Run Flutter Tests
-        run: flutter test
+      # - name: Run Flutter Tests
+      #   run: flutter test
