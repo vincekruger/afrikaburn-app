@@ -1,3 +1,5 @@
+import 'package:afrikaburn/app/providers/settings_provider.dart';
+
 import '/app/providers/radio_free_tankwa_provider.dart';
 import '/app/providers/shared_preferences_provider.dart';
 import '/app/providers/system_provider.dart';
@@ -24,6 +26,6 @@ final Map<Type, NyProvider> providers = {
   FirebaseProvider: FirebaseProvider(),
   SystemProvider: SystemProvider(),
   SharedPreferencesProvider: SharedPreferencesProvider(),
-
+  SettingsProvider: SettingsProvider(),
   RadioFreeTankwaProvider: RadioFreeTankwaProvider(),
 };

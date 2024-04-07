@@ -1,7 +1,7 @@
 class DefaultRemoteConfig {
   static final Map<String, dynamic> defaultConfig = {
     "tickets_url": "https://tickets.afrikaburn.org",
-    "app_share_url": "https://afrika.burn.fan/download",
+    "app_share_url": "https://afrika.burn.fan/",
     "rft_stream_url":
         "https://samcloud.spacial.com/api/listen?sid=69819&m=sc&rid=155682",
     "rft_share_url": "https://afrika.burn.fan/radio",

@@ -60,6 +60,7 @@ dependencies:
   share_plus: ^8.0.2
   just_audio: ^0.9.37
   just_audio_background: ^0.0.1-beta.11
+  quick_actions: ^1.0.7
 
 dev_dependencies:
   lints: ^3.0.0

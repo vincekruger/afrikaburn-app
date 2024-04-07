@@ -1,4 +1,5 @@
 import 'package:afrikaburn/config/default_remote_config.dart';
+import 'package:afrikaburn/config/storage_keys.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -8,7 +9,8 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:afrikaburn/config/firebase_options.dart';
-import 'package:afrikaburn/app/providers/shared_preferences_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FirebaseProvider implements NyProvider {
   /// Run before boot
@@ -69,17 +71,16 @@ class FirebaseProvider implements NyProvider {
 
   /// Configure Firebase Analytics
   _configureAnalyticsCollection() async {
-    bool analyticsCollectionEnabled =
-        (await SharedPreferencesProvider().init()).analyticsCollectionEnabled;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool collectionEnabled =
+        await await prefs.getBool(SharedPreferenceKey.analyticsAllowed) ?? true;
 
     /// Set Analytics Collection Enabled state
-    FirebaseAnalytics.instance
-        .setAnalyticsCollectionEnabled(analyticsCollectionEnabled);
+    FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(collectionEnabled);
 
     /// Set Crashlytics Collection Enabled state
-    FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(
-      SharedPreferencesProvider().analyticsCollectionEnabled,
-    );
+    FirebaseCrashlytics.instance
+        .setCrashlyticsCollectionEnabled(collectionEnabled);
   }
 
   /// Log a screen view

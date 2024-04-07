@@ -12,6 +12,16 @@ class GradientStyles {
         ],
       );
 
+  static LinearGradient get canvasLineInverted => LinearGradient(
+        begin: Alignment.centerRight,
+        end: Alignment.centerLeft,
+        colors: [
+          BaseThemeColors().gradient1Start,
+          BaseThemeColors().gradient1Middle,
+          BaseThemeColors().gradient1End,
+        ],
+      );
+
   static LinearGradient get ticketSlotGradient => LinearGradient(
         begin: const Alignment(0.87, -0.50),
         end: const Alignment(-0.87, 0.5),

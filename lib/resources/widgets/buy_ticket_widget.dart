@@ -17,8 +17,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class BuyTicketContent extends StatefulWidget {
   BuyTicketContent({Key? key}) : super(key: key);
-
-  static String state = "testing";
+  static String state = "buy_ticket";
 
   @override
   createState() => _BuyTicketContentState();
@@ -74,12 +73,6 @@ class _BuyTicketContentState extends NyState<BuyTicketContent>
   dispose() {
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
-  }
-
-  @override
-  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
-    /// Check the tickets folder again when the app resumes
-    if (state == AppLifecycleState.resumed) await screenTicketsFolder();
   }
 
   /// Update the state

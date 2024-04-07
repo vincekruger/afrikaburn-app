@@ -20,8 +20,8 @@ class SharedPreferencesProvider implements NyProvider {
 
   /// Preload Preferences
   _preloadPrefs() async {
-    _analyticsCollectionEnabled =
-        await prefs.getBool(analyticsCollectionEnabledKey) ?? true;
+    // _analyticsCollectionEnabled =
+    //     await prefs.getBool(analyticsCollectionEnabledKey) ?? true;
     _newsTopicSubscribed = await prefs.getBool(newsTopicSubscribedKey) ?? false;
   }
 
@@ -31,6 +31,7 @@ class SharedPreferencesProvider implements NyProvider {
       prefs = await SharedPreferences.getInstance();
       _prefsInitialized = true; // Mark initialization complete
     }
+
     return nylo;
   }
 
@@ -41,17 +42,17 @@ class SharedPreferencesProvider implements NyProvider {
 
   /// Analytics Collection Enabled
   /// Config and defaults
-  static String analyticsCollectionEnabledKey =
-      'flutter.analyticsCollectionEnabled';
-  bool _analyticsCollectionEnabled = true;
+  // static String analyticsCollectionEnabledKey =
+  //     'flutter.analyticsCollectionEnabled';
+  // bool _analyticsCollectionEnabled = true;
 
   /// Analytics Collection Enabled
   /// Getters and Setters
-  bool get analyticsCollectionEnabled => _analyticsCollectionEnabled;
-  void set analyticsCollectionEnabled(bool value) {
-    _analyticsCollectionEnabled = value;
-    prefs.setBool(analyticsCollectionEnabledKey, value);
-  }
+  // bool get analyticsCollectionEnabled => _analyticsCollectionEnabled;
+  // void set analyticsCollectionEnabled(bool value) {
+  //   _analyticsCollectionEnabled = value;
+  //   prefs.setBool(analyticsCollectionEnabledKey, value);
+  // }
 
   /// News Topic Notification Subscription
   static String newsTopicSubscribedKey = 'flutter.newsTopicSubscribed';

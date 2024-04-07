@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
@@ -11,8 +9,10 @@ import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:afrikaburn/resources/widgets/news_item_content_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dismissible_page/dismissible_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:moment_dart/moment_dart.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/app/controllers/news_controller.dart';
@@ -64,11 +64,16 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
     if (newsItem.imageCredit == null) return Container();
 
     return Padding(
-      padding: padding.copyWith(top: 5, bottom: 0),
-      child: Text("Image Credit".tr() + ": " + newsItem.imageCredit!.tr())
-          .bodySmall(context)
-          .setColor(
-              context, (color) => ThemeColor.get(context).primaryAlternate),
+      padding: padding.copyWith(top: 5, bottom: 0, left: 5),
+      child: Container(
+        width: 186,
+        child: Text(
+          "Image Credit".tr() + ": " + newsItem.imageCredit!.tr(),
+          overflow: TextOverflow.ellipsis,
+          softWrap: false,
+        ).bodySmall(context).setColor(
+            context, (color) => ThemeColor.get(context).primaryContent),
+      ),
     );
   }
 
@@ -146,19 +151,9 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   /// The View
   @override
   Widget view(BuildContext context) {
+    final double viewPaddingTop = MediaQuery.of(context).viewPadding.top;
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(top: 5, right: 15.0),
-            child: closeIconButton(context),
-          ),
-        ],
-      ),
       backgroundColor: Colors.transparent,
       body: DismissiblePage(
         backgroundColor: context.color.background,
@@ -238,7 +233,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
                       child: Container(
                         width: scale(215, context),
                         child: Text(
-                          "Join the discussion on the burn site".tr(),
+                          "news.cta.join-disccussion".tr(),
                           softWrap: true,
                         ).titleLarge(context).setColor(
                             context, (color) => ThemeColor.get(context).blue),
@@ -257,26 +252,27 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
             ),
           ),
         ),
-        Padding(
-          padding: padding.copyWith(top: 40, bottom: 60, left: 0, right: 0),
-          child: Center(
-            child: OutlinedButton(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(AB24Icons.share, size: 16),
-                  SizedBox(width: 10),
-                  Text("Share Story".toUpperCase()),
-                ],
-              ),
-              onPressed: () {},
-            ).withGradient(
-              strokeWidth: 2,
-              gradient: GradientStyles.outlinedButtonBorder,
-            ),
-          ),
-        ),
+        SizedBox(height: 40),
+        // Padding(
+        //   padding: padding.copyWith(top: 40, bottom: 60, left: 0, right: 0),
+        //   child: Center(
+        //     child: OutlinedButton(
+        //       child: Row(
+        //         mainAxisAlignment: MainAxisAlignment.center,
+        //         mainAxisSize: MainAxisSize.min,
+        //         children: [
+        //           Icon(AB24Icons.share, size: 16),
+        //           SizedBox(width: 10),
+        //           Text("news.cta.share-story".tr().toUpperCase()),
+        //         ],
+        //       ),
+        //       onPressed: () {},
+        //     ).withGradient(
+        //       strokeWidth: 2,
+        //       gradient: GradientStyles.outlinedButtonBorder,
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }
@@ -286,12 +282,13 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
     return Hero(
       tag: heroTag,
       child: Container(
-        height: 330,
-        width: double.infinity,
+        height: 320,
         child: Stack(
           children: [
-            canvasGradientLinesCrisCross(context,
-                top: Platform.isAndroid ? 245 : 255),
+            canvasGradientLinesCrisCross(
+              context,
+              top: 245,
+            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -304,9 +301,18 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                formatImageCredit(),
+                Transform(
+                  alignment: FractionalOffset.center,
+                  transform: Matrix4.identity()..rotateZ(-0.07),
+                  child: formatImageCredit(),
+                ),
               ],
             ),
+            Positioned(
+              right: 15,
+              top: 245,
+              child: closeIconButton(context),
+            )
           ],
         ),
       ),
@@ -350,14 +356,15 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
     return Stack(
       children: [
         Positioned(
-          top: scale(top, context),
+          top: top,
           right: scale(32.71, context) * -1,
           child: Transform(
             alignment: FractionalOffset.center,
             transform: Matrix4.identity()..rotateZ(0.0783),
             child: Container(
               width: scale(403.86, context),
-              height: scale(46, context),
+              // height: scale(46, context),
+              height: 46,
               decoration: BoxDecoration(
                 gradient: GradientStyles.canvasLine,
               ),
@@ -365,14 +372,15 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
           ),
         ),
         Positioned(
-          top: scale(top, context),
+          top: top,
           left: scale(32.71, context) * -1,
           child: Transform(
             alignment: FractionalOffset.center,
             transform: Matrix4.identity()..rotateZ(0.0671 * -1),
             child: Container(
               width: scale(403.86, context),
-              height: scale(46, context),
+              // height: scale(46, context),
+              height: 46,
               decoration: BoxDecoration(
                 gradient: GradientStyles.canvasLine,
               ),

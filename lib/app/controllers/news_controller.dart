@@ -134,6 +134,7 @@ class NewsController extends Controller {
       pagingController.appendPage(newItems, nextPageKey);
     } catch (error) {
       pagingController.error = error;
+      print(error);
     }
   }
 }

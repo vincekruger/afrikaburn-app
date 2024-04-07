@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class MoreStuffAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final String title;
   final double bottomPadding = 10;
 
-  const CustomAppBar({
+  const MoreStuffAppBar({
     super.key,
     required this.height,
     required this.title,
@@ -25,12 +25,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       fit: BoxFit.fill,
     );
 
-    return ClipPath(
-      clipper: _AppBarClipper(20.0),
-      child: Stack(
-        children: [
-          Container(
-            height: preferredSize.height + 20,
+    return Stack(
+      children: [
+        ClipPath(
+          clipper: _AppBarClipper(20.0),
+          child: Container(
+            height: 119,
             decoration: BoxDecoration(
               color: Colors.transparent,
               image: DecorationImage(
@@ -39,16 +39,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           ),
-          AppBar(
-            title: Text(title),
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            systemOverlayStyle: context.isDarkMode
-                ? SystemUiOverlayStyle.dark
-                : SystemUiOverlayStyle.light,
-          ),
-        ],
-      ),
+        ),
+        AppBar(
+          title: Text(title),
+          elevation: 0,
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          systemOverlayStyle: context.isDarkMode
+              ? SystemUiOverlayStyle.dark
+              : SystemUiOverlayStyle.light,
+        ),
+      ],
     );
   }
 }

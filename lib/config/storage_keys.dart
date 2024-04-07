@@ -14,3 +14,16 @@ class StorageKey {
   static String authUser = getEnv('AUTH_USER_KEY', defaultValue: 'AUTH_USER');
   static String radioFreeTankwasPlaying = 'RADIO_FREE_TANKWA_PLAYING';
 }
+
+class SharedPreferenceKey {
+  static String analyticsAllowed = 'analytics_collection_enabled';
+  static String notificationNewsUpdates = 'subscribed_news_updates';
+  static String notificationBurnUpdates = 'subscribed_burn_updates';
+  static String notificationAppUpdates = 'subscribed_app_updates';
+}
+
+class NotificationSubscriptionKey {
+  static String news = 'news';
+  static String burn = 'burn';
+  static String app = 'app';
+}

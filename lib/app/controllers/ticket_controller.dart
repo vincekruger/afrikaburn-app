@@ -97,7 +97,7 @@ class TicketController extends Controller {
   }
 
   /// Get the ticket thubmanil directory
-  Future<Directory> getThumbsDirectory() async {
+  static Future<Directory> getThumbsDirectory() async {
     /// Get the paths
     final Directory appLibraryDir = await ((Platform.isIOS)
         ? getLibraryDirectory()
@@ -260,24 +260,45 @@ class TicketController extends Controller {
     );
   }
 
-  /// Delete all ticket item files from the documents directory
-  void clearAllTicketData() async {
-    /// Get the tickets directory in the documents directory
-    final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
-    final String assetFolder = p.join(appDocumentsDir.path, ticketPath);
+  static Future<int> getDataSize() async {
+    int totalSize = 0;
 
-    /// Check if the ticket items folder exists
-    if (!Directory(assetFolder).existsSync()) {
-      print('Ticket items folder does not exist');
-      return;
+    /// Get the tickets directory in the documents directory
+    final Directory documentsDir = Directory(
+        p.join((await getApplicationDocumentsDirectory()).path, ticketPath));
+    final Directory thumbnailsDir = await getThumbsDirectory();
+
+    /// Tally documents directory
+    if (documentsDir.existsSync()) {
+      var files = await documentsDir.list(recursive: true).toList();
+      var dirSize =
+          files.fold(0, (int sum, file) => sum + file.statSync().size);
+      totalSize = totalSize + dirSize;
     }
 
-    /// Delete the ticket item files
-    Directory(assetFolder).deleteSync(recursive: true);
-    (await getThumbsDirectory()).deleteSync();
+    /// Tally thumbnails directory
+    if (thumbnailsDir.existsSync()) {
+      var files = await thumbnailsDir.list(recursive: true).toList();
+      var dirSize =
+          files.fold(0, (int sum, file) => sum + file.statSync().size);
+      totalSize = totalSize + dirSize;
+    }
 
-    /// Update all the ticket item states
-    TicketType.values.forEach((type) => notifiyTicketSlot(false));
+    return totalSize;
+  }
+
+  /// Delete all ticket item files from the documents directory
+  static Future<void> clearAllTicketData() async {
+    final Directory documentsDir = Directory(
+        p.join((await getApplicationDocumentsDirectory()).path, ticketPath));
+    final Directory thumbnailsDir = await getThumbsDirectory();
+
+    /// If the folders don't exist, return
+    if (!documentsDir.existsSync() && !thumbnailsDir.existsSync()) return;
+
+    /// Delete all the files in the documents dirctory
+    documentsDir.deleteSync(recursive: true);
+    thumbnailsDir.deleteSync(recursive: true);
 
     /// Log the event
     FirebaseProvider().logEvent('ticket_clear_all', {});

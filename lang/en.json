@@ -32,14 +32,6 @@
     "wtf-guide": "WTF Guide",
     "map-pdf": "Map"
   },
-  "settings": {
-    "notifications-denied": {
-      "title": "Notifications Disabled",
-      "message": "You have not allowed the app permission to send you notifications notifications. You can enable them in your phone's settings.",
-      "confirm": "Got it!",
-      "open-settings": "Open Settings"
-    }
-  },
   "news-content": {
     "subscribe-confirmed": {
       "title": "You're Subscribed!",
@@ -94,7 +86,9 @@
   "news": {
     "cta": {
       "submit-an-article": "Submit an Article",
-      "read-now": "Read Now"
+      "read-now": "Read Now",
+      "share-story": "Share Story",
+      "join-disccussion": "Join the Discussion on the Burn Site"
     }
   },
   "share-content": {
@@ -109,8 +103,60 @@
     "9": "Warning: The Afrikaburn app may cause spontaneous dance moves. Use responsibly!",
     "10": "Lost in the dust? The Afrikaburn app is your desert guide, check it out!"
   },
-  "rft-content":  {
+  "rft-content": {
     "stream-title": "Radio Free Tankwa",
     "page-blurb": "Afrikaburn’s community radio station"
+  },
+  "settings": {
+    "page-title": "Settings",
+    "notifications-denied": {
+      "title": "Notifications Disabled",
+      "message": "You have not allowed the app permission to send you notifications notifications. You can enable them in your phone's settings.",
+      "confirm": "Got it!",
+      "open-settings": "Open Settings"
+    },
+    "notifications": {
+      "section-title": "Notifications",
+      "notifications-disabled": "FOMO Alert!  Don't miss out on the good stuff. Flip the notification switch to \"on\" (pinky promise, no spam!) and become a notification ninja!",
+      "open-settings-button-label": "Open Settings",
+      "request-permission-button-label": "Request Permission",
+      "news": {
+        "title": "News",
+        "description": "Get the latest news and updates from AfrikaBurn. You can unsubscribe at any time."
+      },
+      "tickets": {
+        "title": "Tickets",
+        "description": "Get reminders and updates about your tickets. You can unsubscribe at any time."
+      }
+    },
+    "local-storage": {
+      "section-title": "Local Storage",
+      "space-used": "Space Used: {{size}}",
+      "nothing-stored": "Nothing stored",
+      "space-calculating": "busy counting...",
+      "tickets": {
+        "title": "Tickets",
+        "description": "Your tickets are stored on your phone in a special little folder tucked away inside your app’s land of Narnia.  This is YOUR data and no one else can see it, but if you want to your space back - then klap a delete.",
+        "button-label": "Delete All Tickets",
+        "delete-confirm": {
+          "title": "Delete All Tickets 😱",
+          "message": "Are you sure you wanna do this because it will be gone off your phone foreva.",
+          "confirm": "Ja, Delete it",
+          "cancel": "Nee vok!"
+        }
+      },
+      "maps": {
+        "title": "Maps Data",
+        "description": "Obvsies the app had to download the map kak to make it work offline while you were kicking up the dust in ze Tankwa.  There is also a bunch of stuff for all the artwork, theme camps, mutant vehicles, events and all the rest of the juice that makes  burn dance. If you delete this stuff, you won’t be able to see the maps and the cool stuff until the next burn. May you wanna reminisce. Sometime in late 2024, it will be available as a NON a download too, turn on those app updates 😉",
+        "button-label": "Delete Map Data"
+      }
+    },
+    "privacy": {
+      "section-title": "Privacy",
+      "analytics": {
+        "title": "Share Analytics",
+        "description": "Your contribution makes a difference! By sharing diagnostic and usage data you will fuel the development of even cooler features in the future. We don't share this information with anyone nor will we ever, pinky swear. Also, stay tuned for the infographic showcasing how valuable your input is (anonymously, of course)."
+      }
+    }
   }
 }
