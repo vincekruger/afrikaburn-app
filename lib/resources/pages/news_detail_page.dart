@@ -68,7 +68,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
       child: Text("Image Credit".tr() + ": " + newsItem.imageCredit!.tr())
           .bodySmall(context)
           .setColor(
-              context, (color) => ThemeColor.get(context).primaryAlternate),
+              context, (color) => ThemeColor.get(context).secondaryAccent),
     );
   }
 
@@ -148,17 +148,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   Widget view(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(top: 5, right: 15.0),
-            child: closeIconButton(context),
-          ),
-        ],
-      ),
+      // appBar: ,
       backgroundColor: Colors.transparent,
       body: DismissiblePage(
         backgroundColor: context.color.background,
@@ -238,7 +228,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
                       child: Container(
                         width: scale(215, context),
                         child: Text(
-                          "Join the discussion on the burn site".tr(),
+                          "news.cta.join-disccussion".tr(),
                           softWrap: true,
                         ).titleLarge(context).setColor(
                             context, (color) => ThemeColor.get(context).blue),
@@ -267,7 +257,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
                 children: [
                   Icon(AB24Icons.share, size: 16),
                   SizedBox(width: 10),
-                  Text("Share Story".toUpperCase()),
+                  Text("news.cta.share-story".tr().toUpperCase()),
                 ],
               ),
               onPressed: () {},
@@ -286,7 +276,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
     return Hero(
       tag: heroTag,
       child: Container(
-        height: 330,
+        height: 320,
         width: double.infinity,
         child: Stack(
           children: [
@@ -307,6 +297,20 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
                 formatImageCredit(),
               ],
             ),
+            Container(
+              height: 70,
+              child: AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                automaticallyImplyLeading: false,
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5, right: 15.0),
+                    child: closeIconButton(context),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
