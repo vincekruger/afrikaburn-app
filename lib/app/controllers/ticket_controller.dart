@@ -300,6 +300,19 @@ class TicketController extends Controller {
     documentsDir.deleteSync(recursive: true);
     thumbnailsDir.deleteSync(recursive: true);
 
+    /// Update the buy ticket content state
+    updateState(BuyTicketContent.state, data: {"ticketExists": false});
+
+    /// Update the ticket slots states
+    TicketType.values.forEach((ticketType) {
+      updateState(stateKey(ticketType), data: {
+        "exists": false,
+        "isPdf": false,
+        "assetPath": '',
+        "thumbnailPath": ''
+      });
+    });
+
     /// Log the event
     FirebaseProvider().logEvent('ticket_clear_all', {});
   }
