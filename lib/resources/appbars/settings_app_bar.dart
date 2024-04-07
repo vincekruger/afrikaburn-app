@@ -48,7 +48,7 @@ class SettingsAppBar extends StatelessWidget implements PreferredSizeWidget {
         ClipPath(
           clipper: _AppBarClipper(20.0),
           child: Container(
-            height: preferredSize.height + 20,
+            height: 119,
             decoration: BoxDecoration(
               color: Colors.transparent,
               image: DecorationImage(
@@ -61,6 +61,7 @@ class SettingsAppBar extends StatelessWidget implements PreferredSizeWidget {
         AppBar(
           title: Text(title),
           elevation: 0,
+          centerTitle: true,
           leading: Padding(
             padding: const EdgeInsets.only(left: 12.0, top: 0, bottom: 10),
             child: IconButton(

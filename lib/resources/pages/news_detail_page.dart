@@ -64,10 +64,16 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
     if (newsItem.imageCredit == null) return Container();
 
     return Padding(
-      padding: padding.copyWith(top: 10, bottom: 0),
-      child: Text("Image Credit".tr() + ": " + newsItem.imageCredit!.tr())
-          .bodySmall(context)
-          .setColor(context, (color) => ThemeColor.get(context).primaryContent),
+      padding: padding.copyWith(top: 5, bottom: 0, left: 5),
+      child: Container(
+        width: 186,
+        child: Text(
+          "Image Credit".tr() + ": " + newsItem.imageCredit!.tr(),
+          overflow: TextOverflow.ellipsis,
+          softWrap: false,
+        ).bodySmall(context).setColor(
+            context, (color) => ThemeColor.get(context).primaryContent),
+      ),
     );
   }
 
@@ -145,6 +151,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   /// The View
   @override
   Widget view(BuildContext context) {
+    final double viewPaddingTop = MediaQuery.of(context).viewPadding.top;
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,
@@ -173,20 +180,6 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
               ),
             ),
             articleConent(context),
-            Padding(
-              padding: const EdgeInsets.only(top: 175),
-              child: AppBar(
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                automaticallyImplyLeading: false,
-                actions: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15.0),
-                    child: closeIconButton(context),
-                  ),
-                ],
-              ),
-            )
           ],
         ),
       ),
@@ -289,12 +282,11 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
       tag: heroTag,
       child: Container(
         height: 320,
-        width: double.infinity,
         child: Stack(
           children: [
             canvasGradientLinesCrisCross(
               context,
-              top: 243,
+              top: 245,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -308,9 +300,18 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                formatImageCredit(),
+                Transform(
+                  alignment: FractionalOffset.center,
+                  transform: Matrix4.identity()..rotateZ(-0.07),
+                  child: formatImageCredit(),
+                ),
               ],
             ),
+            Positioned(
+              right: 15,
+              top: 245,
+              child: closeIconButton(context),
+            )
           ],
         ),
       ),
@@ -354,14 +355,15 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
     return Stack(
       children: [
         Positioned(
-          top: scale(top, context),
+          top: top,
           right: scale(32.71, context) * -1,
           child: Transform(
             alignment: FractionalOffset.center,
             transform: Matrix4.identity()..rotateZ(0.0783),
             child: Container(
               width: scale(403.86, context),
-              height: scale(46, context),
+              // height: scale(46, context),
+              height: 46,
               decoration: BoxDecoration(
                 gradient: GradientStyles.canvasLine,
               ),
@@ -369,14 +371,15 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
           ),
         ),
         Positioned(
-          top: scale(top, context),
+          top: top,
           left: scale(32.71, context) * -1,
           child: Transform(
             alignment: FractionalOffset.center,
             transform: Matrix4.identity()..rotateZ(0.0671 * -1),
             child: Container(
               width: scale(403.86, context),
-              height: scale(46, context),
+              // height: scale(46, context),
+              height: 46,
               decoration: BoxDecoration(
                 gradient: GradientStyles.canvasLine,
               ),
