@@ -1,3 +1,4 @@
+import '/app/models/file_size.dart';
 import '/app/controllers/settings_controller.dart';
 import '/app/controllers/sharing_controller.dart';
 import '/app/controllers/radio_free_tankwa_controller.dart';

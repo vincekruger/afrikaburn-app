@@ -2,14 +2,16 @@ import 'package:afrikaburn/app/controllers/sharing_controller.dart';
 import 'package:afrikaburn/app/models/navigation_item.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
-import 'package:afrikaburn/resources/appbars/custom_app_bar.dart';
+import 'package:afrikaburn/resources/appbars/more_stuff_app_bar.dart';
 import 'package:afrikaburn/resources/artworks/pointing_hand.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:afrikaburn/resources/pages/map_pdf_page.dart';
+import 'package:afrikaburn/resources/pages/settings_page.dart';
 import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
@@ -44,18 +46,23 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
 
     /// Other stuff
     NavigationItem(Icons.phonelink, "menu-item.my-contact".tr()),
-    NavigationItem(AB24Icons.map, "menu-item.map".tr()),
-    NavigationItem(AB24Icons.art, "menu-item.artwork".tr()),
-    NavigationItem(AB24Icons.theme_camp, "menu-item.theme-camps".tr()),
-    NavigationItem(AB24Icons.mutant_vehicle, "menu-item.mutant-vehicles".tr()),
-    NavigationItem(AB24Icons.heart, "menu-item.favorites".tr()),
+    // NavigationItem(AB24Icons.map, "menu-item.map".tr()),
+    // NavigationItem(AB24Icons.art, "menu-item.artwork".tr()),
+    // NavigationItem(AB24Icons.theme_camp, "menu-item.theme-camps".tr()),
+    // NavigationItem(AB24Icons.mutant_vehicle, "menu-item.mutant-vehicles".tr()),
+    // NavigationItem(AB24Icons.heart, "menu-item.favorites".tr()),
     NavigationItem(
       AB24Icons.share,
       "menu-item.share-app".tr(),
       onTap: () => SharingController().shareApp(),
     ),
     NavigationItem(AB24Icons.support, "menu-item.support-app".tr()),
-    NavigationItem(AB24Icons.settings, "menu-item.settings".tr()),
+    NavigationItem(
+      AB24Icons.settings,
+      "menu-item.settings".tr(),
+      routeName: SettingsPage.path,
+      hideChevron: true,
+    ),
   ];
 
   final double appBarHeight = 60.0;
@@ -65,14 +72,14 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
   Widget view(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: CustomAppBar(
+      appBar: MoreStuffAppBar(
         title: "menu-item.more-stuff".tr(),
         height: appBarHeight,
       ),
       body: Padding(
         padding: EdgeInsets.only(top: this.appBarHeight + appBarHeightPadding),
         child: ListView.separated(
-          padding: EdgeInsets.only(bottom: 40),
+          padding: EdgeInsets.only(bottom: 10),
           itemCount: _items.length,
           itemBuilder: (context, index) {
             final item = _items[index];
@@ -99,14 +106,15 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
     );
   }
 
+  /// Render the trailing navigation item
   Widget? trailingNavigationItem(NavigationItem item) {
     /// There is a route, show the chevron right icon
-    if (item.routeName != null)
+    if (item.routeName != null && item.hideChevron == false)
       return Icon(AB24Icons.chevron_right, size: 20)
           .withGradeint(GradientStyles.appbarIcon);
 
     /// there is an onTap method, don't show anything
-    if (item.onTap != null) return null;
+    if (item.onTap != null || item.hideChevron == true) return null;
 
     /// Return a coming soon text
     return Text("coming soon").bodySmall(context).setFontSize(08);

@@ -73,5 +73,13 @@ appRouter() => nyRoutes((router) {
 
       /// Other stuff
       router.route(HomePage.path, (context) => HomePage());
-      router.route(SettingsPage.path, (context) => SettingsPage());
-});
+      router.route(
+        SettingsPage.path,
+        (context) => SettingsPage(),
+        transition: PageTransitionType.bottomToTop,
+        pageTransitionSettings: PageTransitionSettings(
+          alignment: Alignment.bottomCenter,
+          fullscreenDialog: true,
+        ),
+      );
+    });

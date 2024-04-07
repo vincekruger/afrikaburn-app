@@ -75,12 +75,6 @@ class _BuyTicketContentState extends NyState<BuyTicketContent>
     super.dispose();
   }
 
-  @override
-  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
-    /// Check the tickets folder again when the app resumes
-    if (state == AppLifecycleState.resumed) await screenTicketsFolder();
-  }
-
   /// Update the state
   @override
   stateUpdated(dynamic data) async {

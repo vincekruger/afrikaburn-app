@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class MoreStuffAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final String title;
   final double bottomPadding = 10;
 
-  const CustomAppBar({
+  const MoreStuffAppBar({
     super.key,
     required this.height,
     required this.title,

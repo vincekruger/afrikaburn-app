@@ -1,9 +1,9 @@
-import '/config/decoders.dart';
-import '/config/design.dart';
-import '/config/theme.dart';
-import '/config/validation_rules.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import '/config/localization.dart';
+import 'package:afrikaburn/config/localization.dart';
+import 'package:afrikaburn/config/decoders.dart';
+import 'package:afrikaburn/config/design.dart';
+import 'package:afrikaburn/config/theme.dart';
+import 'package:afrikaburn/config/validation_rules.dart';
 
 class AppProvider implements NyProvider {
   @override
