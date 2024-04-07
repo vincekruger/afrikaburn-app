@@ -74,15 +74,17 @@ class _SettingsPageState extends NyState<SettingsPage>
 
   @override
   Widget view(BuildContext context) {
+    final double appBarHeight = MediaQuery.of(context).viewPadding.top + 30;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: SettingsAppBar(
-        height: 70,
+        height: appBarHeight,
         title: "settings.page-title".tr(),
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20)
-            .copyWith(top: 140),
+            .copyWith(top: appBarHeight + 70),
         children: [
           ...notificationsSection(context),
           SizedBox(height: 20),

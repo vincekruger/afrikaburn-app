@@ -25,11 +25,11 @@ class MoreStuffAppBar extends StatelessWidget implements PreferredSizeWidget {
       fit: BoxFit.fill,
     );
 
-    return ClipPath(
-      clipper: _AppBarClipper(20.0),
-      child: Stack(
-        children: [
-          Container(
+    return Stack(
+      children: [
+        ClipPath(
+          clipper: _AppBarClipper(20.0),
+          child: Container(
             height: preferredSize.height + 20,
             decoration: BoxDecoration(
               color: Colors.transparent,
@@ -39,16 +39,16 @@ class MoreStuffAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           ),
-          AppBar(
-            title: Text(title),
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            systemOverlayStyle: context.isDarkMode
-                ? SystemUiOverlayStyle.dark
-                : SystemUiOverlayStyle.light,
-          ),
-        ],
-      ),
+        ),
+        AppBar(
+          title: Text(title),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          systemOverlayStyle: context.isDarkMode
+              ? SystemUiOverlayStyle.dark
+              : SystemUiOverlayStyle.light,
+        ),
+      ],
     );
   }
 }

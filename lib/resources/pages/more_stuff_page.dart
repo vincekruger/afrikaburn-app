@@ -25,12 +25,6 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
   @override
   init() async {}
 
-  /// Use boot if you need to load data before the [view] is rendered.
-  // @override
-  // boot() async {
-  //
-  // }
-
   final List<NavigationItem> _items = [
     /// PDF Viewers
     NavigationItem(
@@ -45,7 +39,7 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
     ),
 
     /// Other stuff
-    NavigationItem(Icons.phonelink, "menu-item.my-contact".tr()),
+    // NavigationItem(Icons.phonelink, "menu-item.my-contact".tr()),
     // NavigationItem(AB24Icons.map, "menu-item.map".tr()),
     // NavigationItem(AB24Icons.art, "menu-item.artwork".tr()),
     // NavigationItem(AB24Icons.theme_camp, "menu-item.theme-camps".tr()),
@@ -65,11 +59,11 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
     ),
   ];
 
-  final double appBarHeight = 60.0;
-  final double appBarHeightPadding = 20.0;
-
   @override
   Widget view(BuildContext context) {
+    final double appBarHeight = MediaQuery.of(context).viewPadding.top + 30.0;
+    final double appBarHeightPadding = 40.0;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: MoreStuffAppBar(
@@ -77,7 +71,7 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
         height: appBarHeight,
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: this.appBarHeight + appBarHeightPadding),
+        padding: EdgeInsets.only(top: appBarHeight + appBarHeightPadding),
         child: ListView.separated(
           padding: EdgeInsets.only(bottom: 10),
           itemCount: _items.length,

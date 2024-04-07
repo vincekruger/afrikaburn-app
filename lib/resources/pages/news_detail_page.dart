@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
@@ -11,8 +9,10 @@ import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:afrikaburn/resources/widgets/news_item_content_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dismissible_page/dismissible_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:moment_dart/moment_dart.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/app/controllers/news_controller.dart';
@@ -64,11 +64,10 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
     if (newsItem.imageCredit == null) return Container();
 
     return Padding(
-      padding: padding.copyWith(top: 5, bottom: 0),
+      padding: padding.copyWith(top: 10, bottom: 0),
       child: Text("Image Credit".tr() + ": " + newsItem.imageCredit!.tr())
           .bodySmall(context)
-          .setColor(
-              context, (color) => ThemeColor.get(context).secondaryAccent),
+          .setColor(context, (color) => ThemeColor.get(context).primaryContent),
     );
   }
 
@@ -148,7 +147,6 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   Widget view(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      // appBar: ,
       backgroundColor: Colors.transparent,
       body: DismissiblePage(
         backgroundColor: context.color.background,
@@ -175,6 +173,20 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
               ),
             ),
             articleConent(context),
+            Padding(
+              padding: const EdgeInsets.only(top: 175),
+              child: AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                automaticallyImplyLeading: false,
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15.0),
+                    child: closeIconButton(context),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -280,8 +292,10 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
         width: double.infinity,
         child: Stack(
           children: [
-            canvasGradientLinesCrisCross(context,
-                top: Platform.isAndroid ? 245 : 255),
+            canvasGradientLinesCrisCross(
+              context,
+              top: 243,
+            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -297,20 +311,6 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
                 formatImageCredit(),
               ],
             ),
-            Container(
-              height: 70,
-              child: AppBar(
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                automaticallyImplyLeading: false,
-                actions: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5, right: 15.0),
-                    child: closeIconButton(context),
-                  ),
-                ],
-              ),
-            )
           ],
         ),
       ),

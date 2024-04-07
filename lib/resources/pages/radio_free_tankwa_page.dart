@@ -32,102 +32,103 @@ class _RadioFreeTankwaPageState extends NyState<RadioFreeTankwaPage> {
     await widget.controller.configureSource();
   }
 
-  @override
-  stateUpdated(dynamic data) async {
-    print(data);
-  }
+  // @override
+  // stateUpdated(dynamic data) async {}
 
   @override
   Widget view(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: RFTAppBar(100),
-      body: Stack(
-        children: [
-          Positioned(
-            top: 30,
-            right: 0,
-            child: Container(
-              width: scale(376, context),
-              height: scale(572, context),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image:
-                      AssetImage("public/assets/images/rft/background-eye.png"),
-                  fit: BoxFit.fitHeight,
-                  alignment: Alignment.topRight,
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 120,
-            left: -10,
-            child: Container(
-              width: scale(359, context),
-              child: Image.asset(context.isDarkMode
-                  ? "public/assets/images/rft/tower-dark.png"
-                  : "public/assets/images/rft/tower-light.png"),
-            ),
-          ),
-          Positioned(
-            top: 400,
-            right: 60,
-            child: Transform(
-              transform: Matrix4.identity()
-                ..translate(0.0, 0.0)
-                ..rotateZ(-0.05),
+    return Padding(
+      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: RFTAppBar(100),
+        body: Stack(
+          children: [
+            Positioned(
+              top: 30,
+              right: 0,
               child: Container(
-                width: scale(150, context),
-                child: Text(
-                  "rft-content.page-blurb".tr(),
-                  softWrap: true,
-                )
-                    .titleLarge(context)
-                    .setColor(context, (color) => context.color.thirdAccent),
+                width: scale(376, context),
+                height: scale(572, context),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                        "public/assets/images/rft/background-eye.png"),
+                    fit: BoxFit.fitHeight,
+                    alignment: Alignment.topRight,
+                  ),
+                ),
               ),
             ),
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.only(right: 24, bottom: 30, left: 25),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Row(
-                      children: [
-                        IconButton(
-                          icon: Icon(
-                            AB24Icons.share,
-                            size: 30,
-                          ).withGradeint(GradientStyles.appbarIcon),
-                          highlightColor: Colors.transparent,
-                          onPressed: sharingController.shareRadioFreeTankwa,
-                        ),
-                        // IconButton(
-                        //   icon: Icon(
-                        //     AB24Icons.heart,
-                        //     size: 30,
-                        //   ).withGradeint(GradientStyles.appbarIcon),
-                        //   highlightColor: Colors.transparent,
-                        //   onPressed: () {
-                        //     // TODO - Show a popover one day
-                        //   },
-                        // ),
-                      ],
-                    ),
-                    playerControls(),
-                  ],
-                ),
-              ],
+            Positioned(
+              top: 120,
+              left: -10,
+              child: Container(
+                width: scale(359, context),
+                child: Image.asset(context.isDarkMode
+                    ? "public/assets/images/rft/tower-dark.png"
+                    : "public/assets/images/rft/tower-light.png"),
+              ),
             ),
-          ),
-        ],
+            Positioned(
+              top: 400,
+              right: 60,
+              child: Transform(
+                transform: Matrix4.identity()
+                  ..translate(0.0, 0.0)
+                  ..rotateZ(-0.05),
+                child: Container(
+                  width: scale(150, context),
+                  child: Text(
+                    "rft-content.page-blurb".tr(),
+                    softWrap: true,
+                  )
+                      .titleLarge(context)
+                      .setColor(context, (color) => context.color.thirdAccent),
+                ),
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.only(right: 24, bottom: 30, left: 25),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: Icon(
+                              AB24Icons.share,
+                              size: 30,
+                            ).withGradeint(GradientStyles.appbarIcon),
+                            highlightColor: Colors.transparent,
+                            onPressed: sharingController.shareRadioFreeTankwa,
+                          ),
+                          // IconButton(
+                          //   icon: Icon(
+                          //     AB24Icons.heart,
+                          //     size: 30,
+                          //   ).withGradeint(GradientStyles.appbarIcon),
+                          //   highlightColor: Colors.transparent,
+                          //   onPressed: () {
+                          //     // TODO - Show a popover one day
+                          //   },
+                          // ),
+                        ],
+                      ),
+                      playerControls(),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
