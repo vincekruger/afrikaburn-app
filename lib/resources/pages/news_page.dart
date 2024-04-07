@@ -1,9 +1,9 @@
-import 'package:afrikaburn/app/models/news.dart';
-import 'package:afrikaburn/resources/widgets/news_item_widget.dart';
-import 'package:afrikaburn/resources/widgets/news_subscription_action_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import 'package:afrikaburn/app/models/news.dart';
+import 'package:afrikaburn/resources/widgets/news_item_widget.dart';
+import 'package:afrikaburn/resources/widgets/news_subscription_action_widget.dart';
 import 'package:afrikaburn/config/design.dart';
 import 'package:afrikaburn/resources/appbars/news_app_bar.dart';
 import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';

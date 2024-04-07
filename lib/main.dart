@@ -9,6 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Nylo nylo = await Nylo.init(setup: Boot.nylo, setupFinished: Boot.finished);
 
+  // Run the app
   runApp(
     AppBuild(
       navigatorKey: NyNavigator.instance.router.navigatorKey,

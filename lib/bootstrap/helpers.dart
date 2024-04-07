@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import '/resources/themes/styles/color_styles.dart';
+import 'package:flutter/services.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import 'package:afrikaburn/resources/themes/styles/color_styles.dart';
+import 'package:afrikaburn/resources/pages/news_page.dart';
+import 'package:afrikaburn/resources/pages/radio_free_tankwa_page.dart';
+import 'package:afrikaburn/resources/pages/ticket_page.dart';
 
 /* Helpers
 |--------------------------------------------------------------------------
@@ -13,4 +17,21 @@ class ThemeColor {
       nyColorStyle<ColorStyles>(context, themeId: themeId);
 
   static Color fromHex(String hexColor) => nyHexColor(hexColor);
+}
+
+class SystemUIColorHelper {
+  static final List<String> _requiresInvertedUIColor = [
+    NewsPage.path,
+    RadioFreeTankwaPage.path,
+    TicketPage.path,
+  ];
+
+  static Future<void> invertUIColor(BuildContext context, String path) async {
+    if (!_requiresInvertedUIColor.contains(path)) return;
+    SystemChrome.setSystemUIOverlayStyle(
+      context.isDarkMode
+          ? SystemUiOverlayStyle.light
+          : SystemUiOverlayStyle.dark,
+    );
+  }
 }

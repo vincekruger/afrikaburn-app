@@ -1,5 +1,6 @@
 import 'package:afrikaburn/app/events/root_app_lifecycle_event.dart';
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
+import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/resources/pages/more_stuff_page.dart';
 import 'package:afrikaburn/resources/pages/news_page.dart';
 import 'package:afrikaburn/resources/pages/radio_free_tankwa_page.dart';
@@ -19,23 +20,32 @@ class _DefaultWorldPageState extends NyState<RootPage>
     with WidgetsBindingObserver {
   /// List of routes to navigate to
   /// This is used to log screen views & body content
-  List<String> _paths = [
-    NewsPage.path,
-    RadioFreeTankwaPage.path,
-    TicketPage.path,
-    MoreStuffPage.path,
-  ];
-
-  List<Widget> _pages = [
-    NewsPage(),
-    RadioFreeTankwaPage(),
-    TicketPage(),
-    MoreStuffPage(),
+  List<Map<String, dynamic>> _pageList = [
+    {
+      'path': NewsPage.path,
+      'page': NewsPage(),
+    },
+    {
+      'path': RadioFreeTankwaPage.path,
+      'page': RadioFreeTankwaPage(),
+    },
+    {
+      'path': TicketPage.path,
+      'page': TicketPage(),
+    },
+    {
+      'path': MoreStuffPage.path,
+      'page': MoreStuffPage(),
+    },
   ];
 
   /// Initialize the page
   @override
   init() async {
+    FirebaseProvider()
+        .logScreenView(_pageList.elementAt(_currentIndex)['path']);
+    SystemUIColorHelper.invertUIColor(
+        context, _pageList.elementAt(_currentIndex)['path']);
     WidgetsBinding.instance.addObserver(this);
   }
 
@@ -54,7 +64,9 @@ class _DefaultWorldPageState extends NyState<RootPage>
   @override
   stateUpdated(dynamic data) async {
     /// Log screen view
-    FirebaseProvider().logScreenView(_paths[data]);
+    FirebaseProvider().logScreenView(_pageList.elementAt(data)['path']);
+    SystemUIColorHelper.invertUIColor(
+        context, _pageList.elementAt(data)['path']);
 
     /// Update the current index
     setState(() {
@@ -70,7 +82,7 @@ class _DefaultWorldPageState extends NyState<RootPage>
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
-        children: _pages,
+        children: _pageList.map<Widget>((e) => e['page']).toList(),
       ),
       bottomNavigationBar: DefaultWorldNavigationBar(),
     );
