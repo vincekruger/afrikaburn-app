@@ -252,26 +252,27 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
             ),
           ),
         ),
-        Padding(
-          padding: padding.copyWith(top: 40, bottom: 60, left: 0, right: 0),
-          child: Center(
-            child: OutlinedButton(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(AB24Icons.share, size: 16),
-                  SizedBox(width: 10),
-                  Text("news.cta.share-story".tr().toUpperCase()),
-                ],
-              ),
-              onPressed: () {},
-            ).withGradient(
-              strokeWidth: 2,
-              gradient: GradientStyles.outlinedButtonBorder,
-            ),
-          ),
-        ),
+        SizedBox(height: 40),
+        // Padding(
+        //   padding: padding.copyWith(top: 40, bottom: 60, left: 0, right: 0),
+        //   child: Center(
+        //     child: OutlinedButton(
+        //       child: Row(
+        //         mainAxisAlignment: MainAxisAlignment.center,
+        //         mainAxisSize: MainAxisSize.min,
+        //         children: [
+        //           Icon(AB24Icons.share, size: 16),
+        //           SizedBox(width: 10),
+        //           Text("news.cta.share-story".tr().toUpperCase()),
+        //         ],
+        //       ),
+        //       onPressed: () {},
+        //     ).withGradient(
+        //       strokeWidth: 2,
+        //       gradient: GradientStyles.outlinedButtonBorder,
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }
