@@ -20,39 +20,20 @@ class _DefaultWorldPageState extends NyState<RootPage>
     with WidgetsBindingObserver {
   /// List of routes to navigate to
   /// This is used to log screen views & body content
-  List<String> _paths = [
-    NewsPage.path,
-    RadioFreeTankwaPage.path,
-    TicketPage.path,
-    MoreStuffPage.path,
-  ];
-
-  /// List of pages to navigate to
-  List<Widget> _pages = [
-    NewsPage(),
-    RadioFreeTankwaPage(),
-    TicketPage(),
-    MoreStuffPage(),
-  ];
-
   List<Map<String, dynamic>> _pageList = [
     {
-      'class': NewsPage,
       'path': NewsPage.path,
       'page': NewsPage(),
     },
     {
-      'class': RadioFreeTankwaPage,
       'path': RadioFreeTankwaPage.path,
       'page': RadioFreeTankwaPage(),
     },
     {
-      'class': TicketPage,
       'path': TicketPage.path,
       'page': TicketPage(),
     },
     {
-      'class': MoreStuffPage,
       'path': MoreStuffPage.path,
       'page': MoreStuffPage(),
     },
@@ -61,6 +42,8 @@ class _DefaultWorldPageState extends NyState<RootPage>
   /// Initialize the page
   @override
   init() async {
+    FirebaseProvider()
+        .logScreenView(_pageList.elementAt(_currentIndex)['path']);
     SystemUIColorHelper.invertUIColor(
         context, _pageList.elementAt(_currentIndex)['path']);
     WidgetsBinding.instance.addObserver(this);
@@ -81,7 +64,7 @@ class _DefaultWorldPageState extends NyState<RootPage>
   @override
   stateUpdated(dynamic data) async {
     /// Log screen view
-    FirebaseProvider().logScreenView(_paths[data]);
+    FirebaseProvider().logScreenView(_pageList.elementAt(data)['path']);
     SystemUIColorHelper.invertUIColor(
         context, _pageList.elementAt(data)['path']);
 
@@ -99,7 +82,7 @@ class _DefaultWorldPageState extends NyState<RootPage>
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
-        children: _pages,
+        children: _pageList.map<Widget>((e) => e['page']).toList(),
       ),
       bottomNavigationBar: DefaultWorldNavigationBar(),
     );
