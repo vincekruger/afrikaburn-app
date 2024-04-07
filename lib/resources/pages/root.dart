@@ -1,7 +1,5 @@
 import 'package:afrikaburn/app/events/root_app_lifecycle_event.dart';
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
-import 'package:afrikaburn/app/providers/settings_provider.dart';
-import 'package:afrikaburn/app/providers/system_provider.dart';
 import 'package:afrikaburn/resources/pages/more_stuff_page.dart';
 import 'package:afrikaburn/resources/pages/news_page.dart';
 import 'package:afrikaburn/resources/pages/radio_free_tankwa_page.dart';

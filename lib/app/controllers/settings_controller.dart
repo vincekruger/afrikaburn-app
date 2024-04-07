@@ -6,7 +6,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:afrikaburn/app/controllers/ticket_controller.dart';
 import 'package:afrikaburn/app/models/file_size.dart';
-import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/config/storage_keys.dart';
 import 'package:afrikaburn/app/controllers/controller.dart';
 
