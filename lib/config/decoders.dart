@@ -64,28 +64,14 @@ final Map<Type, dynamic> apiDecoders = {
 |-------------------------------------------------------------------------- */
 final Map<Type, dynamic> controllers = {
   HomeController: () => HomeController(),
-
-  // ...
-
   WtfGuideController: () => WtfGuideController(),
-
   MyContactController: () => MyContactController(),
-
   MapController: () => MapController(),
-
-  // TicketController: () => TicketController(),
-
   CreateContactController: () => CreateContactController(),
-
   NewsController: () => NewsController(),
-
   NewsDetailController: () => NewsDetailController(),
-
   PlatformController: () => PlatformController(),
-
   RadioFreeTankwaController: () => RadioFreeTankwaController(),
-
   SharingController: () => SharingController(),
-
   SettingsController: () => SettingsController(),
 };

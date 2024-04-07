@@ -1,5 +1,6 @@
 import 'package:afrikaburn/app/events/root_app_lifecycle_event.dart';
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
+import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/resources/pages/more_stuff_page.dart';
 import 'package:afrikaburn/resources/pages/news_page.dart';
 import 'package:afrikaburn/resources/pages/radio_free_tankwa_page.dart';
@@ -26,6 +27,7 @@ class _DefaultWorldPageState extends NyState<RootPage>
     MoreStuffPage.path,
   ];
 
+  /// List of pages to navigate to
   List<Widget> _pages = [
     NewsPage(),
     RadioFreeTankwaPage(),
@@ -33,9 +35,34 @@ class _DefaultWorldPageState extends NyState<RootPage>
     MoreStuffPage(),
   ];
 
+  List<Map<String, dynamic>> _pageList = [
+    {
+      'class': NewsPage,
+      'path': NewsPage.path,
+      'page': NewsPage(),
+    },
+    {
+      'class': RadioFreeTankwaPage,
+      'path': RadioFreeTankwaPage.path,
+      'page': RadioFreeTankwaPage(),
+    },
+    {
+      'class': TicketPage,
+      'path': TicketPage.path,
+      'page': TicketPage(),
+    },
+    {
+      'class': MoreStuffPage,
+      'path': MoreStuffPage.path,
+      'page': MoreStuffPage(),
+    },
+  ];
+
   /// Initialize the page
   @override
   init() async {
+    SystemUIColorHelper.invertUIColor(
+        context, _pageList.elementAt(_currentIndex)['path']);
     WidgetsBinding.instance.addObserver(this);
   }
 
@@ -55,6 +82,8 @@ class _DefaultWorldPageState extends NyState<RootPage>
   stateUpdated(dynamic data) async {
     /// Log screen view
     FirebaseProvider().logScreenView(_paths[data]);
+    SystemUIColorHelper.invertUIColor(
+        context, _pageList.elementAt(data)['path']);
 
     /// Update the current index
     setState(() {
