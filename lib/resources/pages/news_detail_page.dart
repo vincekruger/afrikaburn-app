@@ -4,15 +4,12 @@ import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/config/design.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
-import 'package:afrikaburn/resources/themes/extensions/outlined_button.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:afrikaburn/resources/widgets/news_item_content_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dismissible_page/dismissible_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:moment_dart/moment_dart.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/app/controllers/news_controller.dart';
@@ -151,7 +148,6 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
   /// The View
   @override
   Widget view(BuildContext context) {
-    final double viewPaddingTop = MediaQuery.of(context).viewPadding.top;
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,

@@ -1,7 +1,5 @@
 import 'package:afrikaburn/app/events/analytics_tracking_event.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:afrikaburn/config/storage_keys.dart';
