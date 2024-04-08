@@ -47,7 +47,7 @@
     },
     "unsubscribe-confirm": {
       "title": "Are you sure?",
-      "message": "You are about to turn of your news alerts from Afrikaburn, are you sure you wanna do this?",
+      "message": "You are about to turn off your news alerts from Afrikaburn, are you sure you wanna do this?",
       "confirm": "Do it!",
       "cancel": "Nah!"
     },
