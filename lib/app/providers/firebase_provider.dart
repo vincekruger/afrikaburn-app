@@ -72,7 +72,7 @@ class FirebaseProvider implements NyProvider {
   _configureAnalyticsCollection(Nylo nylo) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool collectionEnabled =
-        await await prefs.getBool(SharedPreferenceKey.analyticsAllowed) ?? true;
+        await prefs.getBool(SharedPreferenceKey.analyticsAllowed) ?? true;
 
     /// Set Analytics Collection Enabled state
     /// Set Crashlytics Collection Enabled state
