@@ -1,3 +1,4 @@
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/app/providers/system_provider.dart';
@@ -22,17 +23,14 @@ class _WtfGuidePageState extends NyState<WtfGuidePage> {
   }
 
   /// Guide URL
-  final Uri pdfUri = Uri.parse(
-      "https://www.afrikaburn.org/wp-content/uploads/2023/04/WTF2023-FA-web2.pdf");
+  final Uri pdfUri =
+      Uri.parse(FirebaseRemoteConfig.instance.getString("pdf_wtf_guide_url"));
 
   @override
   Widget view(BuildContext context) {
-    return OrientationBuilder(builder: (context, orientation) {
-      return PdfViewerWidget(
-        uri: pdfUri,
-        navigationBarTitle: "screen-name.wtf-guide".tr(),
-        orientation: orientation,
-      );
-    });
+    return PdfViewerWidget(
+      uri: pdfUri,
+      navigationBarTitle: "screen-name.wtf-guide".tr(),
+    );
   }
 }

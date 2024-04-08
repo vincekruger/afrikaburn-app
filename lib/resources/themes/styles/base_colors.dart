@@ -31,7 +31,7 @@ class BaseThemeColors implements ColorStyles {
 
   // app bar
   Color get appBarBackground => Colors.transparent;
-  Color get appBarPrimaryContent => fourthAccent;
+  Color get appBarPrimaryContent => secondaryAccent;
 
   // gradients
   Color get gradient1Start => const Color(0xFF9C1FE9);
