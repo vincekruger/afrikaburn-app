@@ -66,6 +66,16 @@ class _NewsItemState extends State<NewsItem> {
         borderRadius: borderRadius,
         child: Container(
           height: boxHeight,
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: context.color.appBarPrimaryContent.withOpacity(0.3),
+                blurRadius: 30,
+                blurStyle: BlurStyle.inner,
+                offset: Offset(0, 1),
+              ),
+            ],
+          ),
           child: Stack(
             children: [
               Hero(
