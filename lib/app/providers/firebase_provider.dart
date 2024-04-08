@@ -34,7 +34,7 @@ class FirebaseProvider implements NyProvider {
   /// Configure Firebase Analytics
   afterBoot(Nylo nylo) async {
     await _configureRemoteConfig();
-    await _configureAnalyticsCollection();
+    await _configureAnalyticsCollection(nylo);
 
     /// Configure Firestore offline persistence
     FirebaseFirestore.instance.settings = const Settings(
@@ -69,17 +69,20 @@ class FirebaseProvider implements NyProvider {
   }
 
   /// Configure Firebase Analytics
-  _configureAnalyticsCollection() async {
+  _configureAnalyticsCollection(Nylo nylo) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool collectionEnabled =
         await await prefs.getBool(SharedPreferenceKey.analyticsAllowed) ?? true;
 
     /// Set Analytics Collection Enabled state
-    FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(collectionEnabled);
-
     /// Set Crashlytics Collection Enabled state
+    FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(collectionEnabled);
     FirebaseCrashlytics.instance
         .setCrashlyticsCollectionEnabled(collectionEnabled);
+
+    /// Add Firebase Analytics Observer
+    nylo.addNavigatorObserver(
+        FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance));
   }
 
   /// Log a screen view
