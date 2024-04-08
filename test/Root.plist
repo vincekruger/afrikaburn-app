@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>StringsTable</key>
+	<string>Root</string>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>flutter_app_version</string>
+			<key>Title</key>
+			<string>Version</string>
+			<key>DefaultValue</key>
+			<string>2024-01-0 (smoething)</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Notifications</string>
+			<key>FooterText</key>
+			<string>Notifications Footer</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>News Updates</string>
+			<key>DefaultValue</key>
+			<false/>
+			<key>Key</key>
+			<string>flutter.subscribed_news_updates</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Burn Updates</string>
+			<key>DefaultValue</key>
+			<false/>
+			<key>Key</key>
+			<string>flutter.subscribed_burn_updates</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>App Updates</string>
+			<key>DefaultValue</key>
+			<false/>
+			<key>Key</key>
+			<string>flutter.subscribed_app_updates</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>FooterText</key>
+			<string>Share Analytics Footer</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>DefaultValue</key>
+			<true/>
+			<key>Title</key>
+			<string>Share Analytics</string>
+			<key>Key</key>
+			<string>flutter.analytics_collection_enabled</string>
+		</dict>
+	</array>
+</dict>
+</plist>
