@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pdfrx/pdfrx.dart';
@@ -91,6 +92,14 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
         child: AppBar(
           title: Text(widget.navigationBarTitle.tr()),
           backgroundColor: context.color.appBarBackground,
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 12.0, top: 0, bottom: 10),
+            child: IconButton(
+              icon: Icon(AB24Icons.close_thick),
+              iconSize: 26,
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ),
         ),
       ),
       body: GestureDetector(

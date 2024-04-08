@@ -32,6 +32,8 @@ abstract class ColorStyles extends BaseColorStyles {
   // app bar
   Color get appBarBackground;
   Color get appBarPrimaryContent;
+  Color get appBarContentLightBackground;
+  Color get appBarContentDarkBackground;
 
   // gradients
   Color get gradient1Start;
