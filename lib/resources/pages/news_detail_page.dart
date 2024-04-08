@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
@@ -39,7 +41,9 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
 
   @override
   init() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    SystemChrome.setEnabledSystemUIMode(
+      Platform.isIOS ? SystemUiMode.immersive : SystemUiMode.immersiveSticky,
+    );
     return super.init();
   }
 
@@ -306,9 +310,9 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
             ),
             Positioned(
               right: 15,
-              top: 245,
+              top: Platform.isIOS ? 238 : 15,
               child: closeIconButton(context),
-            )
+            ),
           ],
         ),
       ),
@@ -317,7 +321,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
 
   /// The Fancy close button
   Container closeIconButton(BuildContext context) {
-    final double buttonSize = 30;
+    final double buttonSize = 40;
 
     return Container(
       width: buttonSize,
@@ -339,7 +343,7 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
         visualDensity: VisualDensity.compact,
         icon: Icon(
           AB24Icons.close_thick,
-          size: 18,
+          size: 20,
           color: context.color.background,
         ),
       ).withGradient(GradientStyles.appbarIcon),
