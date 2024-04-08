@@ -6,7 +6,7 @@ import 'package:afrikaburn/resources/widgets/pdf_viewer_widget.dart';
 
 class MapPdfPage extends NyStatefulWidget {
   static const path = '/map-pdf';
-  static const name = 'Map Pdf';
+  static const name = '2023 Map Pdf';
   MapPdfPage() : super(path, child: _MapPdfPageState());
 }
 
@@ -30,7 +30,7 @@ class _MapPdfPageState extends NyState<MapPdfPage> {
   Widget view(BuildContext context) {
     return PdfViewerWidget(
       uri: pdfUri,
-      navigationBarTitle: "screen-name.map-pdf".tr(),
+      navigationBarTitle: "screen-name.map-pdf-2023".tr(),
     );
   }
 }

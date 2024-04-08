@@ -14,8 +14,10 @@
     "radio-free-tankwa": "RTF",
     "tickets": "Tickets",
     "more-stuff": "More Stuff",
-    "wtf-guide-pdf": "WTF Guide",
-    "map-pdf": "PDF Map",
+    "wtf-guide-pdf-2023": "2023 WTF Guide",
+    "map-pdf-2023": "2023 PDF Map",
+    "wtf-guide-pdf-2024": "2023 WTF Guide",
+    "map-pdf-2024": "2023 PDF Map",
     "my-contant": "My Contact",
     "map": "Map",
     "artwork": "Artwork",
@@ -29,8 +31,8 @@
   },
   "screen-name": {
     "map": "Map",
-    "wtf-guide": "WTF Guide",
-    "map-pdf": "Map"
+    "wtf-guide-2023": "WTF Guide",
+    "map-pdf-2023": "2023 Map"
   },
   "news-content": {
     "subscribe-confirmed": {

@@ -6,7 +6,7 @@ import 'package:afrikaburn/resources/widgets/pdf_viewer_widget.dart';
 
 class WtfGuidePage extends NyStatefulWidget {
   static const path = '/wtf-guide';
-  static const name = 'WTF Guide';
+  static const name = '2023 WTF Guide';
   WtfGuidePage() : super(path, child: _WtfGuidePageState());
 }
 
@@ -30,7 +30,7 @@ class _WtfGuidePageState extends NyState<WtfGuidePage> {
   Widget view(BuildContext context) {
     return PdfViewerWidget(
       uri: pdfUri,
-      navigationBarTitle: "screen-name.wtf-guide".tr(),
+      navigationBarTitle: "screen-name.wtf-guide-2023".tr(),
     );
   }
 }
