@@ -1,3 +1,4 @@
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/app/providers/system_provider.dart';
@@ -21,17 +22,15 @@ class _MapPdfPageState extends NyState<MapPdfPage> {
     super.dispose();
   }
 
-  final Uri pdfUri = Uri.parse(
-      "https://www.afrikaburn.org/wp-content/uploads/2023/04/TT-MAP-2023-WEBf.pdf");
+  /// Map URL
+  final Uri pdfUri =
+      Uri.parse(FirebaseRemoteConfig.instance.getString("pdf_map_url"));
 
   @override
   Widget view(BuildContext context) {
-    return OrientationBuilder(builder: (context, orientation) {
-      return PdfViewerWidget(
-        uri: pdfUri,
-        navigationBarTitle: "screen-name.map-pdf".tr(),
-        orientation: orientation,
-      );
-    });
+    return PdfViewerWidget(
+      uri: pdfUri,
+      navigationBarTitle: "screen-name.map-pdf".tr(),
+    );
   }
 }
