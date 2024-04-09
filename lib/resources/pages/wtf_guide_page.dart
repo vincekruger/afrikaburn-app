@@ -1,6 +1,6 @@
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:afrikaburn/app/providers/system_provider.dart';
 import 'package:afrikaburn/resources/widgets/pdf_viewer_widget.dart';
 
