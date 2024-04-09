@@ -26,12 +26,12 @@ class _DefaultWorldPageState extends NyState<RootPage>
       'page': NewsPage(),
     },
     {
-      'path': RadioFreeTankwaPage.path,
-      'page': RadioFreeTankwaPage(),
-    },
-    {
       'path': TicketPage.path,
       'page': TicketPage(),
+    },
+    {
+      'path': RadioFreeTankwaPage.path,
+      'page': RadioFreeTankwaPage(),
     },
     {
       'path': MoreStuffPage.path,
