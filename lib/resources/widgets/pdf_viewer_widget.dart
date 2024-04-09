@@ -1,5 +1,7 @@
-import 'dart:math';
+import 'dart:io';
 
+import 'package:afrikaburn/bootstrap/helpers.dart';
+import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pdfrx/pdfrx.dart';
@@ -21,34 +23,19 @@ class PdfViewerWidget extends StatefulWidget {
 }
 
 class _PdfViewerWidgetState extends State<PdfViewerWidget>
-    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
-  /// App Bar Visibility & Orientation variables
-  bool _appBarVisible = true;
+    with SingleTickerProviderStateMixin {
+  /// PDF Controller
+  final PdfViewerController _pdfController = PdfViewerController();
+  late double _initialZoom;
+  late Offset _initialCenterPosition;
+
+  /// Animated App Bar & Visibility
   late final AnimationController _appBarController;
-  Orientation? _orientation;
-  late final PdfViewerController? _pdfController;
-
-  /// Toggle the app bar visibility
-  Future<void> _toggleAppBarVisibility({bool? visible}) async {
-    setState(() {
-      _appBarVisible = visible ?? !_appBarVisible;
-    });
-
-    /// Toogle the toolbar
-    SystemChrome.setEnabledSystemUIMode(
-      _appBarVisible ? SystemUiMode.edgeToEdge : SystemUiMode.immersiveSticky,
-    );
-  }
+  bool _appBarVisible = true;
 
   @override
   void initState() {
     super.initState();
-
-    /// Add observer
-    WidgetsBinding.instance.addObserver(this);
-
-    /// Configure the PDF controller
-    _pdfController = PdfViewerController();
 
     /// Configure the app bar controller
     _appBarController = AnimationController(
@@ -59,74 +46,21 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
 
   @override
   void dispose() {
-    /// Remove observer
-    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
-  @override
-  void didChangeMetrics() {
-    _orientation = MediaQuery.of(context).orientation;
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      setState(() {
-        _orientation = MediaQuery.of(context).orientation;
-      });
-
-      /// Relayout the PDF
-      _pdfController!.setZoom(_pdfController!.centerPosition, 0.5);
-      _pdfController!.relayout();
-
-      /// Toggle the app bar visibility
-      _toggleAppBarVisibility(visible: (_orientation == Orientation.portrait));
-    });
+  /// Set the system UI mode
+  void setSystemUIMode(bool _appBarVisible) {
+    SystemChrome.setEnabledSystemUIMode(_appBarVisible
+        ? SystemUiMode.edgeToEdge
+        : SystemUiMode.immersiveSticky);
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: SlidingAppBar(
-        controller: _appBarController,
-        visible: _appBarVisible,
-        child: AppBar(
-          title: Text(widget.navigationBarTitle.tr()),
-          backgroundColor: context.color.appBarBackground,
-        ),
-      ),
-      body: GestureDetector(
-        onTap: _toggleAppBarVisibility,
-        child: SafeArea(child: PDFView(), top: _appBarVisible),
-      ),
-    );
-  }
-
-  PdfPageLayout Function(List<PdfPage>, PdfViewerParams)?
-      layoutPagesHorizontal = (pages, params) {
-    final height = pages.fold(0.0, (prev, page) => max(prev, page.height)) +
-        params.margin * 2;
-    final pageLayouts = <Rect>[];
-    double x = params.margin;
-    for (var page in pages) {
-      pageLayouts.add(
-        Rect.fromLTWH(
-          x,
-          (height - page.height) / 2, // center vertically
-          page.width,
-          page.height,
-        ),
-      );
-      x += page.width + params.margin;
-    }
-    return PdfPageLayout(
-      pageLayouts: pageLayouts,
-      documentSize: Size(x, height),
-    );
-  };
 
   /// PDF Viewer Params
-  PdfViewerParams get pdfViewerParams {
+  PdfViewerParams pdfViewerParams(bool isLandscape) {
     return PdfViewerParams(
       backgroundColor: context.color.background,
+      layoutPages: isLandscape ? pdfHorizonalPageLayout : null,
       loadingBannerBuilder: (context, bytesDownloaded, totalBytes) {
         return Center(
           child: CircularProgressIndicator(
@@ -136,16 +70,62 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
           ),
         );
       },
-      layoutPages:
-          _orientation == Orientation.portrait ? layoutPagesHorizontal : null,
+      onViewerReady: (_, __) {
+        _initialZoom = _pdfController.currentZoom;
+        _initialCenterPosition = _pdfController.centerPosition;
+      },
     );
   }
 
-  /// PDF Viewer
-  Widget PDFView() => PdfViewer.uri(
-        widget.uri,
-        params: pdfViewerParams,
-        controller: _pdfController,
+  @override
+  Widget build(BuildContext context) => OrientationBuilder(
+        builder: (context, orientation) {
+          /// Set the app bar visibility based on the orientation
+          _appBarVisible = (orientation == Orientation.portrait);
+          setSystemUIMode(_appBarVisible);
+
+          if (_pdfController.isReady) {
+            Future.delayed(Duration(seconds: 0), () {
+              /// Set the zoom and center position based on the orientation
+              if (orientation == Orientation.landscape) {
+                _pdfController.setZoom(Offset.zero, 0.5);
+              } else {
+                _pdfController.setZoom(_initialCenterPosition, _initialZoom);
+              }
+
+              /// Relayout the PDF
+              _pdfController.relayout();
+            });
+          }
+
+          return Scaffold(
+            extendBodyBehindAppBar: true,
+            appBar: SlidingAppBar(
+              controller: _appBarController,
+              visible: _appBarVisible,
+              child: AppBar(
+                title: Text(widget.navigationBarTitle.tr()),
+                backgroundColor: context.color.appBarBackground,
+                leading: IconButton(
+                  padding: Platform.isIOS
+                      ? const EdgeInsets.only(left: 12.0, top: 0, bottom: 10)
+                      : null,
+                  icon: Icon(AB24Icons.close_thick),
+                  iconSize: 26,
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ),
+            ),
+            body: SafeArea(
+              top: _appBarVisible,
+              child: PdfViewer.uri(
+                widget.uri,
+                controller: _pdfController,
+                params: pdfViewerParams(orientation == Orientation.landscape),
+              ),
+            ),
+          );
+        },
       );
 }
 

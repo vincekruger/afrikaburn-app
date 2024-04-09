@@ -28,13 +28,15 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
     /// PDF Viewers
     NavigationItem(
       AB24Icons.file,
-      "menu-item.wtf-guide-pdf".tr(),
+      "menu-item.wtf-guide-pdf-2023".tr(),
       routeName: WtfGuidePage.path,
+      hideChevron: true,
     ),
     NavigationItem(
       AB24Icons.file,
-      "menu-item.map-pdf".tr(),
+      "menu-item.map-pdf-2023".tr(),
       routeName: MapPdfPage.path,
+      hideChevron: true,
     ),
 
     /// Other stuff
@@ -116,7 +118,8 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
   /// Rendered Navigation ListTile
   ListTile _navigationListTile(NavigationItem item) {
     return ListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      contentPadding: EdgeInsets.symmetric(horizontal: 40, vertical: 10)
+          .copyWith(right: 20),
       horizontalTitleGap: 28,
       visualDensity: VisualDensity.compact,
       leading:

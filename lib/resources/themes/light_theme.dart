@@ -26,9 +26,8 @@ ThemeData lightTheme(ColorStyles color) {
     appBarTheme: AppBarTheme(
       surfaceTintColor: Colors.transparent,
       backgroundColor: color.appBarBackground,
-      titleTextStyle: lightTheme.titleLarge!.copyWith(
-        color: color.appBarPrimaryContent,
-      ),
+      titleTextStyle:
+          lightTheme.titleLarge!.copyWith(color: color.appBarPrimaryContent),
       iconTheme: IconThemeData(color: color.appBarPrimaryContent),
       elevation: 1.0,
       systemOverlayStyle: SystemUiOverlayStyle.dark,

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -5,6 +7,7 @@ import 'package:afrikaburn/resources/themes/styles/color_styles.dart';
 import 'package:afrikaburn/resources/pages/news_page.dart';
 import 'package:afrikaburn/resources/pages/radio_free_tankwa_page.dart';
 import 'package:afrikaburn/resources/pages/ticket_page.dart';
+import 'package:pdfrx/pdfrx.dart';
 
 /* Helpers
 |--------------------------------------------------------------------------
@@ -35,3 +38,28 @@ class SystemUIColorHelper {
     );
   }
 }
+
+/// Layout Pages Horizontal
+PdfPageLayout Function(List<PdfPage>, PdfViewerParams)? pdfHorizonalPageLayout =
+    (pages, params) {
+  final height = pages.fold(0.0, (prev, page) => max(prev, page.height)) +
+      params.margin * 2;
+  final pageLayouts = <Rect>[];
+  double x = params.margin;
+  for (var page in pages) {
+    pageLayouts.add(
+      Rect.fromLTWH(
+        x,
+        (height - page.height) / 2, // center vertically
+        page.width,
+        page.height,
+      ),
+    );
+    x += page.width + params.margin;
+  }
+
+  return PdfPageLayout(
+    pageLayouts: pageLayouts,
+    documentSize: Size(x, height),
+  );
+};

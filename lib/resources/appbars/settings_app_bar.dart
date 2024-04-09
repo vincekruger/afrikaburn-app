@@ -1,3 +1,4 @@
+import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/config/design.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
@@ -59,7 +60,11 @@ class SettingsAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
         AppBar(
-          title: Text(title),
+          iconTheme: Theme.of(context)
+              .iconTheme
+              .copyWith(color: context.color.appBarContentDarkBackground),
+          title: Text(title).setColor(
+              context, (color) => context.color.appBarContentDarkBackground),
           elevation: 0,
           centerTitle: true,
           leading: Padding(
@@ -68,6 +73,7 @@ class SettingsAppBar extends StatelessWidget implements PreferredSizeWidget {
               icon: Icon(AB24Icons.close_thick),
               iconSize: 30,
               onPressed: () => Navigator.of(context).pop(),
+              color: context.color.appBarContentDarkBackground,
             ),
           ),
           backgroundColor: Colors.transparent,

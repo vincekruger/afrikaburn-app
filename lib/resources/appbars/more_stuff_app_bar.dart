@@ -1,3 +1,4 @@
+import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -41,7 +42,8 @@ class MoreStuffAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
         AppBar(
-          title: Text(title),
+          title: Text(title).setColor(
+              context, (color) => context.color.appBarContentDarkBackground),
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.transparent,
