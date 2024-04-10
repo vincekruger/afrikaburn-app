@@ -63,3 +63,15 @@ PdfPageLayout Function(List<PdfPage>, PdfViewerParams)? pdfHorizonalPageLayout =
     documentSize: Size(x, height),
   );
 };
+
+int findRouteIndex(String path, List<String> _routeList) {
+  // Use indexWhere for more concise searching and null handling
+  int index = _routeList.indexWhere((route) => route == path);
+
+  // Optional error handling (consider using a custom exception class)
+  if (index == -1) {
+    throw Exception('Route with path "$path" not found');
+  }
+
+  return index;
+}

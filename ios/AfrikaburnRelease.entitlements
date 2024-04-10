@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:afrika.burn.fan</string>
+		<string>applinks:dev.afrika.burn.fan</string>
 	</array>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>

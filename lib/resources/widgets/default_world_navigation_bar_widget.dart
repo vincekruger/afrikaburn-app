@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/app/models/navigation_item.dart';
+import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
-import 'package:afrikaburn/resources/pages/root.dart';
+
+import '/resources/pages/root.dart';
+import '/resources/pages/more_stuff_page.dart';
+import '/resources/pages/news_page.dart';
+import '/resources/pages/radio_free_tankwa_page.dart';
+import '/resources/pages/ticket_page.dart';
 
 /// Default World Navigation Bar
 class DefaultWorldNavigationBar extends StatefulWidget {
-  DefaultWorldNavigationBar({Key? key}) : super(key: key);
+  DefaultWorldNavigationBar({super.key});
 
   /// State name
   static String state = "default_world_navigation_bar";
@@ -29,23 +35,41 @@ class _DefaultWorldNavigationBarState
   /// Update the state of the widget
   @override
   stateUpdated(dynamic data) async {
-    setState(() {
-      _currentIndex = data;
-    });
+    /// Set current index by index int
+    if (data['index'] != null) {
+      setState(() {
+        _currentIndex = data['index'];
+      });
+    } else if (data['route'] != null) {
+      int index = findRouteIndex(data['route'], routeNames);
+      setState(() {
+        _currentIndex = index;
+      });
+    }
   }
+
+  /// Return a list of route names that exist from the navigation items
+  List<String> get routeNames => _items
+      .where((element) => element.routeName != null)
+      .map<String>((e) => e.routeName!)
+      .toList();
 
   /// List of navigation items
   List<NavigationItem> _items = [
-    NavigationItem(AB24Icons.news, "menu-item.news".tr()),
-    NavigationItem(AB24Icons.ticket, "menu-item.tickets".tr()),
-    NavigationItem(AB24Icons.rft, "menu-item.radio-free-tankwa".tr()),
-    NavigationItem(AB24Icons.more, "menu-item.more-stuff".tr()),
+    NavigationItem(AB24Icons.news, "menu-item.news".tr(),
+        routeName: NewsPage.path),
+    NavigationItem(AB24Icons.ticket, "menu-item.tickets".tr(),
+        routeName: TicketPage.path),
+    NavigationItem(AB24Icons.rft, "menu-item.radio-free-tankwa".tr(),
+        routeName: RadioFreeTankwaPage.path),
+    NavigationItem(AB24Icons.more, "menu-item.more-stuff".tr(),
+        routeName: MoreStuffPage.path),
   ];
 
   /// Target updated
   void destinationSelected(int index) {
-    updateState(DefaultWorldNavigationBar.state, data: index);
-    updateState(RootPage.path, data: index);
+    updateState(DefaultWorldNavigationBar.state, data: {"index": index});
+    updateState(RootPage.path, data: {"route": routeNames[index]});
   }
 
   @override

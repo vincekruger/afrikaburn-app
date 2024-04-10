@@ -41,6 +41,26 @@ View our [docs](https://nylo.dev/docs) and visit [nylo.dev](https://nylo.dev)
 
 Nylo Firebase implmentation: https://github.com/nylo-core/nylo/discussions/61
 
+## Testing App Links
+
+iOS
+```
+xcrun simctl openurl booted https://dev.afrika.burn.fan
+```
+
+Android
+```
+adb shell 'am start -a android.intent.action.VIEW \
+    -c android.intent.category.BROWSABLE \
+    -d "https://dev.afrika.burn.fan/rft"' \
+    io.wheresmyshit.afrikaburn.debug
+
+adb shell 'am start -a android.intent.action.VIEW \
+    -c android.intent.category.BROWSABLE \
+    -d "https://afrika.burn.fan"' \
+    io.wheresmyshit.afrikaburn
+```
+
 ###  Afrikaburn GPS Coordinates
 
 #### Center
