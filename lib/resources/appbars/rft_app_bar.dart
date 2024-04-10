@@ -1,12 +1,11 @@
-import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
-import 'package:afrikaburn/resources/pages/radio_free_tankwa_page.dart';
 import 'package:flutter/material.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/config/design.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
-import 'package:nylo_framework/nylo_framework.dart';
+import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 
 class RFTAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const RFTAppBar(this.height, {Key? key}) : super(key: key);
+  const RFTAppBar(this.height, {super.key});
 
   final double height;
 
@@ -33,8 +32,10 @@ class RFTAppBar extends StatelessWidget implements PreferredSizeWidget {
           Positioned(
             top: contentTop,
             right: scale(110, context),
-            child: Text(RadioFreeTankwaPage.name).titleLarge(context).setColor(
-                context, (color) => context.color.appBarContentLightBackground),
+            child: Text("screen-name.radio-free-tankwa".tr())
+                .titleLarge(context)
+                .setColor(context,
+                    (color) => context.color.appBarContentLightBackground),
           ),
           // if (Navigator.canPop(context))
           //   Positioned(
