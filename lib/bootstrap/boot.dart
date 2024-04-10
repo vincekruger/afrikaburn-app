@@ -1,5 +1,5 @@
-import '/config/providers.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import 'package:afrikaburn/config/providers.dart';
 
 /* Boot
 |--------------------------------------------------------------------------

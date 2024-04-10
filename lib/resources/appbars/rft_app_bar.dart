@@ -36,11 +36,11 @@ class RFTAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Text(RadioFreeTankwaPage.name).titleLarge(context).setColor(
                 context, (color) => context.color.appBarContentLightBackground),
           ),
-          if (Navigator.canPop(context))
-            Positioned(
-              top: 5,
-              child: backButton(context),
-            ),
+          // if (Navigator.canPop(context))
+          //   Positioned(
+          //     top: 5,
+          //     child: backButton(context),
+          //   ),
         ],
       ),
     );
