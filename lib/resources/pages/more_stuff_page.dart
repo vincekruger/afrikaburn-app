@@ -1,7 +1,10 @@
-import 'package:afrikaburn/app/controllers/sharing_controller.dart';
-import 'package:afrikaburn/app/models/navigation_item.dart';
+import 'package:flutter/material.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
+import 'package:afrikaburn/app/providers/app_mode_provider.dart';
+import 'package:afrikaburn/app/controllers/sharing_controller.dart';
+import 'package:afrikaburn/app/models/navigation_item.dart';
 import 'package:afrikaburn/resources/appbars/more_stuff_app_bar.dart';
 import 'package:afrikaburn/resources/artworks/pointing_hand.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
@@ -9,11 +12,9 @@ import 'package:afrikaburn/resources/pages/map_pdf_page.dart';
 import 'package:afrikaburn/resources/pages/settings_page.dart';
 import 'package:afrikaburn/resources/pages/support_page.dart';
 import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
+import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
-import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:nylo_framework/nylo_framework.dart';
 
 class MoreStuffPage extends NyStatefulWidget {
   static const path = '/more-stuff';
@@ -67,29 +68,53 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
       ),
       body: Padding(
         padding: EdgeInsets.only(top: appBarHeight + appBarHeightPadding),
-        child: ListView.separated(
-          padding: EdgeInsets.only(bottom: 10),
-          itemCount: _items.length,
-          itemBuilder: (context, index) {
-            final item = _items[index];
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.separated(
+                padding: EdgeInsets.only(bottom: 10),
+                itemCount: _items.length,
+                itemBuilder: (context, index) {
+                  final item = _items[index];
 
-            /// Add the pointing hand to the first item
-            if (index == 0)
-              return Column(children: [
-                pointingHand(context),
-                _navigationListTile(item),
-              ]);
+                  /// Add the pointing hand to the first item
+                  if (index == 0)
+                    return Column(children: [
+                      pointingHand(context),
+                      _navigationListTile(item),
+                    ]);
 
-            /// render the list tile
-            return _navigationListTile(item);
-          },
-          separatorBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 0,
+                  /// render the list tile
+                  return _navigationListTile(item);
+                },
+                separatorBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 0,
+                  ),
+                  child: AbDivider(width: double.infinity, height: 0.5),
+                ),
+              ),
             ),
-            child: AbDivider(width: double.infinity, height: 0.5),
-          ),
+            if (AppModeProvider.isDevelopment) ...[
+              FutureBuilder(
+                future: AppModeProvider.tankwaTownMode,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting)
+                    return CircularProgressIndicator();
+
+                  return SwitchListTile(
+                    value: snapshot.data as bool,
+                    onChanged: (bool value) async {
+                      await AppModeProvider.toggleTankwaTownMode(value);
+                      setState(() {});
+                    },
+                    title: Text("Tankwa Town Mode".tr()).titleLarge(context),
+                  );
+                },
+              ),
+            ],
+          ],
         ),
       ),
     );

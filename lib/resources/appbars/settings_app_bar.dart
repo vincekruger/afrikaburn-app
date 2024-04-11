@@ -67,15 +67,18 @@ class SettingsAppBar extends StatelessWidget implements PreferredSizeWidget {
               context, (color) => context.color.appBarContentDarkBackground),
           elevation: 0,
           centerTitle: true,
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 12.0, top: 0, bottom: 10),
-            child: IconButton(
-              icon: Icon(AB24Icons.close_thick),
-              iconSize: 30,
-              onPressed: () => Navigator.of(context).pop(),
-              color: context.color.appBarContentDarkBackground,
-            ),
-          ),
+          automaticallyImplyLeading: false,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 12.0, top: 0, bottom: 10),
+              child: IconButton(
+                icon: Icon(AB24Icons.close_thick),
+                iconSize: 30,
+                onPressed: () => Navigator.of(context).pop(),
+                color: context.color.appBarContentDarkBackground,
+              ),
+            )
+          ],
           backgroundColor: Colors.transparent,
           systemOverlayStyle: context.isDarkMode
               ? SystemUiOverlayStyle.dark

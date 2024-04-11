@@ -10,6 +10,7 @@ import '/app/providers/auth_provider.dart';
 import '/app/providers/app_provider.dart';
 import '/app/providers/event_provider.dart';
 import '/app/providers/route_provider.dart';
+import '/app/providers/app_mode_provider.dart';
 
 /* Providers
 |--------------------------------------------------------------------------
@@ -30,4 +31,5 @@ final Map<Type, NyProvider> providers = {
   SettingsProvider: SettingsProvider(),
   RadioFreeTankwaProvider: RadioFreeTankwaProvider(),
   AppLinksProvider: AppLinksProvider(),
+  AppModeProvider: AppModeProvider(),
 };
