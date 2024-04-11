@@ -1,12 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:afrikaburn/config/firebase_options.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:afrikaburn/config/default_remote_config.dart';
 import 'package:afrikaburn/config/storage_keys.dart';
 
@@ -32,6 +33,7 @@ class FirebaseProvider implements NyProvider {
   /// Configure Firebase Remote Config
   /// Configure Firebase Analytics
   afterBoot(Nylo nylo) async {
+    await _configureAppCheck();
     await _configureRemoteConfig();
     await _configureAnalyticsCollection(nylo);
 
@@ -39,6 +41,15 @@ class FirebaseProvider implements NyProvider {
     FirebaseFirestore.instance.settings = const Settings(
       persistenceEnabled: true,
       cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
+    );
+  }
+
+  /// Configure Firebase App Check
+  _configureAppCheck() async {
+    await FirebaseAppCheck.instance.activate(
+      androidProvider:
+          kDebugMode ? AndroidProvider.debug : AndroidProvider.playIntegrity,
+      appleProvider: kDebugMode ? AppleProvider.debug : AppleProvider.appAttest,
     );
   }
 
