@@ -58,11 +58,21 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions iosProdution = FirebaseOptions(
     apiKey: 'AIzaSyAiCwczgOo37F2irJnuMEyYeZ_xMFcQm28',
-    appId: '1:1070999950214:ios:fbb43063c274316e369207',
+    appId: '1:1070999950214:ios:cf2bb9076565c3c0369207',
     messagingSenderId: '1070999950214',
     projectId: 'afrikaburn-35158',
     databaseURL: 'https://afrikaburn-35158.firebaseio.com',
     storageBucket: 'afrikaburn-35158.appspot.com',
-    iosBundleId: 'io.wheresmyshit.afrikaburn',
+    iosBundleId: 'za.co.wheresmyshit.ios.afrikaburn',
   );
+
+  // static const FirebaseOptions iosProdutionNewBundleId = FirebaseOptions(
+  //   apiKey: 'AIzaSyAiCwczgOo37F2irJnuMEyYeZ_xMFcQm28',
+  //   appId: '1:1070999950214:ios:fbb43063c274316e369207',
+  //   messagingSenderId: '1070999950214',
+  //   projectId: 'afrikaburn-35158',
+  //   databaseURL: 'https://afrikaburn-35158.firebaseio.com',
+  //   storageBucket: 'afrikaburn-35158.appspot.com',
+  //   iosBundleId: 'io.wheresmyshit.afrikaburn',
+  // );
 }

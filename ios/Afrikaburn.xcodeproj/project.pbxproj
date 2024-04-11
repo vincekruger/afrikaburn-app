@@ -735,7 +735,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2024;
-				PRODUCT_BUNDLE_IDENTIFIER = io.wheresmyshit.afrikaburn;
+				PRODUCT_BUNDLE_IDENTIFIER = za.co.wheresmyshit.ios.afrikaburn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -842,7 +842,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2024;
-				PRODUCT_BUNDLE_IDENTIFIER = io.wheresmyshit.afrikaburn;
+				PRODUCT_BUNDLE_IDENTIFIER = za.co.wheresmyshit.ios.afrikaburn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -944,7 +944,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2024;
-				PRODUCT_BUNDLE_IDENTIFIER = io.wheresmyshit.afrikaburn;
+				PRODUCT_BUNDLE_IDENTIFIER = za.co.wheresmyshit.ios.afrikaburn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
