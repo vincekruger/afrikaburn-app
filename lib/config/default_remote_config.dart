@@ -4,6 +4,10 @@ class DefaultRemoteConfig {
     "tickets_url": "https://tickets.afrikaburn.org",
     "app_share_url": "https://afrika.burn.fan/",
 
+    /// ImageKit
+    "imageKitBaseUrl": "https://ik.imagekit.io/n1ly84zxr",
+    "imageKitNewsPath": "news",
+
     /// PDFS
     "pdf_wtf_guide_url":
         "https://www.afrikaburn.org/wp-content/uploads/2023/04/WTF2023-FA-web2.pdf",

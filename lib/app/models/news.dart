@@ -1,5 +1,6 @@
 import 'package:afrikaburn/app/models/news_category.dart';
 import 'package:afrikaburn/resources/themes/color_helper.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:path/path.dart' as p;
 
@@ -12,7 +13,6 @@ class News extends Model {
   final String content;
   final DateTime timestamp;
   final List<NewsCategory>? categories;
-  final String imageBaseUrl = 'https://ik.imagekit.io/n1ly84zxr';
   final String imageName;
   final String? imageCredit;
   final Color? imageOverlayColor;
@@ -55,8 +55,11 @@ class News extends Model {
     );
   }
 
-  get featuredImageUrl {
-    const modifications = 'tr:h-400';
-    return p.join(imageBaseUrl, modifications, imageName);
+  String get featuredImageUrl {
+    final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+    final String baseUrl = remoteConfig.getString('imageKitBaseUrl');
+    final String path = remoteConfig.getString('imageKitNewsPath');
+    final String modifications = 'tr:h-400';
+    return p.join(baseUrl, path, modifications, imageName);
   }
 }
