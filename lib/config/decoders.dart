@@ -1,6 +1,3 @@
-import '/app/controllers/settings_controller.dart';
-import '/app/controllers/sharing_controller.dart';
-import '/app/controllers/radio_free_tankwa_controller.dart';
 import 'package:afrikaburn/app/controllers/platform_controller.dart';
 
 import '/app/models/news_tag.dart';
@@ -12,6 +9,10 @@ import '/app/controllers/map_controller.dart';
 import '/app/controllers/my_contact_controller.dart';
 import '/app/controllers/wtf_guide_controller.dart';
 import '/app/controllers/home_controller.dart';
+import '/app/controllers/support_controller.dart';
+import '/app/controllers/settings_controller.dart';
+import '/app/controllers/sharing_controller.dart';
+import '/app/controllers/radio_free_tankwa_controller.dart';
 import '/app/models/user.dart';
 import '/app/networking/api_service.dart';
 
@@ -74,4 +75,5 @@ final Map<Type, dynamic> controllers = {
   RadioFreeTankwaController: () => RadioFreeTankwaController(),
   SharingController: () => SharingController(),
   SettingsController: () => SettingsController(),
+  SupportController: () => SupportController(),
 };

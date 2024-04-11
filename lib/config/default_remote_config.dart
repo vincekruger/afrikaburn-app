@@ -20,5 +20,10 @@ class DefaultRemoteConfig {
     "rft_share_url": "https://afrika.burn.fan/radio-free-tankwa",
     "rft_album_art":
         "[\"https://firebasestorage.googleapis.com/v0/b/afrikaburn-35158.appspot.com/o/rft_album_art%2Frft-20241.png?alt=media\&token=de264519-7e5a-4a4e-b3de-98fc15b8d758\",\"https://firebasestorage.googleapis.com/v0/b/afrikaburn-35158.appspot.com/o/rft_album_art%2Frft-20242.jpg?alt=media\&token=80411f6a-2d99-4f46-8b8e-e07dc41c644b\",\"https://firebasestorage.googleapis.com/v0/b/afrikaburn-35158.appspot.com/o/rft_album_art%2Frft-20243.jpg?alt=media\&token=9a2da7d4-7e2c-4054-a32e-68a37773e0be\"]",
+
+    // Sponsor URLs
+    "snapscan_sponsor_url": "https://pos.snapscan.io/qr/kHNCnkxU",
+    "github_sponsor_url": "https://github.com/sponsors/vincekruger",
+    "kofi_sponsor_url": "https://ko-fi.com/vincekruger",
   };
 }

@@ -84,6 +84,7 @@ flutter:
     - public/assets/images/news/
     - public/assets/images/tickets/
     - public/assets/images/rft/
+    - public/assets/images/support/
     - public/assets/app_icon/
     - lang/
     - .env

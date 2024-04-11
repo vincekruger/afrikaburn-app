@@ -7,6 +7,7 @@ import 'package:afrikaburn/resources/artworks/pointing_hand.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:afrikaburn/resources/pages/map_pdf_page.dart';
 import 'package:afrikaburn/resources/pages/settings_page.dart';
+import 'package:afrikaburn/resources/pages/support_page.dart';
 import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
@@ -30,33 +31,26 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
       AB24Icons.file,
       "menu-item.wtf-guide-pdf-2023".tr(),
       routeName: WtfGuidePage.path,
-      hideChevron: true,
     ),
     NavigationItem(
       AB24Icons.file,
       "menu-item.map-pdf-2023".tr(),
       routeName: MapPdfPage.path,
-      hideChevron: true,
     ),
-
-    /// Other stuff
-    // NavigationItem(Icons.phonelink, "menu-item.my-contact".tr()),
-    // NavigationItem(AB24Icons.map, "menu-item.map".tr()),
-    // NavigationItem(AB24Icons.art, "menu-item.artwork".tr()),
-    // NavigationItem(AB24Icons.theme_camp, "menu-item.theme-camps".tr()),
-    // NavigationItem(AB24Icons.mutant_vehicle, "menu-item.mutant-vehicles".tr()),
-    // NavigationItem(AB24Icons.heart, "menu-item.favorites".tr()),
     NavigationItem(
       AB24Icons.share,
       "menu-item.share-app".tr(),
       onTap: () => SharingController().shareApp(),
     ),
-    NavigationItem(AB24Icons.support, "menu-item.support-app".tr()),
+    NavigationItem(
+      AB24Icons.support,
+      "menu-item.support-app".tr(),
+      routeName: SupportPage.path,
+    ),
     NavigationItem(
       AB24Icons.settings,
       "menu-item.settings".tr(),
       routeName: SettingsPage.path,
-      hideChevron: true,
     ),
   ];
 

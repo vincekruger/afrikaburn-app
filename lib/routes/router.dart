@@ -1,4 +1,4 @@
-import '/resources/pages/settings_page.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/resources/pages/map_pdf_page.dart';
 import 'package:afrikaburn/resources/pages/more_stuff_page.dart';
 import 'package:afrikaburn/resources/pages/radio_free_tankwa_page.dart';
@@ -11,7 +11,8 @@ import 'package:afrikaburn/resources/pages/map_page.dart';
 import 'package:afrikaburn/resources/pages/my_contact_page.dart';
 import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
 import 'package:afrikaburn/resources/pages/home_page.dart';
-import 'package:nylo_framework/nylo_framework.dart';
+import 'package:afrikaburn/resources/pages/support_page.dart';
+import 'package:afrikaburn/resources/pages/settings_page.dart';
 
 /* App Router
 |--------------------------------------------------------------------------
@@ -82,4 +83,5 @@ appRouter() => nyRoutes((router) {
           fullscreenDialog: true,
         ),
       );
+      router.route(SupportPage.path, (context) => SupportPage());
     });
