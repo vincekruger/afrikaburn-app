@@ -13,12 +13,7 @@ class DefaultFirebaseOptions {
         return androidDebug; // need to setup a flavor
       // return kReleaseMode ? androidRelease : androidDebug;
       case TargetPlatform.iOS:
-        switch (appFlavor) {
-          case 'Production':
-            return iosProdution;
-          default:
-            return iosDebug;
-        }
+        return appFlavor == 'Production' ? iosProdution : iosDebug;
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
@@ -36,7 +31,7 @@ class DefaultFirebaseOptions {
     iosBundleId: 'io.wheresmyshit.afrikaburn.debug',
   );
 
-  static const FirebaseOptions androidRelease = FirebaseOptions(
+  static const FirebaseOptions androidProduction = FirebaseOptions(
     apiKey: 'AIzaSyCXUUuT4UNKIqXmFwpYFrWE7BFZCy0nS0M',
     appId: '1:1070999950214:android:c5a0bf87eb561a4d369207',
     messagingSenderId: '1070999950214',
@@ -58,21 +53,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions iosProdution = FirebaseOptions(
     apiKey: 'AIzaSyAiCwczgOo37F2irJnuMEyYeZ_xMFcQm28',
-    appId: '1:1070999950214:ios:cf2bb9076565c3c0369207',
+    appId: '1:1070999950214:ios:fbb43063c274316e369207',
     messagingSenderId: '1070999950214',
     projectId: 'afrikaburn-35158',
     databaseURL: 'https://afrikaburn-35158.firebaseio.com',
     storageBucket: 'afrikaburn-35158.appspot.com',
-    iosBundleId: 'za.co.wheresmyshit.ios.afrikaburn',
+    iosBundleId: 'io.wheresmyshit.afrikaburn',
   );
-
-  // static const FirebaseOptions iosProdutionNewBundleId = FirebaseOptions(
-  //   apiKey: 'AIzaSyAiCwczgOo37F2irJnuMEyYeZ_xMFcQm28',
-  //   appId: '1:1070999950214:ios:fbb43063c274316e369207',
-  //   messagingSenderId: '1070999950214',
-  //   projectId: 'afrikaburn-35158',
-  //   databaseURL: 'https://afrikaburn-35158.firebaseio.com',
-  //   storageBucket: 'afrikaburn-35158.appspot.com',
-  //   iosBundleId: 'io.wheresmyshit.afrikaburn',
-  // );
 }

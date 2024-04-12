@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,9 +19,12 @@ class FirebaseProvider implements NyProvider {
   /// Initialize Firebase
   /// Setup Firebase Crashlytics
   boot(Nylo nylo) async {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+    if (Firebase.apps.isEmpty) {
+      await Firebase.initializeApp(
+        name: getEnv('APP_NAME'),
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+    }
 
     /// Pass all uncaught "fatal" errors from the framework to Crashlytics
     if (!kDebugMode) {
@@ -45,16 +51,37 @@ class FirebaseProvider implements NyProvider {
   }
 
   /// Configure Firebase App Check
-  _configureAppCheck() async {
-    await FirebaseAppCheck.instance.activate(
-      androidProvider:
-          kDebugMode ? AndroidProvider.debug : AndroidProvider.playIntegrity,
-      appleProvider: kDebugMode ? AppleProvider.debug : AppleProvider.appAttest,
-    );
+  Future<void> _configureAppCheck() async {
+    /// Defaults to debug mode
+    AndroidProvider androidProvider = AndroidProvider.debug;
+    AppleProvider appleProvider = AppleProvider.debug;
+
+    /// Release Release Mode
+    /// ---
+    /// This is set in the .env file and used to determine the provider to use
+    /// for Firebase App Check.  If using Firebase App Distribution, remove
+    /// the variable from the .env file to use production providers.
+    if (getEnv('APP_CHECK_ENV') != "debug") {
+      print('Using production Firebase App Check providers');
+      androidProvider = AndroidProvider.playIntegrity;
+      appleProvider = AppleProvider.appAttest;
+    }
+
+    /// Activate Firebase App Check
+    await FirebaseAppCheck.instance
+        .activate(
+      androidProvider: androidProvider,
+      appleProvider: appleProvider,
+    )
+        .then((_) {
+      print('FirebaseAppCheck activated');
+    }).catchError((error) {
+      print('FirebaseAppCheck error: $error');
+    });
   }
 
   /// Configure Firebase Remote Config
-  _configureRemoteConfig() async {
+  Future<void> _configureRemoteConfig() async {
     /// Setup Remote Config
     final remoteConfig = FirebaseRemoteConfig.instance;
     await remoteConfig.setConfigSettings(RemoteConfigSettings(
@@ -79,7 +106,7 @@ class FirebaseProvider implements NyProvider {
   }
 
   /// Configure Firebase Analytics
-  _configureAnalyticsCollection(Nylo nylo) async {
+  Future<void> _configureAnalyticsCollection(Nylo nylo) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool collectionEnabled =
         await prefs.getBool(SharedPreferenceKey.analyticsAllowed) ?? true;
@@ -96,7 +123,7 @@ class FirebaseProvider implements NyProvider {
   }
 
   /// Log a screen view
-  logScreenView(String screenName, {Map<String, dynamic>? params}) {
+  void logScreenView(String screenName, {Map<String, dynamic>? params}) {
     FirebaseAnalytics.instance.logScreenView(
       screenName: screenName,
       parameters: params,
@@ -104,7 +131,7 @@ class FirebaseProvider implements NyProvider {
   }
 
   /// Log a custom event
-  logEvent(String eventName, Map<String, dynamic>? eventParams) {
+  void logEvent(String eventName, Map<String, dynamic>? eventParams) {
     FirebaseAnalytics.instance.logEvent(
       name: eventName,
       parameters: eventParams ?? {},

@@ -1,8 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/config/storage_keys.dart';
 
 class AppModeProvider implements NyProvider {
+  static get kisDebugMode => null;
+
   @override
   boot(Nylo nylo) async {
     return nylo;
@@ -11,8 +14,8 @@ class AppModeProvider implements NyProvider {
   @override
   afterBoot(Nylo nylo) async {}
 
-  static bool get isProduction => appFlavor == 'Production';
-  static bool get isDevelopment => appFlavor != 'Production';
+  static bool get isProduction => appFlavor == 'Production' && kReleaseMode;
+  static bool get isDevelopment => kisDebugMode ?? false;
 
   static bool get tankwaTownModeMem =>
       Backpack.instance.read(StorageKey.tankwaTownMode) == "false"
