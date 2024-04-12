@@ -114,7 +114,12 @@
   },
   "rft-content": {
     "stream-title": "Radio Free Tankwa",
-    "page-blurb": "Afrikaburn’s community radio station"
+    "page-blurb": "Afrikaburn’s community radio station",
+    "offline": {
+      "title": "Bra! You’re Offline\n#InternetShedding",
+      "tunein": "Tune IN @",
+      "frequency": "99.9FM"
+    }
   },
   "settings": {
     "page-title": "Settings",

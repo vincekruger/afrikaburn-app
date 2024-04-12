@@ -835,6 +835,9 @@ PODS:
     - firebase_core
     - Flutter
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - connectivity_plus (0.0.1):
+    - Flutter
+    - FlutterMacOS
   - file_picker (0.0.1):
     - Flutter
   - Firebase/Analytics (10.22.0):
@@ -1179,6 +1182,7 @@ DEPENDENCIES:
   - audio_service (from `.symlinks/plugins/audio_service/ios`)
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
+  - connectivity_plus (from `.symlinks/plugins/connectivity_plus/darwin`)
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_app_check (from `.symlinks/plugins/firebase_app_check/ios`)
@@ -1248,6 +1252,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/audio_session/ios"
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
+  connectivity_plus:
+    :path: ".symlinks/plugins/connectivity_plus/darwin"
   file_picker:
     :path: ".symlinks/plugins/file_picker/ios"
   firebase_analytics:
@@ -1303,6 +1309,7 @@ SPEC CHECKSUMS:
   audio_session: 088d2483ebd1dc43f51d253d4a1c517d9a2e7207
   BoringSSL-GRPC: 1e2348957acdbcad360b80a264a90799984b2ba6
   cloud_firestore: 16ad850949e9c68ac1d99e883adaaba9b9fc955c
+  connectivity_plus: ddd7f30999e1faaef5967c23d5b6d503d10434db
   file_picker: c79185e70b9b45728cde2a8d8da454e0cb43f287
   Firebase: 797fd7297b7e1be954432743a0b3f90038e45a71
   firebase_analytics: 8e6cecb9b9541db49ac40a46eec7c0f519de7252

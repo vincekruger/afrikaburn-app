@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:afrikaburn/app/controllers/sharing_controller.dart';
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
@@ -6,6 +8,7 @@ import 'package:afrikaburn/resources/appbars/rft_app_bar.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -21,19 +24,43 @@ class _RadioFreeTankwaPageState extends NyState<RadioFreeTankwaPage> {
   /// [RadioFreeTankwaController] controller
   RadioFreeTankwaController get controller => widget.controller;
   SharingController sharingController = SharingController();
+  List<ConnectivityResult> _connectionStatus = [ConnectivityResult.mobile];
 
-  // @override
-  init() async {}
+  bool get _isOnline =>
+      _connectionStatus.contains(ConnectivityResult.mobile) ||
+      _connectionStatus.contains(ConnectivityResult.wifi);
 
   /// Use boot if you need to load data before the view is rendered.
   @override
   boot() async {
-    widget.controller.setupListeners();
-    await widget.controller.configureSource();
+    controller.setupListeners();
+    await controller.configureSource();
+  }
+
+  @override
+  init() async {
+    super.init();
+    controller.initConnectivity(listener: _updateConnectionStatus);
+  }
+
+  @override
+  void dispose() {
+    controller.connectivitySubscription.cancel();
+    super.dispose();
   }
 
   // @override
-  // stateUpdated(dynamic data) async {}
+  stateUpdated(dynamic data) async {
+    print(data);
+  }
+
+  /// Update the connection status
+  Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
+    print(result);
+    setState(() {
+      _connectionStatus = result;
+    });
+  }
 
   @override
   Widget view(BuildContext context) {
@@ -93,37 +120,72 @@ class _RadioFreeTankwaPageState extends NyState<RadioFreeTankwaPage> {
               padding: EdgeInsets.only(right: 24, bottom: 30, left: 25),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            icon: Icon(
-                              AB24Icons.share,
-                              size: 30,
-                            ).withGradeint(GradientStyles.appbarIcon),
-                            highlightColor: Colors.transparent,
-                            onPressed: sharingController.shareRadioFreeTankwa,
-                          ),
-                          // IconButton(
-                          //   icon: Icon(
-                          //     AB24Icons.heart,
-                          //     size: 30,
-                          //   ).withGradeint(GradientStyles.appbarIcon),
-                          //   highlightColor: Colors.transparent,
-                          //   onPressed: () {
-                          //     // TODO  Show a popover one day
-                          //   },
-                          // ),
-                        ],
-                      ),
-                      playerControls(),
-                    ],
-                  ),
+                  /// Device does NOT have a mobile/wifi connection
+                  if (_isOnline == false) ...[
+                    Padding(
+                      padding: EdgeInsets.only(left: 25),
+                      child: Text(
+                        "rft-content.offline.title".tr(),
+                      ).titleLarge(context).setColor(
+                          context, (color) => context.color.primaryContent),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(bottom: 5.0, right: 10.0),
+                          child: Text(
+                            "rft-content.offline.tunein".tr(),
+                          ).titleLarge(context).setColor(
+                              context, (color) => context.color.primaryAccent),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 25.0),
+                          child: Text(
+                            "rft-content.offline.frequency".tr(),
+                          ).titleLarge(context).setFontSize(50.0).setColor(
+                              context, (color) => context.color.primaryContent),
+                        ),
+                      ],
+                    ),
+                  ],
+
+                  /// Device has a mobile/wifi connection
+                  if (_isOnline == true) ...[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                AB24Icons.share,
+                                size: 40,
+                              ).withGradeint(GradientStyles.rftIcon),
+                              highlightColor: Colors.transparent,
+                              onPressed: sharingController.shareRadioFreeTankwa,
+                            ),
+                            // IconButton(
+                            //   icon: Icon(
+                            //     AB24Icons.heart,
+                            //     size: 40,
+                            //   ).withGradeint(GradientStyles.rftIcon),
+                            //   highlightColor: Colors.transparent,
+                            //   onPressed: () {
+                            //     // TODO  Show a popover one day
+                            //   },
+                            // ),
+                          ],
+                        ),
+                        playerControls(),
+                      ],
+                    ),
+                  ],
                 ],
               ),
             ),
@@ -135,7 +197,7 @@ class _RadioFreeTankwaPageState extends NyState<RadioFreeTankwaPage> {
 
   StreamBuilder<PlayerState> playerControls() {
     return StreamBuilder<PlayerState>(
-      stream: widget.controller.player.playerStateStream,
+      stream: controller.player.playerStateStream,
       builder: (context, snapshot) {
         final playerState = snapshot.data;
         final ProcessingState? processingState = playerState?.processingState;
@@ -156,19 +218,19 @@ class _RadioFreeTankwaPageState extends NyState<RadioFreeTankwaPage> {
         return IconButton(
           icon: Icon(
             playing ? AB24Icons.pause : AB24Icons.play,
-            size: 50,
-          ).withGradeint(GradientStyles.appbarIcon),
+            size: 70,
+          ).withGradeint(GradientStyles.rftIcon),
           highlightColor: Colors.transparent,
           onPressed: () {
             if (playing) {
               /// Stop the player
-              widget.controller.player.stop();
+              controller.player.stop();
 
               /// Log firebase event
               FirebaseProvider().logEvent('rft_player_stop', {});
             } else {
               /// Start the player
-              widget.controller.player.play();
+              controller.player.play();
 
               /// Log firebase event
               FirebaseProvider().logEvent('rft_player_play', {});
