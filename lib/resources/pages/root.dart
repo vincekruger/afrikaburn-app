@@ -12,7 +12,7 @@ import '/resources/widgets/default_world_navigation_bar_widget.dart';
 
 class RootPage extends NyStatefulWidget {
   /// Route path & page name
-  static const path = '/Root';
+  static const path = '/root';
   static const name = 'Root Page';
   RootPage() : super(path, child: _RootPageState());
 }
