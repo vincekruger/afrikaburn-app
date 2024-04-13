@@ -10,7 +10,6 @@ import 'package:afrikaburn/resources/pages/ticket_page.dart';
 import 'package:afrikaburn/resources/pages/map_page.dart';
 import 'package:afrikaburn/resources/pages/my_contact_page.dart';
 import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
-import 'package:afrikaburn/resources/pages/home_page.dart';
 import 'package:afrikaburn/resources/pages/support_page.dart';
 import 'package:afrikaburn/resources/pages/settings_page.dart';
 
@@ -73,7 +72,6 @@ appRouter() => nyRoutes((router) {
       router.route(MapPage.path, (context) => MapPage());
 
       /// Other stuff
-      router.route(HomePage.path, (context) => HomePage());
       router.route(
         SettingsPage.path,
         (context) => SettingsPage(),
