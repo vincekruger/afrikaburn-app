@@ -25,7 +25,8 @@ class ApiService extends NyApiService {
         );
 
   @override
-  String get baseUrl => getEnv('API_BASE_URL');
+  String get baseUrl =>
+      getEnv('API_BASE_URL', defaultValue: 'https://api.example.com');
 
   @override
   final interceptors = {
