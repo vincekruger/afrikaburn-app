@@ -1,0 +1,79 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Check PRODUCTION_APPCHECK true",
+			"hide": true,
+			"type": "shell",
+			"group": {
+				"kind": "build"
+			},
+			"command": "grep",
+			"args": [
+				"-q",
+				"PRODUCTION_APPCHECK=true",
+				".env"
+			],
+			"presentation": {
+				"reveal": "always"
+			},
+		},
+		{
+			"label": "Check PRODUCTION_APPCHECK false",
+			"hide": true,
+			"type": "shell",
+			"group": {
+				"kind": "build"
+			},
+			"command": "grep",
+			"args": [
+				"-q",
+				"PRODUCTION_APPCHECK=false",
+				".env"
+			],
+			"presentation": {
+				"reveal": "always"
+			},
+		},
+		{
+			"type": "flutter",
+			"command": "flutter",
+			"dependsOn": "Check PRODUCTION_APPCHECK true",
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}",
+			},
+			"args": [
+				"build",
+				"ipa",
+				"--release",
+				"--flavor=production",
+				"--obfuscate",
+				"--split-debug-info=build/ios/debug-info"
+			],
+			"problemMatcher": [],
+			"label": "Build Appstore Connection - iOS Production Release",
+			"detail": "Buils a production release for Appstore Connection"
+		},
+		{
+			"type": "flutter",
+			"command": "flutter",
+			"dependsOn": "Check PRODUCTION_APPCHECK false",
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}",
+			},
+			"args": [
+				"build",
+				"ipa",
+				"--release",
+				"--flavor=production",
+				"--obfuscate",
+				"--split-debug-info=build/ios/debug-info"
+			],
+			"problemMatcher": [],
+			"label": "Build App Distribution - iOS Production Release",
+			"detail": "Buils a production release for Firebase App Distribution"
+		}
+	]
+}
