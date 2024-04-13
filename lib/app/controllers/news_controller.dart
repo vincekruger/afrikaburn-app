@@ -110,7 +110,7 @@ class NewsController extends Controller {
 
       /// Configure query
       var query = _collectionRef!
-          .where('public', isEqualTo: true)
+          .where('pulic', isEqualTo: true)
           .orderBy('date', descending: true)
           .limit(pageSize);
 

@@ -72,6 +72,18 @@ class _NewsPageState extends NyState<NewsPage> {
           pagingController: widget.controller.pagingController,
           builderDelegate: PagedChildBuilderDelegate<News>(
             itemBuilder: (context, item, index) => NewsItem(item, index: index),
+            // firstPageErrorIndicatorBuilder: (context) => Container(
+            //   height: scale(200, context),
+            //   child: Center(
+            //     child: Text(
+            //       'Error loading news',
+            //       style: TextStyle(
+            //         color: Colors.red,
+            //         fontSize: 20,
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ),
         ),
       ],
