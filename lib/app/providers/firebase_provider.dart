@@ -61,7 +61,7 @@ class FirebaseProvider implements NyProvider {
     /// This is set in the .env file and used to determine the provider to use
     /// for Firebase App Check.  If using Firebase App Distribution, remove
     /// the variable from the .env file to use production providers.
-    if (getEnv('APP_CHECK_ENV') != "debug") {
+    if (getEnv('APP_CHECK_ENV', defaultValue: 'debug') == "release") {
       print('Using production Firebase App Check providers');
       androidProvider = AndroidProvider.playIntegrity;
       appleProvider = AppleProvider.appAttest;
