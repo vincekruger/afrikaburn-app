@@ -122,12 +122,15 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
 
   /// Render the trailing navigation item
   Widget? trailingNavigationItem(NavigationItem item) {
+    /// The Chevron
+    Widget chevron = Icon(AB24Icons.chevron_right, size: 20)
+        .withGradeint(GradientStyles.appbarIcon);
+
     /// There is a route, show the chevron right icon
-    if (item.routeName != null && item.hideChevron == false)
-      return Icon(AB24Icons.chevron_right, size: 20)
-          .withGradeint(GradientStyles.appbarIcon);
+    if (item.routeName != null && item.hideChevron == false) return chevron;
 
     /// there is an onTap method, don't show anything
+    if (item.onTap != null || item.hideChevron == false) return chevron;
     if (item.onTap != null || item.hideChevron == true) return null;
 
     /// Return a coming soon text
@@ -143,7 +146,7 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
       visualDensity: VisualDensity.compact,
       leading:
           Icon(item.icon, size: 30).withGradeint(GradientStyles.appbarIcon),
-      trailing: trailingNavigationItem(item),
+      trailing: trailingNavigationItem(item) ?? null,
       title: Text(item.label.toUpperCase()).titleMedium(context),
       subtitle: item.labelDetail != null
           ? Text(item.labelDetail!.toUpperCase()).bodyMedium(context).setColor(
