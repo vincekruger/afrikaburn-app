@@ -32,7 +32,7 @@ class SettingsAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Stack(
       children: [
         Positioned(
-          top: scale(preferredSize.height - 25, context),
+          top: preferredSize.height - scale(26, context),
           left: scale(-40, context),
           child: Transform(
             alignment: FractionalOffset.center,

@@ -21,30 +21,16 @@ class SupportAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Positioned(
             top: viewPadding(context).top,
-            left: scale(-144, context),
+            left: -144,
             child: Image.asset(
               'public/assets/images/app_bars/varient-4-lightdark.png',
-              width: scale(471, context),
-              fit: BoxFit.fill,
+              width: 471,
+              fit: BoxFit.contain,
             ),
           ),
-          // Positioned(
-          //   top: contentTop,
-          //   right: scale(110, context),
-          //   child: Text("screen-name.support".tr())
-          //       .titleLarge(context)
-          //       .setColor(context,(color) => context.color.appBarContentLightBackground),
-          // ),
-          // Positioned(
-          //   top: 5,
-          //   child: backButton(context),
-          // ),
-
           Container(
-            margin: EdgeInsets.only(top: viewPadding(context).top - 35),
+            margin: EdgeInsets.only(top: viewPadding(context).top - 25),
             child: AppBar(
-              // actions: [backButton(context)],
-              // automaticallyImplyLeading: false,
               leading: backButton(context),
               systemOverlayStyle: context.isDarkMode
                   ? SystemUiOverlayStyle.light
@@ -64,7 +50,7 @@ class SupportAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// It's not needed right now
   Widget backButton(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 12, left: 2),
+      padding: EdgeInsets.only(top: 4, left: 2),
       child: IconButton(
         iconSize: 40,
         icon: Icon(

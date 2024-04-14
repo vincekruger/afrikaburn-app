@@ -17,23 +17,13 @@ class SupportPage extends NyStatefulWidget<SupportController> {
 class _SupportPageState extends NyState<SupportPage> {
   /// [SupportController] controller
   SupportController get controller => widget.controller;
-
-  // @override
-  // init() async {}
-
-  /// Use boot if you need to load data before the view is rendered.
-  // @override
-  // boot() async {
-  //
-  // }
-
   final contentPadding = const EdgeInsets.symmetric(horizontal: 40);
 
   @override
   Widget view(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: SupportAppBar(100 + viewPadding(context).top),
+      appBar: SupportAppBar(scale(116, context) + viewPadding(context).top),
       body: SafeArea(
         child: ListView(
           children: [
@@ -61,25 +51,29 @@ class _SupportPageState extends NyState<SupportPage> {
             content(context,
                 "In 2019 the app landed on the Apple Store Top 10 List, so I would call this a good  success. So there is a future.  I’m not sure what it is, but this time it will be running all year round with some cool shit coming and going, and then of course, the digital wtf guide will get better with every burn.  Who knows, next year you might get turn by turn bike directions home 😇"),
             divider(context, Alignment.centerLeft),
-            Stack(
-              children: [
-                content(
-                  context,
-                  "So, if you’d like to give the app some love, leave a LEKKER review, share it with your pals and ditch that one of fancy hand roasted cup of java mocha what what and gooi that 50 bucks our way.",
-                  width: MediaQuery.of(context).size.width - 97,
-                  padding: contentPadding.copyWith(bottom: 20),
-                ),
-                Positioned(
-                  top: -10,
-                  right: 0,
-                  child: Image.asset(
-                    context.isDarkMode
-                        ? "public/assets/images/pointing-hand-2-dark.png"
-                        : "public/assets/images/pointing-hand-2-light.png",
-                    height: 197,
+            SizedBox(
+              height: scale(162, context),
+              child: Stack(
+                children: [
+                  content(
+                    context,
+                    "So, if you’d like to give the app some love, leave a LEKKER review, share it with your pals and ditch that one of fancy hand roasted cup of java mocha what what and gooi that 50 bucks our way.",
+                    width:
+                        MediaQuery.of(context).size.width - scale(127, context),
+                    padding: contentPadding.copyWith(bottom: 20),
                   ),
-                ),
-              ],
+                  Positioned(
+                    top: -10,
+                    right: 10,
+                    child: Image.asset(
+                      context.isDarkMode
+                          ? "public/assets/images/pointing-hand-2-dark.png"
+                          : "public/assets/images/pointing-hand-2-light.png",
+                      height: scale(197, context),
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 20),
             Padding(
