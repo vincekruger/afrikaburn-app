@@ -1,3 +1,6 @@
+import 'package:afrikaburn/bootstrap/extensions.dart';
+import 'package:afrikaburn/resources/themes/extensions/outlined_button.dart';
+import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -72,18 +75,44 @@ class _NewsPageState extends NyState<NewsPage> {
           pagingController: widget.controller.pagingController,
           builderDelegate: PagedChildBuilderDelegate<News>(
             itemBuilder: (context, item, index) => NewsItem(item, index: index),
-            // firstPageErrorIndicatorBuilder: (context) => Container(
-            //   height: scale(200, context),
-            //   child: Center(
-            //     child: Text(
-            //       'Error loading news',
-            //       style: TextStyle(
-            //         color: Colors.red,
-            //         fontSize: 20,
-            //       ),
-            //     ),
-            //   ),
-            // ),
+            firstPageErrorIndicatorBuilder: (context) => Container(
+              height: scale(200, context),
+              child: Center(
+                child: Container(
+                  margin: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border:
+                        Border.all(color: context.color.fourthAccent, width: 1),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('news-content.error-loading.title'.tr())
+                          .titleLarge(context)
+                          .setColor(
+                              context, (color) => context.color.primaryContent),
+                      SizedBox(height: 10),
+                      Text('news-content.error-loading.message'.tr())
+                          .alignCenter()
+                          .bodyMedium(context)
+                          .setColor(
+                              context, (color) => context.color.primaryContent),
+                      SizedBox(height: 14),
+                      OutlinedButton(
+                        onPressed:
+                            controller.pagingController.retryLastFailedRequest,
+                        child: Text('news-content.error-loading.retry'.tr()),
+                      ).withGradient(
+                        strokeWidth: 2,
+                        gradient: GradientStyles.outlinedButtonBorder,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ),
         ),
       ],

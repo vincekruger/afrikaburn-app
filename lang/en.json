@@ -37,6 +37,11 @@
     "radio-free-tankwa": "Radio Free Tankwa"
   },
   "news-content": {
+    "error-loading": {
+      "title": "Ag No, kak went haywire!",
+      "message": "Looks like our braai briquettes are damp, because the news ain't loading! Fokol!",
+      "retry": "Try Again"
+    },
     "subscribe-confirmed": {
       "title": "You're Subscribed!",
       "message": "You'll get a notification with the latest news and updates from AfrikaBurn. You can unsubscribe at any time.",
