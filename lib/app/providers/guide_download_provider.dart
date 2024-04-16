@@ -55,7 +55,7 @@ class GuideDownloadProvider implements NyProvider {
       // Handle download error
       print(e.message);
 
-      /// TODO Add some proper error handling here
+      // TODO Add some proper error handling here
       // ScaffoldMessenger.of(context).showSnackBar(
       //   SnackBar(
       //     content: Text('Error downloading file: ${e.message}'),

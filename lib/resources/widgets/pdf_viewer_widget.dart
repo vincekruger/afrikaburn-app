@@ -47,11 +47,6 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
     );
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
   /// Set the system UI mode
   void setSystemUIMode(bool _appBarVisible) {
     SystemChrome.setEnabledSystemUIMode(_appBarVisible
@@ -76,6 +71,15 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
       onViewerReady: (_, __) {
         _initialZoom = _pdfController.currentZoom;
         _initialCenterPosition = _pdfController.centerPosition;
+      },
+      errorBannerBuilder: (context, error, stackTrace, documentRef) {
+        print(error);
+        print(stackTrace);
+        print(documentRef);
+
+        return Center(
+          child: Text('Error loading PDF'),
+        );
       },
     );
   }

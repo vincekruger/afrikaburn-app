@@ -29,16 +29,12 @@ class _GuideViewerState extends NyState<GuideViewer>
   }
 
   /// Local File State & Provider
-  bool _localFileExists = false;
   late final GuideDownloadProvider _provider;
 
   @override
   init() async {
     SystemProvider().setPortraitAndLandscapeOrientation();
     WidgetsBinding.instance.addObserver(this);
-
-    /// Check if the local file exists
-    _localFileExists = await _provider.existsLocal();
   }
 
   @override
@@ -52,46 +48,42 @@ class _GuideViewerState extends NyState<GuideViewer>
   @override
   Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
     if (state == AppLifecycleState.resumed) {
-      var newState = _localFileExists = await _provider.existsLocal();
-      setState(() {
-        _localFileExists = newState;
-      });
+      setState(() {});
     }
-  }
-
-  @override
-  stateUpdated(dynamic data) async {
-    // e.g. to update this state from another class
-    // updateState(Guide.state, data: "example payload");
   }
 
   @override
   Widget build(BuildContext context) {
-    /// Display PDF Viewer
-    if (_localFileExists) {
-      return FutureBuilder(
-          future: _provider.guide.file,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
-            }
+    return FutureBuilder(
+        future: _provider.existsLocal(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting)
+            return Center(child: CircularProgressIndicator());
 
-            return PdfViewerWidget(
-              file: snapshot.data,
-              navigationBarTitle: widget.appBarTitle,
-            );
-          });
-    }
+          /// Local File Exists
+          /// Display the PDF Viewer
+          if (snapshot.data == true)
+            return FutureBuilder(
+                future: _provider.guide.file,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting)
+                    return Center(child: CircularProgressIndicator());
 
-    /// Download the Guide
-    return GuideDownload(
-      appBarTitle: widget.appBarTitle,
-      provider: _provider,
-      onDownloaded: (context) {
-        setState(() {
-          _localFileExists = true;
+                  return PdfViewerWidget(
+                    file: snapshot.data,
+                    navigationBarTitle: widget.appBarTitle,
+                  );
+                });
+
+          /// Local File Does Not Exist
+          /// Download the guide
+          return GuideDownload(
+            appBarTitle: widget.appBarTitle,
+            provider: _provider,
+            onDownloaded: (context) {
+              setState(() {});
+            },
+          );
         });
-      },
-    );
   }
 }

@@ -34,7 +34,11 @@ class _GuideDownloadState extends NyState<GuideDownload> {
 
   @override
   init() async {
-    await widget.provider.downloadGuide(GuideDownload.state);
+    await widget.provider
+        .downloadGuide(GuideDownload.state)
+        .catchError((error) {
+      print(error);
+    });
     _downloadComplete = false;
   }
 

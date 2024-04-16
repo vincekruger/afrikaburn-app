@@ -21,6 +21,9 @@ class Guide extends Model {
 
   /// Get the local filename for the guide
   get filename {
+    if (Platform.isAndroid)
+      return 'guide_${type.name.toString().toLowerCase()}_$year.pdf';
+
     switch (type) {
       case GuideType.WTF:
         return 'WTF Guide $year.pdf';
