@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:afrikaburn/app/models/guide.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -14,11 +16,14 @@ class GuideDownloadProvider implements NyProvider {
   @override
   afterBoot(Nylo nylo) async {}
 
+  /// Singleton Instance of GuideDownloadProvider
   static GuideDownloadProvider instance(Guide guide) {
     GuideDownloadProvider i = GuideDownloadProvider();
     i.guide = guide;
     return i;
   }
+
+  late StreamSubscription? downloadSubscription;
 
   /// Guide Model
   late Guide _guide;
@@ -35,11 +40,10 @@ class GuideDownloadProvider implements NyProvider {
     try {
       // Create a local file reference
       final localFile = await guide.file;
-      print(guide.remotePath);
       final remoteFileRef = storage.ref().child(guide.remotePath);
       final downloadTask = remoteFileRef.writeToFile(localFile);
 
-      downloadTask.snapshotEvents.listen((event) {
+      downloadSubscription = downloadTask.snapshotEvents.listen((event) {
         if (event.bytesTransferred > 0) {
           updateState(stateKey,
               data: event.bytesTransferred.toDouble() /

@@ -38,6 +38,12 @@ class _GuideDownloadState extends NyState<GuideDownload> {
   }
 
   @override
+  void dispose() {
+    widget.provider.downloadSubscription?.cancel();
+    super.dispose();
+  }
+
+  @override
   stateUpdated(dynamic data) async {
     if (data == null) return;
 
