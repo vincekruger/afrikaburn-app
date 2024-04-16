@@ -56,7 +56,6 @@ class _RadioFreeTankwaPageState extends NyState<RadioFreeTankwaPage> {
 
   /// Update the connection status
   Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
-    print(result);
     setState(() {
       _connectionStatus = result;
     });
