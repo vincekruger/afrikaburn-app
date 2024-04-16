@@ -1,23 +1,23 @@
+import 'package:flutter/material.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/app/events/root_app_lifecycle_event.dart';
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
-import 'package:afrikaburn/resources/pages/more_stuff_page.dart';
-import 'package:afrikaburn/resources/pages/news_page.dart';
-import 'package:afrikaburn/resources/pages/radio_free_tankwa_page.dart';
-import 'package:afrikaburn/resources/pages/ticket_page.dart';
-import 'package:afrikaburn/resources/widgets/default_world_navigation_bar_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:nylo_framework/nylo_framework.dart';
+
+import '/resources/pages/more_stuff_page.dart';
+import '/resources/pages/news_page.dart';
+import '/resources/pages/radio_free_tankwa_page.dart';
+import '/resources/pages/ticket_page.dart';
+import '/resources/widgets/default_world_navigation_bar_widget.dart';
 
 class RootPage extends NyStatefulWidget {
   /// Route path & page name
-  static const path = '/default-world';
+  static const path = '/root';
   static const name = 'Root Page';
-  RootPage() : super(path, child: _DefaultWorldPageState());
+  RootPage() : super(path, child: _RootPageState());
 }
 
-class _DefaultWorldPageState extends NyState<RootPage>
-    with WidgetsBindingObserver {
+class _RootPageState extends NyState<RootPage> with WidgetsBindingObserver {
   /// List of routes to navigate to
   /// This is used to log screen views & body content
   List<Map<String, dynamic>> _pageList = [
@@ -39,13 +39,28 @@ class _DefaultWorldPageState extends NyState<RootPage>
     },
   ];
 
+  List<String> get _routeNames => _pageList
+      .where((element) => element['path'] != null)
+      .map<String>((e) => e['path'])
+      .toList();
+
+  List<Widget> get _pages => _pageList
+      .where((element) => element['page'] != null)
+      .map<Widget>((e) => e['page'])
+      .toList();
+
   /// Initialize the page
   @override
   init() async {
-    FirebaseProvider()
-        .logScreenView(_pageList.elementAt(_currentIndex)['path']);
+    /// Set the UI color
     SystemUIColorHelper.invertUIColor(
         context, _pageList.elementAt(_currentIndex)['path']);
+
+    /// Log screen view
+    FirebaseProvider()
+        .logScreenView(_pageList.elementAt(_currentIndex)['path']);
+
+    /// Add widget binding observer
     WidgetsBinding.instance.addObserver(this);
   }
 
@@ -63,15 +78,27 @@ class _DefaultWorldPageState extends NyState<RootPage>
 
   @override
   stateUpdated(dynamic data) async {
-    /// Log screen view
-    FirebaseProvider().logScreenView(_pageList.elementAt(data)['path']);
-    SystemUIColorHelper.invertUIColor(
-        context, _pageList.elementAt(data)['path']);
+    /// Set/Find the index
+    int setIndex = 0;
+    if (data['index'] != null) {
+      setIndex = data['index'] as int;
+    } else if (data['route'] != null) {
+      setIndex = findRouteIndex(data['route'], _routeNames);
+    }
 
     /// Update the current index
     setState(() {
-      _currentIndex = data;
+      _currentIndex = setIndex;
     });
+
+    /// Log screen view
+    FirebaseProvider().logScreenView(
+      _pageList.elementAt(_currentIndex)['path'],
+    );
+    SystemUIColorHelper.invertUIColor(
+      context,
+      _pageList.elementAt(_currentIndex)['path'],
+    );
   }
 
   /// Current index of the navigation bar
@@ -82,7 +109,7 @@ class _DefaultWorldPageState extends NyState<RootPage>
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
-        children: _pageList.map<Widget>((e) => e['page']).toList(),
+        children: _pages,
       ),
       bottomNavigationBar: DefaultWorldNavigationBar(),
     );

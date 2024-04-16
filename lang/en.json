@@ -32,9 +32,16 @@
   "screen-name": {
     "map": "Map",
     "wtf-guide-2023": "WTF Guide",
-    "map-pdf-2023": "2023 Map"
+    "map-pdf-2023": "2023 Map",
+    "support": "Support The App",
+    "radio-free-tankwa": "Radio Free Tankwa"
   },
   "news-content": {
+    "error-loading": {
+      "title": "Ag No, kak went haywire!",
+      "message": "Looks like our braai briquettes are damp, because the news ain't loading! Fokol!",
+      "retry": "Try Again"
+    },
     "subscribe-confirmed": {
       "title": "You're Subscribed!",
       "message": "You'll get a notification with the latest news and updates from AfrikaBurn. You can unsubscribe at any time.",
@@ -58,6 +65,11 @@
     }
   },
   "ticket-content": {
+    "buy":  {
+      "got-your-ticket":"Got your ticket, bru?",
+      "save-the-planet": "Save the planet, don't print your stuff. Keep it all lekker safe here and flash it at the gate.",
+      "no-ticket":"No ticket? Aw, shame man!\nGotta get on that quick like a bunny!"
+    },
     "available-offline": "NO STRESS, bru!\nAll this lekker stuff's saved on your phone, so when you're off the grid, you sorted 📱💾🔒 No worries!",
     "delete-confirm": {
       "title": "😱 Delete {{ticket_type}}?",
@@ -107,7 +119,15 @@
   },
   "rft-content": {
     "stream-title": "Radio Free Tankwa",
-    "page-blurb": "Afrikaburn’s community radio station"
+    "page-blurb": "Afrikaburn’s community radio station",
+    "offline": {
+      "title": "Bra! You’re Offline\n#InternetShedding",
+      "tunein": "Tune IN @",
+      "frequency": "99.9FM"
+    }
+  },
+  "guides-content": {
+    "downloading": "Stand by, busy download the guide to your phone..."
   },
   "settings": {
     "page-title": "Settings",

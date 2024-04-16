@@ -48,7 +48,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "io.wheresmyshit.afrikaburn"
+        applicationId "io.wheresmyshit.afrikaburn.debug"
 
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
@@ -59,18 +59,28 @@ android {
 
         // Enables multidex support for the application
         multiDexEnabled true
+
+        manifestPlaceholders.deepLinkHost = "dev.afrika.burn.fan"
     }
 
-    buildTypes {
-        debug {
-            applicationIdSuffix ".debug"
-        }
+    // flavorDimensions "environment"
+    // productFlavors {
+    //     // proudction {
+    //     //     applicationId "io.wheresmyshit.afrikaburn"
+    //     //     manifestPlaceholders.deepLinkHost = "afrika.burn.fan"
+    //     // }
+    //     development {
+    //         getIsDefault().set(true)
+    //         applicationId "io.wheresmyshit.afrikaburn.debug"
+    //         manifestPlaceholders.deepLinkHost = "dev.afrika.burn.fan"
+    //     }
+    // }
 
+    buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
-            applicationIdSuffix ".debug"
         }
     }
 }

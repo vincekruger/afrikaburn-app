@@ -32,6 +32,7 @@ class NewsController extends Controller {
     await Permission.notification.onPermanentlyDeniedCallback(() {
       print("Notification Permission Permanently Denied");
       notificationStatusPermantelyDenied = true;
+      throw 'notifications_permanently_denied';
     }).onDeniedCallback(() {
       print("Notification Permission Denied");
     }).request();

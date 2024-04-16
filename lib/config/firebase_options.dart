@@ -13,12 +13,7 @@ class DefaultFirebaseOptions {
         return androidDebug; // need to setup a flavor
       // return kReleaseMode ? androidRelease : androidDebug;
       case TargetPlatform.iOS:
-        switch (appFlavor) {
-          case 'Production':
-            return iosProdution;
-          default:
-            return iosDebug;
-        }
+        return appFlavor == 'Production' ? iosProdution : iosDebug;
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
@@ -36,7 +31,7 @@ class DefaultFirebaseOptions {
     iosBundleId: 'io.wheresmyshit.afrikaburn.debug',
   );
 
-  static const FirebaseOptions androidRelease = FirebaseOptions(
+  static const FirebaseOptions androidProduction = FirebaseOptions(
     apiKey: 'AIzaSyCXUUuT4UNKIqXmFwpYFrWE7BFZCy0nS0M',
     appId: '1:1070999950214:android:c5a0bf87eb561a4d369207',
     messagingSenderId: '1070999950214',

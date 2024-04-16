@@ -50,4 +50,14 @@ class GradientStyles {
           BaseThemeColors().gradient1Start,
         ],
       );
+
+  static LinearGradient get rftIcon => LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        colors: [
+          BaseThemeColors().gradient1Start,
+          BaseThemeColors().gradient1Middle,
+          BaseThemeColors().gradient1End,
+        ],
+      );
 }

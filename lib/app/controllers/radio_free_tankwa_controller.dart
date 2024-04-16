@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:math';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:audio_session/audio_session.dart';
@@ -12,6 +14,20 @@ import 'package:afrikaburn/config/storage_keys.dart';
 class RadioFreeTankwaController extends Controller {
   construct(BuildContext context) {
     super.construct(context);
+  }
+
+  /// Connectivity
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription<List<ConnectivityResult>> connectivitySubscription;
+
+  Future<void> initConnectivity({
+    required Function(List<ConnectivityResult>) listener,
+  }) async {
+    List<ConnectivityResult> result = await _connectivity.checkConnectivity();
+    listener(result);
+
+    connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen(listener);
   }
 
   /// Singleton Factory

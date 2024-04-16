@@ -90,35 +90,41 @@ class _BuyTicketContentState extends NyState<BuyTicketContent>
     return Column(
       children: [
         Container(
-          height: 170,
+          height: 180,
           child: Stack(
             children: [
               Positioned(
                 top: 10,
                 left: 10,
                 child: Container(
-                  width: scale(239, context),
+                  width: 240,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text("Got your ticket, bru?")
+                      Text("ticket-content.buy.got-your-ticket".tr())
                           .titleLarge(context)
                           .alignLeft(),
-                      Text("Save the planet, don't print your stuff. Keep it all lekker safe here and flash it at the gate.")
-                          .bodySmall(context)
-                          .alignLeft(),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 6.0,
+                          right: 30,
+                        ),
+                        child: Text("ticket-content.buy.save-the-planet".tr())
+                            .bodySmall(context)
+                            .alignLeft(),
+                      ),
                     ],
                   ),
                 ),
               ),
               Positioned(
-                right: 60,
-                top: -24,
+                right: 50,
+                top: -14,
                 child: pointingHand(context, width: scale(60, context)),
               ),
               Positioned(
-                top: Platform.isIOS ? 105 : 90,
+                top: 105,
                 left: 27,
                 child: Image.asset(
                   context.isDarkMode
@@ -128,13 +134,12 @@ class _BuyTicketContentState extends NyState<BuyTicketContent>
                 ),
               ),
               Positioned(
-                top: 80,
+                top: 90,
                 right: 20,
                 child: Container(
                   margin: EdgeInsets.only(left: 20, top: 20),
                   width: scale(239, context),
-                  child: Text(
-                          "No ticket? Aw, shame man!\nGotta get on that quick like a bunny!")
+                  child: Text("ticket-content.buy.no-ticket".tr())
                       .titleSmall(context)
                       .alignRight(),
                 ),

@@ -1,18 +1,20 @@
-import 'package:afrikaburn/app/controllers/sharing_controller.dart';
-import 'package:afrikaburn/app/models/navigation_item.dart';
+import 'package:flutter/material.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
+import 'package:afrikaburn/app/providers/app_mode_provider.dart';
+import 'package:afrikaburn/app/controllers/sharing_controller.dart';
+import 'package:afrikaburn/app/models/navigation_item.dart';
 import 'package:afrikaburn/resources/appbars/more_stuff_app_bar.dart';
 import 'package:afrikaburn/resources/artworks/pointing_hand.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
-import 'package:afrikaburn/resources/pages/map_pdf_page.dart';
+import 'package:afrikaburn/resources/pages/guide_map_2023_page.dart';
 import 'package:afrikaburn/resources/pages/settings_page.dart';
-import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
+import 'package:afrikaburn/resources/pages/support_page.dart';
+import 'package:afrikaburn/resources/pages/guide_wtf_2023.dart';
+import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
-import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:nylo_framework/nylo_framework.dart';
 
 class MoreStuffPage extends NyStatefulWidget {
   static const path = '/more-stuff';
@@ -30,33 +32,26 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
       AB24Icons.file,
       "menu-item.wtf-guide-pdf-2023".tr(),
       routeName: WtfGuidePage.path,
-      hideChevron: true,
     ),
     NavigationItem(
       AB24Icons.file,
       "menu-item.map-pdf-2023".tr(),
       routeName: MapPdfPage.path,
-      hideChevron: true,
     ),
-
-    /// Other stuff
-    // NavigationItem(Icons.phonelink, "menu-item.my-contact".tr()),
-    // NavigationItem(AB24Icons.map, "menu-item.map".tr()),
-    // NavigationItem(AB24Icons.art, "menu-item.artwork".tr()),
-    // NavigationItem(AB24Icons.theme_camp, "menu-item.theme-camps".tr()),
-    // NavigationItem(AB24Icons.mutant_vehicle, "menu-item.mutant-vehicles".tr()),
-    // NavigationItem(AB24Icons.heart, "menu-item.favorites".tr()),
     NavigationItem(
       AB24Icons.share,
       "menu-item.share-app".tr(),
       onTap: () => SharingController().shareApp(),
     ),
-    NavigationItem(AB24Icons.support, "menu-item.support-app".tr()),
+    NavigationItem(
+      AB24Icons.support,
+      "menu-item.support-app".tr(),
+      routeName: SupportPage.path,
+    ),
     NavigationItem(
       AB24Icons.settings,
       "menu-item.settings".tr(),
       routeName: SettingsPage.path,
-      hideChevron: true,
     ),
   ];
 
@@ -73,29 +68,53 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
       ),
       body: Padding(
         padding: EdgeInsets.only(top: appBarHeight + appBarHeightPadding),
-        child: ListView.separated(
-          padding: EdgeInsets.only(bottom: 10),
-          itemCount: _items.length,
-          itemBuilder: (context, index) {
-            final item = _items[index];
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.separated(
+                padding: EdgeInsets.only(bottom: 10),
+                itemCount: _items.length,
+                itemBuilder: (context, index) {
+                  final item = _items[index];
 
-            /// Add the pointing hand to the first item
-            if (index == 0)
-              return Column(children: [
-                pointingHand(context),
-                _navigationListTile(item),
-              ]);
+                  /// Add the pointing hand to the first item
+                  if (index == 0)
+                    return Column(children: [
+                      pointingHand(context),
+                      _navigationListTile(item),
+                    ]);
 
-            /// render the list tile
-            return _navigationListTile(item);
-          },
-          separatorBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 0,
+                  /// render the list tile
+                  return _navigationListTile(item);
+                },
+                separatorBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 0,
+                  ),
+                  child: AbDivider(width: double.infinity, height: 0.5),
+                ),
+              ),
             ),
-            child: AbDivider(width: double.infinity, height: 0.5),
-          ),
+            if (AppModeProvider.isDevelopment) ...[
+              FutureBuilder(
+                future: AppModeProvider.tankwaTownMode,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting)
+                    return CircularProgressIndicator();
+
+                  return SwitchListTile(
+                    value: snapshot.data as bool,
+                    onChanged: (bool value) async {
+                      await AppModeProvider.toggleTankwaTownMode(value);
+                      setState(() {});
+                    },
+                    title: Text("Tankwa Town Mode".tr()).titleLarge(context),
+                  );
+                },
+              ),
+            ],
+          ],
         ),
       ),
     );
@@ -103,12 +122,15 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
 
   /// Render the trailing navigation item
   Widget? trailingNavigationItem(NavigationItem item) {
+    /// The Chevron
+    Widget chevron = Icon(AB24Icons.chevron_right, size: 20)
+        .withGradeint(GradientStyles.appbarIcon);
+
     /// There is a route, show the chevron right icon
-    if (item.routeName != null && item.hideChevron == false)
-      return Icon(AB24Icons.chevron_right, size: 20)
-          .withGradeint(GradientStyles.appbarIcon);
+    if (item.routeName != null && item.hideChevron == false) return chevron;
 
     /// there is an onTap method, don't show anything
+    if (item.onTap != null || item.hideChevron == false) return chevron;
     if (item.onTap != null || item.hideChevron == true) return null;
 
     /// Return a coming soon text
@@ -124,7 +146,7 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
       visualDensity: VisualDensity.compact,
       leading:
           Icon(item.icon, size: 30).withGradeint(GradientStyles.appbarIcon),
-      trailing: trailingNavigationItem(item),
+      trailing: trailingNavigationItem(item) ?? null,
       title: Text(item.label.toUpperCase()).titleMedium(context),
       subtitle: item.labelDetail != null
           ? Text(item.labelDetail!.toUpperCase()).bodyMedium(context).setColor(

@@ -1,24 +1,27 @@
-import 'package:afrikaburn/config/default_remote_config.dart';
-import 'package:afrikaburn/config/storage_keys.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:afrikaburn/config/firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:afrikaburn/config/default_remote_config.dart';
+import 'package:afrikaburn/config/storage_keys.dart';
 
 class FirebaseProvider implements NyProvider {
   /// Run before boot
   /// Initialize Firebase
   /// Setup Firebase Crashlytics
   boot(Nylo nylo) async {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+    if (Firebase.apps.isEmpty) {
+      await Firebase.initializeApp(
+        name: getEnv('APP_NAME'),
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+    }
 
     /// Pass all uncaught "fatal" errors from the framework to Crashlytics
     if (!kDebugMode) {
@@ -33,6 +36,7 @@ class FirebaseProvider implements NyProvider {
   /// Configure Firebase Remote Config
   /// Configure Firebase Analytics
   afterBoot(Nylo nylo) async {
+    await _configureAppCheck();
     await _configureRemoteConfig();
     await _configureAnalyticsCollection(nylo);
 
@@ -43,8 +47,38 @@ class FirebaseProvider implements NyProvider {
     );
   }
 
+  /// Configure Firebase App Check
+  Future<void> _configureAppCheck() async {
+    /// Defaults to debug mode
+    AndroidProvider androidProvider = AndroidProvider.debug;
+    AppleProvider appleProvider = AppleProvider.debug;
+
+    /// Release Release Mode
+    /// ---
+    /// This is set in the .env file and used to determine the provider to use
+    /// for Firebase App Check.  If using Firebase App Distribution, remove
+    /// the variable from the .env file to use production providers.
+    if (getEnv('PRODUCTION_APPCHECK', defaultValue: false) == true) {
+      print('Using production Firebase App Check providers');
+      androidProvider = AndroidProvider.playIntegrity;
+      appleProvider = AppleProvider.appAttest;
+    }
+
+    /// Activate Firebase App Check
+    await FirebaseAppCheck.instance
+        .activate(
+      androidProvider: androidProvider,
+      appleProvider: appleProvider,
+    )
+        .then((_) {
+      print('FirebaseAppCheck activated');
+    }).catchError((error) {
+      print('FirebaseAppCheck error: $error');
+    });
+  }
+
   /// Configure Firebase Remote Config
-  _configureRemoteConfig() async {
+  Future<void> _configureRemoteConfig() async {
     /// Setup Remote Config
     final remoteConfig = FirebaseRemoteConfig.instance;
     await remoteConfig.setConfigSettings(RemoteConfigSettings(
@@ -69,7 +103,7 @@ class FirebaseProvider implements NyProvider {
   }
 
   /// Configure Firebase Analytics
-  _configureAnalyticsCollection(Nylo nylo) async {
+  Future<void> _configureAnalyticsCollection(Nylo nylo) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool collectionEnabled =
         await prefs.getBool(SharedPreferenceKey.analyticsAllowed) ?? true;
@@ -86,7 +120,7 @@ class FirebaseProvider implements NyProvider {
   }
 
   /// Log a screen view
-  logScreenView(String screenName, {Map<String, dynamic>? params}) {
+  void logScreenView(String screenName, {Map<String, dynamic>? params}) {
     FirebaseAnalytics.instance.logScreenView(
       screenName: screenName,
       parameters: params,
@@ -94,7 +128,7 @@ class FirebaseProvider implements NyProvider {
   }
 
   /// Log a custom event
-  logEvent(String eventName, Map<String, dynamic>? eventParams) {
+  void logEvent(String eventName, Map<String, dynamic>? eventParams) {
     FirebaseAnalytics.instance.logEvent(
       name: eventName,
       parameters: eventParams ?? {},
