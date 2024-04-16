@@ -11,6 +11,7 @@ import '/app/providers/app_provider.dart';
 import '/app/providers/event_provider.dart';
 import '/app/providers/route_provider.dart';
 import '/app/providers/app_mode_provider.dart';
+import '/app/providers/guide_download_provider.dart';
 
 /* Providers
 |--------------------------------------------------------------------------
@@ -32,4 +33,5 @@ final Map<Type, NyProvider> providers = {
   RadioFreeTankwaProvider: RadioFreeTankwaProvider(),
   AppLinksProvider: AppLinksProvider(),
   AppModeProvider: AppModeProvider(),
+  GuideDownloadProvider: GuideDownloadProvider(),
 };

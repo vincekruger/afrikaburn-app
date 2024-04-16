@@ -862,6 +862,9 @@ PODS:
   - Firebase/RemoteConfig (10.22.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 10.22.0)
+  - Firebase/Storage (10.22.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 10.22.0)
   - firebase_analytics (10.10.1):
     - Firebase/Analytics (= 10.22.0)
     - firebase_core
@@ -888,6 +891,10 @@ PODS:
     - Flutter
   - firebase_remote_config (4.4.1):
     - Firebase/RemoteConfig (= 10.22.0)
+    - firebase_core
+    - Flutter
+  - firebase_storage (11.7.1):
+    - Firebase/Storage (= 10.22.0)
     - firebase_core
     - Flutter
   - FirebaseABTesting (10.22.0):
@@ -917,6 +924,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - PromisesObjC (~> 2.1)
   - FirebaseAppCheckInterop (10.23.0)
+  - FirebaseAuthInterop (10.24.0)
   - FirebaseCore (10.22.0):
     - FirebaseCoreInternal (~> 10.0)
     - GoogleUtilities/Environment (~> 7.12)
@@ -993,6 +1001,12 @@ PODS:
     - nanopb (< 2.30911.0, >= 2.30908.0)
     - PromisesSwift (~> 2.1)
   - FirebaseSharedSwift (10.22.0)
+  - FirebaseStorage (10.22.0):
+    - FirebaseAppCheckInterop (~> 10.0)
+    - FirebaseAuthInterop (~> 10.0)
+    - FirebaseCore (~> 10.0)
+    - FirebaseCoreExtension (~> 10.0)
+    - GTMSessionFetcher/Core (< 4.0, >= 2.1)
   - Flutter (1.0.0)
   - flutter_native_contact_picker (0.0.1):
     - Flutter
@@ -1132,6 +1146,7 @@ PODS:
     - gRPC-Core/Privacy (= 1.62.1)
   - gRPC-Core/Interface (1.62.1)
   - gRPC-Core/Privacy (1.62.1)
+  - GTMSessionFetcher/Core (3.3.2)
   - image_picker_ios (0.0.1):
     - Flutter
   - just_audio (0.0.1):
@@ -1191,6 +1206,7 @@ DEPENDENCIES:
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - firebase_performance (from `.symlinks/plugins/firebase_performance/ios`)
   - firebase_remote_config (from `.symlinks/plugins/firebase_remote_config/ios`)
+  - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
   - flutter_native_contact_picker (from `.symlinks/plugins/flutter_native_contact_picker/ios`)
   - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
@@ -1217,6 +1233,7 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseAppCheck
     - FirebaseAppCheckInterop
+    - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseCoreExtension
     - FirebaseCoreInternal
@@ -1229,11 +1246,13 @@ SPEC REPOS:
     - FirebaseRemoteConfig
     - FirebaseSessions
     - FirebaseSharedSwift
+    - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
+    - GTMSessionFetcher
     - leveldb-library
     - MapboxCommon
     - MapboxCoreMaps
@@ -1270,6 +1289,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_performance/ios"
   firebase_remote_config:
     :path: ".symlinks/plugins/firebase_remote_config/ios"
+  firebase_storage:
+    :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
     :path: Flutter
   flutter_native_contact_picker:
@@ -1319,10 +1340,12 @@ SPEC CHECKSUMS:
   firebase_messaging: 860e28c6ad8b3281276eba922024644b9909c903
   firebase_performance: 0a7767812b911db8daa8c542d64f4cdc0c0d7cc1
   firebase_remote_config: 13cdfde7862e4cee3b9e97cf3f9e2f1ea2b98c8e
+  firebase_storage: 8d42f27f702499161335b5075aa67bf6f2d821fb
   FirebaseABTesting: 66d2594b36d4ff6e7d3c8719802100990de05857
   FirebaseAnalytics: 8d0ff929c63b7f72260f332b86ccf569776b75d3
   FirebaseAppCheck: 8e85fc837a3f006b7c4ef3f50c0a3474395e76f7
   FirebaseAppCheckInterop: a1955ce8c30f38f87e7d091630e871e91154d65d
+  FirebaseAuthInterop: 29336ab84df12fc0f340ba5fe58d3e5811a4192d
   FirebaseCore: 0326ec9b05fbed8f8716cddbf0e36894a13837f7
   FirebaseCoreExtension: 6394c00b887d0bebadbc7049c464aa0cbddc5d41
   FirebaseCoreInternal: bca337352024b18424a61e478460547d46c4c753
@@ -1335,6 +1358,7 @@ SPEC CHECKSUMS:
   FirebaseRemoteConfig: e1b992a94d3674dddbcaf5d0d31a0312156ceb1c
   FirebaseSessions: cd97fb07674f3906619c871eefbd260a1546c9d3
   FirebaseSharedSwift: 48076404e6e52372290d15a07d2ed1d2f1754023
+  FirebaseStorage: bc7bddc743548a89cfb896843a77cf4bdde2c231
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_native_contact_picker: bd430ba0fbf82768bb50c2c52a69a65759a8f907
   flutter_native_splash: edf599c81f74d093a4daf8e17bd7a018854bc778
@@ -1344,6 +1368,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: d053d902a8edaa9904e1bd00c37535385b8ed152
   "gRPC-C++": 12f33a422dcab88dcd0c53e52cd549a929f0f244
   gRPC-Core: 6ec9002832e1e22c5bb8c54994b050b0ee4205c6
+  GTMSessionFetcher: 0e876eea9782ec6462e91ab872711c357322c94f
   image_picker_ios: b545a5f16c0fa88e3ecbbce3ed4de45567a8ec18
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
   leveldb-library: 06a69cc7582d64b29424a63e085e683cc188230a

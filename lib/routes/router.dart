@@ -1,5 +1,5 @@
 import 'package:nylo_framework/nylo_framework.dart';
-import 'package:afrikaburn/resources/pages/map_pdf_page.dart';
+import 'package:afrikaburn/resources/pages/guide_map_2023_page.dart';
 import 'package:afrikaburn/resources/pages/more_stuff_page.dart';
 import 'package:afrikaburn/resources/pages/radio_free_tankwa_page.dart';
 import 'package:afrikaburn/resources/pages/root.dart';
@@ -9,7 +9,7 @@ import 'package:afrikaburn/resources/pages/create_contact_page.dart';
 import 'package:afrikaburn/resources/pages/ticket_page.dart';
 import 'package:afrikaburn/resources/pages/map_page.dart';
 import 'package:afrikaburn/resources/pages/my_contact_page.dart';
-import 'package:afrikaburn/resources/pages/wtf_guide_page.dart';
+import 'package:afrikaburn/resources/pages/guide_wtf_2023.dart';
 import 'package:afrikaburn/resources/pages/support_page.dart';
 import 'package:afrikaburn/resources/pages/settings_page.dart';
 

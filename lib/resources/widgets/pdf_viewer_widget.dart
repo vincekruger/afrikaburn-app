@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:afrikaburn/bootstrap/helpers.dart';
+import 'package:afrikaburn/resources/appbars/sliding_app_bar.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,12 +10,14 @@ import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 
 class PdfViewerWidget extends StatefulWidget {
-  final Uri uri;
+  final Uri? uri;
+  final File? file;
   final String navigationBarTitle;
 
   const PdfViewerWidget({
     super.key,
-    required this.uri,
+    this.uri,
+    this.file,
     required this.navigationBarTitle,
   });
 
@@ -118,43 +121,31 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
             ),
             body: SafeArea(
               top: _appBarVisible,
-              child: PdfViewer.uri(
-                widget.uri,
-                controller: _pdfController,
-                params: pdfViewerParams(orientation == Orientation.landscape),
-              ),
+              child: pdfViewerType(orientation),
             ),
           );
         },
       );
-}
 
-/// Sliding App Bar
-class SlidingAppBar extends StatelessWidget implements PreferredSizeWidget {
-  SlidingAppBar({
-    required this.child,
-    required this.controller,
-    required this.visible,
-  });
+  Widget pdfViewerType(Orientation orientation) {
+    if (widget.file != null) {
+      return PdfViewer.file(
+        widget.file!.path,
+        controller: _pdfController,
+        params: pdfViewerParams(orientation == Orientation.landscape),
+      );
+    }
 
-  final PreferredSizeWidget child;
-  final AnimationController controller;
-  final bool visible;
+    if (widget.uri != null) {
+      return PdfViewer.uri(
+        widget.uri!,
+        controller: _pdfController,
+        params: pdfViewerParams(orientation == Orientation.landscape),
+      );
+    }
 
-  @override
-  Size get preferredSize => child.preferredSize;
-
-  @override
-  Widget build(BuildContext context) {
-    visible ? controller.reverse() : controller.forward();
-    return SlideTransition(
-      position: Tween<Offset>(begin: Offset.zero, end: Offset(0, -1)).animate(
-        CurvedAnimation(
-          parent: controller,
-          curve: Curves.fastOutSlowIn,
-        ),
-      ),
-      child: child,
+    return Center(
+      child: Text('No file/pdf for PDF Viewer'),
     );
   }
 }
