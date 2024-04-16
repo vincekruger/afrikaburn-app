@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,11 +18,18 @@ class FirebaseProvider implements NyProvider {
   /// Initialize Firebase
   /// Setup Firebase Crashlytics
   boot(Nylo nylo) async {
+    /// I don't know why ios has such an issue with this
+    /// but it does.  This is a workaround for now.
     if (Firebase.apps.isEmpty) {
-      await Firebase.initializeApp(
-        name: getEnv('APP_NAME'),
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
+      if (Platform.isIOS) {
+        await Firebase.initializeApp(
+          name: getEnv('APP_NAME'),
+          options: DefaultFirebaseOptions.currentPlatform,
+        );
+      } else
+        await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform,
+        );
     }
 
     /// Pass all uncaught "fatal" errors from the framework to Crashlytics
