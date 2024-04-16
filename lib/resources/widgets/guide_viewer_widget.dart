@@ -15,7 +15,7 @@ class GuideViewer extends StatefulWidget {
 
   final Guide guide;
   final String appBarTitle;
-  static String state = "guide";
+  static String state = "guide-viewer";
 
   @override
   createState() => _GuideViewerState(this.guide);
