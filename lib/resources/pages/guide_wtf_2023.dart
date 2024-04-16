@@ -10,8 +10,6 @@ class WtfGuidePage extends NyStatefulWidget {
 }
 
 class _WtfGuidePageState extends NyState<WtfGuidePage> {
-  /// Local File State
-
   @override
   Widget view(BuildContext context) {
     return GuideViewer(
