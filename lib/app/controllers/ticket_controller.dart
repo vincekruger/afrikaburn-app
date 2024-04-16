@@ -66,19 +66,6 @@ class TicketController extends Controller {
     final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
     final String assetFolder = p.join(appDocumentsDir.path, ticketPath);
 
-    /// Put in a check for the old ticket path
-    final String oldTicketPath = p.join(appDocumentsDir.path, 'tickets');
-    if (Directory(oldTicketPath).existsSync()) {
-      /// Android no peudo rename with existing files. :(
-      if (Platform.isAndroid) {
-        Directory(oldTicketPath).deleteSync(recursive: true);
-        Directory(assetFolder).createSync();
-      } else {
-        Directory(oldTicketPath).renameSync(oldTicketPath + ".tmp");
-        Directory(oldTicketPath + '.tmp').renameSync(assetFolder);
-      }
-    }
-
     // Create a folder for the ticket items
     if (!Directory(assetFolder).existsSync()) {
       Directory(assetFolder).createSync();
