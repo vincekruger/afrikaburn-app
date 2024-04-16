@@ -11,14 +11,13 @@ enum GuideType {
   MOOP,
 }
 
-final String guidePath = 'Guides';
+final String guideLocalPath = 'Guides';
 
 /// Ticket Model
 class Guide extends Model {
+  Guide(GuideType this.type, int this.year);
   GuideType type;
   int year;
-
-  Guide(GuideType this.type, int this.year);
 
   /// Get the local filename for the guide
   get filename {
@@ -33,7 +32,7 @@ class Guide extends Model {
   }
 
   /// Get the local relative path for the guide
-  String get localPath => p.join(guidePath, filename);
+  String get localPath => p.join(guideLocalPath, filename);
 
   /// Get the full local path for the guide
   Future<String> get fullPath async {
