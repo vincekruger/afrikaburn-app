@@ -73,6 +73,24 @@
 			"problemMatcher": [],
 			"label": "Build App Distribution - iOS Production Release (AdHoc)",
 			"detail": "Buils a production release for Firebase App Distribution"
+		},
+		{
+			"type": "flutter",
+			"command": "flutter",
+			"dependsOn": "Check PRODUCTION_APPCHECK false",
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}",
+			},
+			"args": [
+				"build",
+				"ipa",
+				"--release",
+				"--export-method=ad-hoc"
+			],
+			"problemMatcher": [],
+			"label": "Build App Distribution - iOS Development Release (AdHoc)",
+			"detail": "Buils a Development release for Firebase App Distribution"
 		}
 	]
 }
