@@ -7,7 +7,6 @@ import '/app/controllers/news_controller.dart';
 import '/app/controllers/create_contact_controller.dart';
 import '/app/controllers/map_controller.dart';
 import '/app/controllers/my_contact_controller.dart';
-import '/app/controllers/wtf_guide_controller.dart';
 import '/app/controllers/support_controller.dart';
 import '/app/controllers/settings_controller.dart';
 import '/app/controllers/sharing_controller.dart';
@@ -63,7 +62,6 @@ final Map<Type, dynamic> apiDecoders = {
 | Learn more https://nylo.dev/docs/5.20.0/controllers
 |-------------------------------------------------------------------------- */
 final Map<Type, dynamic> controllers = {
-  WtfGuideController: () => WtfGuideController(),
   MyContactController: () => MyContactController(),
   MapController: () => MapController(),
   CreateContactController: () => CreateContactController(),
