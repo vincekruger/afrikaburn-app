@@ -9,19 +9,21 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug",
-            "args": ["--flavor=development"]
+            "args": ["--flavor", "Runner"]
         },
         {
             "name": "Debug - Profile",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "profile",
+            "args": ["--flavor", "Runner"]
         },
         {
             "name": "Debug - Release",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
+            "args": ["--flavor", "Runner"]
         },
         {
             "name": "Production",

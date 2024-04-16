@@ -62,8 +62,6 @@ android {
 
         // Enables multidex support for the application
         multiDexEnabled true
-
-        manifestPlaceholders.deepLinkHost = "dev.afrika.burn.fan"
     }
 
     flavorDimensions "environment"
@@ -71,10 +69,9 @@ android {
         Production {
             dimension "environment"
             applicationId "io.wheresmyshit.afrikaburn"
-            System.out.println('using production flavor');
             manifestPlaceholders.deepLinkHost = "afrika.burn.fan"
         }
-        development {
+        Runner {
             getIsDefault().set(true)
             dimension "environment"
             applicationId "io.wheresmyshit.afrikaburn.debug"
