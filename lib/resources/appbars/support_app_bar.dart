@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -29,7 +31,10 @@ class SupportAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: viewPadding(context).top - 25),
+            margin: EdgeInsets.only(
+                top: Platform.isIOS
+                    ? viewPadding(context).top - 25
+                    : viewPadding(context).top + 10),
             child: AppBar(
               leading: backButton(context),
               systemOverlayStyle: context.isDarkMode

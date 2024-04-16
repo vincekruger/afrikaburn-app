@@ -297,6 +297,12 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
                   width: double.infinity,
                   height: 290,
                   child: CachedNetworkImage(
+                    placeholder: (context, url) => Container(
+                      color: ThemeColor.get(context).surfaceBackground,
+                    ),
+                    errorWidget: (context, url, error) => Container(
+                      color: ThemeColor.get(context).surfaceBackground,
+                    ),
                     imageUrl: newsItem.featuredImageUrl,
                     fit: BoxFit.cover,
                   ),

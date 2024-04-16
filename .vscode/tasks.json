@@ -52,8 +52,28 @@
 				"--split-debug-info=build/ios/debug-info"
 			],
 			"problemMatcher": [],
-			"label": "Build Appstore Connection - iOS Production Release",
+			"label": "Build Appstore Connect - iOS Production Release",
 			"detail": "Buils a production release for Appstore Connection"
+		},
+		{
+			"type": "flutter",
+			"command": "flutter",
+			"dependsOn": "Check PRODUCTION_APPCHECK true",
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}",
+			},
+			"args": [
+				"build",
+				"appbundle",
+				"--release",
+				"--flavor=production",
+				"--obfuscate",
+				"--split-debug-info=build/anrdoid/debug-info"
+			],
+			"problemMatcher": [],
+			"label": "Build Google Play Store - App Bundle Production Release",
+			"detail": "Buils a production release for Google Play Store"
 		},
 		{
 			"type": "flutter",
@@ -72,6 +92,25 @@
 			],
 			"problemMatcher": [],
 			"label": "Build App Distribution - iOS Production Release (AdHoc)",
+			"detail": "Buils a production release for Firebase App Distribution"
+		},
+		{
+			"type": "flutter",
+			"command": "flutter",
+			"dependsOn": "Check PRODUCTION_APPCHECK false",
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}",
+			},
+			"args": [
+				"build",
+				"ipa",
+				"--release",
+				"--flavor=production",
+				"--export-method=ad-hoc"
+			],
+			"problemMatcher": [],
+			"label": "Build App Distribution - Android Production Release (AdHoc)",
 			"detail": "Buils a production release for Firebase App Distribution"
 		},
 		{

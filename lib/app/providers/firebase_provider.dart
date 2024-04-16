@@ -28,6 +28,7 @@ class FirebaseProvider implements NyProvider {
         );
       } else
         await Firebase.initializeApp(
+          // name: getEnv('APP_NAME'),
           options: DefaultFirebaseOptions.currentPlatform,
         );
     }

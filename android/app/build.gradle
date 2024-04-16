@@ -24,6 +24,9 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def keystorePwd = localProperties.getProperty('keystore.password')
+def prodAliasPwd = localProperties.getProperty('keystore.proudctionPassword')
+
 android {
     namespace "com.nylo.android"
     compileSdk flutter.compileSdkVersion
@@ -63,24 +66,36 @@ android {
         manifestPlaceholders.deepLinkHost = "dev.afrika.burn.fan"
     }
 
-    // flavorDimensions "environment"
-    // productFlavors {
-    //     // proudction {
-    //     //     applicationId "io.wheresmyshit.afrikaburn"
-    //     //     manifestPlaceholders.deepLinkHost = "afrika.burn.fan"
-    //     // }
-    //     development {
-    //         getIsDefault().set(true)
-    //         applicationId "io.wheresmyshit.afrikaburn.debug"
-    //         manifestPlaceholders.deepLinkHost = "dev.afrika.burn.fan"
-    //     }
-    // }
+    flavorDimensions "environment"
+    productFlavors {
+        Production {
+            dimension "environment"
+            applicationId "io.wheresmyshit.afrikaburn"
+            System.out.println('using production flavor');
+            manifestPlaceholders.deepLinkHost = "afrika.burn.fan"
+        }
+        development {
+            getIsDefault().set(true)
+            dimension "environment"
+            applicationId "io.wheresmyshit.afrikaburn.debug"
+            manifestPlaceholders.deepLinkHost = "dev.afrika.burn.fan"
+        }
+    }
+
+    signingConfigs {
+        releaseProduction {
+            storeFile file("/Users/vincekruger/Library/Mobile Documents/com~apple~CloudDocs/Dev & Design/App Credentials/Android Signing Keys/afrikaburn.jks")
+            storePassword keystorePwd
+            keyAlias "production"
+            keyPassword prodAliasPwd
+        }
+    }
 
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.releaseProduction
         }
     }
 }

@@ -10,8 +10,7 @@ class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        return androidDebug; // need to setup a flavor
-      // return kReleaseMode ? androidRelease : androidDebug;
+        return appFlavor == 'Production' ? androidProduction : androidDebug;
       case TargetPlatform.iOS:
         return appFlavor == 'Production' ? iosProdution : iosDebug;
       default:

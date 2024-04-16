@@ -86,7 +86,11 @@ class _NewsItemState extends State<NewsItem> {
                     color: ThemeColor.get(context).primaryContent,
                     image: DecorationImage(
                       image: CachedNetworkImageProvider(
-                          widget.item.featuredImageUrl),
+                        widget.item.featuredImageUrl,
+                        errorListener: (_) {
+                          print('Error loading image');
+                        },
+                      ),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: borderRadius,
