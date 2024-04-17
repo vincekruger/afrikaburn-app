@@ -1,5 +1,10 @@
 class DefaultRemoteConfig {
   static final Map<String, dynamic> defaultConfig = {
+    /// Burn Dates
+    "burn_start_date": "2022-04-29",
+    "burn_end_date": "2022-05-05",
+
+    /// News, Tickets & Sharing
     "news_page_size": 15,
     "tickets_url": "https://tickets.afrikaburn.org",
     "app_share_url": "https://afrika.burn.fan/",
@@ -7,12 +12,6 @@ class DefaultRemoteConfig {
     /// ImageKit
     "imageKitBaseUrl": "https://ik.imagekit.io/n1ly84zxr",
     "imageKitNewsPath": "news",
-
-    /// PDFS
-    "pdf_wtf_guide_url":
-        "https://www.afrikaburn.org/wp-content/uploads/2023/04/WTF2023-FA-web2.pdf",
-    "pdf_map_url":
-        "https://www.afrikaburn.org/wp-content/uploads/2023/04/TT-MAP-2023-WEBf.pdf",
 
     /// Radio Free Tankwas Stuff
     "rft_stream_url":
