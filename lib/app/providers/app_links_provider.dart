@@ -1,11 +1,10 @@
-import 'package:afrikaburn/resources/pages/ticket_page.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:quick_actions/quick_actions.dart';
-
 import '/resources/pages/root.dart';
 import '/resources/pages/radio_free_tankwa_page.dart';
-import '/resources/widgets/default_world_navigation_bar_widget.dart';
+import '/resources/pages/ticket_page.dart';
+import '/resources/shared_navigation_bar/shared_navigation_bar.dart';
 
 class AppLinksProvider implements NyProvider {
   final QuickActions quickActions = const QuickActions();
@@ -59,21 +58,21 @@ class AppLinksProvider implements NyProvider {
   static void navigateNews() {
     dynamic data = {"index": 0};
     updateState(RootPage.path, data: data);
-    updateState(DefaultWorldNavigationBar.state, data: data);
+    updateState(SharedNavigationBar.state, data: data);
     popToRoot();
   }
 
   static void navigateTickets() {
     dynamic data = {"route": TicketPage.path};
     updateState(RootPage.path, data: data);
-    updateState(DefaultWorldNavigationBar.state, data: data);
+    updateState(SharedNavigationBar.state, data: data);
     popToRoot();
   }
 
   static void navigateRFT() {
     dynamic data = {"route": RadioFreeTankwaPage.path};
     updateState(RootPage.path, data: data);
-    updateState(DefaultWorldNavigationBar.state, data: data);
+    updateState(SharedNavigationBar.state, data: data);
     popToRoot();
   }
 
