@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:afrikaburn/app/controllers/controller.dart';
 import 'package:afrikaburn/app/models/news.dart';
 import 'package:afrikaburn/app/providers/firebase_provider.dart';
@@ -87,7 +89,7 @@ class NewsController extends Controller {
   }
 
   /// Page Size
-  static const pageSize = 20;
+  static const pageSize = 5;
 
   /// Scroll Page Controller
   final PagingController<int, News> pagingController =
@@ -97,19 +99,21 @@ class NewsController extends Controller {
   final FirebaseFirestore db = FirebaseFirestore.instance;
 
   /// Collection Ref
-  final _collection = 'news';
-  CollectionReference? _collectionRef;
+  List<StreamSubscription<QuerySnapshot>> newsSubscriptions = [];
+  final CollectionReference collectionRef =
+      FirebaseFirestore.instance.collection('news');
+
+  Future<void> cancelNewsSubscriptions() async {
+    newsSubscriptions.forEach((subscription) {
+      subscription.cancel();
+    });
+  }
 
   /// Get News Posts
   Future<void> fetchNews(int pageKey) async {
     try {
-      /// Setup collection reference
-      if (_collectionRef == null) {
-        _collectionRef = db.collection(_collection);
-      }
-
       /// Configure query
-      var query = _collectionRef!
+      var query = collectionRef
           .where('public', isEqualTo: true)
           .orderBy('date', descending: true)
           .limit(pageSize);
@@ -120,22 +124,36 @@ class NewsController extends Controller {
       }
 
       /// Fetch data
-      final snapshot = await query.get();
-      final newItems =
-          snapshot.docs.map((doc) => News.fromSnapshot(doc)).toList();
-
-      /// If last page, append all items
-      if (newItems.length < pageSize) {
-        pagingController.appendLastPage(newItems);
-        return;
-      }
-
-      /// Append page
-      final nextPageKey = pageKey + newItems.length;
-      pagingController.appendPage(newItems, nextPageKey);
+      var subscription =
+          query.snapshots().listen((event) => processSnapshot(event, pageKey));
+      newsSubscriptions.add(subscription);
     } catch (error) {
       pagingController.error = error;
       print(error);
     }
+  }
+
+  /// Process the snapshot data & changes
+  void processSnapshot(QuerySnapshot<Object?> snapshot, int pageKey) {
+    final items = snapshot.docs.map((doc) => News.fromSnapshot(doc)).toList();
+
+    /// If last page, append all items
+    if (items.length < pageSize) {
+      pagingController.appendLastPage(items);
+      return;
+    }
+
+    /// Append page
+    final nextPageKey = pageKey + items.length;
+    pagingController.appendPage(items, nextPageKey);
+
+    /// Check the changes
+    snapshot.docChanges.forEach((change) {
+      if (change.type == DocumentChangeType.removed) {
+        pagingController.itemList!.removeWhere((element) {
+          return element.id == change.doc.id;
+        });
+      }
+    });
   }
 }

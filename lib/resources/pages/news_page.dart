@@ -18,24 +18,33 @@ class NewsPage extends NyStatefulWidget<NewsController> {
   NewsPage() : super(path, child: _NewsPageState());
 }
 
-class _NewsPageState extends NyState<NewsPage> {
+class _NewsPageState extends NyState<NewsPage> with WidgetsBindingObserver {
   /// [NewsController] controller
   NewsController get controller => widget.controller;
 
   /// Widget init
   @override
   init() {
-    widget.controller.pagingController.addPageRequestListener((pageKey) {
-      widget.controller.fetchNews(pageKey);
+    WidgetsBinding.instance.addObserver(this);
+    controller.pagingController.addPageRequestListener((pageKey) {
+      controller.fetchNews(pageKey);
     });
-    return super.init();
   }
 
   /// Widget dispose
   @override
   void dispose() {
-    widget.controller.pagingController.dispose();
+    WidgetsBinding.instance.removeObserver(this);
+    controller.pagingController.dispose();
+    controller.cancelNewsSubscriptions();
     super.dispose();
+  }
+
+  /// Handle app lifecycle
+  @override
+  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
+    if (state != AppLifecycleState.resumed) return;
+    controller.pagingController.refresh();
   }
 
   /// ListView Header
@@ -72,7 +81,7 @@ class _NewsPageState extends NyState<NewsPage> {
           child: header(context),
         ),
         PagedSliverList<int, News>(
-          pagingController: widget.controller.pagingController,
+          pagingController: controller.pagingController,
           builderDelegate: PagedChildBuilderDelegate<News>(
             itemBuilder: (context, item, index) => NewsItem(item, index: index),
             firstPageErrorIndicatorBuilder: (context) => Container(
@@ -82,7 +91,7 @@ class _NewsPageState extends NyState<NewsPage> {
                   margin: const EdgeInsets.all(20.0),
                   padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: context.color.surfaceBackground,
                     border:
                         Border.all(color: context.color.fourthAccent, width: 1),
                   ),
@@ -92,13 +101,13 @@ class _NewsPageState extends NyState<NewsPage> {
                       Text('news-content.error-loading.title'.tr())
                           .titleLarge(context)
                           .setColor(
-                              context, (color) => context.color.primaryContent),
+                              context, (color) => context.color.surfaceContent),
                       SizedBox(height: 10),
                       Text('news-content.error-loading.message'.tr())
                           .alignCenter()
                           .bodyMedium(context)
                           .setColor(
-                              context, (color) => context.color.primaryContent),
+                              context, (color) => context.color.surfaceContent),
                       SizedBox(height: 14),
                       OutlinedButton(
                         onPressed:

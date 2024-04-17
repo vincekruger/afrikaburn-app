@@ -1,8 +1,8 @@
-import 'package:afrikaburn/app/models/news_category.dart';
-import 'package:afrikaburn/resources/themes/color_helper.dart';
+import 'package:path/path.dart' as p;
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import 'package:path/path.dart' as p;
+import 'package:afrikaburn/resources/themes/color_helper.dart';
+import 'package:afrikaburn/app/models/news_category.dart';
 
 /// News Model.
 
