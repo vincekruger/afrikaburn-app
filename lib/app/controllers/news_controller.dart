@@ -109,6 +109,10 @@ class NewsController extends Controller {
     });
   }
 
+  Future<void> getNewPosts() async {
+    pagingController.refresh();
+  }
+
   /// Get News Posts
   Future<void> fetchNews(int pageKey) async {
     try {

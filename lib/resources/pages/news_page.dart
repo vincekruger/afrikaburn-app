@@ -44,7 +44,7 @@ class _NewsPageState extends NyState<NewsPage> with WidgetsBindingObserver {
   @override
   Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
     if (state != AppLifecycleState.resumed) return;
-    controller.pagingController.refresh();
+    controller.getNewPosts();
   }
 
   /// ListView Header
