@@ -11,6 +11,7 @@ import '/app/controllers/support_controller.dart';
 import '/app/controllers/settings_controller.dart';
 import '/app/controllers/sharing_controller.dart';
 import '/app/controllers/radio_free_tankwa_controller.dart';
+import '/app/controllers/guide_wtf_2024_controller.dart';
 import '/app/models/user.dart';
 import '/app/networking/api_service.dart';
 
@@ -27,17 +28,13 @@ final Map<Type, dynamic> modelDecoders = {
       List.from(data).map((json) => User.fromJson(json)).toList(),
   //
   User: (data) => User.fromJson(data),
-
   // User: (data) => User.fromJson(data),
 
   List<NewsCategory>: (data) =>
       List.from(data).map((json) => NewsCategory.fromJson(json)).toList(),
-
   NewsCategory: (data) => NewsCategory.fromJson(data),
-
   List<NewsTag>: (data) =>
       List.from(data).map((json) => NewsTag.fromJson(json)).toList(),
-
   NewsTag: (data) => NewsTag.fromJson(data),
 };
 
@@ -51,7 +48,6 @@ final Map<Type, dynamic> modelDecoders = {
 
 final Map<Type, dynamic> apiDecoders = {
   ApiService: () => ApiService(),
-
   // ...
 };
 
@@ -72,4 +68,5 @@ final Map<Type, dynamic> controllers = {
   SharingController: () => SharingController(),
   SettingsController: () => SettingsController(),
   SupportController: () => SupportController(),
+  GuideWtf2024Controller: () => GuideWtf2024Controller(),
 };
