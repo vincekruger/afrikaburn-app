@@ -8,7 +8,6 @@ import '/resources/pages/ticket_page.dart';
 import '/resources/pages/news_page.dart';
 import '/resources/pages/map_page.dart';
 import '/resources/pages/guide_wtf_2024_page.dart';
-import '/resources/pages/guide_map_2024_page.dart';
 
 class BottomNavigationItemConfig {
   final Widget Function() builder;
