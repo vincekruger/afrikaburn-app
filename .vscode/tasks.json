@@ -47,7 +47,7 @@
 				"build",
 				"ipa",
 				"--release",
-				"--flavor=production",
+				"--flavor=Production",
 				"--obfuscate",
 				"--split-debug-info=build/ios/debug-info"
 			],
@@ -67,7 +67,7 @@
 				"build",
 				"appbundle",
 				"--release",
-				"--flavor=production",
+				"--flavor=Production",
 				"--obfuscate",
 				"--split-debug-info=build/anrdoid/debug-info"
 			],
@@ -87,7 +87,7 @@
 				"build",
 				"ipa",
 				"--release",
-				"--flavor=production",
+				"--flavor=Production",
 				"--export-method=ad-hoc"
 			],
 			"problemMatcher": [],
@@ -106,7 +106,7 @@
 				"build",
 				"ipa",
 				"--release",
-				"--flavor=production",
+				"--flavor=Production",
 				"--export-method=ad-hoc"
 			],
 			"problemMatcher": [],
