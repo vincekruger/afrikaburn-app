@@ -49,10 +49,12 @@
 		105A033F6C7ECB787AC4C344 /* Pods-AfrikaburnTests.profile production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AfrikaburnTests.profile production.xcconfig"; path = "Target Support Files/Pods-AfrikaburnTests/Pods-AfrikaburnTests.profile production.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
+		2B950C2F31099E4926330776 /* Pods-Afrikaburn.release runner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afrikaburn.release runner.xcconfig"; path = "Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn.release runner.xcconfig"; sourceTree = "<group>"; };
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		331C8081294A63A400263BE5 /* AfrikaburnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AfrikaburnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		3FC7400FB1BB027AA5DF53D4 /* Pods-Afrikaburn.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afrikaburn.profile.xcconfig"; path = "Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn.profile.xcconfig"; sourceTree = "<group>"; };
+		464FF1C02E5B79E86FB71600 /* Pods-AfrikaburnTests.profile runner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AfrikaburnTests.profile runner.xcconfig"; path = "Target Support Files/Pods-AfrikaburnTests/Pods-AfrikaburnTests.profile runner.xcconfig"; sourceTree = "<group>"; };
 		5317BA8B2BC6A5B800086B1D /* AfrikaburnDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AfrikaburnDebug.entitlements; sourceTree = "<group>"; };
 		5335A17A2BA7324A00371F90 /* AfrikaburnProduction.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AfrikaburnProduction.entitlements; sourceTree = "<group>"; };
 		536314BD2BB6FD63009EBCDB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 		7A9A0E930CBE8EAEA2066529 /* Pods-Afrikaburn.release production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afrikaburn.release production.xcconfig"; path = "Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn.release production.xcconfig"; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
 		821971498F08D5C35E23ACA5 /* Pods-Afrikaburn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afrikaburn.debug.xcconfig"; path = "Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn.debug.xcconfig"; sourceTree = "<group>"; };
+		8723054334B3A59180A27467 /* Pods-AfrikaburnTests.release runner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AfrikaburnTests.release runner.xcconfig"; path = "Target Support Files/Pods-AfrikaburnTests/Pods-AfrikaburnTests.release runner.xcconfig"; sourceTree = "<group>"; };
 		8F52A7DBF0FB05D59A2D1F94 /* Pods-AfrikaburnTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AfrikaburnTests.debug.xcconfig"; path = "Target Support Files/Pods-AfrikaburnTests/Pods-AfrikaburnTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 		9B1C14A0BA9297CC5024F25C /* Pods-Afrikaburn.debug runner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afrikaburn.debug runner.xcconfig"; path = "Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn.debug runner.xcconfig"; sourceTree = "<group>"; };
 		A042364E1CFFC6C8929750E0 /* Pods_AfrikaburnTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AfrikaburnTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AC3D5E2AD3B4E2BDFE362E /* Pods-Afrikaburn.debug production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afrikaburn.debug production.xcconfig"; path = "Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn.debug production.xcconfig"; sourceTree = "<group>"; };
+		C79FF51988B072FF56057F26 /* Pods-Afrikaburn.profile runner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afrikaburn.profile runner.xcconfig"; path = "Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn.profile runner.xcconfig"; sourceTree = "<group>"; };
 		D0D5B35E69F54B86CAC051C7 /* Pods-Afrikaburn.profile production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afrikaburn.profile production.xcconfig"; path = "Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn.profile production.xcconfig"; sourceTree = "<group>"; };
 		E7E72062BAE1EF03A49D9A5E /* Pods-AfrikaburnTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AfrikaburnTests.profile.xcconfig"; path = "Target Support Files/Pods-AfrikaburnTests/Pods-AfrikaburnTests.profile.xcconfig"; sourceTree = "<group>"; };
 		EBA3FFD2887CEAA64D1A14B9 /* Pods-AfrikaburnTests.release production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AfrikaburnTests.release production.xcconfig"; path = "Target Support Files/Pods-AfrikaburnTests/Pods-AfrikaburnTests.release production.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +129,10 @@
 				105A033F6C7ECB787AC4C344 /* Pods-AfrikaburnTests.profile production.xcconfig */,
 				9B1C14A0BA9297CC5024F25C /* Pods-Afrikaburn.debug runner.xcconfig */,
 				064D7B87273751A7AE179FC2 /* Pods-AfrikaburnTests.debug runner.xcconfig */,
+				2B950C2F31099E4926330776 /* Pods-Afrikaburn.release runner.xcconfig */,
+				C79FF51988B072FF56057F26 /* Pods-Afrikaburn.profile runner.xcconfig */,
+				8723054334B3A59180A27467 /* Pods-AfrikaburnTests.release runner.xcconfig */,
+				464FF1C02E5B79E86FB71600 /* Pods-AfrikaburnTests.profile runner.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -626,7 +634,7 @@
 		};
 		331C8089294A63A400263BE5 /* Release Runner */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E88EEB731C6D34489276E4B /* Pods-AfrikaburnTests.release.xcconfig */;
+			baseConfigurationReference = 8723054334B3A59180A27467 /* Pods-AfrikaburnTests.release runner.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -643,7 +651,7 @@
 		};
 		331C808A294A63A400263BE5 /* Profile Runner */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7E72062BAE1EF03A49D9A5E /* Pods-AfrikaburnTests.profile.xcconfig */;
+			baseConfigurationReference = 464FF1C02E5B79E86FB71600 /* Pods-AfrikaburnTests.profile runner.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
