@@ -44,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		016886036781E28BA625B69D /* Pods_Afrikaburn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Afrikaburn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		064D7B87273751A7AE179FC2 /* Pods-AfrikaburnTests.debug runner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AfrikaburnTests.debug runner.xcconfig"; path = "Target Support Files/Pods-AfrikaburnTests/Pods-AfrikaburnTests.debug runner.xcconfig"; sourceTree = "<group>"; };
 		0E88EEB731C6D34489276E4B /* Pods-AfrikaburnTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AfrikaburnTests.release.xcconfig"; path = "Target Support Files/Pods-AfrikaburnTests/Pods-AfrikaburnTests.release.xcconfig"; sourceTree = "<group>"; };
 		105A033F6C7ECB787AC4C344 /* Pods-AfrikaburnTests.profile production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AfrikaburnTests.profile production.xcconfig"; path = "Target Support Files/Pods-AfrikaburnTests/Pods-AfrikaburnTests.profile production.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B1C14A0BA9297CC5024F25C /* Pods-Afrikaburn.debug runner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afrikaburn.debug runner.xcconfig"; path = "Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn.debug runner.xcconfig"; sourceTree = "<group>"; };
 		A042364E1CFFC6C8929750E0 /* Pods_AfrikaburnTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AfrikaburnTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AC3D5E2AD3B4E2BDFE362E /* Pods-Afrikaburn.debug production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afrikaburn.debug production.xcconfig"; path = "Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn.debug production.xcconfig"; sourceTree = "<group>"; };
 		D0D5B35E69F54B86CAC051C7 /* Pods-Afrikaburn.profile production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afrikaburn.profile production.xcconfig"; path = "Target Support Files/Pods-Afrikaburn/Pods-Afrikaburn.profile production.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +123,8 @@
 				5380E983AC283995D55D9155 /* Pods-AfrikaburnTests.debug production.xcconfig */,
 				EBA3FFD2887CEAA64D1A14B9 /* Pods-AfrikaburnTests.release production.xcconfig */,
 				105A033F6C7ECB787AC4C344 /* Pods-AfrikaburnTests.profile production.xcconfig */,
+				9B1C14A0BA9297CC5024F25C /* Pods-Afrikaburn.debug runner.xcconfig */,
+				064D7B87273751A7AE179FC2 /* Pods-AfrikaburnTests.debug runner.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -515,7 +519,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		249021D3217E4FDB00AE95B9 /* Profile */ = {
+		249021D3217E4FDB00AE95B9 /* Profile Runner */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -563,9 +567,9 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Profile;
+			name = "Profile Runner";
 		};
-		249021D4217E4FDB00AE95B9 /* Profile */ = {
+		249021D4217E4FDB00AE95B9 /* Profile Runner */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
@@ -599,11 +603,11 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = Profile;
+			name = "Profile Runner";
 		};
-		331C8088294A63A400263BE5 /* Debug */ = {
+		331C8088294A63A400263BE5 /* Debug Runner */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F52A7DBF0FB05D59A2D1F94 /* Pods-AfrikaburnTests.debug.xcconfig */;
+			baseConfigurationReference = 064D7B87273751A7AE179FC2 /* Pods-AfrikaburnTests.debug runner.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -618,9 +622,9 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Afrikaburn.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Afrikaburn";
 			};
-			name = Debug;
+			name = "Debug Runner";
 		};
-		331C8089294A63A400263BE5 /* Release */ = {
+		331C8089294A63A400263BE5 /* Release Runner */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0E88EEB731C6D34489276E4B /* Pods-AfrikaburnTests.release.xcconfig */;
 			buildSettings = {
@@ -635,9 +639,9 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Afrikaburn.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Afrikaburn";
 			};
-			name = Release;
+			name = "Release Runner";
 		};
-		331C808A294A63A400263BE5 /* Profile */ = {
+		331C808A294A63A400263BE5 /* Profile Runner */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E7E72062BAE1EF03A49D9A5E /* Pods-AfrikaburnTests.profile.xcconfig */;
 			buildSettings = {
@@ -652,7 +656,7 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Afrikaburn.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Afrikaburn";
 			};
-			name = Profile;
+			name = "Profile Runner";
 		};
 		53092ECC2BB055BC00E643E9 /* Debug Production */ = {
 			isa = XCBuildConfiguration;
@@ -973,7 +977,7 @@
 			};
 			name = "Profile Production";
 		};
-		97C147031CF9000F007C117D /* Debug */ = {
+		97C147031CF9000F007C117D /* Debug Runner */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1026,9 +1030,9 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Debug;
+			name = "Debug Runner";
 		};
-		97C147041CF9000F007C117D /* Release */ = {
+		97C147041CF9000F007C117D /* Release Runner */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1078,9 +1082,9 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = "Release Runner";
 		};
-		97C147061CF9000F007C117D /* Debug */ = {
+		97C147061CF9000F007C117D /* Debug Runner */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
 			buildSettings = {
@@ -1115,9 +1119,9 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = Debug;
+			name = "Debug Runner";
 		};
-		97C147071CF9000F007C117D /* Release */ = {
+		97C147071CF9000F007C117D /* Release Runner */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
@@ -1151,7 +1155,7 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = Release;
+			name = "Release Runner";
 		};
 /* End XCBuildConfiguration section */
 
@@ -1159,41 +1163,41 @@
 		331C8087294A63A400263BE5 /* Build configuration list for PBXNativeTarget "AfrikaburnTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				331C8088294A63A400263BE5 /* Debug */,
+				331C8088294A63A400263BE5 /* Debug Runner */,
 				53092ECE2BB055BC00E643E9 /* Debug Production */,
-				331C8089294A63A400263BE5 /* Release */,
+				331C8089294A63A400263BE5 /* Release Runner */,
 				53092ED12BB055C700E643E9 /* Release Production */,
-				331C808A294A63A400263BE5 /* Profile */,
+				331C808A294A63A400263BE5 /* Profile Runner */,
 				53092ED42BB055CE00E643E9 /* Profile Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release Runner";
 		};
 		97C146E91CF9000F007C117D /* Build configuration list for PBXProject "Afrikaburn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				97C147031CF9000F007C117D /* Debug */,
+				97C147031CF9000F007C117D /* Debug Runner */,
 				53092ECC2BB055BC00E643E9 /* Debug Production */,
-				97C147041CF9000F007C117D /* Release */,
+				97C147041CF9000F007C117D /* Release Runner */,
 				53092ECF2BB055C700E643E9 /* Release Production */,
-				249021D3217E4FDB00AE95B9 /* Profile */,
+				249021D3217E4FDB00AE95B9 /* Profile Runner */,
 				53092ED22BB055CE00E643E9 /* Profile Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release Runner";
 		};
 		97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Afrikaburn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				97C147061CF9000F007C117D /* Debug */,
+				97C147061CF9000F007C117D /* Debug Runner */,
 				53092ECD2BB055BC00E643E9 /* Debug Production */,
-				97C147071CF9000F007C117D /* Release */,
+				97C147071CF9000F007C117D /* Release Runner */,
 				53092ED02BB055C700E643E9 /* Release Production */,
-				249021D4217E4FDB00AE95B9 /* Profile */,
+				249021D4217E4FDB00AE95B9 /* Profile Runner */,
 				53092ED32BB055CE00E643E9 /* Profile Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release Runner";
 		};
 /* End XCConfigurationList section */
 	};
