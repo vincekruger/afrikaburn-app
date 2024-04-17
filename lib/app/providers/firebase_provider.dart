@@ -75,16 +75,14 @@ class FirebaseProvider implements NyProvider {
     }
 
     /// Activate Firebase App Check
-    await FirebaseAppCheck.instance
-        .activate(
-      androidProvider: androidProvider,
-      appleProvider: appleProvider,
-    )
-        .then((_) {
-      print('FirebaseAppCheck activated');
-    }).catchError((error) {
-      print('FirebaseAppCheck error: $error');
-    });
+    try {
+      await FirebaseAppCheck.instance.activate(
+        androidProvider: androidProvider,
+        appleProvider: appleProvider,
+      );
+    } on FirebaseException catch (error) {
+      print('FirebaseAppCheck error: $error.toString()');
+    }
   }
 
   /// Configure Firebase Remote Config
