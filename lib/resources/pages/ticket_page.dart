@@ -9,6 +9,7 @@ import 'package:afrikaburn/resources/appbars/tickets_app_bar.dart';
 import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
 import 'package:afrikaburn/app/models/ticket.dart';
 import 'package:afrikaburn/resources/widgets/ticket_slot_widget.dart';
+import 'package:shake_detector/shake_detector.dart';
 
 class TicketPage extends NyStatefulWidget {
   static const path = '/ticket';
@@ -19,15 +20,24 @@ class TicketPage extends NyStatefulWidget {
 class _TicketPageState extends NyState<TicketPage> {
   @override
   Widget view(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        physics: ScrollPhysics(),
-        padding: EdgeInsets.only(top: 16, bottom: 30),
-        children: [
-          ...appBar(context),
-          BuyTicketContent(),
-          ...ticketSlots(context),
-        ],
+    return ShakeDetectWrap(
+      enabled: false,
+      minimumShakeCount: 10,
+      onShake: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Shake!')),
+        );
+      },
+      child: Scaffold(
+        body: ListView(
+          physics: ScrollPhysics(),
+          padding: EdgeInsets.only(top: 16, bottom: 30),
+          children: [
+            ...appBar(context),
+            BuyTicketContent(),
+            ...ticketSlots(context),
+          ],
+        ),
       ),
     );
   }
