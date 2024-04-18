@@ -39,13 +39,12 @@ class _RadioFreeTankwaPageState extends NyState<RadioFreeTankwaPage> {
 
   @override
   init() async {
-    super.init();
     controller.initConnectivity(listener: _updateConnectionStatus);
   }
 
   @override
   void dispose() {
-    controller.connectivitySubscription.cancel();
+    // controller.connectivitySubscription.cancel();
     super.dispose();
   }
 
