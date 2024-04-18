@@ -2,6 +2,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/resources/pages/root.dart';
 import 'package:afrikaburn/resources/shared_navigation_bar/shared_navigation_bar.dart';
 import 'package:afrikaburn/app/providers/app_mode_provider.dart';
+import 'package:vibration/vibration.dart';
 
 class TankwaModeEvent implements NyEvent {
   @override
@@ -36,10 +37,32 @@ class DefaultListener extends NyListener {
 
     /// Update the storage
     await AppModeProvider.setTankwaTownMode(state);
+    _vibrateDevice();
 
     /// Update States
     var payload = {"action": "app_mode_changed", "index": 0};
     updateState(SharedNavigationBar.state, data: payload);
     updateState(RootPage.path, data: payload);
+  }
+
+  /// Vibrate the phone for some device feedback
+  Future<void> _vibrateDevice() async {
+    /// yeah can't vibrate
+    if (await Vibration.hasVibrator() != true) return;
+
+    /// Pattern vibration
+    if (await Vibration.hasCustomVibrationsSupport() == true) {
+      for (var i = 0; i < 4; i++) {
+        Vibration.vibrate(
+          pattern: [300, 200, 300, 200, 300],
+          intensities: [128, 255, 128, 255, 128],
+        );
+        await Future.delayed(Duration(milliseconds: 1000));
+      }
+      return;
+    }
+
+    /// virate normall for dump phones
+    Vibration.vibrate(duration: 1000);
   }
 }

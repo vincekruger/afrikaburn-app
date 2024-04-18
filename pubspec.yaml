@@ -64,6 +64,7 @@ dependencies:
   connectivity_plus: ^6.0.2
   firebase_storage: ^11.7.1
   shake_detector: ^0.1.2
+  vibration: ^1.8.4
 
 dev_dependencies:
   lints: ^3.0.0
