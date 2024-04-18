@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/config/storage_keys.dart';
 
@@ -15,9 +13,6 @@ class AppModeProvider implements NyProvider {
     if (Backpack.instance.read(StorageKey.tankwaTownMode) == null)
       Backpack.instance.set(StorageKey.tankwaTownMode, (await tankwaTownMode));
   }
-
-  static bool get isProduction => appFlavor == 'Production' && kReleaseMode;
-  static bool get isDevelopment => kDebugMode;
 
   /// Get the current mode from the backpack
   static bool get tankwaTownModeBackpack => Backpack.instance
