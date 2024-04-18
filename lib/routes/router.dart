@@ -9,7 +9,8 @@ import 'package:afrikaburn/resources/pages/create_contact_page.dart';
 import 'package:afrikaburn/resources/pages/ticket_page.dart';
 import 'package:afrikaburn/resources/pages/map_page.dart';
 import 'package:afrikaburn/resources/pages/my_contact_page.dart';
-import 'package:afrikaburn/resources/pages/guide_wtf_2023.dart';
+import 'package:afrikaburn/resources/pages/guide_wtf_2023_page.dart';
+import 'package:afrikaburn/resources/pages/guide_wtf_2024_page.dart';
 import 'package:afrikaburn/resources/pages/support_page.dart';
 import 'package:afrikaburn/resources/pages/settings_page.dart';
 
@@ -50,14 +51,24 @@ appRouter() => nyRoutes((router) {
 
       // PDF Viewers
       router.route(
-        WtfGuidePage.path,
-        (context) => WtfGuidePage(),
+        GuideWtf2023Page.path,
+        (context) => GuideWtf2023Page(),
         transition: PageTransitionType.bottomToTop,
         pageTransitionSettings: PageTransitionSettings(
           alignment: Alignment.bottomCenter,
           fullscreenDialog: true,
         ),
       );
+      router.route(
+        GuideWtf2024Page.path,
+        (context) => GuideWtf2024Page(),
+        transition: PageTransitionType.bottomToTop,
+        pageTransitionSettings: PageTransitionSettings(
+          alignment: Alignment.bottomCenter,
+          fullscreenDialog: true,
+        ),
+      );
+
       router.route(
         MapPdfPage.path,
         (context) => MapPdfPage(),
