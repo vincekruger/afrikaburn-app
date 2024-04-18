@@ -18,7 +18,7 @@ class RadioFreeTankwaController extends Controller {
 
   /// Connectivity
   final Connectivity _connectivity = Connectivity();
-  late StreamSubscription<List<ConnectivityResult>> connectivitySubscription;
+  // StreamSubscription<List<ConnectivityResult>> connectivitySubscription;
 
   Future<void> initConnectivity({
     required Function(List<ConnectivityResult>) listener,
@@ -26,8 +26,8 @@ class RadioFreeTankwaController extends Controller {
     List<ConnectivityResult> result = await _connectivity.checkConnectivity();
     listener(result);
 
-    connectivitySubscription =
-        _connectivity.onConnectivityChanged.listen(listener);
+    // connectivitySubscription =
+    //     _connectivity.onConnectivityChanged.listen(listener);
   }
 
   /// Singleton Factory
