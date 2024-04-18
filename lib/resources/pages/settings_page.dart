@@ -146,7 +146,6 @@ class _SettingsPageState extends NyState<SettingsPage>
             gradient: GradientStyles.outlinedButtonBorder,
           ),
         ],
-
         SizedBox(height: 12),
       ],
     );

@@ -23,15 +23,18 @@ class BottomNavigationItem extends Model {
   final IconData icon;
   final String label;
   final String routeName;
+  final void Function(BuildContext context)? onTap;
 
   BottomNavigationItem({
     required this.icon,
     required this.label,
     required this.routeName,
+    this.onTap,
   });
 }
 
 class NavigationBarConfig {
+  String get name => throw UnimplementedError();
   List<BottomNavigationItemConfig> get items => throw UnimplementedError();
 
   /// Generates a list of navigation items to be used
@@ -59,14 +62,26 @@ class NavigationBarConfig {
     }
   }
 
+  /// Find an index by the path name
   int findIndexByPath(String path) {
     /// Use indexWhere for more concise searching and null handling
-    int index = items.indexWhere((route) => route == path);
+    int index = paths.indexWhere((route) => route == path);
 
     /// Optional error handling (consider using a custom exception class)
     if (index == -1) throw Exception('Route with path "$path" not found');
 
     return index;
+  }
+
+  /// Returns and onTap method if exists
+  Function(BuildContext context)? onTap(int index) {
+    try {
+      /// Return the onTap method at the index
+      return items[index].navigationItem.onTap;
+    } on RangeError {
+      /// Optional error handling (consider using a custom exception class)
+      throw Exception('Index "$index" not found');
+    }
   }
 }
 
@@ -75,6 +90,7 @@ class NavigationBarConfig {
 /// This is the navigation bar used when the burn is happening baby
 ///
 class TankwaTownNavigationBarConfig extends NavigationBarConfig {
+  String get name => "Tankwa Town Navigation Bar";
   List<BottomNavigationItemConfig> get items => [
         /// Offline Map
         BottomNavigationItemConfig(
@@ -93,6 +109,9 @@ class TankwaTownNavigationBarConfig extends NavigationBarConfig {
             icon: AB24Icons.wtf_guide,
             label: "menu-item.wtf-guide-pdf-2024".tr(),
             routeName: GuideWtf2024Page.path,
+            onTap: (context) {
+              routeTo(GuideWtf2024Page.path);
+            },
           ),
         ),
 
@@ -123,6 +142,7 @@ class TankwaTownNavigationBarConfig extends NavigationBarConfig {
 /// when the burn is not happening
 ///
 class DefaultWorldNavigationBarConfig extends NavigationBarConfig {
+  String get name => "Default World Navigation Bar";
   List<BottomNavigationItemConfig> get items => [
         /// News
         BottomNavigationItemConfig(

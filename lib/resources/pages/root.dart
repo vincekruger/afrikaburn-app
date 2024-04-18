@@ -1,3 +1,4 @@
+import 'package:afrikaburn/config/storage_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
@@ -18,6 +19,10 @@ class _RootPageState extends NyState<RootPage> with WidgetsBindingObserver {
   /// Initialize the page
   @override
   init() async {
+    /// Set the correct navigation config
+    _navigationBarConfig = _navigationConfig;
+
+    /// Trigger the page load handler
     onPageLoad();
 
     /// Add widget binding observer
@@ -56,26 +61,38 @@ class _RootPageState extends NyState<RootPage> with WidgetsBindingObserver {
     if (data['index'] != null) {
       setIndex = data['index'] as int;
     } else if (data['route'] != null) {
-      setIndex = findRouteIndex(data['route'], _navigationBarConfig.paths);
+      setIndex = _navigationBarConfig.findIndexByPath(data['route']);
     }
 
     /// Update the current index
-    setState(() {
-      _currentIndex = setIndex;
-    });
+    if (_currentIndex != setIndex) {
+      setState(() {
+        _currentIndex = setIndex;
+      });
+    }
+
+    /// Set the app mode changed
+    if (data?['action'] == 'app_mode_changed') {
+      setState(() {
+        _navigationBarConfig = _navigationConfig;
+      });
+    }
 
     /// trigger page load
     onPageLoad();
   }
 
+  /// Get the correct navigation config
+  NavigationBarConfig get _navigationConfig =>
+      Backpack.instance.read(StorageKey.tankwaTownMode, defaultValue: false)
+          ? TankwaTownNavigationBarConfig()
+          : DefaultWorldNavigationBarConfig();
+
   /// Current index of the navigation bar
   int _currentIndex = 0;
 
   /// The Current Navigation Bar Config
-  // final NavigationBarConfig _navigationBarConfig =
-  //     DefaultWorldNavigationBarConfig();
-  final NavigationBarConfig _navigationBarConfig =
-      TankwaTownNavigationBarConfig();
+  late NavigationBarConfig _navigationBarConfig;
 
   @override
   Widget view(BuildContext context) {

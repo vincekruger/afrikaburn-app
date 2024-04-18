@@ -10,21 +10,32 @@ class AppModeProvider implements NyProvider {
   }
 
   @override
-  afterBoot(Nylo nylo) async {}
+  afterBoot(Nylo nylo) async {
+    /// Set the app mode in the backpack
+    if (Backpack.instance.read(StorageKey.tankwaTownMode) == null)
+      Backpack.instance.set(StorageKey.tankwaTownMode, (await tankwaTownMode));
+  }
 
   static bool get isProduction => appFlavor == 'Production' && kReleaseMode;
   static bool get isDevelopment => kDebugMode;
 
-  static bool get tankwaTownModeMem =>
-      Backpack.instance.read(StorageKey.tankwaTownMode) == "false"
+  /// Get the current mode from the backpack
+  static bool get tankwaTownModeBackpack => Backpack.instance
+      .read<bool>(StorageKey.tankwaTownMode, defaultValue: false)!;
+
+  /// Get the current Tankwa Town Mode from Storage
+  static Future<bool> get tankwaTownMode async =>
+      await NyStorage.read(StorageKey.tankwaTownMode, defaultValue: "false") ==
+              "false"
           ? false
           : true;
 
-  static Future<bool> get tankwaTownMode async =>
-      await NyStorage.read(StorageKey.tankwaTownMode) == "false" ? false : true;
+  /// Set a new Tankwa Town Mode
+  static Future<void> setTankwaTownMode(bool value) async =>
+      await NyStorage.store(StorageKey.tankwaTownMode, value, inBackpack: true);
 
-  static Future<void> toggleTankwaTownMode(bool value) async {
-    await NyStorage.store(StorageKey.tankwaTownMode, !(await tankwaTownMode),
-        inBackpack: true);
-  }
+  /// Toggle the current Tankwa Town Mode
+  static Future<void> toggleTankwaTownMode() async =>
+      await NyStorage.store(StorageKey.tankwaTownMode, !(await tankwaTownMode),
+          inBackpack: true);
 }
