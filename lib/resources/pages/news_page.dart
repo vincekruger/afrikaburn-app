@@ -35,8 +35,11 @@ class _NewsPageState extends NyState<NewsPage> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    controller.pagingController.dispose();
     controller.cancelNewsSubscriptions();
+
+    // TODO Find a way to dispose of this controller
+    // controller.pagingController.dispose();
+
     super.dispose();
   }
 
