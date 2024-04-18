@@ -53,7 +53,7 @@ class _MapPageState extends NyState<MapPage> {
   @override
   Widget view(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("screen-title.map".tr())),
+      extendBodyBehindAppBar: true,
       body: MapWidget(
         cameraOptions: CameraOptions(
           center: Point(coordinates: Position(19.9565, -32.5165)).toJson(),
@@ -64,6 +64,9 @@ class _MapPageState extends NyState<MapPage> {
             ? MapboxStyles.LIGHT
             : MapboxStyles.DARK,
         onMapCreated: _onMapCreated,
+        mapOptions: MapOptions(
+          pixelRatio: MediaQuery.of(context).devicePixelRatio,
+        ),
       ),
     );
   }
