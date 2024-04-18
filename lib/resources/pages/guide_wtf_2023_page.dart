@@ -3,13 +3,13 @@ import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/app/models/guide.dart';
 import 'package:afrikaburn/resources/widgets/guide_viewer_widget.dart';
 
-class WtfGuidePage extends NyStatefulWidget {
+class GuideWtf2023Page extends NyStatefulWidget {
   static const path = '/wtf-guide';
   static const name = '2023 WTF Guide';
-  WtfGuidePage() : super(path, child: _WtfGuidePageState());
+  GuideWtf2023Page() : super(path, child: _WtfGuidePageState());
 }
 
-class _WtfGuidePageState extends NyState<WtfGuidePage> {
+class _WtfGuidePageState extends NyState<GuideWtf2023Page> {
   @override
   Widget view(BuildContext context) {
     return GuideViewer(

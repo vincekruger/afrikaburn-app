@@ -9,12 +9,14 @@ import 'package:afrikaburn/app/providers/guide_download_provider.dart';
 class GuideDownload extends StatefulWidget {
   const GuideDownload({
     super.key,
-    required String this.appBarTitle,
-    required GuideDownloadProvider this.provider,
-    required void Function(BuildContext context) this.onDownloaded,
+    required this.appBarTitle,
+    required this.showAppBarLeading,
+    required this.provider,
+    required this.onDownloaded,
   });
 
   final String appBarTitle;
+  final bool showAppBarLeading;
   final GuideDownloadProvider provider;
   final void Function(BuildContext context) onDownloaded;
   static String state = "guide_download";
@@ -67,14 +69,16 @@ class _GuideDownloadState extends NyState<GuideDownload> {
       appBar: AppBar(
         title: Text(widget.appBarTitle),
         backgroundColor: context.color.appBarBackground,
-        leading: IconButton(
-          padding: Platform.isIOS
-              ? const EdgeInsets.only(left: 12.0, top: 0, bottom: 10)
-              : null,
-          icon: Icon(AB24Icons.close_thick),
-          iconSize: 26,
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+        leading: widget.showAppBarLeading
+            ? IconButton(
+                padding: Platform.isIOS
+                    ? const EdgeInsets.only(left: 12.0, top: 0, bottom: 10)
+                    : null,
+                icon: Icon(AB24Icons.close_thick),
+                iconSize: 26,
+                onPressed: () => Navigator.of(context).pop(),
+              )
+            : null,
       ),
       body: Center(
         child: Padding(

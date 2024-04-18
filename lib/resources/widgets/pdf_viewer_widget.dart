@@ -1,24 +1,30 @@
+import 'dart:async';
 import 'dart:io';
 
-import 'package:afrikaburn/bootstrap/helpers.dart';
-import 'package:afrikaburn/resources/appbars/sliding_app_bar.dart';
-import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pdfrx/pdfrx.dart';
-import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
+import 'package:afrikaburn/bootstrap/helpers.dart';
+import 'package:afrikaburn/resources/appbars/sliding_app_bar.dart';
+import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 
 class PdfViewerWidget extends StatefulWidget {
-  final Uri? uri;
-  final File? file;
-  final String navigationBarTitle;
+  final uri;
+  final file;
+  final navigationBarTitle;
+  final showAppBarLeading;
+  final onOrientationChange;
+  final bool isProtected;
 
   const PdfViewerWidget({
     super.key,
     this.uri,
     this.file,
     required this.navigationBarTitle,
+    required this.showAppBarLeading,
+    this.onOrientationChange,
+    this.isProtected = false,
   });
 
   @override
@@ -100,6 +106,9 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
                 _pdfController.setZoom(_initialCenterPosition, _initialZoom);
               }
 
+              /// Trigger on orientation change callback
+              widget.onOrientationChange?.call(orientation);
+
               /// Relayout the PDF
               _pdfController.relayout();
             });
@@ -111,16 +120,19 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
               controller: _appBarController,
               visible: _appBarVisible,
               child: AppBar(
-                title: Text(widget.navigationBarTitle.tr()),
+                title: Text(widget.navigationBarTitle),
                 backgroundColor: context.color.appBarBackground,
-                leading: IconButton(
-                  padding: Platform.isIOS
-                      ? const EdgeInsets.only(left: 12.0, top: 0, bottom: 10)
-                      : null,
-                  icon: Icon(AB24Icons.close_thick),
-                  iconSize: 26,
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
+                leading: widget.showAppBarLeading
+                    ? IconButton(
+                        padding: Platform.isIOS
+                            ? const EdgeInsets.only(
+                                left: 12.0, top: 0, bottom: 10)
+                            : null,
+                        icon: Icon(AB24Icons.close_thick),
+                        iconSize: 26,
+                        onPressed: () => Navigator.of(context).pop(),
+                      )
+                    : null,
               ),
             ),
             body: SafeArea(
@@ -132,10 +144,20 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
       );
 
   Widget pdfViewerType(Orientation orientation) {
+    /// Setup Password Stuff
+    FutureOr<String?> Function()? passwordProvider;
+    bool? firstAttemptByEmptyPassword = true;
+    if (widget.isProtected) {
+      firstAttemptByEmptyPassword = false;
+      passwordProvider = () => '2024042920240505';
+    }
+
     if (widget.file != null) {
       return PdfViewer.file(
         widget.file!.path,
         controller: _pdfController,
+        passwordProvider: passwordProvider,
+        firstAttemptByEmptyPassword: firstAttemptByEmptyPassword,
         params: pdfViewerParams(orientation == Orientation.landscape),
       );
     }
@@ -144,6 +166,8 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
       return PdfViewer.uri(
         widget.uri!,
         controller: _pdfController,
+        passwordProvider: passwordProvider,
+        firstAttemptByEmptyPassword: firstAttemptByEmptyPassword,
         params: pdfViewerParams(orientation == Orientation.landscape),
       );
     }

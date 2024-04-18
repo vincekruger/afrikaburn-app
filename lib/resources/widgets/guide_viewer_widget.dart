@@ -11,10 +11,16 @@ class GuideViewer extends StatefulWidget {
     super.key,
     required this.guide,
     required this.appBarTitle,
+    this.showAppBarLeading = true,
+    this.enableRotation = true,
+    this.onOrientationChange,
   });
 
   final Guide guide;
   final String appBarTitle;
+  final bool showAppBarLeading;
+  final bool enableRotation;
+  final void Function(Orientation)? onOrientationChange;
   static String state = "guide-viewer";
 
   @override
@@ -33,13 +39,18 @@ class _GuideViewerState extends NyState<GuideViewer>
 
   @override
   init() async {
-    SystemProvider().setPortraitAndLandscapeOrientation();
+    if (widget.enableRotation)
+      SystemProvider().setPortraitAndLandscapeOrientation();
+
+    /// Add widget binding observer
     WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
-    SystemProvider().setOnlyPortraitOrientation();
+    if (widget.enableRotation) SystemProvider().setOnlyPortraitOrientation();
+
+    /// Remove widget binding observer
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
@@ -71,7 +82,10 @@ class _GuideViewerState extends NyState<GuideViewer>
 
                   return PdfViewerWidget(
                     file: snapshot.data,
+                    isProtected: widget.guide.protected,
                     navigationBarTitle: widget.appBarTitle,
+                    showAppBarLeading: widget.showAppBarLeading,
+                    onOrientationChange: widget.onOrientationChange,
                   );
                 });
 
@@ -79,6 +93,7 @@ class _GuideViewerState extends NyState<GuideViewer>
           /// Download the guide
           return GuideDownload(
             appBarTitle: widget.appBarTitle,
+            showAppBarLeading: widget.showAppBarLeading,
             provider: _provider,
             onDownloaded: (context) {
               setState(() {});

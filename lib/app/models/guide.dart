@@ -15,22 +15,31 @@ final String guideLocalPath = 'Guides';
 
 /// Ticket Model
 class Guide extends Model {
-  Guide(GuideType this.type, int this.year);
-  GuideType type;
-  int year;
+  Guide(
+    this.type,
+    this.year, {
+    this.protected = false,
+  });
+
+  final GuideType type;
+  final int year;
+  final bool protected;
 
   /// Get the local filename for the guide
   get filename {
-    if (Platform.isAndroid)
-      return 'guide_${type.name.toString().toLowerCase()}_$year.pdf';
+    if (Platform.isAndroid) {
+      String protectedSuffix = protected ? '_protected' : '';
+      return 'guide_${type.name.toString().toLowerCase()}_${year}${protectedSuffix}.pdf';
+    }
 
+    String protectedSuffix = protected ? ' (Protected)' : '';
     switch (type) {
       case GuideType.WTF:
-        return 'WTF Guide $year.pdf';
+        return 'WTF Guide $year${protectedSuffix}.pdf';
       case GuideType.MAP:
-        return 'Map $year.pdf';
+        return 'Map $year{protectedSuffix}.pdf';
       case GuideType.MOOP:
-        return 'MOOP Map $year.pdf';
+        return 'MOOP Map $year{protectedSuffix}.pdf';
     }
   }
 
@@ -47,5 +56,8 @@ class Guide extends Model {
   Future<File> get file async => File(await fullPath);
 
   /// Get the firebase storage path for the guide
-  get remotePath => 'guides/${type.name.toString().toLowerCase()}-$year.pdf';
+  get remotePath {
+    String protectedSuffix = protected ? '-protected' : '';
+    return 'guides/${type.name.toString().toLowerCase()}-$year$protectedSuffix.pdf';
+  }
 }
