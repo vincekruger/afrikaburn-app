@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -31,12 +29,10 @@ class SupportAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(
-                top: Platform.isIOS
-                    ? viewPadding(context).top - 25
-                    : viewPadding(context).top + 10),
+            margin: getAppBarTopMargin(context),
             child: AppBar(
               leading: backButton(context),
+              backgroundColor: Colors.transparent,
               systemOverlayStyle: context.isDarkMode
                   ? SystemUiOverlayStyle.light
                   : SystemUiOverlayStyle.dark,
@@ -49,6 +45,16 @@ class SupportAppBar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
     );
+  }
+
+  EdgeInsets getAppBarTopMargin(BuildContext context) {
+    return EdgeInsets.only(top: 30);
+    // double topPadding = viewPadding(context).top;
+    // double iOSAdjustment = -25;
+    // double androidAdjustment = 10;
+    // double adjustment = Platform.isIOS ? iOSAdjustment : androidAdjustment;
+    // if (topPadding + adjustment < 0) return EdgeInsets.only(top: topPadding);
+    // return EdgeInsets.only(top: topPadding + adjustment);
   }
 
   /// Back Navigation Button
