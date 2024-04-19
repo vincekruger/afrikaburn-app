@@ -1,3 +1,5 @@
+import 'package:afrikaburn/app/providers/system_provider.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -9,10 +11,17 @@ class MapPage extends NyStatefulWidget<MapController> {
   MapPage() : super(path, child: _MapPageState());
 }
 
-class AnnotationClickListener extends OnCircleAnnotationClickListener {
+class ArtworkAnnotationClickListener extends OnPointAnnotationClickListener {
+  @override
+  void onPointAnnotationClick(PointAnnotation annotation) {
+    print("on Artwork Annotation Click, id: ${annotation.id}");
+  }
+}
+
+class ThemeCampAnnotationClickListener extends OnCircleAnnotationClickListener {
   @override
   void onCircleAnnotationClick(CircleAnnotation annotation) {
-    print("onAnnotationClick, id: ${annotation.id}");
+    print("on Theme Camp Annotation Click, id: ${annotation.id}");
   }
 }
 
@@ -23,25 +32,7 @@ class _MapPageState extends NyState<MapPage> {
   /// MapBoxMap Controllers
   MapboxMap? mapboxMap;
   CircleAnnotationManager? circleAnnotationManager;
-
   Brightness? systemBrightness;
-
-  _onMapCreated(MapboxMap mapboxMap) {
-    this.mapboxMap = mapboxMap;
-    mapboxMap.annotations.createCircleAnnotationManager().then((manager) {
-      circleAnnotationManager = manager;
-
-      // Create OCC
-      circleAnnotationManager?.create(CircleAnnotationOptions(
-        geometry: widget.controller.occLocation,
-        circleColor: Colors.yellow.value,
-        circleRadius: 8.0,
-      ));
-
-      circleAnnotationManager
-          ?.addOnCircleAnnotationClickListener(AnnotationClickListener());
-    });
-  }
 
   /// Use boot if you need to load data before the view is rendered.
   @override
@@ -51,18 +42,54 @@ class _MapPageState extends NyState<MapPage> {
   }
 
   @override
+  init() async {
+    await controller.loadMapIcons();
+    await controller.loadMapDataJson();
+    SystemProvider().setOnlyPortraitOrientation();
+  }
+
+  /// Register mechanics for the map
+  _onMapCreated(MapboxMap mapboxMap) {
+    this.mapboxMap = mapboxMap;
+    SystemProvider().setOnlyPortraitOrientation();
+
+    // Create Annotation Managers
+    Future<CircleAnnotationManager> circleAnnotationManager =
+        mapboxMap.annotations.createCircleAnnotationManager();
+    Future<PointAnnotationManager> pointAnnotationManager =
+        mapboxMap.annotations.createPointAnnotationManager();
+
+    /// Create Theme Camp Markers
+    controller.createThemeCampMarkers(
+      cirleManager: circleAnnotationManager,
+      pointManager: pointAnnotationManager,
+      listener: ThemeCampAnnotationClickListener(),
+    );
+
+    /// Create Artwork Markets
+    controller.createArtworkMarkers(
+      pointManager: pointAnnotationManager,
+      listener: ArtworkAnnotationClickListener(),
+    );
+  }
+
+  @override
   Widget view(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: MapWidget(
         cameraOptions: CameraOptions(
-          center: Point(coordinates: Position(19.9565, -32.5165)).toJson(),
-          zoom: 12.0,
+          center: Point(
+              coordinates: Position(
+            FirebaseRemoteConfig.instance.getDouble('map_center_lng'),
+            FirebaseRemoteConfig.instance.getDouble('map_center_lat'),
+          )).toJson(),
+          zoom: FirebaseRemoteConfig.instance.getDouble('map_default_zoom'),
         ),
-        // TODO Set my own theme eventually
-        styleUri: systemBrightness == Brightness.light
-            ? MapboxStyles.LIGHT
-            : MapboxStyles.DARK,
+        styleUri: MapboxStyles.DARK,
+        // styleUri: systemBrightness == Brightness.light
+        //     ? MapboxStyles.LIGHT
+        //     : MapboxStyles.DARK,
         onMapCreated: _onMapCreated,
         mapOptions: MapOptions(
           pixelRatio: MediaQuery.of(context).devicePixelRatio,

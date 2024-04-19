@@ -4,6 +4,11 @@ class DefaultRemoteConfig {
     "burn_start_date": "2022-04-29",
     "burn_end_date": "2022-05-05",
 
+    /// Map Data
+    "map_center_lng": 19.95617,
+    "map_center_lat": -32.51547,
+    "map_default_zoom": 14.5,
+
     /// News, Tickets & Sharing
     "news_page_size": 15,
     "tickets_url": "https://tickets.afrikaburn.org",
