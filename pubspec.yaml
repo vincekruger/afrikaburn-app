@@ -91,6 +91,8 @@ flutter:
     - public/assets/images/rft/
     - public/assets/images/support/
     - public/assets/app_icon/
+    - public/assets/map/
+    - public/assets/map-data.json
     - lang/
     - .env
 

@@ -1,0 +1,948 @@
+{
+    "themeCamps": [
+        {
+            "label": "1",
+            "name": "le Petit Paris",
+            "description": "Sunset Bar, with its iconic Eiffel Tower, is where burners, musicians, DJs and artists congregate at sunset each day. It all starts here! Champagne and Pastis flow freely. The music travels and takes you on a mesmerising journey. Special moments are created that remain etched in our memories forever.",
+            "open-times": "Daily as the sun sets.",
+            "adults-only": true,
+            "location": {
+                "lat": -32.51567,
+                "lng": 19.95194
+            }
+        }
+    ],
+    "supportCamps": [],
+    "artwork": [
+        {
+            "label": "clan",
+            "name": "Genesis Bloom",
+            "location": {
+                "lat": -32.51535,
+                "lng": 19.9552
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 6,
+            "sound": false,
+            "artworkHeight": 15.0,
+            "artworkWidth": 12.0,
+            "artworkDepth": 0
+        },
+        {
+            "label": "temple",
+            "name": "LuminEssence",
+            "location": {
+                "lat": -32.5164239,
+                "lng": 19.959032
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 7.5,
+            "artworkWidth": 12.0,
+            "artworkDepth": 20.0
+        },
+        {
+            "label": "bypass",
+            "name": "Triple Bypass",
+            "location": {
+                "lat": -32.5152381,
+                "lng": 19.9541842
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 0,
+            "artworkWidth": 0,
+            "artworkDepth": 0
+        },
+        {
+            "label": "1",
+            "name": "Talk To God",
+            "location": {
+                "lat": -32.5152071,
+                "lng": 19.9530691
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 2.0,
+            "artworkWidth": 1.0,
+            "artworkDepth": 0.2
+        },
+        {
+            "label": "2",
+            "name": "Free Your Mind",
+            "location": {
+                "lat": -32.51383,
+                "lng": 19.95464
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 1.3,
+            "artworkWidth": 0.5,
+            "artworkDepth": 0.5
+        },
+        {
+            "label": "3",
+            "name": "Skillboratory",
+            "location": {
+                "lat": -32.5152294,
+                "lng": 19.9531829
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 0.7,
+            "artworkWidth": 1.3,
+            "artworkDepth": 0.8
+        },
+        {
+            "label": "4",
+            "name": "UMWAGAJI",
+            "location": {
+                "lat": -32.5134438,
+                "lng": 19.955906
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": true,
+            "artworkHeight": 3.0,
+            "artworkWidth": 7.0,
+            "artworkDepth": 7.0
+        },
+        {
+            "label": "5",
+            "name": "MiniKring",
+            "location": {
+                "lat": -32.5154939,
+                "lng": 19.9527041
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 1.0,
+            "artworkWidth": 1.0,
+            "artworkDepth": 1.0
+        },
+        {
+            "label": "6",
+            "name": "Twisted Da Vinci",
+            "location": {
+                "lat": -32.5138685,
+                "lng": 19.955395
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 4.5,
+            "artworkWidth": 6.2,
+            "artworkDepth": 6.2
+        },
+        {
+            "label": "7",
+            "name": "Boxopolis",
+            "location": {
+                "lat": -32.5160752,
+                "lng": 19.9522991
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 2.0,
+            "artworkWidth": 3.0,
+            "artworkDepth": 3.0
+        },
+        {
+            "label": "8",
+            "name": "Matjieshuis",
+            "location": {
+                "lat": -32.5143758,
+                "lng": 19.9547487
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 0,
+            "artworkWidth": 0,
+            "artworkDepth": 0
+        },
+        {
+            "label": "9",
+            "name": "Wabi Sabi",
+            "location": {
+                "lat": -32.5160155,
+                "lng": 19.9525227
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 1.5,
+            "artworkWidth": 10.0,
+            "artworkDepth": 1.0
+        },
+        {
+            "label": "10",
+            "name": "TruthSpace",
+            "location": {
+                "lat": -32.5147935,
+                "lng": 19.9544716
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 2.4,
+            "artworkWidth": 7.5,
+            "artworkDepth": 7.5
+        },
+        {
+            "label": "11",
+            "name": "Idiophones",
+            "location": {
+                "lat": -32.5164902,
+                "lng": 19.9523337
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": true,
+            "artworkHeight": 3.0,
+            "artworkWidth": 1.0,
+            "artworkDepth": 0.3
+        },
+        {
+            "label": "12",
+            "name": "Bangers",
+            "location": {
+                "lat": -32.5150377,
+                "lng": 19.9541632
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 4.0,
+            "artworkWidth": 6.0,
+            "artworkDepth": 10.0
+        },
+        {
+            "label": "13",
+            "name": "Ego Check Booth",
+            "location": {
+                "lat": -32.5162294,
+                "lng": 19.9528598
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 5,
+            "sound": false,
+            "artworkHeight": 3.0,
+            "artworkWidth": 1.0,
+            "artworkDepth": 1.0
+        },
+        {
+            "label": "14",
+            "name": "Art ♥ DPW",
+            "location": {
+                "lat": -32.5144562,
+                "lng": 19.9554285
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 0.0,
+            "artworkWidth": 0.0,
+            "artworkDepth": 0.0
+        },
+        {
+            "label": "15",
+            "name": "Memories",
+            "location": {
+                "lat": -32.5159,
+                "lng": 19.9532382
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 4,
+            "sound": false,
+            "artworkHeight": 2.0,
+            "artworkWidth": 1.2,
+            "artworkDepth": 1.0
+        },
+        {
+            "label": "16",
+            "name": "A Seat At The Table",
+            "location": {
+                "lat": -32.5136718,
+                "lng": 19.9562851
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 3.0,
+            "artworkWidth": 7.0,
+            "artworkDepth": 7.0
+        },
+        {
+            "label": "17",
+            "name": "Consume 8",
+            "location": {
+                "lat": -32.5159024,
+                "lng": 19.9536738
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 5.0,
+            "artworkWidth": 8.0,
+            "artworkDepth": 8.0
+        },
+        {
+            "label": "18",
+            "name": "Octo-Citrine",
+            "location": {
+                "lat": -32.5134498,
+                "lng": 19.9571113
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 2.5,
+            "artworkWidth": 2.5,
+            "artworkDepth": 2.5
+        },
+        {
+            "label": "19",
+            "name": "The Soft Mother",
+            "location": {
+                "lat": -32.516551,
+                "lng": 19.9529484
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 2.0,
+            "artworkWidth": 2.0,
+            "artworkDepth": 2.0
+        },
+        {
+            "label": "20",
+            "name": "SpaceArk2bye2",
+            "location": {
+                "lat": -32.5139546,
+                "lng": 19.957321
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": true,
+            "artworkHeight": 18.0,
+            "artworkWidth": 6.0,
+            "artworkDepth": 6.0
+        },
+        {
+            "label": "21",
+            "name": "FlyDragons",
+            "location": {
+                "lat": -32.5168134,
+                "lng": 19.9528317
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 3.0,
+            "artworkWidth": 2.5,
+            "artworkDepth": 0.8
+        },
+        {
+            "label": "22",
+            "name": "Created in Suspension",
+            "location": {
+                "lat": -32.5145315,
+                "lng": 19.9570324
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 3.0,
+            "artworkWidth": 16.0,
+            "artworkDepth": 16.0
+        },
+        {
+            "label": "23",
+            "name": "Afrikabrije",
+            "location": {
+                "lat": -32.5167992,
+                "lng": 19.9533174
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 3.0,
+            "artworkWidth": 8.0,
+            "artworkDepth": 1.5
+        },
+        {
+            "label": "24",
+            "name": "Dragon",
+            "location": {
+                "lat": -32.5144274,
+                "lng": 19.9562306
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 6.0,
+            "artworkWidth": 0,
+            "artworkDepth": 0
+        },
+        {
+            "label": "25",
+            "name": "StarTree",
+            "location": {
+                "lat": -32.5163599,
+                "lng": 19.9536785
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 2.8,
+            "artworkWidth": 2.8,
+            "artworkDepth": 2.8
+        },
+        {
+            "label": "26",
+            "name": "Mankala",
+            "location": {
+                "lat": -32.5149802,
+                "lng": 19.9561828
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": true,
+            "artworkHeight": 4.0,
+            "artworkWidth": 8.0,
+            "artworkDepth": 8.0
+        },
+        {
+            "label": "27",
+            "name": "Tree Of Life",
+            "location": {
+                "lat": -32.5161481,
+                "lng": 19.9544832
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 4,
+            "sound": false,
+            "artworkHeight": 2.4,
+            "artworkWidth": 2.5,
+            "artworkDepth": 2.5
+        },
+        {
+            "label": "28",
+            "name": "TheRisingSun",
+            "location": {
+                "lat": -32.515075,
+                "lng": 19.95686
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 5.0,
+            "artworkWidth": 8.0,
+            "artworkDepth": 0
+        },
+        {
+            "label": "29",
+            "name": "Ubuhlanti",
+            "location": {
+                "lat": -32.516416,
+                "lng": 19.954241
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": true,
+            "artworkHeight": 0,
+            "artworkWidth": 0,
+            "artworkDepth": 0
+        },
+        {
+            "label": "30",
+            "name": "Umkhati",
+            "location": {
+                "lat": -32.5148281,
+                "lng": 19.9575197
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 6,
+            "sound": false,
+            "artworkHeight": 6.0,
+            "artworkWidth": 36.0,
+            "artworkDepth": 0
+        },
+        {
+            "label": "31",
+            "name": "Obscura",
+            "location": {
+                "lat": -32.5169614,
+                "lng": 19.9540719
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 3.0,
+            "artworkWidth": 5.0,
+            "artworkDepth": 5.0
+        },
+        {
+            "label": "32",
+            "name": "Tree of Knowledge",
+            "location": {
+                "lat": -32.5141893,
+                "lng": 19.9587697
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 5,
+            "sound": false,
+            "artworkHeight": 4.5,
+            "artworkWidth": 3.5,
+            "artworkDepth": 0
+        },
+        {
+            "label": "33",
+            "name": "69 Box",
+            "location": {
+                "lat": -32.5171567,
+                "lng": 19.9535945
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 2.5,
+            "artworkWidth": 2.0,
+            "artworkDepth": 2.0
+        },
+        {
+            "label": "34",
+            "name": "8th Day of Creation",
+            "location": {
+                "lat": -32.51371,
+                "lng": 19.95951
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": true,
+            "artworkHeight": 4.0,
+            "artworkWidth": 13.0,
+            "artworkDepth": 0
+        },
+        {
+            "label": "35",
+            "name": "Splash",
+            "location": {
+                "lat": -32.5173,
+                "lng": 19.953163
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 3.5,
+            "artworkWidth": 12.0,
+            "artworkDepth": 5.0
+        },
+        {
+            "label": "36",
+            "name": "Rocket EnosNookie",
+            "location": {
+                "lat": -32.5126,
+                "lng": 19.96067
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 4.0,
+            "artworkWidth": 0,
+            "artworkDepth": 0
+        },
+        {
+            "label": "37",
+            "name": "Gooi Mealies",
+            "location": {
+                "lat": -32.5177375,
+                "lng": 19.954097
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 5,
+            "sound": false,
+            "artworkHeight": 10.0,
+            "artworkWidth": 3.0,
+            "artworkDepth": 3.0
+        },
+        {
+            "label": "38",
+            "name": "One Thing Led to Another",
+            "location": {
+                "lat": -32.5146028,
+                "lng": 19.9593786
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 2.0,
+            "artworkWidth": 10.0,
+            "artworkDepth": 10.0
+        },
+        {
+            "label": "39",
+            "name": "Anakata",
+            "location": {
+                "lat": -32.5184745,
+                "lng": 19.953437
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 5,
+            "sound": false,
+            "artworkHeight": 4.0,
+            "artworkWidth": 3.0,
+            "artworkDepth": 3.0
+        },
+        {
+            "label": "40",
+            "name": "ThePoolTable",
+            "location": {
+                "lat": -32.5150042,
+                "lng": 19.9587758
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 2.0,
+            "artworkWidth": 4.0,
+            "artworkDepth": 8.0
+        },
+        {
+            "label": "41",
+            "name": "Arboretum",
+            "location": {
+                "lat": -32.5188026,
+                "lng": 19.9544385
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 4.0,
+            "artworkWidth": 18.0,
+            "artworkDepth": 16.0
+        },
+        {
+            "label": "42",
+            "name": "Love Over Fear",
+            "location": {
+                "lat": -32.515616,
+                "lng": 19.958134
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 3.0,
+            "artworkWidth": 1.5,
+            "artworkDepth": 1.0
+        },
+        {
+            "label": "43",
+            "name": "Awakening The Dragon",
+            "location": {
+                "lat": -32.519131,
+                "lng": 19.955622
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 0.5,
+            "artworkWidth": 3.0,
+            "artworkDepth": 0
+        },
+        {
+            "label": "44",
+            "name": "VilaNova",
+            "location": {
+                "lat": -32.5154503,
+                "lng": 19.9573703
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 3.0,
+            "artworkWidth": 6.0,
+            "artworkDepth": 6.0
+        },
+        {
+            "label": "45",
+            "name": "Moloporivah",
+            "location": {
+                "lat": -32.518655,
+                "lng": 19.955256
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 6,
+            "sound": false,
+            "artworkHeight": 5.0,
+            "artworkWidth": 5.0,
+            "artworkDepth": 5.0
+        },
+        {
+            "label": "46",
+            "name": "Burn Watching Hide",
+            "location": {
+                "lat": -32.5156055,
+                "lng": 19.9570471
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 2.8,
+            "artworkWidth": 3.0,
+            "artworkDepth": 3.0
+        },
+        {
+            "label": "47",
+            "name": "Lizzard Love Labyrinth",
+            "location": {
+                "lat": -32.5181062,
+                "lng": 19.9547738
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 0,
+            "artworkWidth": 0,
+            "artworkDepth": 0
+        },
+        {
+            "label": "48",
+            "name": "Hoot Hollow",
+            "location": {
+                "lat": -32.515753,
+                "lng": 19.956847
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 0.5,
+            "artworkWidth": 2.0,
+            "artworkDepth": 2.0
+        },
+        {
+            "label": "49",
+            "name": "TreeOfStories",
+            "location": {
+                "lat": -32.5172614,
+                "lng": 19.9555156
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 15.0,
+            "artworkWidth": 0,
+            "artworkDepth": 0
+        },
+        {
+            "label": "50",
+            "name": "Bunny Love Puddle",
+            "location": {
+                "lat": -32.516889,
+                "lng": 19.956406
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 5.0,
+            "artworkWidth": 4.0,
+            "artworkDepth": 4.0
+        },
+        {
+            "label": "51",
+            "name": "TipTopBusStop",
+            "location": {
+                "lat": -32.517336,
+                "lng": 19.956891
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 2.8,
+            "artworkWidth": 2.0,
+            "artworkDepth": 3.6
+        },
+        {
+            "label": "52",
+            "name": "KARMA . is a bitch .",
+            "location": {
+                "lat": -32.516943,
+                "lng": 19.957482
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 5.0,
+            "artworkWidth": 5.0,
+            "artworkDepth": 1.0
+        },
+        {
+            "label": "53",
+            "name": "Garden of Chill",
+            "location": {
+                "lat": -32.5178891,
+                "lng": 19.9562248
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 3.0,
+            "artworkWidth": 9.0,
+            "artworkDepth": 9.0
+        },
+        {
+            "label": "54",
+            "name": "The Eye",
+            "location": {
+                "lat": -32.5174533,
+                "lng": 19.9575659
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 1.0,
+            "artworkWidth": 1.0,
+            "artworkDepth": 0.5
+        },
+        {
+            "label": "55",
+            "name": "Auðumbla",
+            "location": {
+                "lat": -32.518254,
+                "lng": 19.9564795
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 2.5,
+            "artworkWidth": 2.9,
+            "artworkDepth": 3.9
+        },
+        {
+            "label": "56",
+            "name": "Windcatcher",
+            "location": {
+                "lat": -32.515784,
+                "lng": 19.9612952
+            },
+            "description": "",
+            "burning": false,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 4.0,
+            "artworkWidth": 55.0,
+            "artworkDepth": 4.6
+        },
+        {
+            "label": "57",
+            "name": "The Throne",
+            "location": {
+                "lat": -32.5192807,
+                "lng": 19.9580344
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 7.0,
+            "artworkWidth": 5.0,
+            "artworkDepth": 6.5
+        },
+        {
+            "label": "58",
+            "name": "Red",
+            "location": {
+                "lat": -32.5174103,
+                "lng": 19.960974
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 3.0,
+            "artworkWidth": 27.0,
+            "artworkDepth": 27.0
+        },
+        {
+            "label": "59",
+            "name": "Scratch",
+            "location": {
+                "lat": -32.5185517,
+                "lng": 19.9588671
+            },
+            "description": "",
+            "burning": true,
+            "burningDay": 0,
+            "sound": false,
+            "artworkHeight": 12.0,
+            "artworkWidth": 12.0,
+            "artworkDepth": 0
+        }
+    ]
+}
