@@ -6,13 +6,16 @@ extension RoundedOutlinedButton on OutlinedButton {
     required double strokeWidth,
     required LinearGradient gradient,
     Radius radius = const Radius.circular(3),
+    bool shrink = true,
   }) {
     var child = this.child;
 
     return OutlineGradientButton(
       strokeWidth: strokeWidth,
       gradient: gradient,
-      padding: EdgeInsets.symmetric(horizontal: 2),
+      padding: shrink == true
+          ? EdgeInsets.symmetric(horizontal: 2)
+          : const EdgeInsets.all(2),
       radius: radius,
       child: OutlinedButton(
         onPressed: onPressed,

@@ -71,6 +71,7 @@
       "no-ticket":"No ticket? Aw, shame man!\nGotta get on that quick like a bunny!"
     },
     "available-offline": "NO STRESS, bru!\nAll this lekker stuff's saved on your phone, so when you're off the grid, you sorted 📱💾🔒 No worries!",
+    "hide-ticket-page-label": "Hide this kak\nI've already checked in",
     "delete-confirm": {
       "title": "😱 Delete {{ticket_type}}?",
       "message": "Are you sure you wanna do this because it will be gone off your phone foreva.",

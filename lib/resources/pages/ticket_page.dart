@@ -1,15 +1,20 @@
-import 'package:afrikaburn/app/controllers/ticket_controller.dart';
-import 'package:afrikaburn/bootstrap/helpers.dart';
-import 'package:afrikaburn/resources/widgets/buy_ticket_widget.dart';
+import 'package:afrikaburn/app/events/hide_tickets_event.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import 'package:shake_detector/shake_detector.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
+import 'package:afrikaburn/bootstrap/helpers.dart';
 import 'package:afrikaburn/config/design.dart';
+import 'package:afrikaburn/app/models/ticket.dart';
+import 'package:afrikaburn/app/events/tankwa_mode_event.dart';
+import 'package:afrikaburn/app/controllers/ticket_controller.dart';
+import 'package:afrikaburn/app/providers/app_mode_provider.dart';
+import 'package:afrikaburn/resources/themes/extensions/outlined_button.dart';
+import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
+import 'package:afrikaburn/resources/widgets/buy_ticket_widget.dart';
 import 'package:afrikaburn/resources/appbars/tickets_app_bar.dart';
 import 'package:afrikaburn/resources/widgets/ab_divider_widget.dart';
-import 'package:afrikaburn/app/models/ticket.dart';
 import 'package:afrikaburn/resources/widgets/ticket_slot_widget.dart';
-import 'package:shake_detector/shake_detector.dart';
 
 class TicketPage extends NyStatefulWidget {
   static const path = '/ticket';
@@ -21,12 +26,10 @@ class _TicketPageState extends NyState<TicketPage> {
   @override
   Widget view(BuildContext context) {
     return ShakeDetectWrap(
-      enabled: false,
+      enabled: true,
       minimumShakeCount: 10,
       onShake: () {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Shake!')),
-        );
+        event<TankwaModeEvent>(data: {"toggle": true});
       },
       child: Scaffold(
         body: ListView(
@@ -36,6 +39,25 @@ class _TicketPageState extends NyState<TicketPage> {
             ...appBar(context),
             BuyTicketContent(),
             ...ticketSlots(context),
+            if (AppModeProvider.tankwaTownModeBackpack) ...[
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10)
+                    .copyWith(top: 30),
+                child: OutlinedButton(
+                  onPressed: () {
+                    event<HideTicketsEvent>();
+                  },
+                  child: Container(
+                    child: Text('ticket-content.hide-ticket-page-label'.tr())
+                        .alignCenter(),
+                  ),
+                ).withGradient(
+                  strokeWidth: 2,
+                  shrink: false,
+                  gradient: GradientStyles.outlinedButtonBorder,
+                ),
+              )
+            ],
           ],
         ),
       ),
