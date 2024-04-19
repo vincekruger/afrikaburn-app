@@ -9,15 +9,14 @@ class CreateContactPage extends NyStatefulWidget<CreateContactController> {
 }
 
 class _CreateContactPageState extends NyState<CreateContactPage> {
-
   /// [CreateContactController] controller
   CreateContactController get controller => widget.controller;
 
-  @override
-  init() async {
+  // @override
+  // init() async {
 
-  }
-  
+  // }
+
   /// Use boot if you need to load data before the view is rendered.
   // @override
   // boot() async {
@@ -27,11 +26,9 @@ class _CreateContactPageState extends NyState<CreateContactPage> {
   @override
   Widget view(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Create Contact")
-      ),
+      appBar: AppBar(title: Text("Create Contact")),
       body: SafeArea(
-         child: Container(),
+        child: Container(),
       ),
     );
   }
