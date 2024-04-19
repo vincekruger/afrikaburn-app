@@ -123,16 +123,6 @@ class TankwaTownNavigationBarConfig extends NavigationBarConfig {
             routeName: TicketPage.path,
           ),
         ),
-
-        /// Radio Free Tankwa
-        BottomNavigationItemConfig(
-          builder: () => RadioFreeTankwaPage(),
-          navigationItem: BottomNavigationItem(
-            icon: AB24Icons.rft,
-            label: "menu-item.radio-free-tankwa".tr(),
-            routeName: RadioFreeTankwaPage.path,
-          ),
-        ),
       ];
 }
 
