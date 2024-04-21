@@ -20,7 +20,6 @@ class _MapAnnotationDetailState extends NyState<MapAnnotationDetail> {
 
   MapAnnotation? _annotation;
   final _scrollController = ScrollController();
-  final double _startingHeight = 100;
   double _boxMinHeight = 100;
   double _tmpBoxMinHeight = 0;
 
@@ -36,7 +35,6 @@ class _MapAnnotationDetailState extends NyState<MapAnnotationDetail> {
   void dragDownHandler() {
     _tmpBoxMinHeight = _boxMinHeight;
     final newBoxHeight = _boxMinHeight + _scrollController.offset;
-    print("$_tmpBoxMinHeight = $_boxMinHeight - $newBoxHeight");
     setState(() {
       _boxMinHeight = newBoxHeight < 30 ? 0 : newBoxHeight;
     });
@@ -104,43 +102,37 @@ class _MapAnnotationDetailState extends NyState<MapAnnotationDetail> {
     if (_annotation == null) return SizedBox(height: 0);
     MapAnnotation annotation = _annotation!;
 
-    return GestureDetector(
-      onVerticalDragUpdate: (details) {
-        // print(details.primaryDelta);
-        // print(details.globalPosition.dy);
-      },
-      child: SizedBox(
-        height: boxMinHeight,
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: context.color.surfaceBackground,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
+    return SizedBox(
+      height: boxMinHeight,
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: context.color.surfaceBackground,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-          child: SingleChildScrollView(
-            controller: _scrollController,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: AbDivider(width: 100),
-                ),
-                SizedBox(height: 10),
-                Text(annotation.name)
-                    .titleMedium(context)
-                    .setColor(context, (color) => context.color.surfaceContent),
-                if (annotation.type == AnnotationType.Artwork)
-                  ...artworkDetail(annotation),
-                if (annotation.type == AnnotationType.ThemeCamp)
-                  ...themeCampDetail(annotation),
-              ],
-            ),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: AbDivider(width: 100),
+              ),
+              SizedBox(height: 10),
+              Text(annotation.name)
+                  .titleMedium(context)
+                  .setColor(context, (color) => context.color.surfaceContent),
+              if (annotation.type == AnnotationType.Artwork)
+                ...artworkDetail(annotation),
+              if (annotation.type == AnnotationType.ThemeCamp)
+                ...themeCampDetail(annotation),
+            ],
           ),
         ),
       ),
