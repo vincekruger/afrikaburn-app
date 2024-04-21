@@ -40,20 +40,6 @@ class SharedPreferencesProvider implements NyProvider {
     await _preloadPrefs();
   }
 
-  /// Analytics Collection Enabled
-  /// Config and defaults
-  // static String analyticsCollectionEnabledKey =
-  //     'flutter.analyticsCollectionEnabled';
-  // bool _analyticsCollectionEnabled = true;
-
-  /// Analytics Collection Enabled
-  /// Getters and Setters
-  // bool get analyticsCollectionEnabled => _analyticsCollectionEnabled;
-  // void set analyticsCollectionEnabled(bool value) {
-  //   _analyticsCollectionEnabled = value;
-  //   prefs.setBool(analyticsCollectionEnabledKey, value);
-  // }
-
   /// News Topic Notification Subscription
   static String newsTopicSubscribedKey = 'flutter.newsTopicSubscribed';
   bool _newsTopicSubscribed = false;
