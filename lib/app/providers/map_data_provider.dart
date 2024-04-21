@@ -11,10 +11,10 @@ class MapDataProvider implements NyProvider {
 
   @override
   afterBoot(Nylo nylo) async {
-    _downloadMapTiles();
+    // downloadMapTiles();
   }
 
-  Future<void> _downloadMapTiles() async {
+  static Future<void> downloadMapTiles() async {
     try {
       final result = await platform.invokeMethod<bool>('downloadMapTiles');
       print('Downloaded $result tiles.');

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:afrikaburn/resources/pages/map_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -78,6 +79,7 @@ class MapIcon {
   final Uint8List clan;
   final Uint8List template;
   final Uint8List bypass;
+  final Uint8List greeters;
 
   MapIcon({
     required this.artwork,
@@ -85,6 +87,7 @@ class MapIcon {
     required this.clan,
     required this.template,
     required this.bypass,
+    required this.greeters,
   });
 }
 
@@ -123,8 +126,20 @@ class MapController extends Controller {
         .toList());
   }
 
+  /// Map Icons
   late MapIcon mapIcons;
 
+  /// Annotation Managers
+  late CircleAnnotationManager themeCampCircleAnnotationManager;
+  late PointAnnotationManager themeCampLabelAnnotationManager;
+  late PointAnnotationManager artworkAnnotationManager;
+  late PointAnnotationManager generalAnnotationManager;
+
+  /// Map is loaded
+  late MapboxMap mapboxMap;
+  bool isMapLoaded = false;
+
+  /// Load Map Icons
   Future<void> loadMapIcons() async {
     /// Artwork
     Uint8List artwork = (await rootBundle.load('public/assets/map/artwork.png'))
@@ -152,16 +167,128 @@ class MapController extends Controller {
         .buffer
         .asUint8List();
 
+    /// Greeters
+    Uint8List greeters =
+        (await rootBundle.load('public/assets/map/greeters.png'))
+            .buffer
+            .asUint8List();
+
     mapIcons = MapIcon(
       artwork: artwork,
       artworkBurning: artworkBurning,
       clan: clan,
       template: template,
       bypass: bypass,
+      greeters: greeters,
     );
   }
 
-  CircleAnnotationOptions createCircleAnnotation(Annotation item) {
+  /// Tooggle Annotation Brightness
+  Future<void> toggleAnnotationBrightness({
+    required Brightness brightness,
+  }) async {
+    await themeCampLabelAnnotationManager.deleteAll();
+    await _createThemeCampLabelMarkers(brightness: brightness);
+  }
+
+  /// Create Annotation Managers
+  Future<void> _createAnnotationManagers({required MapboxMap mapboxMap}) async {
+    // Create Annotation Managers
+    themeCampCircleAnnotationManager =
+        await mapboxMap.annotations.createCircleAnnotationManager();
+    themeCampLabelAnnotationManager =
+        await mapboxMap.annotations.createPointAnnotationManager();
+    artworkAnnotationManager =
+        await mapboxMap.annotations.createPointAnnotationManager();
+    generalAnnotationManager =
+        await mapboxMap.annotations.createPointAnnotationManager();
+
+    /// Add a lister for annotation clicks
+    artworkAnnotationManager.addOnPointAnnotationClickListener(
+        ArtworkAnnotationClickListener(controller: mapboxMap));
+
+    /// Map is loaded
+    isMapLoaded = true;
+    mapboxMap = mapboxMap;
+  }
+
+  /// Create the Map Annotations
+  Future<void> createMapAnnotations(
+    MapboxMap mapboxMap,
+    Brightness brightness,
+  ) async {
+    /// If the map is not loaded, create the annotation managers
+    if (!isMapLoaded) await _createAnnotationManagers(mapboxMap: mapboxMap);
+
+    _createGreetersStation();
+
+    /// Create Theme Camp Markers
+    _createThemeCampCircles();
+    _createThemeCampLabelMarkers(brightness: brightness);
+
+    /// Create Artwork Markets
+    _createArtworkMarkers();
+  }
+
+  /// Create the Greeters Station Icon
+  _createGreetersStation() async {
+    PointAnnotationOptions ticketBoothAnnotation = PointAnnotationOptions(
+      geometry: Point(coordinates: Position(19.94096, -32.50963)).toJson(),
+      image: mapIcons.greeters,
+      iconSize: 1.2,
+    );
+    await generalAnnotationManager.create(ticketBoothAnnotation);
+  }
+
+  /// Create Theme Camp Markers
+  /// This will create a circle which is tappable, it will also create
+  /// a point annotation which will display the id/label of the camp.
+  Future<void> _createThemeCampCircles() async {
+    /// Theme Camp Data
+    Iterable<Annotation> data = annotationData
+        .where((element) => element.type == AnnotationType.ThemeCamp);
+
+    /// Create Annotations
+    data.forEach((annotation) async {
+      await themeCampCircleAnnotationManager
+          .create(_createCircleAnnotation(annotation));
+    });
+  }
+
+  /// Create Theme Camp Label Markers
+  /// This will create a the id/label of the camp.
+  Future<void> _createThemeCampLabelMarkers({
+    Brightness brightness = Brightness.light,
+  }) async {
+    /// Theme Camp Data
+    Iterable<Annotation> data = annotationData
+        .where((element) => element.type == AnnotationType.ThemeCamp);
+
+    /// Create Annotations
+    data.forEach((annotation) async {
+      PointAnnotation result = await themeCampLabelAnnotationManager
+          .create(_createThemeCampPointAnnotation(annotation, brightness));
+      loadedAnnotations.add({result.id: annotation});
+    });
+  }
+
+  /// Create the Artwork Markers
+  /// This will create a point annotation which will plot the correct image
+  /// based on the type of artwork and place the id/label of the artwork.
+  Future<void> _createArtworkMarkers() async {
+    /// Artwork Data
+    Iterable<Annotation> data = annotationData
+        .where((element) => element.type == AnnotationType.Artwork);
+
+    /// Create Annotations
+    data.forEach((annotation) async {
+      PointAnnotation result = await artworkAnnotationManager
+          .create(_createPointAnnotation(annotation));
+      loadedAnnotations.add({result.id: annotation});
+    });
+  }
+
+  CircleAnnotationOptions _createCircleAnnotation(Annotation item) {
     return CircleAnnotationOptions(
       geometry: Point(coordinates: item.location).toJson(),
       circleColor: Colors.transparent.value,
@@ -171,16 +298,19 @@ class MapController extends Controller {
     );
   }
 
-  PointAnnotationOptions createThemeCampPointAnnotation(Annotation item) {
+  PointAnnotationOptions _createThemeCampPointAnnotation(
+      Annotation item, Brightness brightness) {
     return PointAnnotationOptions(
       geometry: Point(coordinates: item.location).toJson(),
       textField: item.label,
-      textColor: Colors.white.value,
+      textColor: brightness == Brightness.light
+          ? Colors.black.value
+          : Colors.white.value,
       textSize: 12.0,
     );
   }
 
-  PointAnnotationOptions createPointAnnotation(Annotation item) {
+  PointAnnotationOptions _createPointAnnotation(Annotation item) {
     PointAnnotationOptions point = PointAnnotationOptions(
       geometry: Point(coordinates: item.location).toJson(),
     );
@@ -221,56 +351,20 @@ class MapController extends Controller {
     return point;
   }
 
-  /// Create Theme Camp Markers
-  /// This will create a circle which is tappable, it will also create
-  /// a point annotation which will display the id/label of the camp.
-  Future<void> createThemeCampMarkers({
-    required Future<CircleAnnotationManager> cirleManager,
-    required Future<PointAnnotationManager> pointManager,
-    required OnCircleAnnotationClickListener listener,
-  }) async {
-    /// Theme Camp Data
-    Iterable<Annotation> data = annotationData
-        .where((element) => element.type == AnnotationType.ThemeCamp);
+  /// Toggle Location Puck
+  Future<void> toggleLocationPuck({required MapboxMap mapboxMap}) async {
+    LocationComponentSettings currentSettings =
+        await mapboxMap.location.getSettings();
+    bool enabled = currentSettings.enabled ?? false;
 
-    /// Finalise managers
-    final cManager = await cirleManager;
-    final pManager = await pointManager;
+    /// Localation and Puck Settings
+    mapboxMap.location.updateSettings(LocationComponentSettings(
+      enabled: !enabled,
+      pulsingEnabled: false,
+      puckBearingEnabled: true,
+      puckBearing: PuckBearing.COURSE,
+    ));
 
-    /// Add the listener
-    cManager.addOnCircleAnnotationClickListener(listener);
-
-    /// Create Annotations
-    data.forEach((annotation) async {
-      pManager.create(createThemeCampPointAnnotation(annotation));
-      CircleAnnotation result =
-          await cManager.create(createCircleAnnotation(annotation));
-      loadedAnnotations.add({result.id: annotation});
-    });
-  }
-
-  /// Create the Artwork Markers
-  /// This will create a point annotation which will plot the correct image
-  /// based on the type of artwork and place the id/label of the artwork.
-  Future<void> createArtworkMarkers({
-    required Future<PointAnnotationManager> pointManager,
-    required OnPointAnnotationClickListener listener,
-  }) async {
-    /// Artwork Data
-    Iterable<Annotation> data = annotationData
-        .where((element) => element.type == AnnotationType.Artwork);
-
-    /// Finalise manager
-    final manager = await pointManager;
-
-    /// Add the listener
-    manager.addOnPointAnnotationClickListener(listener);
-
-    /// Create Annotations
-    data.forEach((annotation) async {
-      PointAnnotation result =
-          await manager.create(createPointAnnotation(annotation));
-      loadedAnnotations.add({result.id: annotation});
-    });
+    // return await Geolocator.getCurrentPosition();
   }
 }

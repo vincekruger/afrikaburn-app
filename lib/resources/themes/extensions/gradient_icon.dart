@@ -26,6 +26,7 @@ extension GradientButton on IconButton {
         padding: EdgeInsets.zero,
         visualDensity: VisualDensity.compact,
         icon: this.icon,
+        color: this.color,
         onPressed: this.onPressed,
       ),
     );

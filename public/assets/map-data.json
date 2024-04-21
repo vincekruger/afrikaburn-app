@@ -2,14 +2,2070 @@
     "themeCamps": [
         {
             "label": "1",
+            "location": {
+                "lat": -32.5178,
+                "lng": 19.95232
+            },
+            "name": "Garden of Weeden",
+            "description": "Garden of Weeden is an oasis with a gifting Tree of Life blooming in the lounge. Pick a gift from the Tree Of Life and add to the tree to help it grow. You can’t miss us with the giant weed leaf dreamcatcher at our camp.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "scheduleDetail": "We will run our lounge & games room from when the camp gets going mid morning until we all crash at night around 2am.",
+            "children": 1
+        },
+        {
+            "label": "2",
+            "location": {
+                "lat": -32.51788,
+                "lng": 19.95191
+            },
+            "name": "Garden of Play ",
+            "description": "The Garden of Weeden presents the Garden of Play, a games room on the Binnekring with a pool table, foosball table, table tennis and beer pong table. Connected to the Garden of Weeden lounge.",
+            "collective": "",
+            "openDays": null,
+            "openTimes": null,
+            "scheduleDetail": "null",
+            "children": null
+        },
+        {
+            "label": "3",
+            "location": {
+                "lat": -32.51749,
+                "lng": 19.95192
+            },
+            "name": "Purple Spanking Booth",
+            "description": "Spank you! Spank you very much! We provide playful, light-hearted spankings for adults. Come join the fun!  We also offer a lounge for premium spanking viewing during the day, and a safe space at night to chill and enjoy good company. CONSENT is the principle we live by.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2,
+                3,
+                4
+            ],
+            "scheduleDetail": "",
+            "children": 0
+        },
+        {
+            "label": "4",
+            "location": {
+                "lat": -32.51722,
+                "lng": 19.95184
+            },
+            "name": "Ain't Misbehavin'",
+            "description": "Swing into a jazzy world of vintage flair with Ain’t Misbehavin’. Find us Inside on the Southside, putting on our Shiny Stockings so we can Jive at Five … Swing dancing with a specially-built wooden dance floor. Morning mimosas, afternoon lessons, evening socials, late-night blues…",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2,
+                3
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "5",
+            "location": {
+                "lat": -32.51689,
+                "lng": 19.95175
+            },
+            "name": "Dust Devil Saloon Bar",
+            "description": "Welcome to the Binnekring’s most irresistible bar. Where frosty draughts cascade as freely as the lively banter around you. Pull up a barstool and engage in a game with fate where you could be rewarded with a tequila shot or beer, but beware, for the stakes may exceed your expectations …",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 0
+        },
+        {
+            "label": "6",
+            "location": {
+                "lat": -32.51659,
+                "lng": 19.95176
+            },
+            "name": "The Steampunk Saloon",
+            "description": "Join us for a boogie every night of the week and for burlesque shows by our brazen beauties around 6pm on Thursday, Friday and Saturday nights. We host mostly female DJs and play music with lyrics! Dress up or dress down, but definitely come and watch us undress!",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2,
+                3
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "7",
+            "location": {
+                "lat": -32.51628,
+                "lng": 19.95172
+            },
+            "name": "The Pancake People",
+            "description": "The Pancake People celebrates 10 consecutive years at AB this year!!  Our joy-inducing, batter-covered, crew gifts pancakes to the sounds of electro swing & laughter. Pull in throughout the day for yoga, workshops & various creative expressions. You will leave with your heart full!",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1,
+                2,
+                3
+            ],
+            "scheduleDetail": "9 to 11am for main pancake gifting and then pop ups through the day.\nYoga, acroyoga, performances, workshops, live music etc throughout the day!",
+            "children": 1
+        },
+        {
+            "label": "8",
+            "location": {
+                "lat": -32.51598,
+                "lng": 19.95181
+            },
+            "name": "Wabi Sabi",
+            "description": "WABI SABI - The acceptance of transience ... beauty that is imperfect, impermanent and incomplete. Gather at our temporal tavern, in which no two days are the same, and change is constant. Games, drinks and silly shenanigans daily. The bar is open: from 2pm to 4pm. Pop-up events all week.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "9",
+            "location": {
+                "lat": -32.51563,
+                "lng": 19.95196
+            },
             "name": "le Petit Paris",
             "description": "Sunset Bar, with its iconic Eiffel Tower, is where burners, musicians, DJs and artists congregate at sunset each day. It all starts here! Champagne and Pastis flow freely. The music travels and takes you on a mesmerising journey. Special moments are created that remain etched in our memories forever.",
-            "open-times": "Daily as the sun sets.",
-            "adults-only": true,
+            "collective": "",
+            "openDays": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                3
+            ],
+            "scheduleDetail": "",
+            "children": 0
+        },
+        {
+            "label": "10",
             "location": {
-                "lat": -32.51567,
-                "lng": 19.95194
-            }
+                "lat": -32.51394,
+                "lng": 19.95314
+            },
+            "name": "Mucho Gusto",
+            "description": "We’re a 69-strong collective who have blown in across the Indian Ocean from Australia. We bring good vibes, energy, bluster, fun, and a breath of fresh air. We’re hosting several evenings of top-notch entertainment in our SundownUnders Bar. Expect mesmerising performances, mouthwatering cocktails, and soul-shaking beats. Let’s Burn!",
+            "collective": "",
+            "openDays": [
+                2,
+                3,
+                4,
+                5
+            ],
+            "openTimes": [
+                3
+            ],
+            "scheduleDetail": "We might have a couple of renegade events on Sat-Sun too depending on our bar stock level and energy of the crew",
+            "children": 1
+        },
+        {
+            "label": "11",
+            "location": {
+                "lat": -32.51383,
+                "lng": 19.95364
+            },
+            "name": "Krème",
+            "description": "A bastion of love and beats where krème brûlée is served daily from 7pm to 9pm. Our stage also hosts an interactive light show featuring over 10,000 LEDs with over a hundred configurable patterns. Come share the love. Come share the KREME!",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                3,
+                4
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "12",
+            "location": {
+                "lat": -32.51362,
+                "lng": 19.95392
+            },
+            "name": "Smokescreen",
+            "description": "We’re the Tankwa’s original and best theatre and party venue. Lovingly homemade, stylishly curated, and just a little bit wabi-sabi. We bring movies, art, music, costume and personality to the Binnekring. Just like Hollywood but with a little extra dust.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2,
+                3
+            ],
+            "scheduleDetail": "See above",
+            "children": 1
+        },
+        {
+            "label": "13",
+            "location": {
+                "lat": -32.51321,
+                "lng": 19.9537
+            },
+            "name": "Sizzle & Synth",
+            "description": "Nothing kisses the soul quite like a juicy boerie roll. These sizzlers are serving up a taste of South African heritage to all boerie-loving burners that sniff us out. Join us at 2pm(ish) every afternoon for some boerie, beats and banter.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "Boerie Rolls every afternoon (Monday - Saturday) from 2ish out in the playa.",
+            "children": 1
+        },
+        {
+            "label": "14",
+            "location": {
+                "lat": -32.51334,
+                "lng": 19.95349
+            },
+            "name": "Morning Mimosas",
+            "description": "What’s better than a cold mimosa on a hot desert day? Exactly. Cruise past for a refreshment, or pull up your handbrake and enjoy a bit of finely curated music! Disclaimer: Morning for this camp may or may not start at 11am while in the Tankwa.",
+            "collective": "",
+            "openDays": [
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "15",
+            "location": {
+                "lat": -32.51338,
+                "lng": 19.95429
+            },
+            "name": "Camp DelicioZA",
+            "description": "Camp DelicioZA is a community with big hearts who flip ‘pancrêpes’ daily, and this year we will also host a few ‘speakeasy’ nights. From sunset to sunrise, our campfires are burning to offer a welcoming safe space for wandering souls.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1,
+                4,
+                9
+            ],
+            "scheduleDetail": "Tuesday, Thursday & Saturday nights 7-9pm",
+            "children": 1
+        },
+        {
+            "label": "16",
+            "location": {
+                "lat": -32.51291,
+                "lng": 19.95406
+            },
+            "name": "Naked Garden",
+            "description": "Naked Garden offers you the opportunity to share the wonderful world of naturism - a way of life in harmony with nature characterised by the practice of communal nudity with the intention of encouraging self-respect, be body positive, respect for others and the environment.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "Nake Garden will be operational daily from 11ish till sunset",
+            "children": 1
+        },
+        {
+            "label": "17",
+            "location": {
+                "lat": -32.51293,
+                "lng": 19.9547
+            },
+            "name": "ABnB",
+            "description": "Nestled in the dust, you will find a safe haven for those of you looking to chill and connect. Equipped with a large lounge area, cocktail bar, mutant and some deep soft-ish tunes. You may want to stay for an hour, a night or a day; the choice is yours.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                1,
+                2,
+                9
+            ],
+            "scheduleDetail": "The large lounge space with games (pool table and table tennis) is available 24/7. Throughout the night the space will lit up via the battery from our solar system.",
+            "children": 1
+        },
+        {
+            "label": "18",
+            "location": {
+                "lat": -32.51275,
+                "lng": 19.95504
+            },
+            "name": "HeartSpace",
+            "description": "HeartSpace is dedicated to helping souls to connect and to develop greater self-awareness. We create a safe space where explorers are deepening their relationship with themselves, their bodies, each other and the land. Through experiential activities, games, discussions, and workshops, participants are encouraged to come together to learn and grow.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                1,
+                2,
+                3
+            ],
+            "scheduleDetail": "Yoga will be from 9am every morning Monday to Saturday.\nEcstatic Dance will be on Friday after sunset.\nWorkshop on psychedelics will be on Wednesday afternoon.",
+            "children": 1
+        },
+        {
+            "label": "19",
+            "location": {
+                "lat": -32.51269,
+                "lng": 19.9554
+            },
+            "name": "Vagabonds",
+            "description": "We are a wellness and relaxation camp, where everyone can feel at home and recharge energy through warming up in our sauna, relax the muscles through daily massages, connect with others in our lounge, star gaze over the Binnekring from our sky lounge and get ready for further experiences.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2,
+                3,
+                9
+            ],
+            "scheduleDetail": "Our gifting area with our massage benches and our lounge is open to use 24/7 but won't be actively facilitated outside formal gifting operating hours as described above.",
+            "children": 1
+        },
+        {
+            "label": "20",
+            "location": {
+                "lat": -32.51267,
+                "lng": 19.95591
+            },
+            "name": "The Motherfucking Queens",
+            "description": "We honour divine feminine power, celebrate all beauty, embrace yin energy, and awaken inner royalty. Our camp provides a safe, breathing altar for all seeking to connect with their inner Queens and Kings. Join us for empowering and inspiring workshops, music, and life-changing experiences. Become a Motherfucking Queen!",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1,
+                2,
+                3
+            ],
+            "scheduleDetail": "Monday activities will likely only be planned in the afternoon onwards",
+            "children": 0
+        },
+        {
+            "label": "21",
+            "location": {
+                "lat": -32.5126,
+                "lng": 19.95643
+            },
+            "name": "disko dolce",
+            "description": "Welcome to disko dolce, where the essence of the good life is celebrated through the joy of dancing and the sweetness of connection. A vibrant sanctuary where burners converge to revel in life’s pleasures. Join us for pasta parties, workshops, morning workouts and dance sessions.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                1,
+                2,
+                3
+            ],
+            "scheduleDetail": "We aim to create a well-balanced schedule with activities spanning the mornings, afternoons, and evenings. As this marks our debut year as a theme camp, we prioritize quality over quantity in our offerings, focusing on providing exceptional experiences for participants on the Playa.",
+            "children": 1
+        },
+        {
+            "label": "22",
+            "location": {
+                "lat": -32.51259,
+                "lng": 19.95683
+            },
+            "name": "The Lion's Den",
+            "description": "Lion’s Den! Come join us during day time in our shaded chill zone. Enjoy some chilled and vibey music and different gifts from 420-friendly to fresh fruits and a pop-up bar. It is a great spot to chill in the heat of the day and get your energy back.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2,
+                3
+            ],
+            "scheduleDetail": "We running most time during the day from 11 on and then go out with The Lion in the evenings. We have amazing DJ's joining us this year and we will do a few sunset parties in the Lion's Den.",
+            "children": 1
+        },
+        {
+            "label": "23",
+            "location": {
+                "lat": -32.51277,
+                "lng": 19.95716
+            },
+            "name": "Luminosity Lounge",
+            "description": "By night the Luminosity Lounge is an under-the-stars chill space. A combination of soft and LED furniture surrounding the radiant heat from brazier fires. By day, the Luminosity Lounge is a shaded (shady? :-)) place to chill and braai to tunes. You heat, you eat.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2,
+                3
+            ],
+            "scheduleDetail": "null",
+            "children": 1
+        },
+        {
+            "label": "24",
+            "location": {
+                "lat": -32.51275,
+                "lng": 19.9576
+            },
+            "name": "SPACE COWBOYS",
+            "description": "The Space Cowboys are a dynamic collective serving as a Sound Camp @ AfrikaBurn, gifting local and international DJs and producers since 2011.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2,
+                4
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "25",
+            "location": {
+                "lat": -32.51279,
+                "lng": 19.95796
+            },
+            "name": "Oe-aa-sieS",
+            "description": "Where life and desert meet, we fill our space, to captivate your senses. We turn dust into dirty, our personality is desert flirty, and our energy restless.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "26",
+            "location": {
+                "lat": -32.51293,
+                "lng": 19.95827
+            },
+            "name": "SOÜL of ALRAKÏS",
+            "description": "SOÜL of ALRAKÏS is a camp dedicated to immersing AfrikaBurn attendees in a futuristic desert experience. The camp primarily features a music stage with DJs and live performances. The star ALRAKÏS, symbolizes the universe and cosmos, aligning with futuristic concepts.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2,
+                3,
+                4
+            ],
+            "scheduleDetail": "",
+            "children": 0
+        },
+        {
+            "label": "27",
+            "location": {
+                "lat": -32.51311,
+                "lng": 19.95897
+            },
+            "name": "Camp Why Not",
+            "description": "Welcome to Camp Why Not, where rhythm meets enchantment! Join us for an unforgettable experience filled with pulsating beats and mystical moments followed by energetic sunrises and a variety of surprises! Immerse yourself in the magic of CREATION as we celebrate creativity, community, and the spirit of AfrikaBurn, Why Not Style!",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "scheduleDetail": "We plan to start the music after dinner, around 10-11ish pm every night. More details to follow soon",
+            "children": 0
+        },
+        {
+            "label": "28",
+            "location": {
+                "lat": -32.51225,
+                "lng": 19.95849
+            },
+            "name": "ALEGRA SPACE STATION",
+            "description": "Alegra Space Station is the Tankwa equivalent of the ISS. We welcome the travelling burner and then make them work and gift. Our camp is gifting coffee to wake you up in the mornings and Sangria to soothe you in the afternoons. Find us and make new friends.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1,
+                9
+            ],
+            "scheduleDetail": "Sangria at a Sundowner time",
+            "children": 0
+        },
+        {
+            "label": "29",
+            "location": {
+                "lat": -32.51222,
+                "lng": 19.95771
+            },
+            "name": "WattWorks Wonderland",
+            "description": "Embark on a journey of creation at our renewable energy oasis! Engage with hand-built mechanisms, generating electricity through teamwork and competition. Witness the fruits of our labour as mist fans and speakers come to life, powered by the energy you’ve channelled. Welcome to our generation camp, where creation thrives!",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "We are offering our gift when the sun is hottest and bellies are the hungriest (midday to early evening)",
+            "children": 1
+        },
+        {
+            "label": "30",
+            "location": {
+                "lat": -32.51197,
+                "lng": 19.95816
+            },
+            "name": "Petanque Pastis and Friendship",
+            "description": "Come join us for a game of Petanque, an artistique discovery, or just to chill out with some fresh drinks!",
+            "collective": "",
+            "openDays": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "As said before, opening time is all daytime (close during the night). But main activitie is from 3 pm to 5 pm.",
+            "children": 1
+        },
+        {
+            "label": "31",
+            "location": {
+                "lat": -32.51227,
+                "lng": 19.95781
+            },
+            "name": "Dunes Meets Tunes",
+            "description": "Dunes Meets Tunes (DMT) is a one-of-a-kind Theme Camp blending acoustic and soulful electronic music. Featuring a mix of live music, collective jams, and stellar DJs. Beyond music, look forward to our Margarita evening, yoga sessions, and Cheesy Toastie Bonanza.",
+            "collective": "",
+            "openDays": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2,
+                3
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "33",
+            "location": {
+                "lat": -32.51268,
+                "lng": 19.95398
+            },
+            "name": "Selfish Steam Camp",
+            "description": "A traditional wood-fired Finnish experience! A sauna in the sand! Feel the desert grow cold while your skin gets hot. Steam out all the old accumulation in your skin, bones and soul and be ready to be born anew. Selfish Steam Camp is here to aid you in the cleansing beforethetransformation.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2,
+                1
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "34",
+            "location": {
+                "lat": -32.51231,
+                "lng": 19.95385
+            },
+            "name": "The Holy Mountain",
+            "description": "Leave your dust-covered shoes at the door and step into the magick of the Alchemist’s Lounge! Surrender into the cushions and gentle music - we might serve you charmed chai if your timing is right. Become an artist or a muse with consecrated yoga, enchanted dance, mystical massages & more!",
+            "collective": "",
+            "openDays": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1,
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "35",
+            "location": {
+                "lat": -32.5128,
+                "lng": 19.95374
+            },
+            "name": "MemberBerries",
+            "description": "The MemberBerries is a collection of berries that found each other in the immediacy of the default and experimental world. If it is relaxation or reflection, radical self-expression or radical inclusion, or even just a space to chill out … come find the MemberBerries. We gift you the creation of lasting memories.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2,
+                9
+            ],
+            "scheduleDetail": "We love to ebb and flow with the feelings of the MemberBerries; we are all very spontaneous people and do not like to dictate our activities too much. But just know that all are welcome to our space whenever they feel like it.",
+            "children": 1
+        },
+        {
+            "label": "36",
+            "location": {
+                "lat": -32.51237,
+                "lng": 19.95366
+            },
+            "name": "Bulls’s Eye",
+            "description": "Pierce a bullseye if you dare,  throw a fine dart through the air,  centre it up on the dot,  give it everything you got.  Watch it sink into the hair,  the chiseled point will disappear,  another sip of ale to boot, game set match—the point is moot.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "37",
+            "location": {
+                "lat": -32.5152,
+                "lng": 19.95153
+            },
+            "name": "Hydration Station",
+            "description": "Hubble Bubble offers a dynamic space for collaboration and scheduled activations, inviting all to engage and share their unique gifts. Join us for our signature ‘Burst Your Bubble’ dance parties, Thursday to Saturday, and be part of creating unforgettable moments. A hub for community, creativity, and connection at AfrikaBurn 2024.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1,
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "38",
+            "location": {
+                "lat": -32.51508,
+                "lng": 19.95117
+            },
+            "name": "The Shield Maidens & Vikings",
+            "description": "Shield Maidens & Vikings gather in war attire, in a time of peace, to welcome in the community for frolic & fun. You will know where we are ~ bubbles flying out and up, with camp members chasing them.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                9
+            ],
+            "scheduleDetail": "6-7 daily Monday to Saturday",
+            "children": 0
+        },
+        {
+            "label": "39",
+            "location": {
+                "lat": -32.51549,
+                "lng": 19.95114
+            },
+            "name": "Jolly Lolly Jumpers",
+            "description": "Gear up, folks! Join the Jolly Lolly Jumpers every afternoon-ish for epic gladiator showdowns in our inflatable ring! Challenge your pals to a duel, conquer the battlefield, and claim victory - all while cooling off with our fruity ice lollies! It’s the ultimate blend of fun, frolics, and frozen treats!",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "40",
+            "location": {
+                "lat": -32.5158,
+                "lng": 19.95089
+            },
+            "name": "Sunrisers Coffee Lounge",
+            "description": "Sunrisers is a collaboration amongst like-minded individuals, collectively aiming to gift coffee to burners, with an addition of a collaboration space for artists, teachers, speakers and photographers.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                9
+            ],
+            "scheduleDetail": "Coffee from sunrise till 12pm.\nCollaboration and Exhibition area activities from 12pm till 4pm",
+            "children": 1
+        },
+        {
+            "label": "41",
+            "location": {
+                "lat": -32.51604,
+                "lng": 19.9513
+            },
+            "name": "Burning Mail",
+            "description": "Each year Tankwa Town’s official POST OFFICE, Burning Mail, is the place where burners pick out specially designed postcards, write ‘wish you were heres’ around the world, stick on stamps, and pop them in the mailbox. We also deliver messages within Tankwa Town.",
+            "collective": "",
+            "openDays": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "42",
+            "location": {
+                "lat": -32.51638,
+                "lng": 19.95082
+            },
+            "name": "Hooked on Coats",
+            "description": "Are you exhausted from playing hide-and-seek with your coats, scarves, bags, and hats on the dusty desert floor? Fear not! Keep your eyes peeled and make the most of our fantastic hooks strategically placed around tent poles throughout the Binnekring. Say goodbye to the scavenger hunt!",
+            "collective": "",
+            "openDays": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2,
+                3
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "43",
+            "location": {
+                "lat": -32.5166,
+                "lng": 19.95104
+            },
+            "name": "Camp 404",
+            "description": "Feeling lost? We are also not found. 404 is a blanket fort of confused and delicious nonsense. Our lounge has snacks, games, flow arts and lamps to talk to. And of course, our infamous breath work sessions and contact improvisation - check our activity board for times.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                1,
+                2,
+                3
+            ],
+            "scheduleDetail": "Our earliest is usually the serving of our brunchy, lunchy, munchy thing which happens distinctly in the principle of 'ish' So probably 11, sometimes 1pm. Our lounge activities will happen mostly between breakfast and sunset. We will have some late night activities and sound, on some days. We like to quieten down at 4am at the latest.",
+            "children": 1
+        },
+        {
+            "label": "44",
+            "location": {
+                "lat": -32.51739,
+                "lng": 19.95108
+            },
+            "name": "Camp O2",
+            "description": "We are an oasis, a refuge - to find meaning amongst the chaos. Join us for a philosophical conversation over chai or espresso, and midnight(ish) for our BreathworK (singularly responsible for at least one verified orgasm last year; this year we’re aiming higher!)",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2,
+                3
+            ],
+            "scheduleDetail": "Camp O2 will always be open to the public, offering a relaxing and invigorating lounge oasis and self-service games and activities that Burners can enjoy at any time. However, our main gifting hours will be afternoons (for the cosmic cafe, when games and activities will become actively curated and moderated, and tea/coffee will be served) and late evenings (when our breathworks sessions will take place).",
+            "children": 1
+        },
+        {
+            "label": "45",
+            "location": {
+                "lat": -32.51695,
+                "lng": 19.95126
+            },
+            "name": "The Nursery",
+            "description": "Led by our obnoxious raccoon, Richard, prepare for excruciatingly dull Unbirthday Tea Parties. We’ll force emotional intelligence down your throat, serve you lukewarm tea and engage in overly dramatic discussions, all leading up to a dumpster fire of a trash-panda party on Friday. Join us for a mind-numbingly boring time!",
+            "collective": "",
+            "openDays": [
+                2,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2,
+                3
+            ],
+            "scheduleDetail": "Afternoon Unbirthday Tea-Party Schedule (every party except Friday) (around fuck-hot-ish, and a little after; roughly translates to 14:00-16:30-ish)",
+            "children": 1
+        },
+        {
+            "label": "46",
+            "location": {
+                "lat": -32.51769,
+                "lng": 19.9509
+            },
+            "name": "Sweet Love Cinema",
+            "description": "The Sweet Love cinema has been around for years - we play classic films for kids and adults and over the years, have been a consistently happy camp of friends and family offering an inviting and welcoming space for all burners.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                3
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "47",
+            "location": {
+                "lat": -32.51758,
+                "lng": 19.95147
+            },
+            "name": "Camp Merrytwit",
+            "description": "In the beginning, there were ducks. The ducks quacked, ‘Let there be Twits. They’ll be merry. They’ll serve chai masala, poutine, and picklebacks. Logic will have no place’. And so it was. Seeking shade, the people came… delighted by games and quizzes. The ducks saw this, and it was good.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1,
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "48",
+            "location": {
+                "lat": -32.5178,
+                "lng": 19.95154
+            },
+            "name": "Gin o'clock",
+            "description": "Gin o’clock, where you can find the best ice cold gin & tonics as well as premixed cocktails to assist with the heat and listen to some vibey music to start your day right!",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 0
+        },
+        {
+            "label": "50",
+            "location": {
+                "lat": -32.51811,
+                "lng": 19.95168
+            },
+            "name": "Whateverbar",
+            "description": "Whatever ...... BAR",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                9
+            ],
+            "scheduleDetail": "The Days will operate according to whoever's shift it is and whatever cocktail they are offering. There will be a board outside the Bar.",
+            "children": 1
+        },
+        {
+            "label": "51",
+            "location": {
+                "lat": -32.51843,
+                "lng": 19.95155
+            },
+            "name": "Fractal Chill",
+            "description": "Where it’s quiet until it’s not. Jols might kick off at any time, flipping the calm into a lekker party. And if you spot the Snooze Cruise, you’ve found the heart of our wandering chill.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2,
+                3,
+                4
+            ],
+            "scheduleDetail": "Thursday 10pm Pyjamas Party at Snooze Kings Camp all other days sound at the camp when Snooze criuse is docket and otherwise cruising around with the Snooze Cruise providing water and lekker sound, when placed in the playa.",
+            "children": 1
+        },
+        {
+            "label": "52",
+            "location": {
+                "lat": -32.51924,
+                "lng": 19.95135
+            },
+            "name": "Elemental Anarchy",
+            "description": "In the beginning was Creation – when the first elements were formed (hydrogen, fyi) – and through the course of some controlled chaos (anarchy, if you like) all else followed (dinosaurs, Walkmen, self-driving cars, etc.) Our elements are Five, our colours Red and Black. Come dance! Better work witch.",
+            "collective": "",
+            "openDays": [
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2,
+                3
+            ],
+            "scheduleDetail": "We've checked Day Time as well as Night Time because some music events may take place during the day, otherwise night time. Artwork should be accessible most of the time.",
+            "children": 1
+        },
+        {
+            "label": "53",
+            "location": {
+                "lat": -32.51554,
+                "lng": 19.95073
+            },
+            "name": "Buttery Beasts",
+            "description": "Slithering, squawking, hopping and hissing into Tankwa Town with the most convenient of convenience stores. GreaseMonkeys fix what you’ve broken, and Beasts help you find what you’ve forgotten! On market days, we have hot food, cold drinks, buttery beats and reptilian cosmetic enhancements, and other times ring the bell for Beastly assistance.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1,
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "54",
+            "location": {
+                "lat": -32.51541,
+                "lng": 19.95014
+            },
+            "name": "GreaseMonkeys",
+            "description": "Bike tyre flat? Handlebars came off? Drive into an artwork? If you have something mechanical that’s in need of a good spanner-ing then bring it to us and we’ll try fix it. We’re a team of tie-dyed mechanical enthusiasts with a passion for metal and lube.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                9
+            ],
+            "scheduleDetail": "9-3ish",
+            "children": 1
+        },
+        {
+            "label": "55",
+            "location": {
+                "lat": -32.51569,
+                "lng": 19.95064
+            },
+            "name": "Milliways",
+            "description": "During the day, Milliways offers you a shaded tent to relax in, whilst you can pick from a variety of board games to play with friends. In the evenings, it transforms into the Bar at the End of the Universe, where we host karaoke parties in our space disco.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2,
+                3
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "56",
+            "location": {
+                "lat": -32.51562,
+                "lng": 19.95038
+            },
+            "name": "Mars Monkeys",
+            "description": "Our troop is chest-thumping with excitement to invite you to our whimsical jungle. A haven for letting out deep breaths while spilling the tea and getting your nails groomed. Here we assist you to recre-APE yourself. When you swing away, we’re confident you’ll holler, ‘They nailed it!’",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "Monday - Spill the Tea and Nailed-It 12:00 till 14:00ish.\nTuesday - Spill the Tea and Nailed-It 12:00 till 14:00ish.\nWednesday - Welcome Duty at the Main Gate.\nThursday - Spill the Tea and Nailed-It and Body Tattoos (aware of clear consent guidelines) 12:00 till 14:00ish.\nFriday - Breathwork, Nailed It 12:00 till 14:00ish.\nSaturday - Breathwork, Tea-quilla on the Binnekring 15:00 - 17:00ish.",
+            "children": 1
+        },
+        {
+            "label": "57",
+            "location": {
+                "lat": -32.51557,
+                "lng": 19.95008
+            },
+            "name": "oriGIN",
+            "description": "Laugh, mingle and show off your primordial dance moves at oriGIN",
+            "collective": "",
+            "openDays": [
+                3,
+                4,
+                5
+            ],
+            "openTimes": [
+                2,
+                3
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "58",
+            "location": {
+                "lat": -32.51204,
+                "lng": 19.95342
+            },
+            "name": "Metastofasis and Luna",
+            "description": "Metastofasis offers a chill space out of the sun and lots of cool activities, puzzles, music quizzes, yoga sessions, teeny tiny parties and more.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1,
+                2,
+                3
+            ],
+            "scheduleDetail": "Yoga would be in the morning.\nPuzzles and chill space all day.\nQuizzes would be in the afternoon.\nMicro party ending by midnight'ish.",
+            "children": 1
+        },
+        {
+            "label": "59",
+            "location": {
+                "lat": -32.51222,
+                "lng": 19.95314
+            },
+            "name": "Pandora's Fox",
+            "description": "Pandora’s Fox offers a plethora of culinary delights every morning around 9am to 11am(ish). Join us for a chat at the bar, some good chilled vibes, and clean H2O for thirsty travellers. Pancake variations daily will keep you coming back for more!",
+            "collective": "",
+            "openDays": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1
+            ],
+            "scheduleDetail": "from 9 ish only",
+            "children": 1
+        },
+        {
+            "label": "60",
+            "location": {
+                "lat": -32.51179,
+                "lng": 19.95384
+            },
+            "name": "Nowhere's End",
+            "description": "Step into NONSENSE NATION, nestled in the Mad Hatter’s Village! Join our jubilant misfits for unrivalled revelry. Experience boundless merriment, grandeur, and euphoria. Immerse in whimsy, where adventure awaits at every turn!",
+            "collective": "",
+            "openDays": null,
+            "openTimes": null,
+            "scheduleDetail": "null",
+            "children": null
+        },
+        {
+            "label": "61",
+            "location": {
+                "lat": -32.51157,
+                "lng": 19.95433
+            },
+            "name": "Moon Village",
+            "description": "A celestial, star-spangled lounge. Sink into a con’sensual’ cuddle puddle, join a creativity session or feel the soothing vibrations of a sound bath. Whether you search for quiet reflection or joyful connection, we invite you to leave the spirited chaos of the Binnekring behind and enter our soul sanctuary.",
+            "collective": "",
+            "openDays": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "scheduleDetail": "We are open 24/7 to allow people to come and relax, connect and chill in the sanctuary at any time they need it. We will however mostly be offering activities only by day/early evening.",
+            "children": 1
+        },
+        {
+            "label": "62",
+            "location": {
+                "lat": -32.51149,
+                "lng": 19.95782
+            },
+            "name": "Hubble Bubble ",
+            "description": "Are you exhausted from playing hide-and-seek with your coats, scarves, bags, and hats on the dusty desert floor? Fear not! Keep your eyes peeled and make the most of our fantastic hooks strategically placed around tent poles throughout the Binnekring. Say goodbye to the scavenger hunt!",
+            "collective": "",
+            "openDays": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2,
+                3
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "63",
+            "location": {
+                "lat": -32.51176,
+                "lng": 19.95824
+            },
+            "name": "Fusion Fiesta",
+            "description": "We believe in the power of art and creativity to foster connections, living by our mantra ‘Mi Casa es Su Casa’. Stop by and be part of the ‘Screen of Memories’, transform your body into your African spirit animal or shake it at our infamous Tequila Party on Friday afternoon.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                1,
+                2,
+                3
+            ],
+            "scheduleDetail": "We have activities happening at different times each day and, we also have a lot more surprises programmed that will happen spontaneously, thats why we are keeping the camp open for everybody to join at any time.",
+            "children": 1
+        },
+        {
+            "label": "64",
+            "location": {
+                "lat": -32.51146,
+                "lng": 19.95839
+            },
+            "name": "Stoep Stories",
+            "description": "The Space Cowboys are a dynamic collective serving as a Sound Camp @ AfrikaBurn, gifting local and international DJs and producers since 2011.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2,
+                4
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "65",
+            "location": {
+                "lat": -32.51225,
+                "lng": 19.95988
+            },
+            "name": "FF Snooze Kings",
+            "description": "Where it’s quiet until it’s not. Jols might kick off at any time, flipping the calm into a lekker party. And if you spot the Snooze Cruise, you’ve found the heart of our wandering chill.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2,
+                3,
+                4
+            ],
+            "scheduleDetail": "Thursday 10pm Pyjamas Party at Snooze Kings Camp all other days sound at the camp when Snooze criuse is docket and otherwise cruising around with the Snooze Cruise providing water and lekker sound, when placed in the playa.",
+            "children": 1
+        },
+        {
+            "label": "66",
+            "location": {
+                "lat": -32.51183,
+                "lng": 19.96039
+            },
+            "name": "Enos Nookie",
+            "description": "Spacemonkey Enos crashed his rocket and welcomes cosmic travelers to his nookie. Enjoy audio-visual experiences through deep, underground fields of cosmic grooves in his safe, but wild place. Sip the sunset at our bar, play volleyball and twister, let your inner monkey loose at lekker psyjolwednesday, littlefriday and sundayafterhour.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2,
+                3,
+                4
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "67",
+            "location": {
+                "lat": -32.51074,
+                "lng": 19.95845
+            },
+            "name": "CYMATICA (MHV)",
+            "description": "Saturday at Mad Hatter’s Village brings a Miami Burner Vibe. The sound is sexy house, and our bar serves Tropical Cocktails. Body paint you to spoil you. CYMATICA will also host a Binnekring GROUP WEDDING. Grab your lover or best human. Ceremony starts at 6pm. Champagne celebration afterwards.",
+            "collective": "",
+            "openDays": null,
+            "openTimes": null,
+            "scheduleDetail": "null",
+            "children": null
+        },
+        {
+            "label": "68",
+            "location": {
+                "lat": -32.51138,
+                "lng": 19.95356
+            },
+            "name": "Six Degrees",
+            "description": "The universe’s beings are interconnected, manifesting in the ‘six degrees of separation’ concept. A quest on the Binnekring playground celebrates this bond, highlighting love as the essence of universal connection. This journey serves as a reminder that love is the soul of all creation, deepening our shared interconnectedness.",
+            "collective": "",
+            "openDays": [
+                4,
+                5
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "70",
+            "location": {
+                "lat": -32.51165,
+                "lng": 19.95332
+            },
+            "name": "Pamoja Project",
+            "description": "Emphasising the ‘Africa’ in ‘AfrikaBurn’, Pamoja (Swahili for ‘Together’) Project brings African-cultivated and-inspired music through sunset parties on our Mutant Vehicle ‘Punda Milia’. Daily camp offerings of fresh orange juice, workshops and global connections from 30 different nationalities.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1,
+                2,
+                3
+            ],
+            "scheduleDetail": "Orange juice at camp daily Tue-Saturday.\nWorkshops will be held 3 times during the week around noon.\nSunset parties from our art car Punda Milia which will be on Monday, Wednesday and Friday, running from 4ish til dark.",
+            "children": 1
+        },
+        {
+            "label": "71",
+            "location": {
+                "lat": -32.51165,
+                "lng": 19.95301
+            },
+            "name": "Kaggens Village",
+            "description": "We are a group of indigenous activists and healers from Southern Africa. We’ll be screening our documentary and creating a space similar to the traditional way of life for the bushmen.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                9
+            ],
+            "scheduleDetail": "Screenings will be fromn Wednesday to Friday 3'ish-5'ish.\nStorytelling around the fire at sunset.",
+            "children": 1
+        },
+        {
+            "label": "72",
+            "location": {
+                "lat": -32.51559,
+                "lng": 19.94978
+            },
+            "name": "Warm Showers",
+            "description": "We provide four semi-private shower cubicles, each equipped with a camp shower geyser and a 12v water pump. Please bring your own shower water and enjoy a warm shower. Please note: WE DO NOT PROVIDE ANY WATER FOR THE SHOWERS.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                1
+            ],
+            "scheduleDetail": "Monday to Sunday, 09h00 - 11h30",
+            "children": 1
+        },
+        {
+            "label": "73",
+            "location": {
+                "lat": -32.51555,
+                "lng": 19.94961
+            },
+            "name": "Kamp Kamp",
+            "description": "Kamp Kamp gives back to the Burn community by offering up our time and skills. The majority of our Kamp members are trained rangers who are signed up for a number of shifts during the Burn. Other participation is at at Greeters, The Sanctuary, and Lost & Found.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                1,
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 0
+        },
+        {
+            "label": "74",
+            "location": {
+                "lat": -32.51552,
+                "lng": 19.94947
+            },
+            "name": "The Flour Power Cartel",
+            "description": "Baking fresh bread in our unique oven since 2015. Slices of fresh hot bread served to famished burners. Add your own choice and combination of the butter (never margarine), jam, peanut butter, beef and yeast extracts that we provide! We bake and serve at random times during daylight hours.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "Sometimes, we load our hot bread on a mutant vehicle to serve at an unannounced pop-up location to the surprise and joy of those that pass.",
+            "children": 1
+        },
+        {
+            "label": "75",
+            "location": {
+                "lat": -32.51547,
+                "lng": 19.94918
+            },
+            "name": "Wild & Juicy",
+            "description": "Gifting freshly squeezed fruit and veggie juice daily.",
+            "collective": "",
+            "openDays": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                9
+            ],
+            "scheduleDetail": "Roughly around late morning to lunch time",
+            "children": 0
+        },
+        {
+            "label": "76",
+            "location": {
+                "lat": -32.51513,
+                "lng": 19.94909
+            },
+            "name": "Pedals For Peace",
+            "description": "Bicycles changing lives and spreading the AfrikaBurn love beyond the Burn itself. Bicycles are rented pre-AfrikaBurn and collected from our Theme Camp, used for the week, then gifted back. These bikes are then distributed to identified projects in and around the Karoo area of AfrikaBurn and beyond.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2,
+                9
+            ],
+            "scheduleDetail": "he workshop and camp times are 10am to 1pm and 2pm to 4pm daily. Dates operational 29th April to 5th May",
+            "children": 1
+        },
+        {
+            "label": "77",
+            "location": {
+                "lat": -32.51474,
+                "lng": 19.94853
+            },
+            "name": "Ubuhlanti",
+            "description": "We focus on uplifting young artists, celebrating culture, and collective actions and efforts. Despite challenges, we renew our commitment. Each unique contribution fuels our belief in community and culture. Together we co-create life-changing experiences, learning from each individual’s story and journey. Ubuhlanti Camp, where every voice matters!",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "We have specified the times in the previous answer but it is each day between 1PM and 3PM. ( this could change but not drastically)",
+            "children": 0
+        },
+        {
+            "label": "78",
+            "location": {
+                "lat": -32.51425,
+                "lng": 19.94879
+            },
+            "name": "Tulpa Wonderland",
+            "description": "As we continue our adventure of discovering the endless possibilities of the Tulpa community, we want to invite each and every one of you to embark on this incredible journey where your thoughts have the power to become reality. Together, we can turn barren landscapes into vibrant expressions of unity. Meet Tulpa!",
+            "collective": "",
+            "openDays": [
+                2,
+                4
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "-",
+            "children": 1
+        },
+        {
+            "label": "79",
+            "location": {
+                "lat": -32.51387,
+                "lng": 19.94908
+            },
+            "name": "Ambient Naartjie",
+            "description": "Ambient Naartjie is a Mediterranean themed chill lounge offering for fellow burners. We have freshly squeezed orange juice on tap and wood-fired hot tubs for everyone to enjoy. We provide a safe breakaway space for all burners who choose to come to enjoy our offering.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "Ambient Naartjie will be open from 4pm-8pm, Monday -Sunday. We will serve fresh orange juice during these times and have the. Kols Kols and some ambient music going",
+            "children": 0
+        },
+        {
+            "label": "80",
+            "location": {
+                "lat": -32.51538,
+                "lng": 19.95079
+            },
+            "name": "BEE CONSCIOUS",
+            "description": "Learn how important bees are to our continued existence on this planet. Art postcards. Photo booth. Solar-powered charging stations for cellphones, camera batteries or rechargeable lights. Icosahedron fully lit up at night to provide a navigation beacon.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                1,
+                2,
+                3
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "81",
+            "location": {
+                "lat": -32.50973,
+                "lng": 19.95466
+            },
+            "name": "Creation Propagation & Appreciation Station",
+            "description": "",
+            "collective": "",
+            "openDays": null,
+            "openTimes": null,
+            "scheduleDetail": "",
+            "children": null
+        },
+        {
+            "label": "82",
+            "location": {
+                "lat": -32.5142,
+                "lng": 19.94974
+            },
+            "name": "Granaat gaatjie",
+            "description": "Granaat Gaatjie provides pomegranate inspired drinks and juices to keep you going deep into the night! In the Binnekring Wednesday through Friday anywhere where there is a big crowd. Get your daily antioxidant fix with us!",
+            "collective": "",
+            "openDays": [
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                3
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "83",
+            "location": {
+                "lat": -32.51224,
+                "lng": 19.95035
+            },
+            "name": "Lands of Love",
+            "description": "Calling all lovers of the land. We are an open camping haven to all drivers of vehicles that wave at each other in the default world. 4x4s that may leak oil and break down. Incredibly self-reliant and mechanically gifted. We gift oil anointings and safaris. Insert Land Lover Joke here.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1,
+                2
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "84",
+            "location": {
+                "lat": -32.51706,
+                "lng": 19.95084
+            },
+            "name": "laSalizwe",
+            "description": "LasaLizwe is a collective theme camp of performing arts and hand-crafted designs. We all started collaborating together in 2022 ever since then we embraced each other inside/outside AfrikaBurn domain.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3
+            ],
+            "openTimes": [
+                2,
+                9
+            ],
+            "scheduleDetail": "Days will be 1st 2nd 3rd May 2024.\nTime start 12:00pm end 16:00pm the starting acts can change as to which. We also will be bring music with us to keep spirits up as sometimes you need your own vibes to relax or be a independent within.",
+            "children": 1
+        },
+        {
+            "label": "85",
+            "location": {
+                "lat": -32.51188,
+                "lng": 19.95767
+            },
+            "name": "Life in Colour",
+            "description": "An expression of every one of the millions of colours that you see but don’t see every second of the day. Every heard of the phrase ‘stop and smell the roses’? WELL - with our camp, its ‘STOP & taste the colour’! Candyfloss.",
+            "collective": "",
+            "openDays": null,
+            "openTimes": null,
+            "scheduleDetail": "",
+            "children": null
+        },
+        {
+            "label": "86",
+            "location": {
+                "lat": -32.51539,
+                "lng": 19.94828
+            },
+            "name": "NEVERLAND",
+            "description": "We are a group of musicians and artists coming together to facilitate interactive live performances like improvised jamming, storytelling, body movement and open discussions. The dome space that we create is a home for those to get away from electronic music and fall into spontaneous creation and, ultimately live music.",
+            "collective": "",
+            "openDays": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                2
+            ],
+            "scheduleDetail": "our jamming times are generally very spontaneous depending on the evening and energy, there is always an activity going on but ultimately based on the energy of the evening.",
+            "children": 1
+        },
+        {
+            "label": "87",
+            "location": {
+                "lat": -32.51395,
+                "lng": 19.95025
+            },
+            "name": "Soberland",
+            "description": "Soberland is the safest, most teetotalling, trip-free, fruit-juice-friendly spot at AfrikaBurn. It is a space where Burners who are in recovery or just want to experience the Burn without any substances muddying their perceptions. It’s a place where you won’t find any alcohol or cannabis, but you’ll find new friends.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                3,
+                4
+            ],
+            "scheduleDetail": "We only 3 people and only 1 will be available for talks during the day, we only available at night.",
+            "children": 1
+        },
+        {
+            "label": "88",
+            "location": {
+                "lat": -32.51122,
+                "lng": 19.95057
+            },
+            "name": "Sunset Oasis",
+            "description": "A serene atmosphere, less noisy side of Tankwa Town Sunset Oasis is a place to rest and recharge. We play relaxing music and space, sitting area is provided for reflection, connection and cleansing. Offering showers, spa and cinema nights this year.",
+            "collective": "",
+            "openDays": [
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                2,
+                9
+            ],
+            "scheduleDetail": "The spa and showers will be open 11-14.\nCinema at 8pm.",
+            "children": 1
+        },
+        {
+            "label": "89",
+            "location": {
+                "lat": -32.51046,
+                "lng": 19.95165
+            },
+            "name": "The ArtSluts",
+            "description": "We offer our skills, hands, saws and axes to the beautiful artists of AfrikaBurn who may need assistance with their artworks. We arrive the week before the Burn, appearing like angels out of the dust, blessing our fellow creatives with the much-needed support to realise their dreams.",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "openTimes": [
+                1
+            ],
+            "scheduleDetail": "",
+            "children": 0
+        },
+        {
+            "label": "90",
+            "location": {
+                "lat": -32.51093,
+                "lng": 19.9509
+            },
+            "name": "Swing-ish Club",
+            "description": "The best way to experience the Karoo veld ... yes, you’ve guessed it ... swinging! The type where your child-like heart can feel like it’s flying (get your mind out of the gutter)! Come join us whenever, with whomever, and enjoy the relaxing angulating sensations of a bench swing (especially at sunset!).",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                1,
+                2,
+                3
+            ],
+            "scheduleDetail": "",
+            "children": 1
+        },
+        {
+            "label": "91",
+            "location": {
+                "lat": -32.51055,
+                "lng": 19.95143
+            },
+            "name": "The Teahouse at the End of the Universe",
+            "description": "Have you come to the end of your tether? We have delicious tea and free desert views to reset your burner Mojo. Come chill in our shady space with a cuppa - we serve caffeinated and herbal teas from 11am until late!",
+            "collective": "",
+            "openDays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "openTimes": [
+                9
+            ],
+            "scheduleDetail": "Tea is offered from midmorning and into the evening but the aim is to be a 24/7 chill spot for those wandering late at night so the lights will stay on throughout the night.",
+            "children": 1
+        },
+        {
+            "label": "92",
+            "location": {
+                "lat": -32.5114,
+                "lng": 19.95323
+            },
+            "name": "WHAT IF...",
+            "description": "A, hopefully, daily stop on the Binnekring meanderings to grab a quick brunch snack and meet great veteran and virgin burners. Come fill that morning after (or the haven’t stopped yet) hole in the belly. What if ... we make your day FABULOUS???",
+            "collective": "",
+            "openDays": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+            ],
+            "openTimes": [
+                1
+            ],
+            "scheduleDetail": "Tuesday to burn close..  10:30 ish - 11:30ish",
+            "children": 1
         }
     ],
     "supportCamps": [],
@@ -21,7 +2077,8 @@
                 "lat": -32.51535,
                 "lng": 19.9552
             },
-            "description": "",
+            "description": "‘Genesis Bloom: Unveiling the Sacred Seed’ explores the mystical journey of creation, drawing inspiration from diverse spiritual and mythical concepts. The artwork symbolises the transformative moment when a seed, infused with cosmic energy, bursts forth, embodying the essence of life’s profound and mythical beginnings.",
+            "collective": "Sean Marais & Clan Crew",
             "burning": true,
             "burningDay": 6,
             "sound": false,
@@ -36,7 +2093,8 @@
                 "lat": -32.5164239,
                 "lng": 19.959032
             },
-            "description": "",
+            "description": "LuminEssence, shining the light on your authentic self. Humankind has the potential through consciousness to influence its own development. Through introspection and growth, to come to self-acceptance and authentic love, for oneself and the other. LuminEssence is the journey to love. The metaphor of the human heart and lungs provides the physical structure for this journey. The heartbeat is the first sign of human life, the breath the first and last act of individual life. The heart and lungs provide flow within and release without. The rhythm of life, the sign that it is never too late to start, again and again.",
+            "collective": "Carmel Ives and Temple Crew",
             "burning": true,
             "burningDay": 0,
             "sound": false,
@@ -52,8 +2110,9 @@
                 "lng": 19.9541842
             },
             "description": "",
+            "collective": "",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 0,
             "artworkWidth": 0,
@@ -66,9 +2125,10 @@
                 "lat": -32.5152071,
                 "lng": 19.9530691
             },
-            "description": "",
+            "description": "Would you like to talk to God? Do you want all the answers to CREATION? Questionable life advice? The latest Burn Schedule? Look for the ticky box on the edge of the Binnekring and pick up the receiver.",
+            "collective": "Brian Palmer, Robert Smith",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 2.0,
             "artworkWidth": 1.0,
@@ -81,9 +2141,10 @@
                 "lat": -32.51383,
                 "lng": 19.95464
             },
-            "description": "",
+            "description": "We are enslaved, be it to money, technology, work, social media, etc. We have lost our connection to nature and each other. If we can become aware of our enslavement and change our mindset we can free ourselves.",
+            "collective": "",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 1.3,
             "artworkWidth": 0.5,
@@ -96,9 +2157,10 @@
                 "lat": -32.5152294,
                 "lng": 19.9531829
             },
-            "description": "",
+            "description": "Welcome to the skillboratory library where knowledge and talent is exchanged. Take a seat and become part of the chain of knowledge. What link will you become to the person sitting next to you? A place to connect, share and learn together. This craftswap location becomes the playground of the participants.",
+            "collective": "",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 0.7,
             "artworkWidth": 1.3,
@@ -111,9 +2173,10 @@
                 "lat": -32.5134438,
                 "lng": 19.955906
             },
-            "description": "",
+            "description": "‘UMWAGAJI’ meaning bath in Swahili is a captivating and transformative sound journey experience. These baths aim to explore the depths of African cosmology through the power of sound, bridging art, spirituality, and culture in a profound and immersive way. Be transported into a carefully curated sonic environment that draws inspiration from African cosmological beliefs.",
+            "collective": "Ceduma Qamata",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": true,
             "artworkHeight": 3.0,
             "artworkWidth": 7.0,
@@ -126,9 +2189,10 @@
                 "lat": -32.5154939,
                 "lng": 19.9527041
             },
-            "description": "",
+            "description": "You know of the Binnekring, now welcome to the MINIKRING. Think of iconic art pieces of the past burns, come and see them all in miniature. Lie in the dust to take photos of yesteryear Clans in perspective. We will be burning in the shadow of the DMV arch with coloured flames. Think Heart, Love, Clans (at least 4), Mutants (at least 6). And watch LIZZY walk the Quagga dust for the first time. Dr Warren in charge of pyrotechnics. Charl blowing the anvil.",
+            "collective": "Paul Fletcher",
             "burning": true,
-            "burningDay": 0,
+            "burningDay": 6,
             "sound": false,
             "artworkHeight": 1.0,
             "artworkWidth": 1.0,
@@ -141,9 +2205,10 @@
                 "lat": -32.5138685,
                 "lng": 19.955395
             },
-            "description": "",
+            "description": "Creation, born from the cosmic dance, shapes Earth’s evolution through sacred geometry. In every facet, from atom to galaxy, Leonardo da Vinci glimpsed the light center of existence. Within this divine architecture, the universe unfolds, revealing the eternal mystery of life’s interconnectedness.",
+            "collective": "Erik Eloff",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 4.5,
             "artworkWidth": 6.2,
@@ -151,14 +2216,15 @@
         },
         {
             "label": "7",
-            "name": "Boxopolis",
+            "name": "Boxopolis Soul City",
             "location": {
                 "lat": -32.5160752,
                 "lng": 19.9522991
             },
-            "description": "",
+            "description": "From emptiness, Boxopolis springs, Ephemeral city where dust sings. Without fear, gather near, Creating Soul City, sincere. Bring yourself, come as you are, Add your touch, a shop or bazaar. Transience of human creation, A masterpiece, our celebration! Through storm and wind, struggle ceased,  Until fire burns, attachments released. Circles spun, as myriad miracles clash,  Whimsical constructions turned to ash.",
+            "collective": "DENISE GROBBELAAR",
             "burning": true,
-            "burningDay": 0,
+            "burningDay": 6,
             "sound": false,
             "artworkHeight": 2.0,
             "artworkWidth": 3.0,
@@ -171,9 +2237,10 @@
                 "lat": -32.5143758,
                 "lng": 19.9547487
             },
-            "description": "",
+            "description": "Matjieshuises as it was done thousands of years ago, based upon ancient Khoikhoi First Nation traditional knowledge, which sees mats made of reeds woven together and assembled. Discover Khoikhoi indigenous activities such as dancing, singing, poetry and language lessons/stories/conversations of the land.",
+            "collective": "Toroga Denver",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 0,
             "artworkWidth": 0,
@@ -186,9 +2253,10 @@
                 "lat": -32.5160155,
                 "lng": 19.9525227
             },
-            "description": "",
+            "description": "Wabi Sabi: Beauty in imperfection & impermanence. Come be your perfectly imperfect self, strike a pose & leave your worries behind.",
+            "collective": "The Wabi Sabi Collective",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 1.5,
             "artworkWidth": 10.0,
@@ -201,9 +2269,10 @@
                 "lat": -32.5147935,
                 "lng": 19.9544716
             },
-            "description": "",
+            "description": "At Truth Space the invitation is simple: To speak only your deepest truth while in this space. Speaking deep truth to one-another is a most powerful, liberating and courageous act. Truth is brilliant, deep and multilayered. It gets us in touch with vulnerability, integrity and authenticity. It's also a foundational essence of relating.",
+            "collective": "Ingo Jastram",
             "burning": true,
-            "burningDay": 0,
+            "burningDay": 5,
             "sound": false,
             "artworkHeight": 2.4,
             "artworkWidth": 7.5,
@@ -217,8 +2286,9 @@
                 "lng": 19.9523337
             },
             "description": "",
+            "collective": "",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": true,
             "artworkHeight": 3.0,
             "artworkWidth": 1.0,
@@ -232,8 +2302,9 @@
                 "lng": 19.9541632
             },
             "description": "",
+            "collective": "",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 4.0,
             "artworkWidth": 6.0,
@@ -241,12 +2312,13 @@
         },
         {
             "label": "13",
-            "name": "Ego Check Booth",
+            "name": "Ego Check",
             "location": {
                 "lat": -32.5162294,
                 "lng": 19.9528598
             },
-            "description": "",
+            "description": "We store burdensome egos. Our onsite facility is safe, secure and monitored most daylight hours. Ask about our VIP upgrades for Sparkle Ponies, influencers and DJs. Egos can only be returned upon presentation of the corresponding official unique claim check. Any unclaimed egos will be burned.",
+            "collective": "Ego Check SA, Franchise of Ego Check Worldwide",
             "burning": true,
             "burningDay": 5,
             "sound": false,
@@ -262,8 +2334,9 @@
                 "lng": 19.9554285
             },
             "description": "",
+            "collective": "",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 0.0,
             "artworkWidth": 0.0,
@@ -276,7 +2349,8 @@
                 "lat": -32.5159,
                 "lng": 19.9532382
             },
-            "description": "",
+            "description": "MEMORIES … why do we take so many pictures? The memories ... the good, the bad, the happy and bittersweet and painful (sometimes) ... every picture/memory deserves a picture frame. Hang them, show them, flaunt them or just let them be there, in the corner of our eye. Let us celebrate memories that are as beautiful and messy as life itself.",
+            "collective": "ALEX",
             "burning": true,
             "burningDay": 4,
             "sound": false,
@@ -291,9 +2365,10 @@
                 "lat": -32.5136718,
                 "lng": 19.9562851
             },
-            "description": "",
+            "description": "Take a seat baby; everybody’s doin’ it.",
+            "collective": "Flaff",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 3.0,
             "artworkWidth": 7.0,
@@ -306,7 +2381,8 @@
                 "lat": -32.5159024,
                 "lng": 19.9536738
             },
-            "description": "",
+            "description": "Consume 8? Consumption 8th deadly sin? A lapa with 8 chimneys, 7 sins +1. Contribute, decorate and write your confessions on the confessions ribbon cloud and send it away with the burning of the artwork.",
+            "collective": "Felix",
             "burning": true,
             "burningDay": 0,
             "sound": false,
@@ -321,9 +2397,10 @@
                 "lat": -32.5134498,
                 "lng": 19.9571113
             },
-            "description": "",
+            "description": "Although different entities, the mystery of the octopus and the brightness of the Citrine as entry way to the depths of the mysterious inner world of the creature, reflects the many and diverse sides of human beings – what you see is not always what you get and the permutations of our identity is like an infinite pool of magic.",
+            "collective": "Gerhard",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 2.5,
             "artworkWidth": 2.5,
@@ -336,9 +2413,10 @@
                 "lat": -32.516551,
                 "lng": 19.9529484
             },
-            "description": "",
+            "description": "An interactive sculpture of a Mother Goddess that will grow over the course of the Burn as people interact with it.",
+            "collective": "Neil Car",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 2.0,
             "artworkWidth": 2.0,
@@ -351,9 +2429,10 @@
                 "lat": -32.5139546,
                 "lng": 19.957321
             },
-            "description": "",
+            "description": "SpaceArk2bye2 is back in 2024. The structure is much less naked than 2023. She is dressed/clad in a see through netting onto which lighting/digital mapping is done at night time. There is a raised floor built within the rocket, together with a chill net at level 3, accessed by way of a ladder.",
+            "collective": "John Innes - AKA Rocketman",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": true,
             "artworkHeight": 18.0,
             "artworkWidth": 6.0,
@@ -361,14 +2440,15 @@
         },
         {
             "label": "21",
-            "name": "FlyDragons",
+            "name": "Fly Dragons",
             "location": {
                 "lat": -32.5168134,
                 "lng": 19.9528317
             },
-            "description": "",
+            "description": "The Dragons will move with a hand crank. Can you make them fly?",
+            "collective": "Darryl Bailey",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 3.0,
             "artworkWidth": 2.5,
@@ -381,9 +2461,10 @@
                 "lat": -32.5145315,
                 "lng": 19.9570324
             },
-            "description": "",
+            "description": "This piece offers a space which, in constant suspense, questions the human creative processes. The sculptural pieces take form in organic, to man made matter. They are suspended in vast geometrical steel frames. The contrasting materiality questions the fine line between the natural, and the man-made creative processes. Suspended meditatively in this vast space, the viewer is left to contemplate where human creation began and where it may end up leading us.",
+            "collective": "Ella Petousis",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 3.0,
             "artworkWidth": 16.0,
@@ -396,9 +2477,10 @@
                 "lat": -32.5167992,
                 "lng": 19.9533174
             },
-            "description": "",
+            "description": "Alebrijes are Mexican sculptures of whimsical, fantastical chimera creatures, holding a significant place in their folk art tradition. Our Afrikabrije is an ode to this art form, but with a South African twist. In blending various SA animals, the Afrikabrije is also a nod to our country’s diverse cultures and races, melding into one colorful tapestry.",
+            "collective": "Charlie Lau",
             "burning": true,
-            "burningDay": 0,
+            "burningDay": 4,
             "sound": false,
             "artworkHeight": 3.0,
             "artworkWidth": 8.0,
@@ -412,8 +2494,9 @@
                 "lng": 19.9562306
             },
             "description": "",
+            "collective": "",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 6.0,
             "artworkWidth": 0,
@@ -421,14 +2504,15 @@
         },
         {
             "label": "25",
-            "name": "StarTree",
+            "name": "startree",
             "location": {
                 "lat": -32.5163599,
                 "lng": 19.9536785
             },
-            "description": "",
+            "description": "Creation --- that is ‘startree’; what a journey in creation it is. Celebrate a life based on a ‘blank canvas’, after great turmoil, challenge, and despair. ‘startree’ is the new advice and base of my creative future … the ‘seed’ of my next burn-art-creative-adventure ...  for myself as a gift to the observer!",
+            "collective": "Conrad Hubbe",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 2.8,
             "artworkWidth": 2.8,
@@ -441,9 +2525,10 @@
                 "lat": -32.5149802,
                 "lng": 19.9561828
             },
-            "description": "",
+            "description": "An interactive celebration of Afrikan culture as expressed through drumming, percussion, dance, poetry and storytelling. Join us for daily workshops and interactive performances from 11am(ish) to 8pm(ish). Bring any acoustic instrument or use one of ours.",
+            "collective": "Leanne Horwitz",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": true,
             "artworkHeight": 4.0,
             "artworkWidth": 8.0,
@@ -456,7 +2541,8 @@
                 "lat": -32.5161481,
                 "lng": 19.9544832
             },
-            "description": "",
+            "description": "Threads of life weave the story of existence. The Tree of Life’s branches reach skyward, a testament to the power of creativity. Each leaf, a delicate embroidery, creates a tapestry of beings, both living and extinct. Each stitch represents a moment of creation, weaving together art and life in inextricable connection. Visit before we burn to adopt a creature.",
+            "collective": "",
             "burning": true,
             "burningDay": 4,
             "sound": false,
@@ -472,8 +2558,9 @@
                 "lng": 19.95686
             },
             "description": "",
+            "collective": "Sean Marais",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 5.0,
             "artworkWidth": 8.0,
@@ -486,9 +2573,10 @@
                 "lat": -32.516416,
                 "lng": 19.954241
             },
-            "description": "",
+            "description": "Founded in 2022, Ubuhlanti Camp embodies the spirit of collective effort and cultural celebration at AfrikaBurn. It pulsates with vibrant energy, fostering creativity and community among talents from Cape Town and beyond. As a miniature township, it encapsulates the essence of South African culture, serving as a homage to life and heritage within townships.",
+            "collective": "Thulani Headman",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": true,
             "artworkHeight": 0,
             "artworkWidth": 0,
@@ -501,7 +2589,8 @@
                 "lat": -32.5148281,
                 "lng": 19.9575197
             },
-            "description": "",
+            "description": "Round cone like wooden pavillion, with six huge doors that represents the element of life and life itself. Land, fire, water, wind, earth, and a sixth door to represent life. The door way leads you to a deck that surrounds the structure and leads you to the center play ring of sand. This cone like structure is six metres tall. Covered in an eclectic wooden cladding. Umkhathi is an Oasis, an interactive, play-friendly place for sharing, learning and unwinding. An inclusive space to experience CREATION.",
+            "collective": "Neo Monnapule",
             "burning": true,
             "burningDay": 6,
             "sound": false,
@@ -516,9 +2605,10 @@
                 "lat": -32.5169614,
                 "lng": 19.9540719
             },
-            "description": "",
+            "description": "In the enchanting realm where light and imagination intertwine, lies the captivating technique of the camera obscura. Like a portal to a bygone era, this ingenious method brings forth the magic of capturing images using nothing but the play of light. This year on a rotating platform to further tantalise your senses.",
+            "collective": "OBSCURA",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 3.0,
             "artworkWidth": 5.0,
@@ -526,12 +2616,13 @@
         },
         {
             "label": "32",
-            "name": "Tree of Knowledge",
+            "name": "The Tree of Knowledge",
             "location": {
                 "lat": -32.5141893,
                 "lng": 19.9587697
             },
-            "description": "",
+            "description": "The Tree of Knowledge will lure participants from far and wide, both day and night and lead you into temptation. Come speak to the sinister minister, interact with the fruits of temptation and have your soul pulled in various directions by the wonder of its majesty. A place to create, relax and eat the forbidden fruit!",
+            "collective": "Henri van Eetveldt; Gerhard Fouchee; JTM crew",
             "burning": true,
             "burningDay": 5,
             "sound": false,
@@ -547,8 +2638,9 @@
                 "lng": 19.9535945
             },
             "description": "",
+            "collective": "",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 2.5,
             "artworkWidth": 2.0,
@@ -562,8 +2654,9 @@
                 "lng": 19.95951
             },
             "description": "",
+            "collective": "",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": true,
             "artworkHeight": 4.0,
             "artworkWidth": 13.0,
@@ -576,9 +2669,10 @@
                 "lat": -32.5173,
                 "lng": 19.953163
             },
-            "description": "",
+            "description": "Celebrating the magic of life created by rain in the desert. This shimmering rain drop that is about to SPLASH into the Tankwa sand. Step inside. It houses a hammock hangout to float on, and a vertical kaleidoscope for spectacular views, optical illusions and light displays at night. Stay a while, play the rain drum and create your own magic.",
+            "collective": "",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 3.5,
             "artworkWidth": 12.0,
@@ -592,8 +2686,9 @@
                 "lng": 19.96067
             },
             "description": "",
+            "collective": "",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 4.0,
             "artworkWidth": 0,
@@ -606,7 +2701,8 @@
                 "lat": -32.5177375,
                 "lng": 19.954097
             },
-            "description": "",
+            "description": "Mielie Inc. brings to you a monument so great of stature it will take your breath away, leaving only wonder and a sense of inner peace.  A majestic reminder that we’re all at the Burn to Gooi Mielies!",
+            "collective": "Thomas van Alphen & Ryan",
             "burning": true,
             "burningDay": 5,
             "sound": false,
@@ -616,14 +2712,15 @@
         },
         {
             "label": "38",
-            "name": "One Thing Led to Another",
+            "name": "One Thing Leads to Another",
             "location": {
                 "lat": -32.5146028,
                 "lng": 19.9593786
             },
-            "description": "",
+            "description": "For the second year in a row, the Italian collective ‘Spazio Non Disponibile’ brings their art to AfrikaBurn. This year’s artwork, conceptual and metaphorical at the same time, deals with space and time. For the sake of CREATION the artists want to put the focus on the process more than the actual result.",
+            "collective": "Spazio Non Disponibile (Rome, IT)",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 2.0,
             "artworkWidth": 10.0,
@@ -636,7 +2733,8 @@
                 "lat": -32.5184745,
                 "lng": 19.953437
             },
-            "description": "",
+            "description": "Above and below. A pyramid with a lotus flower above. A small space to experience journeys to the underworld at specific times.",
+            "collective": "frans hollenbach",
             "burning": true,
             "burningDay": 5,
             "sound": false,
@@ -646,14 +2744,15 @@
         },
         {
             "label": "40",
-            "name": "ThePoolTable",
+            "name": "The Pool Table at the End of the Universe",
             "location": {
                 "lat": -32.5150042,
                 "lng": 19.9587758
             },
-            "description": "",
+            "description": "On the edge of space and time, where travellers’ feet ache from the weight of exploration, there’s a pool table with a view of creation, destruction, and the messy crunchy bits in between. The perfect spot to dust off your balls.",
+            "collective": "Radical Self Rollies",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 2.0,
             "artworkWidth": 4.0,
@@ -666,7 +2765,8 @@
                 "lat": -32.5188026,
                 "lng": 19.9544385
             },
-            "description": "",
+            "description": "A space of study into the natural world and ourselves. In this light capturing the feeling of the forest in the desert by using a medium of aliens to weave and construct the form. Within that we as people can observe how ourselves feel, within a reality that is far from our natural habitat.",
+            "collective": "Alex Skeate",
             "burning": true,
             "burningDay": 0,
             "sound": false,
@@ -681,9 +2781,10 @@
                 "lat": -32.515616,
                 "lng": 19.958134
             },
-            "description": "",
+            "description": "Love or Fear? The opposite of love is not hate … it is fear. What would choosing love look like for you?",
+            "collective": "Paolo + Sharni",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 3.0,
             "artworkWidth": 1.5,
@@ -691,14 +2792,15 @@
         },
         {
             "label": "43",
-            "name": "Awakening The Dragon",
+            "name": "Awakening Dragon",
             "location": {
                 "lat": -32.519131,
                 "lng": 19.955622
             },
-            "description": "",
+            "description": "The ancients foretold that at the change of ages the dragon will awaken. Find a glimpse of his glance among the Tankwa dunes.",
+            "collective": "",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 0.5,
             "artworkWidth": 3.0,
@@ -712,8 +2814,9 @@
                 "lng": 19.9573703
             },
             "description": "",
+            "collective": "",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 3.0,
             "artworkWidth": 6.0,
@@ -721,12 +2824,13 @@
         },
         {
             "label": "45",
-            "name": "Moloporivah",
+            "name": "The Moloporivah",
             "location": {
                 "lat": -32.518655,
                 "lng": 19.955256
             },
-            "description": "",
+            "description": "The Moloporivah is a shaded refuge in the vast openness of the AfrikaBurn Binnekring with the quest to recreate the historic gallery as a shade and visual provider to contemplate during the tour or stay.",
+            "collective": "Itumeleng Kgobokoe",
             "burning": true,
             "burningDay": 6,
             "sound": false,
@@ -741,9 +2845,10 @@
                 "lat": -32.5156055,
                 "lng": 19.9570471
             },
-            "description": "",
+            "description": "Burners are often ridiculed for how many stories they tell about all the things they saw at Burn. The Burn Watching Hide is a place to celebrate these sights and facilitate these stories.",
+            "collective": "WildCraft",
             "burning": true,
-            "burningDay": 0,
+            "burningDay": 5,
             "sound": false,
             "artworkHeight": 2.8,
             "artworkWidth": 3.0,
@@ -751,14 +2856,15 @@
         },
         {
             "label": "47",
-            "name": "Lizzard Love Labyrinth",
+            "name": "Lizard Love Labyrinth",
             "location": {
                 "lat": -32.5181062,
                 "lng": 19.9547738
             },
-            "description": "",
+            "description": "In the beginning, two lizards were mirrors of each other. And when Time came,  they dove into its sands and shed their skins.  Living many lives, in the shifting dunes, they lost each other, and themselves, in a caleidoscope of shimmering scales. Eons passed,  catching glimpses of familiarity in their reflections. Before too long they crossed paths, many times, yet never met. And so they experienced, becoming, what they have always been. Until they arrived, where everything must arrive, at this time - now. And together they would look back, Overlooking the journey of their be-coming. On what has been, always will be, one way or the other.",
+            "collective": "Livia Von Namibia",
             "burning": true,
-            "burningDay": 0,
+            "burningDay": 6,
             "sound": false,
             "artworkHeight": 0,
             "artworkWidth": 0,
@@ -766,14 +2872,15 @@
         },
         {
             "label": "48",
-            "name": "Hoot Hollow",
+            "name": "The Hoot Hollow",
             "location": {
                 "lat": -32.515753,
                 "lng": 19.956847
             },
-            "description": "",
+            "description": "Experience the enchanting ‘Hoot Hollow’ at AfrikaBurn 2024, where the mystical wisdom of owls inspires. It’s a symbolic rebirth, a fresh start and an opportunity to take flight into the unknown. Share and receive life’s lessons in a cozy owl’s nest, where a collective wisdom book awaits your insights. It’s a place to find solace, embrace the wonders of the desert, and discover newfound clarity under the vast, wild sky.",
+            "collective": "Courtney & Marcel Mulder",
             "burning": true,
-            "burningDay": 0,
+            "burningDay": 5,
             "sound": false,
             "artworkHeight": 0.5,
             "artworkWidth": 2.0,
@@ -781,14 +2888,15 @@
         },
         {
             "label": "49",
-            "name": "TreeOfStories",
+            "name": "Tree Of Stories",
             "location": {
                 "lat": -32.5172614,
                 "lng": 19.9555156
             },
-            "description": "",
+            "description": "This year’s flames will release ties to the past, celebrating our shared journey through AfrikaBurn’s history, bidding farewell to cherished memories and embracing the evolving narrative of ‘Inventing The World Anew.’",
+            "collective": "Laurence Brown",
             "burning": true,
-            "burningDay": 0,
+            "burningDay": 4,
             "sound": false,
             "artworkHeight": 15.0,
             "artworkWidth": 0,
@@ -801,9 +2909,10 @@
                 "lat": -32.516889,
                 "lng": 19.956406
             },
-            "description": "",
+            "description": "We introduce the Bunny Love Cuddle Puddle, a mix between an oversized bunny hutch and a jungle gym. White picket fences and deck chairs to hide from the sun.",
+            "collective": "Ziggy Francisco",
             "burning": true,
-            "burningDay": 0,
+            "burningDay": 5,
             "sound": false,
             "artworkHeight": 5.0,
             "artworkWidth": 4.0,
@@ -811,14 +2920,15 @@
         },
         {
             "label": "51",
-            "name": "TipTopBusStop",
+            "name": "Tip Top Bus Stop",
             "location": {
                 "lat": -32.517336,
                 "lng": 19.956891
             },
-            "description": "",
+            "description": "A space of interaction for mutant vehicles to offer a ride, anyone seeking a ride or perhaps just some time for a quick rest.",
+            "collective": "Tip Top Bus Stop",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 2.8,
             "artworkWidth": 2.0,
@@ -831,7 +2941,8 @@
                 "lat": -32.516943,
                 "lng": 19.957482
             },
-            "description": "",
+            "description": "Karma. is a bitch. What goes around comes around. No one is superior to the universal law of Nature. Cause and Effect. We cannot escape consequence of our actions and choices.  What we sow we reap. She’s coming for you. Full circle. Turn inwards.",
+            "collective": "Daya",
             "burning": true,
             "burningDay": 0,
             "sound": false,
@@ -846,9 +2957,10 @@
                 "lat": -32.5178891,
                 "lng": 19.9562248
             },
-            "description": "",
+            "description": "Needing some shady spot in the Binnekring to just take a break? Garden of Chill is the perfect spot to come and relax. Providing a beautiful, comfy and shanti space, giving you shade in the day and glowing cover at night.",
+            "collective": "Maya Margalit",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 3.0,
             "artworkWidth": 9.0,
@@ -861,9 +2973,10 @@
                 "lat": -32.5174533,
                 "lng": 19.9575659
             },
-            "description": "",
+            "description": "According to a papyrus written around 300 BCE, the Egyptian Sun God Ra ‘wept and the tears from his eyes fell on the ground and turned into bees’. The sculpture is a hive for bees, to give them something without asking for anything in return.",
+            "collective": "Nicholas Hester",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 1.0,
             "artworkWidth": 1.0,
@@ -876,9 +2989,10 @@
                 "lat": -32.518254,
                 "lng": 19.9564795
             },
-            "description": "",
+            "description": "Made by a collective of artists from Montreal QC Canada, Auðumbla invites you to step inside and explore the trembling first moments at the dawn of a new world.",
+            "collective": "Johan Vågstedt",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 2.5,
             "artworkWidth": 2.9,
@@ -886,14 +3000,15 @@
         },
         {
             "label": "56",
-            "name": "Windcatcher",
+            "name": "Windcatcher II",
             "location": {
                 "lat": -32.515784,
                 "lng": 19.9612952
             },
-            "description": "",
+            "description": "Windcatcher is an Aeolian longline - a device for generating sound from the wind. Aeolian instruments have been made for thousands of years. This one uses a long cord suspended above the ground to pick up the wind’s vibrations, like an antenna receiving a signal. A drumskin amplifies the sound for our ears - hear the wind sing!",
+            "collective": "Ralph Borland",
             "burning": false,
-            "burningDay": 0,
+            "burningDay": null,
             "sound": false,
             "artworkHeight": 4.0,
             "artworkWidth": 55.0,
@@ -906,7 +3021,8 @@
                 "lat": -32.5192807,
                 "lng": 19.9580344
             },
-            "description": "",
+            "description": "The Throne is a safe place far away from the crowds where one can chill out of the sun and make use of the en-suite bisexual urinal, the vaginal, for those who can’t make it to the toilets on the outside of the Binnekring.",
+            "collective": "James Raad",
             "burning": true,
             "burningDay": 0,
             "sound": false,
@@ -921,7 +3037,8 @@
                 "lat": -32.5174103,
                 "lng": 19.960974
             },
-            "description": "",
+            "description": "An investigation into shape, space, colour, movement and the visual and physical interaction between nature and built structures. Looking for ways of using the harsh local elements to create movement harmonious with the surroundings as opposed to bracing against and fighting those elements.",
+            "collective": "Nathan Honey",
             "burning": true,
             "burningDay": 0,
             "sound": false,
@@ -936,7 +3053,8 @@
                 "lat": -32.5185517,
                 "lng": 19.9588671
             },
-            "description": "",
+            "description": "A continuation of an investigation into shape, space, colour and the visual and physical interaction between nature and built structures.",
+            "collective": "Nathan Honey",
             "burning": true,
             "burningDay": 0,
             "sound": false,

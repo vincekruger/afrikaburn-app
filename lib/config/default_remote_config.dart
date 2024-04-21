@@ -7,7 +7,11 @@ class DefaultRemoteConfig {
     /// Map Data
     "map_center_lng": 19.95617,
     "map_center_lat": -32.51547,
-    "map_default_zoom": 14.5,
+    "map_bounds_ne_lng": 19.9779,
+    "map_bounds_ne_lat": -32.4875,
+    "map_bounds_sw_lng": 19.911,
+    "map_bounds_sw_lat": -32.5277,
+    "map_default_zoom": 15.5,
 
     /// News, Tickets & Sharing
     "news_page_size": 15,
