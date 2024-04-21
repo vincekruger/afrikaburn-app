@@ -42,6 +42,12 @@ class _SharedNavigationBarState extends NyState<SharedNavigationBar> {
     else if (data['route'] != null)
       index = widget.config.findIndexByPath(data['route']);
 
+    if (data?['action'] == 'hide_tickets_page') {
+      index = 0;
+      updateState(RootPage.path,
+          data: {"route": widget.config.getPathAtIndex(index)});
+    }
+
     /// Set the current index
     setState(() {
       /// Update the current index if different

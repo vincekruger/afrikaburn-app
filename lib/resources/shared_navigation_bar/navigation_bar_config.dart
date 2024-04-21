@@ -1,3 +1,4 @@
+import 'package:afrikaburn/config/storage_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
@@ -115,6 +116,9 @@ class TankwaTownNavigationBarConfig extends NavigationBarConfig {
           ),
         ),
 
+        // if (Backpack.instance
+        //         .read(StorageKey.ticketsPageHidden, defaultValue: false) ==
+        //     false)
         BottomNavigationItemConfig(
           builder: () => TicketPage(),
           navigationItem: BottomNavigationItem(

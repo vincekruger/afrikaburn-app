@@ -29,8 +29,6 @@ class AnnotationClickListener extends OnPointAnnotationClickListener {
 
   @override
   void onPointAnnotationClick(PointAnnotation annotation) {
-    print("on Annotation Click, id: ${annotation.id}");
-
     /// Find the Annotation
     final annotationId = annotation.id;
     final MapAnnotation? annotationData =

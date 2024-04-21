@@ -51,6 +51,9 @@ class MapController extends Controller {
   /// Map Icons
   late MapIcon mapIcons;
 
+  @override
+  bool get singleton => true;
+
   /// Annotation Managers
   late CircleAnnotationManager themeCampCircleAnnotationManager;
   late PointAnnotationManager themeCampLabelAnnotationManager;
