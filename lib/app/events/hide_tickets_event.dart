@@ -1,3 +1,5 @@
+import 'package:afrikaburn/config/storage_keys.dart';
+import 'package:afrikaburn/resources/shared_navigation_bar/shared_navigation_bar.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 /// Hide the Tickets Page event
@@ -13,6 +15,9 @@ class DefaultListener extends NyListener {
   @override
   handle(dynamic event) async {
     // Handle the event
-    print('HideTicketsEvent handled');
+    updateState(SharedNavigationBar.state,
+        data: {"index": 0, 'action': 'hide_tickets_page'});
+
+    await NyStorage.store(StorageKey.ticketsPageHidden, true, inBackpack: true);
   }
 }

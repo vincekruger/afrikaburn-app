@@ -14,6 +14,7 @@ class StorageKey {
   static String authUser = getEnv('AUTH_USER_KEY', defaultValue: 'AUTH_USER');
   static String radioFreeTankwasPlaying = 'RADIO_FREE_TANKWA_PLAYING';
   static String tankwaTownMode = 'TANKWA_TOWN_MODE';
+  static String ticketsPageHidden = 'TICKETS_PAGE_HIDDEN';
 }
 
 class SharedPreferenceKey {

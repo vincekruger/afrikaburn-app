@@ -4,6 +4,11 @@ import 'package:afrikaburn/config/storage_keys.dart';
 class AppModeProvider implements NyProvider {
   @override
   boot(Nylo nylo) async {
+    /// Tickets Page Hidden
+    if (Backpack.instance.read(StorageKey.ticketsPageHidden) == null)
+      Backpack.instance
+          .set(StorageKey.tankwaTownMode, (await ticketsPageHidden));
+
     return nylo;
   }
 
@@ -13,6 +18,14 @@ class AppModeProvider implements NyProvider {
     if (Backpack.instance.read(StorageKey.tankwaTownMode) == null)
       Backpack.instance.set(StorageKey.tankwaTownMode, (await tankwaTownMode));
   }
+
+  /// Tickets Page Hidden
+  static Future<bool> get ticketsPageHidden async =>
+      await NyStorage.read(StorageKey.ticketsPageHidden,
+                  defaultValue: "false") ==
+              "false"
+          ? false
+          : true;
 
   /// Get the current mode from the backpack
   static bool get tankwaTownModeBackpack => Backpack.instance
