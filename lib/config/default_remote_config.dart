@@ -12,6 +12,8 @@ class DefaultRemoteConfig {
     "map_bounds_sw_lng": 19.911,
     "map_bounds_sw_lat": -32.5277,
     "map_default_zoom": 15.5,
+    "map_min_zoom": 14,
+    "map_max_zoom": 18,
 
     /// News, Tickets & Sharing
     "news_page_size": 15,

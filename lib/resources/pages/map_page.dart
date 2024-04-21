@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
+import 'package:afrikaburn/app/models/map_annotation.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:afrikaburn/app/providers/map_data_provider.dart';
 import 'package:afrikaburn/app/providers/system_provider.dart';
 import 'package:afrikaburn/app/controllers/map_controller.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:afrikaburn/resources/widgets/map_annotation_widget.dart';
 
 class MapPage extends NyStatefulWidget<MapController> {
   static const path = '/map';
@@ -15,41 +16,32 @@ class MapPage extends NyStatefulWidget<MapController> {
   MapPage() : super(path, child: _MapPageState());
 }
 
-class ArtworkAnnotationClickListener extends OnPointAnnotationClickListener {
-  final MapboxMap controller;
-  ArtworkAnnotationClickListener({required this.controller});
+class AnnotationClickListener extends OnPointAnnotationClickListener {
+  final MapboxMap mapboxMap;
+  final MapController controller;
+  final BuildContext context;
+
+  AnnotationClickListener({
+    required this.mapboxMap,
+    required this.controller,
+    required this.context,
+  });
 
   @override
   void onPointAnnotationClick(PointAnnotation annotation) {
-    print("on Artwork Annotation Click, id: ${annotation.id}");
+    print("on Annotation Click, id: ${annotation.id}");
 
-    /// Not likely but checking anyways
-    if (!annotation.geometry!.containsKey('coordinates')) return;
+    /// Find the Annotation
+    final annotationId = annotation.id;
+    final MapAnnotation? annotationData =
+        controller.getAnnotationById(annotationId);
 
-    /// Get the coordinates
-    // final coordinates = annotation.geometry!['coordinates'] as dynamic;
-    // controller
-    //     .setCamera(CameraOptions(
-    //       center: Point(
-    //           coordinates: Position(
-    //         coordinates[0],
-    //         coordinates[1],
-    //       )).toJson(),
-    //     ))
-    //     .then((_) => print("Camera Set"));
+    /// No annotation found - gerrara here
+    if (annotationData == null) return;
 
-    // annotation.geometry!.entries.forEach((element) {
-    //   print("Key: ${element.key}, Value: ${element.value}");
-    // });
-  }
-}
-
-class ThemeCampAnnotationClickListener extends OnCircleAnnotationClickListener {
-  final MapboxMap controller;
-  ThemeCampAnnotationClickListener({required this.controller});
-  @override
-  void onCircleAnnotationClick(CircleAnnotation annotation) {
-    print("on Theme Camp Annotation Click, id: ${annotation.id}");
+    updateState(MapAnnotationDetail.state, data: {
+      'annotation': annotationData,
+    });
   }
 }
 
@@ -82,6 +74,16 @@ class _MapPageState extends NyState<MapPage> with WidgetsBindingObserver {
     super.dispose();
   }
 
+  /// Handle app lifecycle
+  @override
+  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
+    if (state != AppLifecycleState.resumed) return;
+
+    /// Check if the user has granted location permission and enable
+    /// the user location puck
+    controller.enableUserLocationPuck();
+  }
+
   @override
   void didChangePlatformBrightness() {
     super.didChangePlatformBrightness();
@@ -106,78 +108,78 @@ class _MapPageState extends NyState<MapPage> with WidgetsBindingObserver {
   /// Register mechanics for the map
   _onMapCreated(MapboxMap mapboxMap) async {
     this.mapboxMap = mapboxMap; // Set MapBoxMap controller ref
+    controller.mapboxMap = mapboxMap; // Set MapController ref
+    // controller.isMapLoaded = true; // Set Map Loaded to true
+
+    /// Restrict the map to portrait orientation
     SystemProvider()
         .setOnlyPortraitOrientation(); // Set Orientation to Portrait
+
+    /// Download Map Tiles
     MapDataProvider.downloadMapTiles(); // Download Map Tiles
 
-    /// Disable the scale bar
-    mapboxMap.scaleBar.updateSettings(ScaleBarSettings(enabled: false));
-
-    /// Set the Bounds
-    CoordinateBounds mapBounds = CoordinateBounds(
-      northeast: Point(
-          coordinates: Position(
-        FirebaseRemoteConfig.instance.getDouble('map_bounds_ne_lng'),
-        FirebaseRemoteConfig.instance.getDouble('map_bounds_ne_lat'),
-      )).toJson(),
-      southwest: Point(
-          coordinates: Position(
-        FirebaseRemoteConfig.instance.getDouble('map_bounds_sw_lng'),
-        FirebaseRemoteConfig.instance.getDouble('map_bounds_sw_lat'),
-      )).toJson(),
-      infiniteBounds: false,
-    );
-    mapboxMap.setBounds(CameraBoundsOptions(
-      bounds: mapBounds,
-      maxZoom: 18,
-      minZoom: 14,
-    ));
-
-    /// Hide the mapbox logo
-    mapboxMap.logo.updateSettings(LogoSettings(
-      marginLeft: -100,
-      marginBottom: -50,
-    ));
-    mapboxMap.attribution
-        .updateSettings(AttributionSettings(marginBottom: 20, marginRight: 10));
+    /// Set some default settings
+    controller.setDefaultSettings();
+    controller.setMapBounds();
 
     /// Create Annotations
-    controller.createMapAnnotations(mapboxMap, systemBrightness!);
+    controller.createMapAnnotations(systemBrightness!);
+
+    /// Enable the user location puck
+    controller.enableUserLocationPuck();
   }
 
   @override
   Widget view(BuildContext context) {
+    controller.context = context;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
-      floatingActionButton: IconButton(
-        onPressed: () async {
-          if (await Permission.location.isPermanentlyDenied) {
-            // TODO Show popup here to enable in settings
-            return;
-          }
-
-          /// Toggle Location Puck
-          controller.toggleLocationPuck(mapboxMap: mapboxMap!);
-        },
-        icon: Icon(Icons.my_location_rounded),
-        color: Colors.white,
-      ).withGradient(GradientStyles.appbarIcon),
-      body: MapWidget(
-        cameraOptions: CameraOptions(
-          center: Point(
-              coordinates: Position(
-            FirebaseRemoteConfig.instance.getDouble('map_center_lng'),
-            FirebaseRemoteConfig.instance.getDouble('map_center_lat'),
-          )).toJson(),
-          zoom: FirebaseRemoteConfig.instance.getDouble('map_default_zoom'),
-        ),
-        styleUri: systemBrightness == Brightness.light
-            ? MapboxStyles.LIGHT
-            : MapboxStyles.DARK,
-        onMapCreated: _onMapCreated,
-        mapOptions: MapOptions(
-          pixelRatio: MediaQuery.of(context).devicePixelRatio,
-        ),
+      body: Stack(
+        children: [
+          MapWidget(
+            onTapListener: (coordinate) {
+              updateState(MapAnnotationDetail.state, data: {'hide': true});
+            },
+            cameraOptions: CameraOptions(
+              center: Point(
+                  coordinates: Position(
+                FirebaseRemoteConfig.instance.getDouble('map_center_lng'),
+                FirebaseRemoteConfig.instance.getDouble('map_center_lat'),
+              )).toJson(),
+              zoom: FirebaseRemoteConfig.instance.getDouble('map_default_zoom'),
+            ),
+            styleUri: systemBrightness == Brightness.light
+                ? MapboxStyles.LIGHT
+                : MapboxStyles.DARK,
+            onMapCreated: _onMapCreated,
+            mapOptions: MapOptions(
+              pixelRatio: MediaQuery.of(context).devicePixelRatio,
+            ),
+          ),
+          Column(
+            children: [
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10.0, bottom: 10.0),
+                      child: IconButton(
+                        onPressed: () =>
+                            controller.centerMapOnUserLocation(context),
+                        icon: Icon(Icons.my_location_rounded),
+                        color: Colors.white,
+                      ).withGradient(GradientStyles.appbarIcon),
+                    ),
+                  ],
+                ),
+              ),
+              MapAnnotationDetail(),
+            ],
+          )
+        ],
       ),
     );
   }

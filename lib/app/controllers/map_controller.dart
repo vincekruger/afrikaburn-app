@@ -1,95 +1,16 @@
 import 'dart:convert';
 
-import 'package:afrikaburn/resources/pages/map_page.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:flutter/material.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:afrikaburn/app/models/map_annotation.dart';
+import 'package:afrikaburn/app/models/map_icon.dart';
+import 'package:afrikaburn/resources/pages/map_page.dart';
 import 'package:afrikaburn/app/controllers/controller.dart';
-
-enum AnnotationType {
-  ThemeCamp,
-  SupportCamp,
-  Artwork,
-  Clan,
-  Temple,
-  Bypass,
-}
-
-class Annotation {
-  final AnnotationType type;
-  final String label;
-  final String name;
-  final String? collective;
-  final String description;
-  final Position location;
-  final String? openTimes;
-  final bool adultsOnly;
-  final bool burning;
-  final int burningDay;
-  final bool sound;
-
-  final double? artworkHeight;
-  final double? artworkWidth;
-  final double? artworkDepth;
-
-  Annotation({
-    required this.type,
-    required this.label,
-    required this.name,
-    this.collective,
-    required this.description,
-    required this.location,
-    this.openTimes,
-    this.adultsOnly = false,
-    this.burning = false,
-    this.burningDay = 0,
-    this.sound = false,
-    this.artworkHeight,
-    this.artworkWidth,
-    this.artworkDepth,
-  });
-
-  factory Annotation.fromJson(Map<String, dynamic> json, AnnotationType type) {
-    return Annotation(
-      type: type,
-      label: json['label'],
-      name: json['name'],
-      collective: json['collective'] ?? null,
-      description: json['description'],
-      location: Position(
-        json['location']['lng'],
-        json['location']['lat'],
-      ),
-      openTimes: json['open-times'] ?? null,
-      adultsOnly: json['adults-only'] ?? false,
-      burning: json['burning'] ?? false,
-      burningDay: json['burningDay'] ?? 0,
-      sound: json['sound'] ?? false,
-      artworkHeight: json['artwork-height'] ?? null,
-      artworkWidth: json['artwork-width'] ?? null,
-      artworkDepth: json['artwork-depth'] ?? null,
-    );
-  }
-}
-
-class MapIcon {
-  final Uint8List artwork;
-  final Uint8List artworkBurning;
-  final Uint8List clan;
-  final Uint8List template;
-  final Uint8List bypass;
-  final Uint8List greeters;
-
-  MapIcon({
-    required this.artwork,
-    required this.artworkBurning,
-    required this.clan,
-    required this.template,
-    required this.bypass,
-    required this.greeters,
-  });
-}
+import 'package:afrikaburn/app/providers/geolocator_provider.dart';
+import 'package:afrikaburn/resources/popups/error.dart';
 
 class MapController extends Controller {
   final remoteConfig = FirebaseRemoteConfig.instance;
@@ -106,8 +27,8 @@ class MapController extends Controller {
     MapboxOptions.setAccessToken(accessToken);
   }
 
-  List<Map<String, Annotation>> loadedAnnotations = [];
-  List<Annotation> annotationData = [];
+  List<MapAnnotation> loadedAnnotations = [];
+  List<MapAnnotation> annotationData = [];
 
   /// Load the Map Data JSON
   Future<void> loadMapDataJson() async {
@@ -116,13 +37,14 @@ class MapController extends Controller {
 
     /// Theme Camps
     annotationData.addAll(result['themeCamps']
-        .map<Annotation>(
-            (e) => Annotation.fromJson(e, AnnotationType.ThemeCamp))
+        .map<MapAnnotation>(
+            (e) => MapAnnotation.fromJson(e, AnnotationType.ThemeCamp))
         .toList());
 
     /// Artwork
     annotationData.addAll(result['artwork']
-        .map<Annotation>((e) => Annotation.fromJson(e, AnnotationType.Artwork))
+        .map<MapAnnotation>(
+            (e) => MapAnnotation.fromJson(e, AnnotationType.Artwork))
         .toList());
   }
 
@@ -135,9 +57,55 @@ class MapController extends Controller {
   late PointAnnotationManager artworkAnnotationManager;
   late PointAnnotationManager generalAnnotationManager;
 
-  /// Map is loaded
-  late MapboxMap mapboxMap;
-  bool isMapLoaded = false;
+  /// Contexts & Initialisation Vars
+  late MapboxMap _mapboxMap;
+  bool _annotationmanagersCreated = false;
+
+  /// Set the Mapbox Map
+  void set mapboxMap(MapboxMap mapboxMap) {
+    _mapboxMap = mapboxMap;
+  }
+
+  /// Set the Map Bounds
+  Future<void> setMapBounds() async {
+    /// Build the location gps bounds
+    CoordinateBounds mapBounds = CoordinateBounds(
+      northeast: Point(
+          coordinates: Position(
+        FirebaseRemoteConfig.instance.getDouble('map_bounds_ne_lng'),
+        FirebaseRemoteConfig.instance.getDouble('map_bounds_ne_lat'),
+      )).toJson(),
+      southwest: Point(
+          coordinates: Position(
+        FirebaseRemoteConfig.instance.getDouble('map_bounds_sw_lng'),
+        FirebaseRemoteConfig.instance.getDouble('map_bounds_sw_lat'),
+      )).toJson(),
+      infiniteBounds: false,
+    );
+
+    /// Set the map bounds
+    _mapboxMap.setBounds(CameraBoundsOptions(
+      bounds: mapBounds,
+      minZoom: FirebaseRemoteConfig.instance.getDouble('map_min_zoom'),
+      maxZoom: FirebaseRemoteConfig.instance.getDouble('map_max_zoom'),
+    ));
+  }
+
+  /// Set Logo and Attribution Settings
+  Future<void> setDefaultSettings() async {
+    /// Hide Scale Bar
+    _mapboxMap.scaleBar.updateSettings(ScaleBarSettings(enabled: false));
+
+    /// Hide Logo
+    _mapboxMap.logo.updateSettings(LogoSettings(
+      marginLeft: -100,
+      marginBottom: -50,
+    ));
+
+    /// Hide Attribution
+    _mapboxMap.attribution
+        .updateSettings(AttributionSettings(marginBottom: 20, marginRight: 10));
+  }
 
   /// Load Map Icons
   Future<void> loadMapIcons() async {
@@ -191,34 +159,39 @@ class MapController extends Controller {
     await _createThemeCampLabelMarkers(brightness: brightness);
   }
 
+  MapAnnotation? getAnnotationById(String id) =>
+      loadedAnnotations.firstWhere((element) => element.annotationId == id);
+
   /// Create Annotation Managers
-  Future<void> _createAnnotationManagers({required MapboxMap mapboxMap}) async {
+  Future<void> _createAnnotationManagers() async {
     // Create Annotation Managers
     themeCampCircleAnnotationManager =
-        await mapboxMap.annotations.createCircleAnnotationManager();
+        await _mapboxMap.annotations.createCircleAnnotationManager();
     themeCampLabelAnnotationManager =
-        await mapboxMap.annotations.createPointAnnotationManager();
+        await _mapboxMap.annotations.createPointAnnotationManager();
     artworkAnnotationManager =
-        await mapboxMap.annotations.createPointAnnotationManager();
+        await _mapboxMap.annotations.createPointAnnotationManager();
     generalAnnotationManager =
-        await mapboxMap.annotations.createPointAnnotationManager();
+        await _mapboxMap.annotations.createPointAnnotationManager();
 
     /// Add a lister for annotation clicks
-    artworkAnnotationManager.addOnPointAnnotationClickListener(
-        ArtworkAnnotationClickListener(controller: mapboxMap));
+    artworkAnnotationManager
+        .addOnPointAnnotationClickListener(AnnotationClickListener(
+      mapboxMap: _mapboxMap,
+      controller: this,
+      context: this.context!,
+    ));
 
     /// Map is loaded
-    isMapLoaded = true;
-    mapboxMap = mapboxMap;
+    _annotationmanagersCreated = true;
   }
 
   /// Create the Map Annotations
   Future<void> createMapAnnotations(
-    MapboxMap mapboxMap,
     Brightness brightness,
   ) async {
     /// If the map is not loaded, create the annotation managers
-    if (!isMapLoaded) await _createAnnotationManagers(mapboxMap: mapboxMap);
+    if (!_annotationmanagersCreated) await _createAnnotationManagers();
 
     _createGreetersStation();
 
@@ -245,7 +218,7 @@ class MapController extends Controller {
   /// a point annotation which will display the id/label of the camp.
   Future<void> _createThemeCampCircles() async {
     /// Theme Camp Data
-    Iterable<Annotation> data = annotationData
+    Iterable<MapAnnotation> data = annotationData
         .where((element) => element.type == AnnotationType.ThemeCamp);
 
     /// Create Annotations
@@ -261,14 +234,15 @@ class MapController extends Controller {
     Brightness brightness = Brightness.light,
   }) async {
     /// Theme Camp Data
-    Iterable<Annotation> data = annotationData
+    Iterable<MapAnnotation> data = annotationData
         .where((element) => element.type == AnnotationType.ThemeCamp);
 
     /// Create Annotations
     data.forEach((annotation) async {
       PointAnnotation result = await themeCampLabelAnnotationManager
           .create(_createThemeCampPointAnnotation(annotation, brightness));
-      loadedAnnotations.add({result.id: annotation});
+      annotation.annotationId = result.id;
+      loadedAnnotations.add(annotation);
     });
   }
 
@@ -277,18 +251,19 @@ class MapController extends Controller {
   /// based on the type of artwork and place the id/label of the artwork.
   Future<void> _createArtworkMarkers() async {
     /// Artwork Data
-    Iterable<Annotation> data = annotationData
+    Iterable<MapAnnotation> data = annotationData
         .where((element) => element.type == AnnotationType.Artwork);
 
     /// Create Annotations
     data.forEach((annotation) async {
       PointAnnotation result = await artworkAnnotationManager
           .create(_createPointAnnotation(annotation));
-      loadedAnnotations.add({result.id: annotation});
+      annotation.annotationId = result.id;
+      loadedAnnotations.add(annotation);
     });
   }
 
-  CircleAnnotationOptions _createCircleAnnotation(Annotation item) {
+  CircleAnnotationOptions _createCircleAnnotation(MapAnnotation item) {
     return CircleAnnotationOptions(
       geometry: Point(coordinates: item.location).toJson(),
       circleColor: Colors.transparent.value,
@@ -299,18 +274,18 @@ class MapController extends Controller {
   }
 
   PointAnnotationOptions _createThemeCampPointAnnotation(
-      Annotation item, Brightness brightness) {
+      MapAnnotation item, Brightness brightness) {
     return PointAnnotationOptions(
       geometry: Point(coordinates: item.location).toJson(),
       textField: item.label,
       textColor: brightness == Brightness.light
           ? Colors.black.value
           : Colors.white.value,
-      textSize: 12.0,
+      textSize: 10.0,
     );
   }
 
-  PointAnnotationOptions _createPointAnnotation(Annotation item) {
+  PointAnnotationOptions _createPointAnnotation(MapAnnotation item) {
     PointAnnotationOptions point = PointAnnotationOptions(
       geometry: Point(coordinates: item.location).toJson(),
     );
@@ -352,19 +327,36 @@ class MapController extends Controller {
   }
 
   /// Toggle Location Puck
-  Future<void> toggleLocationPuck({required MapboxMap mapboxMap}) async {
-    LocationComponentSettings currentSettings =
-        await mapboxMap.location.getSettings();
-    bool enabled = currentSettings.enabled ?? false;
+  Future<void> enableUserLocationPuck() async {
+    /// Check if the user has granted location permission
+    if (await Permission.location.isPermanentlyDenied) return;
 
     /// Localation and Puck Settings
-    mapboxMap.location.updateSettings(LocationComponentSettings(
-      enabled: !enabled,
+    _mapboxMap.location.updateSettings(LocationComponentSettings(
+      enabled: true,
       pulsingEnabled: false,
       puckBearingEnabled: true,
       puckBearing: PuckBearing.COURSE,
     ));
+  }
 
-    // return await Geolocator.getCurrentPosition();
+  /// Center the map on the user location
+  Future<void> centerMapOnUserLocation(BuildContext context) async {
+    try {
+      /// Get the current user location
+      Position userLocation =
+          await GeolocatorProvider.currentLocationForMapBox();
+
+      /// East to the current user location
+      _mapboxMap.easeTo(
+        CameraOptions(center: Point(coordinates: userLocation).toJson()),
+        MapAnimationOptions(duration: 1000),
+      );
+    } on PermissionDeniedException catch (_) {
+      notifcationSettingsErrorDialogBuilder(
+        context,
+        "settings.location-denied",
+      );
+    }
   }
 }

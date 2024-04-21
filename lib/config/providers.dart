@@ -1,3 +1,4 @@
+import '/app/providers/geolocator_provider.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 import '/app/providers/app_links_provider.dart';
@@ -36,4 +37,6 @@ final Map<Type, NyProvider> providers = {
   AppModeProvider: AppModeProvider(),
   GuideDownloadProvider: GuideDownloadProvider(),
   MapDataProvider: MapDataProvider(),
+
+  GeolocatorProvider: GeolocatorProvider(),
 };

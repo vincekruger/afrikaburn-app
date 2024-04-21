@@ -132,6 +132,12 @@
   },
   "settings": {
     "page-title": "Settings",
+    "location-denied": {
+      "title": "Location Access Disabled",
+      "message": "You havne't allowed permission to check your location 🙄\nYou can change this again in your phone's settings.",
+      "confirm": "Got it!",
+      "open-settings": "Open Settings"
+    },
     "notifications-denied": {
       "title": "Notifications Disabled",
       "message": "You have not allowed the app permission to send you notifications notifications. You can enable them in your phone's settings.",
