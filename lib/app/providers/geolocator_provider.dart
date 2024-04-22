@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:geolocator/geolocator.dart' as geolocator;
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
@@ -14,6 +16,10 @@ class GeolocatorProvider implements NyProvider {
   afterBoot(Nylo nylo) async {}
 
   static Future<Position> currentLocationForMapBox() async {
+    if (Platform.isAndroid) {
+      await geolocator.Geolocator.requestPermission();
+    }
+
     // Get the current location
     geolocator.Position position =
         await geolocator.Geolocator.getCurrentPosition(
