@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:moment_dart/moment_dart.dart';
 import 'package:pdfrx/pdfrx.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/bootstrap/helpers.dart';
@@ -149,7 +151,12 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
     bool? firstAttemptByEmptyPassword = true;
     if (widget.isProtected) {
       firstAttemptByEmptyPassword = false;
-      passwordProvider = () => '2024042920240505';
+      passwordProvider = () =>
+          Moment.parse(
+                  FirebaseRemoteConfig.instance.getString('burn_start_date'))
+              .format('YYYYMMDD') +
+          Moment.parse(FirebaseRemoteConfig.instance.getString('burn_end_date'))
+              .format('YYYYMMDD');
     }
 
     if (widget.file != null) {

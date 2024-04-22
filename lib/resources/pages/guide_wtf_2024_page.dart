@@ -10,9 +10,6 @@ class GuideWtf2024Page extends NyStatefulWidget<GuideWtf2024Controller> {
   GuideWtf2024Page({super.key}) : super(path, child: _GuideWtf2024PageState());
 }
 
-/// PDF Password
-/// 2024042920240505
-
 class _GuideWtf2024PageState extends NyState<GuideWtf2024Page> {
   /// [GuideWtf2024Controller] controller
   GuideWtf2024Controller get controller => widget.controller;
