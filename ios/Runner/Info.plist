@@ -81,6 +81,17 @@
 	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSPrivacyAccessedAPITypes</key>
+    <array>
+        <dict>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>CA92.1</string>
+            </array>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+        </dict>
+    </array>
 	<key>MBXAccessToken</key>
 	<string>pk.eyJ1IjoidmluY2VrcnVnZXIiLCJhIjoiY2x1NXZ1dGhxMXBkZTJpcXNxeGZseXc3OCJ9.kxVHWAgeQ0SIldaUSlf6ng</string>
 </dict>
