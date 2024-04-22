@@ -227,6 +227,8 @@ class MapController extends Controller {
     _createThemeCampLabelMarkers(brightness: brightness);
 
     /// Create Artwork Markets
+    /// Android doesn't seem to handle this very well, so we delay it
+    if (Platform.isAndroid) await Future.delayed(Duration(seconds: 1));
     _createArtworkMarkers();
   }
 
@@ -320,15 +322,15 @@ class MapController extends Controller {
     switch (item.label) {
       case 'clan':
         point.image = mapIcons.clan;
-        point.iconSize = 1.2;
+        point.iconSize = Platform.isAndroid ? 1 : 1.2;
         break;
       case 'bypass':
         point.image = mapIcons.bypass;
-        point.iconSize = 0.8;
+        point.iconSize = Platform.isAndroid ? 0.5 : 0.8;
         break;
       case 'temple':
         point.image = mapIcons.template;
-        point.iconSize = 0.8;
+        point.iconSize = Platform.isAndroid ? 0.5 : 0.8;
         break;
       default:
         point.textField = item.label;
@@ -337,12 +339,12 @@ class MapController extends Controller {
 
         if (item.burning) {
           point.image = mapIcons.artworkBurning;
-          point.iconSize = 1;
+          point.iconSize = Platform.isAndroid ? 0.7 : 1;
           point.textAnchor = TextAnchor.TOP;
           point.textOffset = [-0.02, 0.1];
         } else {
           point.image = mapIcons.artwork;
-          point.iconSize = 0.8;
+          point.iconSize = Platform.isAndroid ? 0.5 : 0.8;
           point.textAnchor = TextAnchor.BOTTOM;
           point.textOffset = [-0.02, 0.25];
         }
