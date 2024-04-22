@@ -1,4 +1,5 @@
 import 'package:afrikaburn/app/models/file_size.dart';
+import 'package:afrikaburn/app/providers/firebase_provider.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/resources/appbars/settings_app_bar.dart';
 import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
@@ -6,9 +7,11 @@ import 'package:afrikaburn/resources/popups/confirm.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/extensions/outlined_button.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '/app/controllers/settings_controller.dart';
 
 class SettingsPage extends NyStatefulWidget<SettingsController> {
@@ -299,7 +302,29 @@ class _SettingsPageState extends NyState<SettingsPage>
             ),
           ],
         ),
-      )
+      ),
+      SizedBox(height: 20),
+      InkWell(
+        onTap: () async {
+          await launchUrl(
+            Uri.parse(
+                FirebaseRemoteConfig.instance.getString('privacy_policy')),
+            mode: LaunchMode.externalApplication,
+          );
+          FirebaseProvider().logEvent('open_privacy_policy', {});
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(Icons.open_in_browser).withGradeint(GradientStyles.appbarIcon),
+            SizedBox(width: 5),
+            Text('Privacy Policy')
+                .bodyMedium(context)
+                .setColor(context, (color) => context.color.primaryContent),
+          ],
+        ),
+      ),
     ];
   }
 
