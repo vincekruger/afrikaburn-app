@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
@@ -99,15 +100,31 @@ class MapController extends Controller {
     /// Hide Scale Bar
     _mapboxMap.scaleBar.updateSettings(ScaleBarSettings(enabled: false));
 
-    /// Hide Logo
-    _mapboxMap.logo.updateSettings(LogoSettings(
-      marginLeft: -100,
-      marginBottom: -50,
-    ));
+    if (Platform.isIOS) {
+      /// Hide Logo
+      _mapboxMap.logo.updateSettings(LogoSettings(
+        marginLeft: -100,
+        marginBottom: -50,
+      ));
 
-    /// Hide Attribution
-    _mapboxMap.attribution
-        .updateSettings(AttributionSettings(marginBottom: 20, marginRight: 10));
+      /// Hide Attribution
+      _mapboxMap.attribution.updateSettings(
+          AttributionSettings(marginBottom: 20, marginRight: 10));
+    }
+
+    if (Platform.isAndroid) {
+      /// Hide Logo
+      _mapboxMap.logo.updateSettings(LogoSettings(
+        marginLeft: -100,
+        marginBottom: -50,
+      ));
+
+      /// Hide Attribution
+      _mapboxMap.attribution.updateSettings(AttributionSettings(
+        marginLeft: -100,
+        marginBottom: -50,
+      ));
+    }
   }
 
   /// Load Map Icons
