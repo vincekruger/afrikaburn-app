@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/resources/pages/root.dart';
