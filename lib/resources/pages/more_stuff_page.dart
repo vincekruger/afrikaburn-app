@@ -25,12 +25,12 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
   final List<NavigationItem> _items = [
     /// PDF Viewers
     NavigationItem(
-      AB24Icons.file,
+      AB24Icons.wtf_guide,
       "menu-item.wtf-guide-pdf-2023".tr(),
       routeName: GuideWtf2023Page.path,
     ),
     NavigationItem(
-      AB24Icons.file,
+      AB24Icons.map,
       "menu-item.map-pdf-2023".tr(),
       routeName: MapPdfPage.path,
     ),
