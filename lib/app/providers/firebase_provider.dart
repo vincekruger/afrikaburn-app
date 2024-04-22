@@ -10,6 +10,7 @@ import 'package:afrikaburn/config/firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:afrikaburn/config/default_remote_config.dart';
 import 'package:afrikaburn/config/storage_keys.dart';
+import 'package:afrikaburn/app/events/remote_config_updates_event.dart';
 
 class FirebaseProvider implements NyProvider {
   /// Run before boot
@@ -87,9 +88,11 @@ class FirebaseProvider implements NyProvider {
     ));
 
     /// Setup Remote Config Listener
-    remoteConfig.onConfigUpdated.listen((event) async {
-      print("Remote config updated: $event");
+    remoteConfig.onConfigUpdated.listen((updates) async {
       await remoteConfig.activate();
+      event<RemoteConfigUpdatesEvent>(data: {
+        "updatedKeys": updates.updatedKeys,
+      });
     });
 
     /// Set default remote config values

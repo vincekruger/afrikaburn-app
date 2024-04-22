@@ -7,6 +7,8 @@ import 'package:afrikaburn/app/events/notifications_event.dart';
 import 'package:afrikaburn/app/events/root_app_lifecycle_event.dart';
 import 'package:afrikaburn/app/events/tankwa_mode_event.dart';
 import 'package:afrikaburn/app/events/hide_tickets_event.dart';
+import 'package:afrikaburn/app/events/remote_config_updates_event.dart';
+import 'package:afrikaburn/app/events/prepare_data_event.dart';
 
 /* Events
 |--------------------------------------------------------------------------
@@ -26,4 +28,6 @@ final Map<Type, NyEvent> events = {
   AnalyticsTrackingEvent: AnalyticsTrackingEvent(),
   TankwaModeEvent: TankwaModeEvent(),
   HideTicketsEvent: HideTicketsEvent(),
+  RemoteConfigUpdatesEvent: RemoteConfigUpdatesEvent(),
+  PrepareEventDataEvent: PrepareEventDataEvent(),
 };

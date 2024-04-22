@@ -1,8 +1,8 @@
 class DefaultRemoteConfig {
   static final Map<String, dynamic> defaultConfig = {
     /// Burn Dates
-    "burn_start_date": "2022-04-29",
-    "burn_end_date": "2022-05-05",
+    "burn_start_date": "2024-04-29",
+    "burn_end_date": "2024-05-05",
 
     /// Map Data
     "map_center_lng": 19.95617,

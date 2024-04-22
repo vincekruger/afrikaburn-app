@@ -1,22 +1,84 @@
+import 'package:afrikaburn/app/events/tankwa_mode_event.dart';
+import 'package:moment_dart/moment_dart.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/config/storage_keys.dart';
+import 'package:afrikaburn/app/events/prepare_data_event.dart';
 
 class AppModeProvider implements NyProvider {
   @override
   boot(Nylo nylo) async {
-    /// Tickets Page Hidden
-    if (Backpack.instance.read(StorageKey.ticketsPageHidden) == null)
-      Backpack.instance
-          .set(StorageKey.tankwaTownMode, (await ticketsPageHidden));
+    /// Get Stroage Values
+    Backpack.instance.set(StorageKey.tankwaTownMode, (await tankwaTownMode));
+    Backpack.instance
+        .set(StorageKey.ticketsPageHidden, (await ticketsPageHidden));
 
     return nylo;
   }
 
   @override
   afterBoot(Nylo nylo) async {
-    /// Set the app mode in the backpack
-    if (Backpack.instance.read(StorageKey.tankwaTownMode) == null)
-      Backpack.instance.set(StorageKey.tankwaTownMode, (await tankwaTownMode));
+    if (burnIsSoon) {
+      print('Burn is coming soon');
+      preDownloadGuides();
+      return;
+    }
+
+    /// Check if it's burn time
+    if (burnHasBegun) {
+      print('Burn has begun');
+      event<TankwaModeEvent>(data: {'state': true});
+      return;
+    }
+
+    if (burnHasEnded) {
+      print('Burn has ended');
+      event<TankwaModeEvent>(data: {'state': false});
+    }
+  }
+
+  /// PreDownload Guides
+  static Future<void> preDownloadGuides() async {
+    /// not yet
+    if (!burnIsSoon) return;
+    if (FirebaseRemoteConfig.instance.getBool('guides_predownload_available') !=
+        true) return;
+
+    /// Call the event
+    event<PrepareEventDataEvent>();
+  }
+
+  /// Burn has started
+  static bool get burnHasBegun {
+    Moment today = Moment.now();
+    Moment burnStartDate =
+        Moment.parse(FirebaseRemoteConfig.instance.getString('burn_start_date'))
+            .startOfDay();
+    Moment burnEndDate =
+        Moment.parse(FirebaseRemoteConfig.instance.getString('burn_end_date'))
+            .startOfDay();
+    return today.isAfter(burnStartDate) && today.isBefore(burnEndDate);
+  }
+
+  /// Burn has ended
+  static bool get burnHasEnded {
+    Moment today = Moment.now();
+    Moment burnEndDate =
+        Moment.parse(FirebaseRemoteConfig.instance.getString('burn_end_date'))
+            .endOfDay()
+            .add(Duration(days: 1));
+    return today.isAfter(burnEndDate);
+  }
+
+  static bool get burnIsSoon {
+    Moment today = Moment.now().startOfDay();
+    Moment burnStartDate =
+        Moment.parse(FirebaseRemoteConfig.instance.getString('burn_start_date'))
+            .startOfDay();
+    int soonDays = 15;
+
+    return today.isBefore(burnStartDate) &&
+        today.isAfter(burnStartDate.subtract(Duration(days: soonDays)));
   }
 
   /// Tickets Page Hidden

@@ -15,6 +15,7 @@ class StorageKey {
   static String radioFreeTankwasPlaying = 'RADIO_FREE_TANKWA_PLAYING';
   static String tankwaTownMode = 'TANKWA_TOWN_MODE';
   static String ticketsPageHidden = 'TICKETS_PAGE_HIDDEN';
+  static String mapTilesDownloaded = 'MAP_TILES_DOWNLOADED';
 }
 
 class SharedPreferenceKey {
