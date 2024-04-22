@@ -6,10 +6,8 @@ import 'package:afrikaburn/resources/pages/radio_free_tankwa_page.dart';
 import 'package:afrikaburn/resources/pages/root.dart';
 import 'package:afrikaburn/resources/pages/news_detail_page.dart';
 import 'package:afrikaburn/resources/pages/news_page.dart';
-import 'package:afrikaburn/resources/pages/create_contact_page.dart';
 import 'package:afrikaburn/resources/pages/ticket_page.dart';
 import 'package:afrikaburn/resources/pages/map_page.dart';
-import 'package:afrikaburn/resources/pages/my_contact_page.dart';
 import 'package:afrikaburn/resources/pages/guide_wtf_2023_page.dart';
 import 'package:afrikaburn/resources/pages/guide_wtf_2024_page.dart';
 import 'package:afrikaburn/resources/pages/support_page.dart';
@@ -57,14 +55,6 @@ appRouter() => nyRoutes((router) {
         TicketPage.path,
         (context) => TicketPage(),
       );
-      // router.route(
-      //   MyContactPage.path,
-      //   (context) => MyContactPage(),
-      // );
-      // router.route(
-      //   CreateContactPage.path,
-      //   (context) => CreateContactPage(),
-      // );
       router.route(
         RadioFreeTankwaPage.path,
         (context) => RadioFreeTankwaPage(),
