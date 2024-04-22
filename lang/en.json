@@ -31,8 +31,10 @@
   },
   "screen-name": {
     "map": "Map",
-    "wtf-guide-2023": "WTF Guide",
+    "wtf-guide-2023": "2023 WTF Guide",
+    "wtf-guide-2024": "WTF Guide",
     "map-pdf-2023": "2023 Map",
+    "map-pdf-2024": "Map",
     "support": "Support The App",
     "radio-free-tankwa": "Radio Free Tankwa"
   },

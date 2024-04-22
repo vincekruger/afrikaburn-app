@@ -5,7 +5,7 @@ import 'package:afrikaburn/resources/widgets/guide_viewer_widget.dart';
 
 class GuideWtf2023Page extends NyStatefulWidget {
   static const path = '/wtf-guide';
-  static const name = '2023 WTF Guide';
+  static const name = 'Guide WTF 2023';
   GuideWtf2023Page() : super(path, child: _WtfGuidePageState());
 }
 

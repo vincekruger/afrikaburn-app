@@ -8,6 +8,7 @@ import 'package:afrikaburn/app/controllers/map_controller.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';
 import 'package:afrikaburn/resources/widgets/map_annotation_widget.dart';
+import 'package:afrikaburn/resources/pages/guide_map_2024_page.dart';
 
 class MapPage extends NyStatefulWidget<MapController> {
   static const path = '/map';
@@ -189,14 +190,31 @@ class _MapPageState extends NyState<MapPage> with WidgetsBindingObserver {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10.0, bottom: 10.0),
-                      child: IconButton(
-                        onPressed: () =>
-                            controller.centerMapOnUserLocation(context),
-                        icon: Icon(Icons.my_location_rounded),
-                        color: Colors.white,
-                      ).withGradient(GradientStyles.appbarIcon),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(right: 10.0, bottom: 10.0),
+                          child: IconButton(
+                            onPressed: () => routeTo(GuideMap2024Page.path),
+                            icon: Icon(Icons.map),
+                            color: Colors.white,
+                          ).withGradient(GradientStyles.appbarIcon),
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(right: 10.0, bottom: 10.0),
+                          child: IconButton(
+                            onPressed: () =>
+                                controller.centerMapOnUserLocation(context),
+                            icon: Icon(Icons.my_location_rounded),
+                            color: Colors.white,
+                          ).withGradient(GradientStyles.appbarIcon),
+                        ),
+                      ],
                     ),
                   ],
                 ),

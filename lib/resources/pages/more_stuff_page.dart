@@ -32,7 +32,7 @@ class _MoreStuffPageState extends NyState<MoreStuffPage> {
     NavigationItem(
       AB24Icons.map,
       "menu-item.map-pdf-2023".tr(),
-      routeName: MapPdfPage.path,
+      routeName: GuideMap2023Page.path,
     ),
     NavigationItem(
       AB24Icons.share,

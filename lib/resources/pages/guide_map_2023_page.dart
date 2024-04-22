@@ -3,13 +3,13 @@ import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/app/models/guide.dart';
 import 'package:afrikaburn/resources/widgets/guide_viewer_widget.dart';
 
-class MapPdfPage extends NyStatefulWidget {
-  static const path = '/map-pdf';
-  static const name = '2023 Map PDF';
-  MapPdfPage() : super(path, child: _MapPdfPageState());
+class GuideMap2023Page extends NyStatefulWidget {
+  static const path = '/guide-map-2023';
+  static const name = 'Guide Map 2024';
+  GuideMap2023Page() : super(path, child: _MapPdfPageState());
 }
 
-class _MapPdfPageState extends NyState<MapPdfPage> {
+class _MapPdfPageState extends NyState<GuideMap2023Page> {
   @override
   Widget view(BuildContext context) {
     return GuideViewer(
