@@ -35,11 +35,11 @@ class Guide extends Model {
     String protectedSuffix = protected ? ' (Protected)' : '';
     switch (type) {
       case GuideType.WTF:
-        return 'WTF Guide $year${protectedSuffix}.pdf';
+        return 'WTF Guide ${year}${protectedSuffix}.pdf';
       case GuideType.MAP:
-        return 'Map $year{protectedSuffix}.pdf';
+        return 'Map ${year}${protectedSuffix}.pdf';
       case GuideType.MOOP:
-        return 'MOOP Map $year{protectedSuffix}.pdf';
+        return 'MOOP Map ${year}${protectedSuffix}.pdf';
     }
   }
 
@@ -49,6 +49,7 @@ class Guide extends Model {
   /// Get the full local path for the guide
   Future<String> get fullPath async {
     final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
+    print(p.join(appDocumentsDir.path, localPath));
     return p.join(appDocumentsDir.path, localPath);
   }
 
