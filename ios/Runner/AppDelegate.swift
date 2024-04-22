@@ -20,9 +20,14 @@ import UIKit
         )
         channel.setMethodCallHandler { [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) in
             guard let strongSelf = self else { return }
+            
+            let mapboxOfflineAB: MapboxOfflineAfrikaburn = MapboxOfflineAfrikaburn()
+            
             switch call.method {
                 case "downloadMapTiles":
-                    MapboxOfflineAfrikaburn().downloadTileRegions()
+                    mapboxOfflineAB.downloadTileRegions(flutterResult: result)
+                case "checkOfflineMaps":
+                    mapboxOfflineAB.checkDownloads(flutterResult: result)
                 default:
                     result(FlutterMethodNotImplemented)
             }

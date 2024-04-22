@@ -9,17 +9,43 @@ import Foundation
 import MapboxMaps
 
 final class MapboxOfflineAfrikaburn {
-
+    
     private var tileStore: TileStore?
     private var downloads: [Cancelable] = []
 
     private let afrikaburnCoord = CLLocationCoordinate2D(latitude: -32.51547, longitude: 19.95617)
-    private let afrikaburnZoom: CGFloat = 12
     private let tileRegionId = "afriakburnSite"
 
     private lazy var offlineManager: OfflineManager = .init()
+    
+    func checkDownloads(flutterResult: @escaping FlutterResult) {
+        self.tileStore = TileStore.default
+        guard let tileStore = tileStore else {
+            preconditionFailure()
+        }
+        tileStore.allTileRegions { result in
+            switch result {
+                case let .success(tileRegions):
+                    var regionsData: [[String: Encodable]] = []
+                    for region in tileRegions {
+                        regionsData.append([
+                            "id": region.id,
+                            "completedResourceCount": region.completedResourceCount,
+                            "completedResourceSize": region.completedResourceSize,
+                        ])
+                    }
+                    flutterResult(regionsData)
+                    
+                case let .failure(error) where error is TileRegionError:
+                    flutterResult(error)
+                    
+                case .failure(_):
+                    flutterResult(false)
+            }
+        }
+    }
 
-    func downloadTileRegions() {
+    func downloadTileRegions(flutterResult: @escaping FlutterResult) {
         print("[Mapbox Download] downloadTileRegions called")
         self.tileStore = TileStore.default
         guard let tileStore = tileStore else {
@@ -63,6 +89,7 @@ final class MapboxOfflineAfrikaburn {
                 switch result {
                 case let .success(tileRegion):
                     print("[Mapbox Download] tileRegion downloaded = \(tileRegion)")
+                    flutterResult(true)
 
                 case let .failure(error):
                     print("[Mapbox Download] tileRegion download Error = \(error)")

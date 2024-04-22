@@ -33,17 +33,17 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSContactsUsageDescription</key>
-	<string>Need your contact info? Don't worry, we won't call your mom (unless it's for your barcode... kidding!)</string>
+	<string>Need your contact info? Don&apos;t worry, we won&apos;t call your mom (unless it&apos;s for your barcode... kidding!)</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Yeah, your microphone is your own, This app doesn't touch it. We just had to put this in here for security reasons.</string>
+	<string>Yeah, your microphone is your own, This app doesn&apos;t touch it. We just had to put this in here for security reasons.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>We use your location to show cool things on the map, and remember them for later adventures.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use your location to show cool things on the map, and remember them for later adventures.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>So you want to test your camera skills? Let's see how great your snaps turn out!  Take a nice one, because we're going to check. LOL</string>
+	<string>So you want to test your camera skills? Let&apos;s see how great your snaps turn out!  Take a nice one, because we&apos;re going to check. LOL</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Well, so ja, we kinda need access to your photo library so that you can add your ticket.  Don't worry we won't go looking around, well maybe only for the naughty ones. ;)</string>
+	<string>Well, so ja, we kinda need access to your photo library so that you can add your ticket.  Don&apos;t worry we won&apos;t go looking around, well maybe only for the naughty ones. ;)</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
@@ -81,5 +81,7 @@
 	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>MBXAccessToken</key>
+	<string>pk.eyJ1IjoidmluY2VrcnVnZXIiLCJhIjoiY2x1NXZ1dGhxMXBkZTJpcXNxeGZseXc3OCJ9.kxVHWAgeQ0SIldaUSlf6ng</string>
 </dict>
 </plist>
