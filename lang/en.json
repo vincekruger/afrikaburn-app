@@ -65,10 +65,10 @@
     }
   },
   "ticket-content": {
-    "buy":  {
-      "got-your-ticket":"Got your ticket, bru?",
+    "buy": {
+      "got-your-ticket": "Got your ticket, bru?",
       "save-the-planet": "Save the planet, don't print your stuff. Keep it all lekker safe here and flash it at the gate.",
-      "no-ticket":"No ticket? Aw, shame man!\nGotta get on that quick like a bunny!"
+      "no-ticket": "No ticket? Aw, shame man!\nGotta get on that quick like a bunny!"
     },
     "available-offline": "NO STRESS, bru!\nAll this lekker stuff's saved on your phone, so when you're off the grid, you sorted 📱💾🔒 No worries!",
     "hide-ticket-page-label": "Hide this kak\nI've already checked in",
@@ -82,6 +82,12 @@
       "title": "😱 Eish man!",
       "message": "Something broke now and we couldn't delete your ticket. You can try again if you want, but don't worry, problem has been noted noted.",
       "confirm": "Oki Doki"
+    },
+    "remove-navigation-confirm": {
+      "title": "Hide Tickets?",
+      "message": "So, if you do this you won't get this back for the rest of burn. Are you like very very sure about this?",
+      "confirm": "Ja, Ja, Hide it",
+      "cancel": "Lemme think"
     }
   },
   "ticket-type": {

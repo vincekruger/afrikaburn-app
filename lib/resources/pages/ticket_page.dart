@@ -1,4 +1,5 @@
 import 'package:afrikaburn/app/events/hide_tickets_event.dart';
+import 'package:afrikaburn/resources/popups/confirm.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:shake_detector/shake_detector.dart';
@@ -44,7 +45,16 @@ class _TicketPageState extends NyState<TicketPage> {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10)
                     .copyWith(top: 30),
                 child: OutlinedButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    bool? result = await confirmDialogBuilder(
+                      context,
+                      'ticket-content.remove-navigation-confirm',
+                    );
+
+                    // User cancelled
+                    if (result == null || !result) return;
+
+                    /// Go ahead and remove the page
                     event<HideTicketsEvent>();
                   },
                   child: Container(

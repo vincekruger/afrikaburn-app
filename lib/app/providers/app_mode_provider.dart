@@ -4,14 +4,17 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/config/storage_keys.dart';
 import 'package:afrikaburn/app/events/prepare_data_event.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppModeProvider implements NyProvider {
   @override
   boot(Nylo nylo) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
     /// Get Stroage Values
     Backpack.instance.set(StorageKey.tankwaTownMode, (await tankwaTownMode));
-    Backpack.instance
-        .set(StorageKey.ticketsPageHidden, (await ticketsPageHidden));
+    Backpack.instance.set(StorageKey.ticketsPageHidden,
+        (await prefs.getBool(StorageKey.ticketsPageHidden) ?? false));
 
     return nylo;
   }
@@ -84,14 +87,6 @@ class AppModeProvider implements NyProvider {
     return today.isBefore(burnStartDate) &&
         today.isAfter(burnStartDate.subtract(Duration(days: soonDays)));
   }
-
-  /// Tickets Page Hidden
-  static Future<bool> get ticketsPageHidden async =>
-      await NyStorage.read(StorageKey.ticketsPageHidden,
-                  defaultValue: "false") ==
-              "false"
-          ? false
-          : true;
 
   /// Get the current mode from the backpack
   static bool get tankwaTownModeBackpack => Backpack.instance
