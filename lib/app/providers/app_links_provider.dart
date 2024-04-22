@@ -27,20 +27,20 @@ class AppLinksProvider implements NyProvider {
   @override
   boot(Nylo nylo) async {
     /// Setup Quick Actions
-    quickActions.setShortcutItems(<ShortcutItem>[
-      ...commonActions,
-      ...defaultWorldActions,
-    ]);
+    // quickActions.setShortcutItems(<ShortcutItem>[
+    //   ...commonActions,
+    //   ...defaultWorldActions,
+    // ]);
     return nylo;
   }
 
   @override
   afterBoot(Nylo nylo) async {
     /// Initialize Quick Actions
-    quickActions.initialize((shortcutType) {
-      if (shortcutType == 'action_tickets') navigateTickets();
-      if (shortcutType == 'action_rft') navigateRFT();
-    });
+    // quickActions.initialize((shortcutType) {
+    //   if (shortcutType == 'action_tickets') navigateTickets();
+    //   if (shortcutType == 'action_rft') navigateRFT();
+    // });
   }
 
   /// Handle Deep Linking
