@@ -21,7 +21,6 @@ class _MapAnnotationDetailState extends NyState<MapAnnotationDetail> {
   MapAnnotation? _annotation;
   final _scrollController = ScrollController();
   double _boxMinHeight = 100;
-  double _tmpBoxMinHeight = 0;
 
   @override
   init() async {
@@ -33,7 +32,6 @@ class _MapAnnotationDetailState extends NyState<MapAnnotationDetail> {
 
   /// Handle drag down event to close the annotation box
   void dragDownHandler() {
-    _tmpBoxMinHeight = _boxMinHeight;
     final newBoxHeight = _boxMinHeight + _scrollController.offset;
     setState(() {
       _boxMinHeight = newBoxHeight < 30 ? 0 : newBoxHeight;

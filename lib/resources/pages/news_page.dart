@@ -1,4 +1,3 @@
-import 'package:afrikaburn/app/events/remote_config_updates_event.dart';
 import 'package:afrikaburn/bootstrap/extensions.dart';
 import 'package:afrikaburn/resources/themes/extensions/outlined_button.dart';
 import 'package:afrikaburn/resources/themes/styles/gradient_styles.dart';

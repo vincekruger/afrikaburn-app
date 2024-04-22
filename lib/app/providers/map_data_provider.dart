@@ -45,7 +45,7 @@ class MapDataProvider implements NyProvider {
   static Future<List<MapBoxOfflineTile>> checkOfflineMaps() async {
     try {
       final result =
-          await platform.invokeMethod<List<dynamic?>>('checkOfflineMaps');
+          await platform.invokeMethod<List<dynamic>>('checkOfflineMaps');
 
       List<MapBoxOfflineTile> offlineTiles = [];
       if (result != null) {
