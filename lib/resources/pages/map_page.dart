@@ -1,3 +1,4 @@
+import 'package:afrikaburn/resources/icons/ab24_icons_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
@@ -200,7 +201,10 @@ class _MapPageState extends NyState<MapPage> with WidgetsBindingObserver {
                               const EdgeInsets.only(right: 10.0, bottom: 10.0),
                           child: IconButton(
                             onPressed: () => routeTo(GuideMap2024Page.path),
-                            icon: Icon(Icons.map),
+                            icon: Icon(
+                              AB24Icons.map,
+                              size: 20,
+                            ),
                             color: Colors.white,
                           ).withGradient(GradientStyles.appbarIcon),
                         ),
@@ -210,7 +214,10 @@ class _MapPageState extends NyState<MapPage> with WidgetsBindingObserver {
                           child: IconButton(
                             onPressed: () =>
                                 controller.centerMapOnUserLocation(context),
-                            icon: Icon(Icons.my_location_rounded),
+                            icon: Icon(
+                              Icons.my_location_rounded,
+                              size: 22,
+                            ),
                             color: Colors.white,
                           ).withGradient(GradientStyles.appbarIcon),
                         ),
