@@ -16,6 +16,9 @@ class RadioFreeTankwaController extends Controller {
     super.construct(context);
   }
 
+  @override
+  bool get singleton => true;
+
   /// Connectivity
   final Connectivity _connectivity = Connectivity();
   // StreamSubscription<List<ConnectivityResult>> connectivitySubscription;
@@ -55,6 +58,7 @@ class RadioFreeTankwaController extends Controller {
     // Listen for errors during playback.
     _player.playbackEventStream.listen((event) {
       /// not sure if I need to do something here
+      print('Event: $event');
     }, onError: (Object e, StackTrace stackTrace) {
       print('A stream error occurred: $e');
     });
@@ -82,6 +86,10 @@ class RadioFreeTankwaController extends Controller {
     /// Create the audio source
     AudioSource _audioSource = AudioSource.uri(
       streamUrl,
+      headers: {
+        'User-Agent':
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+      },
       tag: MediaItem(
         id: 'rft-stream',
         title: "rft-content.stream-title".tr(),
