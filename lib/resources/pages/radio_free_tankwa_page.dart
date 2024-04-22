@@ -49,9 +49,8 @@ class _RadioFreeTankwaPageState extends NyState<RadioFreeTankwaPage> {
   }
 
   // @override
-  stateUpdated(dynamic data) async {
-    print(data);
-  }
+  // stateUpdated(dynamic data) async {
+  // }
 
   /// Update the connection status
   Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
@@ -229,6 +228,7 @@ class _RadioFreeTankwaPageState extends NyState<RadioFreeTankwaPage> {
             } else {
               /// Start the player
               controller.player.play();
+              print('playing');
 
               /// Log firebase event
               FirebaseProvider().logEvent('rft_player_play', {});
