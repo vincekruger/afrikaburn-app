@@ -21,6 +21,7 @@ class MapDataProvider implements NyProvider {
   void _handlePreDownloadingOfTiles() {
     if (!AppModeProvider.burnIsSoon) return;
     MapDataProvider.checkOfflineMaps().then((result) {
+      print('Offline maps: $result');
       if (result.isNotEmpty) return;
 
       /// Download map tiles
@@ -42,7 +43,7 @@ class MapDataProvider implements NyProvider {
   static Future<List<MapBoxOfflineTile>> checkOfflineMaps() async {
     try {
       final result =
-          await platform.invokeMethod<List<dynamic>>('checkOfflineMaps');
+          await platform.invokeMethod<List<dynamic>?>('checkOfflineMaps');
 
       List<MapBoxOfflineTile> offlineTiles = [];
       if (result != null) {
@@ -62,7 +63,7 @@ class MapDataProvider implements NyProvider {
   }
 }
 
-/// TODO Cleanup
+// TODO Cleanup
 class MapBoxOfflineTile {
   final String id;
   final int completedResourceSize;

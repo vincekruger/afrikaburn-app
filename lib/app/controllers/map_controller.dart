@@ -195,6 +195,13 @@ class MapController extends Controller {
         await _mapboxMap.annotations.createPointAnnotationManager();
 
     /// Add a lister for annotation clicks
+    themeCampCircleAnnotationManager
+        .addOnCircleAnnotationClickListener(CircleAnnotationClickListener(
+      mapboxMap: _mapboxMap,
+      controller: this,
+      context: this.context!,
+    ));
+
     artworkAnnotationManager
         .addOnPointAnnotationClickListener(AnnotationClickListener(
       mapboxMap: _mapboxMap,
@@ -243,8 +250,10 @@ class MapController extends Controller {
 
     /// Create Annotations
     data.forEach((annotation) async {
-      await themeCampCircleAnnotationManager
+      CircleAnnotation result = await themeCampCircleAnnotationManager
           .create(_createCircleAnnotation(annotation));
+      annotation.annotationId = result.id;
+      loadedAnnotations.add(annotation);
     });
   }
 
@@ -259,10 +268,8 @@ class MapController extends Controller {
 
     /// Create Annotations
     data.forEach((annotation) async {
-      PointAnnotation result = await themeCampLabelAnnotationManager
+      await themeCampLabelAnnotationManager
           .create(_createThemeCampPointAnnotation(annotation, brightness));
-      annotation.annotationId = result.id;
-      loadedAnnotations.add(annotation);
     });
   }
 

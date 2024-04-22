@@ -33,6 +33,37 @@ class AnnotationClickListener extends OnPointAnnotationClickListener {
     final MapAnnotation? annotationData =
         controller.getAnnotationById(annotationId);
 
+    print('Annotation Clicked: $annotationId');
+
+    /// No annotation found - gerrara here
+    if (annotationData == null) return;
+
+    updateState(MapAnnotationDetail.state, data: {
+      'annotation': annotationData,
+    });
+  }
+}
+
+class CircleAnnotationClickListener extends OnCircleAnnotationClickListener {
+  final MapboxMap mapboxMap;
+  final MapController controller;
+  final BuildContext context;
+
+  CircleAnnotationClickListener({
+    required this.mapboxMap,
+    required this.controller,
+    required this.context,
+  });
+
+  @override
+  void onCircleAnnotationClick(CircleAnnotation annotation) {
+    /// Find the Annotation
+    final annotationId = annotation.id;
+    final MapAnnotation? annotationData =
+        controller.getAnnotationById(annotationId);
+
+    print(annotationData);
+
     /// No annotation found - gerrara here
     if (annotationData == null) return;
 
