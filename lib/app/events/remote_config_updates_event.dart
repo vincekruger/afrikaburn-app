@@ -15,9 +15,9 @@ class DefaultListener extends NyListener {
     if (updatedKeys == null) return;
 
     /// Last News Update
-    if (updatedKeys.contains('last_news_update')) {
-      print('Last new update');
-    }
+    // if (updatedKeys.contains('last_news_update')) {
+    // updateState(NewsPage.path, data: {'udpate_news': true});
+    // }
 
     if (updatedKeys.contains('guides_predownload_available')) {
       AppModeProvider.preDownloadGuides();
