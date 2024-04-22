@@ -113,7 +113,6 @@ class _NewsDetailPageState extends NyState<NewsDetailPage> {
 
     /// Add categories to the list
     newsItem.categories!.forEach((category) {
-      print(category.name.tr());
       widgetList.add(
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 4.0),

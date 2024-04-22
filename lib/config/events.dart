@@ -1,7 +1,5 @@
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/app/models/user.dart';
-import 'package:afrikaburn/app/events/login_event.dart';
-import 'package:afrikaburn/app/events/logout_event.dart';
 import 'package:afrikaburn/app/events/analytics_tracking_event.dart';
 import 'package:afrikaburn/app/events/notifications_event.dart';
 import 'package:afrikaburn/app/events/root_app_lifecycle_event.dart';
@@ -19,8 +17,6 @@ import 'package:afrikaburn/app/events/prepare_data_event.dart';
 |-------------------------------------------------------------------------- */
 
 final Map<Type, NyEvent> events = {
-  LoginEvent: LoginEvent(),
-  LogoutEvent: LogoutEvent(),
   AuthUserEvent: AuthUserEvent(),
   SyncAuthToBackpackEvent: SyncAuthToBackpackEvent<User>(),
   RootAppLifecycleEvent: RootAppLifecycleEvent(),

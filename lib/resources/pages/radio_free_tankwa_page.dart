@@ -228,7 +228,6 @@ class _RadioFreeTankwaPageState extends NyState<RadioFreeTankwaPage> {
             } else {
               /// Start the player
               controller.player.play();
-              print('playing');
 
               /// Log firebase event
               FirebaseProvider().logEvent('rft_player_play', {});

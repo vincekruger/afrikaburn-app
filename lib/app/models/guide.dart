@@ -49,7 +49,6 @@ class Guide extends Model {
   /// Get the full local path for the guide
   Future<String> get fullPath async {
     final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
-    print(p.join(appDocumentsDir.path, localPath));
     return p.join(appDocumentsDir.path, localPath);
   }
 
