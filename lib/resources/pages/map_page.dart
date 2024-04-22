@@ -3,7 +3,6 @@ import 'package:nylo_framework/nylo_framework.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:afrikaburn/app/models/map_annotation.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:afrikaburn/app/providers/map_data_provider.dart';
 import 'package:afrikaburn/app/providers/system_provider.dart';
 import 'package:afrikaburn/app/controllers/map_controller.dart';
 import 'package:afrikaburn/resources/themes/extensions/gradient_icon.dart';
@@ -112,9 +111,6 @@ class _MapPageState extends NyState<MapPage> with WidgetsBindingObserver {
     /// Restrict the map to portrait orientation
     SystemProvider()
         .setOnlyPortraitOrientation(); // Set Orientation to Portrait
-
-    /// Download Map Tiles
-    MapDataProvider.downloadMapTiles(); // Download Map Tiles
 
     /// Set some default settings
     controller.setDefaultSettings();
