@@ -1,3 +1,4 @@
+import 'package:afrikaburn/app/providers/app_mode_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/app/providers/settings_provider.dart';
@@ -20,6 +21,7 @@ class DefaultListener extends NyListener {
     switch (state) {
       case AppLifecycleState.resumed:
         SettingsProvider().compareAppSettings();
+        AppModeProvider.checkBurnDatesAndKak();
         break;
       default:
         break;

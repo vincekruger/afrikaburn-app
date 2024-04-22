@@ -18,6 +18,11 @@ class AppModeProvider implements NyProvider {
 
   @override
   afterBoot(Nylo nylo) async {
+    checkBurnDatesAndKak();
+  }
+
+  static void checkBurnDatesAndKak() {
+    print("checking dates");
     if (burnIsSoon) {
       print('Burn is coming soon');
       preDownloadGuides();
