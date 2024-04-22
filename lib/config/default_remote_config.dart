@@ -15,6 +15,10 @@ class DefaultRemoteConfig {
     "map_min_zoom": 14,
     "map_max_zoom": 18,
 
+    /// Burn Mode Settings
+    "allow_default_mode_toggle": true,
+    "allow_tankwa_mode_toggle": true,
+
     /// News, Tickets & Sharing
     "news_page_size": 15,
     "tickets_url": "https://tickets.afrikaburn.org",

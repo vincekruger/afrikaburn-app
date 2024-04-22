@@ -21,10 +21,7 @@ class MapDataProvider implements NyProvider {
   void _handlePreDownloadingOfTiles() {
     if (!AppModeProvider.burnIsSoon) return;
     MapDataProvider.checkOfflineMaps().then((result) {
-      if (result.isNotEmpty) {
-        print('Map tiles already downloaded');
-        return;
-      }
+      if (result.isNotEmpty) return;
 
       /// Download map tiles
       MapDataProvider.downloadMapTiles().then((value) {

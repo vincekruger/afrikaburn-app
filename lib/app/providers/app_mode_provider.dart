@@ -21,23 +21,21 @@ class AppModeProvider implements NyProvider {
     checkBurnDatesAndKak();
   }
 
+  /// Check all the burn dates
+  /// for starting, ending etc.
   static void checkBurnDatesAndKak() {
-    print("checking dates");
     if (burnIsSoon) {
-      print('Burn is coming soon');
       preDownloadGuides();
       return;
     }
 
     /// Check if it's burn time
     if (burnHasBegun) {
-      print('Burn has begun');
       event<TankwaModeEvent>(data: {'state': true});
       return;
     }
 
     if (burnHasEnded) {
-      print('Burn has ended');
       event<TankwaModeEvent>(data: {'state': false});
     }
   }
@@ -75,6 +73,7 @@ class AppModeProvider implements NyProvider {
     return today.isAfter(burnEndDate);
   }
 
+  /// Burn is soon
   static bool get burnIsSoon {
     Moment today = Moment.now().startOfDay();
     Moment burnStartDate =

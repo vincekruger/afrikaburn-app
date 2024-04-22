@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:afrikaburn/resources/pages/root.dart';
 import 'package:afrikaburn/resources/shared_navigation_bar/shared_navigation_bar.dart';
@@ -27,13 +29,25 @@ class DefaultListener extends NyListener {
     /// to the opposite of the current state
     else if (event.containsKey('toggle') && event['toggle'] == true) {
       state = !(await AppModeProvider.tankwaTownMode);
-      print("Toggle the current app state to $state");
+
+      /// Check if toggle to tankwa world is allowed
+      if (state == true &&
+          FirebaseRemoteConfig.instance.getBool('allow_tankwa_mode_toggle') ==
+              false) {
+        return;
+      }
+
+      /// Check if toggle to default word is allowed
+      if (state == false &&
+          FirebaseRemoteConfig.instance.getBool('allow_default_mode_toggle') ==
+              false) {
+        return;
+      }
     }
 
     /// No clear action here
-    else {
+    else
       throw Exception("AppMode event action is unclear");
-    }
 
     /// Update the storage
     await AppModeProvider.setTankwaTownMode(state);
