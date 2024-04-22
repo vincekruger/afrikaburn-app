@@ -39,25 +39,25 @@ class _TicketPageState extends NyState<TicketPage> {
             ...appBar(context),
             BuyTicketContent(),
             ...ticketSlots(context),
-            // if (AppModeProvider.tankwaTownModeBackpack) ...[
-            //   Container(
-            //     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10)
-            //         .copyWith(top: 30),
-            //     child: OutlinedButton(
-            //       onPressed: () {
-            //         event<HideTicketsEvent>();
-            //       },
-            //       child: Container(
-            //         child: Text('ticket-content.hide-ticket-page-label'.tr())
-            //             .alignCenter(),
-            //       ),
-            //     ).withGradient(
-            //       strokeWidth: 2,
-            //       shrink: false,
-            //       gradient: GradientStyles.outlinedButtonBorder,
-            //     ),
-            //   )
-            // ],
+            if (AppModeProvider.tankwaTownModeBackpack) ...[
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10)
+                    .copyWith(top: 30),
+                child: OutlinedButton(
+                  onPressed: () {
+                    event<HideTicketsEvent>();
+                  },
+                  child: Container(
+                    child: Text('ticket-content.hide-ticket-page-label'.tr())
+                        .alignCenter(),
+                  ),
+                ).withGradient(
+                  strokeWidth: 2,
+                  shrink: false,
+                  gradient: GradientStyles.outlinedButtonBorder,
+                ),
+              )
+            ],
           ],
         ),
       ),

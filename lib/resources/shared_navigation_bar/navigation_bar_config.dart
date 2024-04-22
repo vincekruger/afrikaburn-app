@@ -116,17 +116,17 @@ class TankwaTownNavigationBarConfig extends NavigationBarConfig {
           ),
         ),
 
-        // if (Backpack.instance
-        //         .read(StorageKey.ticketsPageHidden, defaultValue: false) ==
-        //     false)
-        BottomNavigationItemConfig(
-          builder: () => TicketPage(),
-          navigationItem: BottomNavigationItem(
-            icon: AB24Icons.ticket,
-            label: "menu-item.tickets".tr(),
-            routeName: TicketPage.path,
+        if (Backpack.instance
+                .read(StorageKey.ticketsPageHidden, defaultValue: false) ==
+            false)
+          BottomNavigationItemConfig(
+            builder: () => TicketPage(),
+            navigationItem: BottomNavigationItem(
+              icon: AB24Icons.ticket,
+              label: "menu-item.tickets".tr(),
+              routeName: TicketPage.path,
+            ),
           ),
-        ),
       ];
 }
 
