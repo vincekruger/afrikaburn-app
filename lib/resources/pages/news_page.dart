@@ -41,8 +41,8 @@ class _NewsPageState extends NyState<NewsPage> {
   }
 
   @override
-  stateUpdated(data) {
-    print(data);
+  stateUpdated(dynamic data) async {
+    /// Reload page state when this works one day
   }
 
   /// ListView Header
