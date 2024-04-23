@@ -50,6 +50,12 @@ post_install do |installer|
       ## Let's turn of this annoying ios target warning
       config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
 
+      ## Just Audio permissions
+      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
+        '$(inherited)',
+        'AUDIO_SESSION_MICROPHONE=0'
+      ]
+
       # You can enable the permissions needed here. For example to enable camera
       # permission, just remove the `#` character in front so it looks like this:
       #
@@ -61,7 +67,7 @@ post_install do |installer|
         '$(inherited)',
 
         ## dart: PermissionGroup.contacts
-        'PERMISSION_CONTACTS=1',
+        # 'PERMISSION_CONTACTS=1',
 
         ## dart: PermissionGroup.camera
         'PERMISSION_CAMERA=1',
