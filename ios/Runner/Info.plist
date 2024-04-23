@@ -46,6 +46,8 @@
 	<string>We use your location to show you where you on the binnekring.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Well, so ja, we kinda need access to your photo library so that you can add your ticket.  Don't worry we won't go looking around, well maybe only for the naughty ones. ;)</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Your contact access is used to generate your contact QR code. Don't worry, we won't call your mom!</string>
 	<key>NSPrivacyAccessedAPITypes</key>
 	<array>
 		<dict>
