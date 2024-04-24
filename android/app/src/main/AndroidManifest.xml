@@ -21,7 +21,7 @@
 
     <application
         android:usesCleartextTraffic="true"
-        android:label="Afrikaburn"
+        android:label="AfrikaBurn"
         android:name="${applicationName}"
         android:allowBackup="false"
         android:fullBackupContent="false"
