@@ -1,5 +1,5 @@
 import 'package:afrikaburn/app/providers/app_mode_provider.dart';
-import 'package:afrikaburn/resources/pages/news_page.dart';
+import 'package:afrikaburn/resources/widgets/news_list_widget.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 class RemoteConfigUpdatesEvent implements NyEvent {
@@ -17,7 +17,7 @@ class DefaultListener extends NyListener {
 
     /// Last News Update
     if (updatedKeys.contains('last_news_update')) {
-      updateState(NewsPage.path, data: {"action": "udpate_news"});
+      updateState(NewsList.state, data: {"action": "refresh_news"});
     }
 
     if (updatedKeys.contains('guides_predownload_available')) {

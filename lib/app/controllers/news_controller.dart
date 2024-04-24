@@ -103,12 +103,6 @@ class NewsController extends Controller {
   final CollectionReference collectionRef =
       FirebaseFirestore.instance.collection('news');
 
-  Future<void> cancelNewsSubscriptions() async {
-    newsSubscriptions.forEach((subscription) {
-      subscription.cancel();
-    });
-  }
-
   Future<void> getNewPosts() async {
     pagingController.refresh();
   }
@@ -128,9 +122,7 @@ class NewsController extends Controller {
       }
 
       /// Fetch data
-      var subscription =
-          query.snapshots().listen((event) => processSnapshot(event, pageKey));
-      newsSubscriptions.add(subscription);
+      query.get().then((snapshot) => processSnapshot(snapshot, pageKey));
     } catch (error) {
       pagingController.error = error;
       print(error);
@@ -150,14 +142,5 @@ class NewsController extends Controller {
     /// Append page
     final nextPageKey = pageKey + items.length;
     pagingController.appendPage(items, nextPageKey);
-
-    /// Check the changes
-    snapshot.docChanges.forEach((change) {
-      if (change.type == DocumentChangeType.removed) {
-        pagingController.itemList!.removeWhere((element) {
-          return element.id == change.doc.id;
-        });
-      }
-    });
   }
 }
