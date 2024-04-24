@@ -42,10 +42,7 @@ class _NewsListState extends NyState<NewsList> {
     // updateState(NewsList.state, data: "example payload");
 
     /// There is some new news to load.
-    if (data?['action'] == 'refresh_news') {
-      print('NewsList stateUpdated: refresh_news');
-      controller.getNewPosts();
-    }
+    if (data?['action'] == 'refresh_news') controller.getNewPosts();
   }
 
   /// ListView Header
